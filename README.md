@@ -1,2 +1,2 @@
-# 2018-theme-site
-Lunar Gala 2018 Theme Site
+# Lunar Gala 2018 Theme Site
+Check it out at https://lg-2018.herokuapp.com/

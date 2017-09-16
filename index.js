@@ -1,19 +1,14 @@
+var express = require('express')
+var path = require('path')
+var app = express()
 
-const express = require('express');
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'index.html'));
+})
 
-const app = express();
-app.get('/',function(req,res){
-
-     res.sendFile('index.html');
-
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, function() {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
 });
-
-/**
- * Express configuration.
- */
-app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
-app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080);
-
-app.listen(8000);
-
-console.log("Running at Port 8000");

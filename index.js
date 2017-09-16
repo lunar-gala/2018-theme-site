@@ -7,7 +7,7 @@ app.get('/', function (req, res) {
 })
 
 // Start the server
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, function() {
   console.log(`App listening on port ${PORT}`);
   console.log('Press Ctrl+C to quit.');

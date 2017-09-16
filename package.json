@@ -1,0 +1,25 @@
+{
+  "name": "2018-theme-site",
+  "version": "1.0.0",
+  "description": "Lunar Gala 2018 Theme Site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lunar-gala/2018-theme-site.git"
+  },
+  "keywords": [
+    "LG"
+  ],
+  "author": "Deniz Sokullu, Stephen Chung, Alex Yeh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lunar-gala/2018-theme-site/issues"
+  },
+  "homepage": "https://github.com/lunar-gala/2018-theme-site#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}

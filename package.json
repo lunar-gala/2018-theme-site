@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/lunar-gala/2018-theme-site#readme",
   "dependencies": {
+    "3js": "^1.0.0",
     "express": "^4.15.4"
   }
 }

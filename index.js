@@ -6,6 +6,10 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 })
 
+app.get('*', function (req, res) {
+  res.status(404).send("Status code 404 - The URL you are looking for does not exist");
+});
+
 // Start the server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, function() {

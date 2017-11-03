@@ -2,21 +2,16 @@ var express = require('express')
 var path = require('path')
 var app = express()
 
+
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 })
 
-app.get('/about', function (req, res) {
-
+app.get(/\babout|lines|people\b/, function (req, res) {
+    res.sendFile(__dirname + '/public/' + req.path + '.html');
 });
-
-app.get('/lines', function (req, res) {
-
-})
-
-app.get('/people', function (req, res) {
-
-})
 
 app.get('*', function (req, res) {
   res.status(404).send("Status code 404 - The URL you are looking for does not exist");

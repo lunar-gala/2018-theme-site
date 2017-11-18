@@ -47,10 +47,10 @@ function Block(row,col,x,y){
   }
 }
 
-for(var i =0; i < grid_rows; i++)
+for(var i = 0; i < grid_rows; i++)
 {
   var currentRow = [];
-  for(var j=0; j < grid_cols;j++)
+  for(var j = 0; j < grid_cols; j++)
   {
     var curX = j * block_width;
     var curY = i * block_height;
@@ -82,9 +82,18 @@ $(window).ready(function(){
     topR.bounds.right = -1;
     botR.bounds = {"right":-1,"bottom":-1};
     bottomL.bounds.bottom = -1;
-    topR.update(regular_w,regular_h);
-    botR.update(regular_w,regular_h);
-    bottomL.update(regular_w,regular_h);
+    $("#"+topR.id).css({
+      'transition':'none',
+      'opacity':'0'
+    });
+    $("#"+botR.id).css({
+      'transition':'none',
+      'opacity':'0'
+    });
+    $("#"+bottomL.id).css({
+      'transition':'none',
+      'opacity':'0'
+    });
     curBlock.update(regular_w,regular_h);
   })
 });

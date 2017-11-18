@@ -1,107 +1,92 @@
-var grid_cols = 8;
-var grid_rows = 8;
+var grid;
 
-var block_width = window.innerWidth / grid_cols;
-var block_height = window.innerHeight/ grid_rows;
+function initGrid (rows, cols) {
+  var grid = [];
+  var block_width = window.innerWidth / cols;
+  var block_height = window.innerHeight / rows;
 
+  for(var i = 0; i < rows; i++) {
+    var currentRow = [];
+    for(var j = 0; j < cols; j++) {
+      var y = i * block_height;
+      var x = j * block_width;
 
-var grid = []
+      var block = new Block(i, j, x, y, 
+                            block_width, block_height);
+      currentRow.push(block);
+    }
+    grid.push(currentRow);
+  }
+  return grid;
+}
 
-function Block(row,col,x,y){
+function Block(row, col, x, y, width, height){
   this.row = row;
   this.col = col;
+
   //initial values
+  this.x = x;
+  this.y = y;
   this.id = row+"_"+col;
   this.state = "normal";
-  // this.expand = {top:0;right:false;}
-  this.bounds = {right:0,bottom:0}
+  this.width = width;
+  this.height = height;
+  this.bounds = {right:0, bottom:0}
   this.DOM = `<div class="block" id="`+this.id+`"><div class="inner"></div></div>`;
+
   this.create = function(){
     $("body").append(this.DOM);
   }
-  this.update = function(w,h){
+
+  this.update = function(w, h){
     //checking if collapsed
     collapsing = false;
     if(Object.values(this.bounds).includes(-1)){
       collapsing = true;
       $("#"+this.id).toggleClass("collapsed");
     }
-    console.log("asdasd");
-    console.log("#"+this.id);
+
+    var y;
+    var x;
+    var width = w + this.bounds.right * w;
+    var height = h + this.bounds.bottom * h;
     if(collapsing){
-      $("#"+this.id).css({
-        "top":this.row*(window.innerHeight / grid_rows) - h*this.bounds.bottom,
-        "left":this.col*(window.innerWidth / grid_cols) - w*this.bounds.right,
-        "width":w+this.bounds.right*w,
-        "height":h+this.bounds.bottom*h
-      });
+      y = this.row * h - h * this.bounds.bottom;
+      x = this.col * w - w * this.bounds.right;
     }
     else{
-      $("#"+this.id).css({
-        "top":this.row*(window.innerHeight / grid_rows),
-        "left":this.col*(window.innerWidth / grid_cols),
-        "width":w+this.bounds.right*w,
-        "height":h+this.bounds.bottom*h
-      });
+      y = this.row * h;
+      x = this.col * w;
     }
+
+    $("#"+this.id).css({
+      "top": y,
+      "left": x,
+      "width": width,
+      "height": height
+    });
+
+    this.y = y;
+    this.x = x;
+    this.width = w;
+    this.height = h;
   }
 }
 
-for(var i = 0; i < grid_rows; i++)
-{
-  var currentRow = [];
-  for(var j = 0; j < grid_cols; j++)
-  {
-    var curX = j * block_width;
-    var curY = i * block_height;
-    var block = new Block(i,j,curX,curY)
-    console.log(block.DOM);
-    currentRow.push(new Block(i,j,curX,curY));
-  }
-  grid.push(currentRow);
-}
 $(window).ready(function(){
-  var regular_w = (window.innerWidth/grid_cols);
-  var regular_h = (window.innerHeight/grid_rows);
+  grid = initGrid(2, 3);
   grid.map(function(inner){
     inner.map(function(cur){
       cur.create();
-      cur.update(regular_w,regular_h);
+      cur.update(cur.width, cur.height);
     })
-  })
-  $(".block").click(function(){
-    id = $(this).attr("id").split("_");
-    var i = parseInt(id[0]);
-    var j = parseInt(id[1]);
-    var curBlock = grid[i][j];
-    curBlock.bounds.bottom = 1;
-    curBlock.bounds.right = 1;
-    var topR = grid[i][j+1];
-    var botR = grid[i+1][j+1];
-    var bottomL = grid[i+1][j];
-    topR.bounds.right = -1;
-    botR.bounds = {"right":-1,"bottom":-1};
-    bottomL.bounds.bottom = -1;
-    $("#"+topR.id).css({
-      'transition':'none',
-      'opacity':'0'
-    });
-    $("#"+botR.id).css({
-      'transition':'none',
-      'opacity':'0'
-    });
-    $("#"+bottomL.id).css({
-      'transition':'none',
-      'opacity':'0'
-    });
-    curBlock.update(regular_w,regular_h);
-  })
+  });
 });
 $(window).resize(function(){
   grid.map(function(inner){
     inner.map(function(cur){
-      cur.update((window.innerWidth/grid_cols),(window.innerHeight/grid_rows));
+      cur.update((window.innerWidth/grid[0].length),(window.innerHeight/grid.length));
     })
   })
-})
+});
 console.log(grid);

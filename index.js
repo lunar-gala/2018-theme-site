@@ -9,8 +9,32 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 })
 
-app.get(/\babout|lines|people\b/, function (req, res) {
+app.get(/^(\babout|lines|people\b)/, function (req, res) {
     res.sendFile(__dirname + '/public/' + req.path + '.html');
+});
+
+//testing the ajax requests
+app.get("/test/about", function (req, res) {
+    res.sendFile(__dirname + '/public/testAjax.html');
+});
+app.get("/test/lines", function (req, res) {
+    res.sendFile(__dirname + '/public/testAjax.html');
+});
+app.get("/test/people", function (req, res) {
+    res.sendFile(__dirname + '/public/testAjax.html');
+});
+
+app.get("/data/about", function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({ content: "this is the content for about" }));
+});
+app.get("/data/lines", function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({ content: "this is the content for lines" }));
+});
+app.get("/data/people", function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({ content: "this is the content for people" }));
 });
 
 app.get('*', function (req, res) {

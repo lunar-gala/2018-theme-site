@@ -16,18 +16,19 @@ function Block(row,col,x,y){
   // this.expand = {top:0;right:false;}
   this.bounds = {right:0,bottom:0}
   this.DOM = `<div class="block" id="`+this.id+`"><div class="inner"></div></div>`;
+
   this.create = function(){
     $("body").append(this.DOM);
   }
+
   this.update = function(w,h){
     //checking if collapsed
     collapsing = false;
+
     if(Object.values(this.bounds).includes(-1)){
       collapsing = true;
       $("#"+this.id).toggleClass("collapsed");
     }
-    console.log("asdasd");
-    console.log("#"+this.id);
     if(collapsing){
       $("#"+this.id).css({
         "top":this.row*(window.innerHeight / grid_rows) - h*this.bounds.bottom,
@@ -37,6 +38,7 @@ function Block(row,col,x,y){
       });
     }
     else{
+      console.log(this.id)
       $("#"+this.id).css({
         "top":this.row*(window.innerHeight / grid_rows),
         "left":this.col*(window.innerWidth / grid_cols),
@@ -55,11 +57,118 @@ for(var i =0; i < grid_rows; i++)
     var curX = j * block_width;
     var curY = i * block_height;
     var block = new Block(i,j,curX,curY)
-    console.log(block.DOM);
-    currentRow.push(new Block(i,j,curX,curY));
+
+    currentRow.push(block);
   }
   grid.push(currentRow);
 }
+
+function animateBlock(block, rowsDown, colsRight) {
+    var regular_w = (window.innerWidth/grid_cols);
+    var regular_h = (window.innerHeight/grid_rows);
+
+    var id = $(block).attr("id").split("_");
+
+    var i = parseInt(id[0]);
+    var j = parseInt(id[1]);
+
+    var curBlock = grid[i][j];
+
+    if (curBlock.bounds.bottom != 0 || curBlock.bounds.right != 0) {
+      resetBlock(block);
+      return;
+    }
+
+    curBlock.bounds.bottom = rowsDown;
+    curBlock.bounds.right = colsRight;
+
+    for (var row=i; row < i + 1 + rowsDown; row++) {
+      for (var col=j; col < j + 1 + colsRight; col++) {
+        if (row == i && col == j) {
+          continue
+        }
+        var b = grid[row][col];
+
+        if (col == j) {
+          // vertical
+          collapse("DOWN", b);
+        } else if (row == i) {
+          // horizontal
+          collapse("RIGHT", b)
+        } else {
+          // diagonally
+          collapse("DIAGONAL", b);
+        }
+      }
+    }
+
+    curBlock.update(regular_w,regular_h);
+}
+
+function resetBlock(block) {
+    var id = $(block).attr("id").split("_");
+
+    var i = parseInt(id[0]);
+    var j = parseInt(id[1]);
+
+    var curBlock = grid[i][j];
+
+    var regular_w = (window.innerWidth/grid_cols);
+    var regular_h = (window.innerHeight/grid_rows);
+
+    var blocksDown = curBlock.bounds.bottom;
+    var blocksRight = curBlock.bounds.right;
+
+    for (var row=i; row < i + 1 + blocksDown; row++) {
+      for (var col=j; col < j + 1 + blocksRight; col++) {
+        var b = grid[row][col];
+
+        b.bounds.right = 0
+        b.bounds.bottom = 0;
+
+        b.update(regular_w, regular_h)
+
+        if ($("#"+row+"_"+col).hasClass('collapsed')) {
+          $("#"+row+"_"+col).toggleClass('collapsed');
+        }
+      }
+    }
+}
+
+function resetAllBlocks() {
+  for (var row=0; row < grid_rows; row++) {
+    for (var col=0; col < grid_cols; col++) {
+
+      var b = grid[row][col];
+
+      if (b.bounds.right > 0 || b.bounds.bottom > 0) {
+        resetBlock(b);
+      }
+    }
+  }
+}
+
+function collapse(direction, block) {
+    switch (direction) {
+      case "DOWN": 
+        block.bounds.bottom = -1;
+        break;
+      case "RIGHT": 
+        block.bounds.right = -1;
+        break;
+      case "DIAGONAL":
+        block.bounds.bottom = -1;
+        block.bounds.right = -1;
+      default:
+        break;
+    }
+
+    var regular_w = (window.innerWidth/grid_cols);
+    var regular_h = (window.innerHeight/grid_rows);
+
+    block.update(regular_w, regular_h)
+}
+
 $(window).ready(function(){
   var regular_w = (window.innerWidth/grid_cols);
   var regular_h = (window.innerHeight/grid_rows);
@@ -69,25 +178,18 @@ $(window).ready(function(){
       cur.update(regular_w,regular_h);
     })
   })
+
   $(".block").click(function(){
-    id = $(this).attr("id").split("_");
-    var i = parseInt(id[0]);
-    var j = parseInt(id[1]);
-    var curBlock = grid[i][j];
-    curBlock.bounds.bottom = 1;
-    curBlock.bounds.right = 1;
-    var topR = grid[i][j+1];
-    var botR = grid[i+1][j+1];
-    var bottomL = grid[i+1][j];
-    topR.bounds.right = -1;
-    botR.bounds = {"right":-1,"bottom":-1};
-    bottomL.bounds.bottom = -1;
-    topR.update(regular_w,regular_h);
-    botR.update(regular_w,regular_h);
-    bottomL.update(regular_w,regular_h);
-    curBlock.update(regular_w,regular_h);
+    animateBlock(this, 0,3);
+  });
+
+  $(window).keydown(function(e) {
+    if (e.key == "r") {
+      resetAllBlocks();
+    }
   })
 });
+
 $(window).resize(function(){
   grid.map(function(inner){
     inner.map(function(cur){

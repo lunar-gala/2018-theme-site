@@ -44,36 +44,35 @@ function Block(row, col, x, y, width, height){
     //checking if collapsed
     collapsing = false;
 
-    if(Object.values(this.bounds).includes(-1)){
+    if(Object.values(this.bounds).includes(-1)) {
       collapsing = true;
       $("#"+this.id).toggleClass("collapsed");
-    }
-    var y;
-    var x;
-    var width = w + this.bounds.right * w;
-    var height = h + this.bounds.bottom * h;
+      // TODO: maybe need to fix width and height so we can click on the entire expanded box
+      // $("#"+this.id).css({
+      //   "width": 0,
+      //   "height": 0
+      // });
+    } else {
+        var y;
+        var x;
+        var width = w + this.bounds.right * w;
+        var height = h + this.bounds.bottom * h;
+        
+        y = this.row * h;
+        x = this.col * w;
 
-    if(collapsing){
-      y = this.row * h - h * this.bounds.bottom;
-      x = this.col * w - w * this.bounds.right;
-    }
-    else{
-      y = this.row * h;
-      x = this.col * w;
-    }
-  
+        $("#"+this.id).css({
+          "top": y,
+          "left": x,
+          "width": width,
+          "height": height
+        });
 
-    $("#"+this.id).css({
-      "top": y,
-      "left": x,
-      "width": width,
-      "height": height
-    });
-
-    this.y = y;
-    this.x = x;
-    this.width = w;
-    this.height = h;
+        this.y = y;
+        this.x = x;
+        this.width = w;
+        this.height = h;
+    } 
   }
 }
 
@@ -98,7 +97,7 @@ function animateBlock(block, rowsDown, colsRight) {
 
     for (var row=i; row < Math.min(grid_rows, i + 1 + rowsDown); row++) {
       for (var col=j; col < Math.min(grid_cols, j + 1 + colsRight); col++) {
-        if (row == i && col == j) {
+        if (row == i && col == j && (grid[row][col].bounds.right != 0 || grid[row][col].bounds.bottom != 0)) {
           continue
         }
         var b = grid[row][col];
@@ -193,6 +192,7 @@ $(window).ready(function(){
   })
 
   $(".block").click(function(){
+    console.log(this.id)
     animateBlock(this, 2,2);
   });
 

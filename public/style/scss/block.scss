@@ -857,12 +857,12 @@ body{
   padding:6px;
   transition:all 0.3s;
   .inner{
-    transition:border-width 0.1s 1s;
+    transition:opacity 0.1s 0.1s;
     border:1px solid white;
     width:100%;
     height:100%;
   }
   &.collapsed .inner{
-    border-width:0px;
+    opacity: 0;
   }
 }

@@ -1,4 +1,6 @@
 var grid;
+var grid_cols = 8;
+var grid_rows = 8;
 
 function initGrid (rows, cols) {
   var grid = [];
@@ -182,7 +184,7 @@ function collapse(direction, block) {
 }
 
 $(window).ready(function(){
-  grid = initGrid(2, 3);
+  grid = initGrid(grid_rows, grid_cols);
   grid.map(function(inner){
     inner.map(function(cur){
       cur.create();
@@ -191,7 +193,7 @@ $(window).ready(function(){
   })
 
   $(".block").click(function(){
-    animateBlock(this, 0,3);
+    animateBlock(this, 2,2);
   });
 
   $(window).keydown(function(e) {

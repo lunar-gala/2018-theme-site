@@ -1,4 +1,6 @@
 var grid;
+var grid_cols = 8;
+var grid_rows = 8;
 
 function initGrid (rows, cols) {
   var grid = [];
@@ -38,18 +40,19 @@ function Block(row, col, x, y, width, height){
     $("body").append(this.DOM);
   }
 
-  this.update = function(w, h){
+  this.update = function(w,h){
     //checking if collapsed
     collapsing = false;
+
     if(Object.values(this.bounds).includes(-1)){
       collapsing = true;
       $("#"+this.id).toggleClass("collapsed");
     }
-
     var y;
     var x;
     var width = w + this.bounds.right * w;
     var height = h + this.bounds.bottom * h;
+
     if(collapsing){
       y = this.row * h - h * this.bounds.bottom;
       x = this.col * w - w * this.bounds.right;
@@ -58,6 +61,7 @@ function Block(row, col, x, y, width, height){
       y = this.row * h;
       x = this.col * w;
     }
+  
 
     $("#"+this.id).css({
       "top": y,
@@ -73,15 +77,132 @@ function Block(row, col, x, y, width, height){
   }
 }
 
+function animateBlock(block, rowsDown, colsRight) {
+    var regular_w = (window.innerWidth/grid_cols);
+    var regular_h = (window.innerHeight/grid_rows);
+
+    var id = $(block).attr("id").split("_");
+
+    var i = parseInt(id[0]);
+    var j = parseInt(id[1]);
+
+    var curBlock = grid[i][j];
+
+    if (curBlock.bounds.bottom != 0 || curBlock.bounds.right != 0) {
+      resetBlock(block);
+      return;
+    }
+
+    curBlock.bounds.bottom = rowsDown;
+    curBlock.bounds.right = colsRight;
+
+    for (var row=i; row < i + 1 + rowsDown; row++) {
+      for (var col=j; col < j + 1 + colsRight; col++) {
+        if (row == i && col == j) {
+          continue
+        }
+        var b = grid[row][col];
+
+        if (col == j) {
+          // vertical
+          collapse("DOWN", b);
+        } else if (row == i) {
+          // horizontal
+          collapse("RIGHT", b)
+        } else {
+          // diagonally
+          collapse("DIAGONAL", b);
+        }
+      }
+    }
+
+    curBlock.update(regular_w,regular_h);
+}
+
+function resetBlock(block) {
+    var id = $(block).attr("id").split("_");
+
+    var i = parseInt(id[0]);
+    var j = parseInt(id[1]);
+
+    var curBlock = grid[i][j];
+
+    var regular_w = (window.innerWidth/grid_cols);
+    var regular_h = (window.innerHeight/grid_rows);
+
+    var blocksDown = curBlock.bounds.bottom;
+    var blocksRight = curBlock.bounds.right;
+
+    for (var row=i; row < i + 1 + blocksDown; row++) {
+      for (var col=j; col < j + 1 + blocksRight; col++) {
+        var b = grid[row][col];
+
+        b.bounds.right = 0
+        b.bounds.bottom = 0;
+
+        b.update(regular_w, regular_h)
+
+        if ($("#"+row+"_"+col).hasClass('collapsed')) {
+          $("#"+row+"_"+col).toggleClass('collapsed');
+        }
+      }
+    }
+}
+
+function resetAllBlocks() {
+  for (var row=0; row < grid_rows; row++) {
+    for (var col=0; col < grid_cols; col++) {
+
+      var b = grid[row][col];
+
+      if (b.bounds.right > 0 || b.bounds.bottom > 0) {
+        resetBlock(b);
+      }
+    }
+  }
+}
+
+function collapse(direction, block) {
+    switch (direction) {
+      case "DOWN": 
+        block.bounds.bottom = -1;
+        break;
+      case "RIGHT": 
+        block.bounds.right = -1;
+        break;
+      case "DIAGONAL":
+        block.bounds.bottom = -1;
+        block.bounds.right = -1;
+      default:
+        break;
+    }
+
+    var regular_w = (window.innerWidth/grid_cols);
+    var regular_h = (window.innerHeight/grid_rows);
+
+    block.update(regular_w, regular_h)
+}
+
 $(window).ready(function(){
-  grid = initGrid(2, 3);
+  grid = initGrid(grid_rows, grid_cols);
   grid.map(function(inner){
     inner.map(function(cur){
       cur.create();
       cur.update(cur.width, cur.height);
     })
+  })
+
+  $(".block").click(function(){
+    animateBlock(this, 2,2);
   });
+
+  $(window).keydown(function(e) {
+    if (e.key == "r") {
+      resetAllBlocks();
+    }
+  })
 });
+
 $(window).resize(function(){
   grid.map(function(inner){
     inner.map(function(cur){

@@ -96,8 +96,8 @@ function animateBlock(block, rowsDown, colsRight) {
     curBlock.bounds.bottom = rowsDown;
     curBlock.bounds.right = colsRight;
 
-    for (var row=i; row < i + 1 + rowsDown; row++) {
-      for (var col=j; col < j + 1 + colsRight; col++) {
+    for (var row=i; row < Math.min(grid_rows, i + 1 + rowsDown); row++) {
+      for (var col=j; col < Math.min(grid_cols, j + 1 + colsRight); col++) {
         if (row == i && col == j) {
           continue
         }
@@ -133,8 +133,8 @@ function resetBlock(block) {
     var blocksDown = curBlock.bounds.bottom;
     var blocksRight = curBlock.bounds.right;
 
-    for (var row=i; row < i + 1 + blocksDown; row++) {
-      for (var col=j; col < j + 1 + blocksRight; col++) {
+    for (var row=i; row < Math.min(grid_rows, i + 1 + blocksDown); row++) {
+      for (var col=j; col < Math.min(grid_cols, j + 1 + blocksRight); col++) {
         var b = grid[row][col];
 
         b.bounds.right = 0

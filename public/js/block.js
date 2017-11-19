@@ -13,7 +13,7 @@ function initGrid (rows, cols) {
       var y = i * block_height;
       var x = j * block_width;
 
-      var block = new Block(i, j, x, y, 
+      var block = new Block(i, j, x, y,
                             block_width, block_height);
       currentRow.push(block);
     }
@@ -36,8 +36,8 @@ function Block(row, col, x, y, width, height){
   this.bounds = {right:0, bottom:0}
   this.DOM = `<div class="block" id="`+this.id+`"><div class="inner"></div></div>`;
 
-  this.create = function(){
-    $("body").append(this.DOM);
+  this.create = function(target){
+    $(target).append(this.DOM);
   }
 
   this.update = function(w,h){
@@ -57,7 +57,7 @@ function Block(row, col, x, y, width, height){
         var x;
         var width = w + this.bounds.right * w;
         var height = h + this.bounds.bottom * h;
-        
+
         y = this.row * h;
         x = this.col * w;
 
@@ -72,7 +72,7 @@ function Block(row, col, x, y, width, height){
         this.x = x;
         this.width = w;
         this.height = h;
-    } 
+    }
   }
 }
 
@@ -163,10 +163,10 @@ function resetAllBlocks() {
 
 function collapse(direction, block) {
     switch (direction) {
-      case "DOWN": 
+      case "DOWN":
         block.bounds.bottom = -1;
         break;
-      case "RIGHT": 
+      case "RIGHT":
         block.bounds.right = -1;
         break;
       case "DIAGONAL":
@@ -181,20 +181,19 @@ function collapse(direction, block) {
 
     block.update(regular_w, regular_h)
 }
-
 $(window).ready(function(){
   grid = initGrid(grid_rows, grid_cols);
   grid.map(function(inner){
     inner.map(function(cur){
-      cur.create();
+      cur.create(".mainGrid");
       cur.update(cur.width, cur.height);
     })
   })
 
-  $(".block").click(function(){
-    console.log(this.id)
-    animateBlock(this, 2,2);
-  });
+  // $(".block").click(function(){
+  //   console.log(this.id)
+  //   animateBlock(this, 2,2);
+  // });
 
   $(window).keydown(function(e) {
     if (e.key == "r") {

@@ -896,14 +896,23 @@ body {
 
 .mainGrid {
   transition: opacity 1s; }
-  .mainGrid .block:hover {
-    cursor: pointer; }
   .mainGrid .inner {
     color: white;
-    text-align: center;
-    line-height: calc(100vh / 4); }
-    .mainGrid .inner:hover {
-      cursor: pointer; }
+    text-align: center; }
+    .mainGrid .inner.navBlock {
+      line-height: calc(100vh / 4); }
+    .mainGrid .inner.title {
+      font-family: "Druk Wide",sans-serif;
+      font-weight: 400;
+      font-size: 32pt;
+      color: #FF2224;
+      line-height: calc(100vh / 8); }
+    .mainGrid .inner.topLink {
+      font-family: "Druk Wide",sans-serif;
+      font-weight: 400;
+      color: white;
+      font-size: 22pt;
+      line-height: calc(100vh / 8); }
   .mainGrid.fullNav {
     opacity: 0;
     transition: all 2s; }
@@ -931,5 +940,9 @@ body {
       text-align: center; }
       .navGrid.fullNav .inner:hover {
         text-decoration: underline; }
+
+.aboutImg1 {
+  background-image: url("../../images/About-Asset-1.png");
+  background-size: cover; }
 
 /*# sourceMappingURL=block.css.map */

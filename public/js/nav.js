@@ -28,7 +28,16 @@ function summonFullScreenNav(){
 // $(window).ready(summonFullScreenNav);
 $(window).ready(function(){
     animateBlock("#1_6",1,1);
-    $("#1_6 .inner").text("NAV");
+    // MOVE THIS TO ANOTHER JS FILE
+    // CONTENT FOR THE ABOUT
+    animateBlock("#1_1",0,1);
+    animateBlock("#0_6",0,1);
+    $(".mainGrid #0_6 .inner").text("Humans").addClass("topLink");
+    animateBlock("#4_5",1,2);
+    animateBlock("#3_1",2,1);
+    $(".mainGrid #1_1 .inner").text("About").addClass("title");
+    $(".mainGrid #3_1 .inner").addClass("aboutImg1");
+    $("#1_6 .inner").text("NAV").addClass("navBlock");
     $("#1_6 .inner").click(function(){
       summonFullScreenNav();
     });

@@ -24,18 +24,26 @@ body{
 }
 .mainGrid{
 	transition:opacity 1s;
-	.block{
-		&:hover{
-			cursor:pointer;
-		}
-	}
 	.inner{
 		color:white;
 		text-align:center;
 		//CHANGE THIS LATER
-		line-height:calc(100vh / 4);
-		&:hover{
-			cursor:pointer;
+		&.navBlock{
+			line-height:calc(100vh / 4);
+		}
+		&.title{
+			font-family:"Druk Wide",sans-serif;
+			font-weight:400;
+			font-size:32pt;
+			color:#FF2224;
+			line-height:calc(100vh / 8);
+		}
+		&.topLink{
+			font-family:"Druk Wide",sans-serif;
+			font-weight:400;
+			color:white;
+			font-size:22pt;
+			line-height:calc(100vh / 8);
 		}
 	}
 	&.fullNav{
@@ -72,6 +80,10 @@ body{
 		}
 		opacity:1;
 		transition:opacity 2s .5s;
-		// transform:scale(1,1) translate(0,0vh);
 	}
+}
+
+.aboutImg1{
+	background-image:url("../../images/About-Asset-1.png");
+	background-size: cover;
 }

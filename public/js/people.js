@@ -52,16 +52,10 @@ function populatePeopleContent () {
 		        $("#" + grid[i][j].id + " .inner").hover(function () {
 			        $(this).css({
 			        	"background-image" : "url('../../images/Humans-Asset-Eye-2.png')",
-			          	"background-size" : "cover",
-					  	"background-repeat" : "no-repeat",
-					  	"background-position" : "center center"
 					});
 		        }, function() {
 		        	$(this).css({
 			          	"background-image" : "url('../../images/Humans-Asset-Eye-1.png')",
-			          	"background-size" : "cover",
-					  	"background-repeat" : "no-repeat",
-					  	"background-position" : "center center"
 			        });
 		        });
 		        $("#" + grid[i][j].id + " .inner").click(displayPerson);

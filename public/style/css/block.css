@@ -908,6 +908,18 @@ body {
     transition: opacity 0.1s;
     opacity: 0;
     z-index: -1; }
+  .block.clicked {
+    opacity: .8; }
+
+.dummy-block {
+  position: absolute;
+  padding: 6px;
+  transition: all 0.3s; }
+  .dummy-block .inner {
+    transition: opacity 1s 0.1s;
+    border: 1px solid white;
+    width: 100%;
+    height: 100%; }
 
 .mainGrid {
   transition: opacity 1s; }
@@ -955,6 +967,12 @@ body {
       font-weight: 400;
       color: white;
       font-size: 22pt;
+      line-height: calc(100vh / 8); }
+    .mainGrid .inner.contentLink {
+      font-family: "Druk Wide",sans-serif;
+      font-weight: 400;
+      color: white;
+      font-size: 18pt;
       line-height: calc(100vh / 8); }
   .mainGrid.fullNav {
     opacity: 0;

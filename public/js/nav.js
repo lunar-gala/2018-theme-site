@@ -22,15 +22,30 @@ function summonFullNav(){
   $(".navGrid #"+currentIndices.join("_")+" .inner").addClass("active");
 
   $(".navGrid #0_1 .inner").text("Lines");
+
+  $(".navGrid #0_1 .inner").click(function () {
+      
+      window.location.replace("/lines");
+      // $(".navGrid #1_0").attr("href", '/lines');
+  });
+
+  // Close nav
   $(".navGrid #0_2 .inner").text("X");
   $(".navGrid #0_2 .inner").click(function(){
     $(".mainGrid").toggleClass("fullNav");
     $(".navGrid").toggleClass("fullNav");
   });
+
+  // Humans link
   $(".navGrid #1_0 .inner").text("Humans");
+
+  // Sponsors & Tickets link
   $(".navGrid #1_1 .inner").text("Sponsors & Tickets");
+
+  // History link
   $(".navGrid #1_2 .inner").text("History");
 }
+
 //This is the mini nav
 function summonMiniNav(){
   animateBlock("#1_6",1,1);
@@ -54,6 +69,7 @@ function summonMiniNav(){
     summonFullNav();
   });
 }
+
 $(window).ready(function(){
     summonMiniNav();
 })

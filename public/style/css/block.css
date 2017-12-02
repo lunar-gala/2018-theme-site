@@ -895,7 +895,7 @@ body {
 
 .block {
   position: absolute;
-  padding: 6px;
+  padding: 0.25%;
   transition: all 0.3s; }
   .block .inner {
     transition: opacity 1s 0.1s;

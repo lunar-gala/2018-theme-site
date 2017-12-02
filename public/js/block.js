@@ -116,27 +116,18 @@ function animateBlock(block, rowsDown, colsRight, gridlines = false) {
       }
     }
 
-    if (gridlines) {
-      // for (var row=i; row < Math.min(grid_rows, i + 1 + rowsDown); row++) {
-      //   for (var col=j; col < Math.min(grid_cols, j + 1 + colsRight); col++) {
-      //     if (row == i && col == j && (grid[row][col].bounds.right != 0 || grid[row][col].bounds.bottom != 0)) {
-      //       continue
-      //     }
-      //     var b = grid[row][col];
-
-      //     if (col == j) {
-      //       // vertical
-      //       collapse("DOWN", b);
-      //     } else if (row == i) {
-      //       // horizontal
-      //       collapse("RIGHT", b)
-      //     } else {
-      //       // diagonally
-      //       collapse("DIAGONAL", b);
-      //     }
-      //   }
-      // }
-    }
+    // if (gridlines) {
+    //   for (var row=i; row < Math.min(grid_rows, i + 1 + rowsDown); row++) {
+    //     for (var col=j; col < Math.min(grid_cols, j + 1 + colsRight); col++) {
+    //       if (row == i && col == j && (grid[row][col].bounds.right != 0 || grid[row][col].bounds.bottom != 0)) {
+    //         continue
+    //       }
+    //       var block = "#" + i + "_" + j; 
+    //       $(block).append($("<div class=row></div>"))
+    //       console.log(b)
+    //     }
+    //   }
+    // }
 
     curBlock.update(regular_w,regular_h);
 }

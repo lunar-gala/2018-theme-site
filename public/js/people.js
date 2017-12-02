@@ -2,6 +2,11 @@ $(window).ready(function(){
 	console.log(grid);
 	populatePeopleHeader();
 	populatePeopleContent();
+	$(document).keyup(function(e) {
+	    if (e.keyCode == 27) { 
+	    	removeDisplayPerson();
+		}
+	});
 });
 
 function populatePeopleHeader () {
@@ -39,10 +44,25 @@ function populatePeopleContent () {
 					    || (i == 7 && j == 4)
 					    || (i == 7 && j == 3))) {
 				$("#" + grid[i][j].id + " .inner").css({
-		          "background-image" : "url('../../images/Humans-Asset-Eye-1.png')",
-		          "background-size" : "cover",
-				  "background-repeat" : "no-repeat",
-				  "background-position" : "center center"
+		          	"background-image" : "url('../../images/Humans-Asset-Eye-1.png')",
+		          	"background-size" : "cover",
+				  	"background-repeat" : "no-repeat",
+				  	"background-position" : "center center"
+		        });
+		        $("#" + grid[i][j].id + " .inner").hover(function () {
+			        $(this).css({
+			        	"background-image" : "url('../../images/Humans-Asset-Eye-2.png')",
+			          	"background-size" : "cover",
+					  	"background-repeat" : "no-repeat",
+					  	"background-position" : "center center"
+					});
+		        }, function() {
+		        	$(this).css({
+			          	"background-image" : "url('../../images/Humans-Asset-Eye-1.png')",
+			          	"background-size" : "cover",
+					  	"background-repeat" : "no-repeat",
+					  	"background-position" : "center center"
+			        });
 		        });
 		        $("#" + grid[i][j].id + " .inner").click(displayPerson);
 			}
@@ -58,17 +78,19 @@ function displayPerson () {
 	var major = "Design '18";
 	var title = "Creative Director";
 	var displayPersonDiv = 
-		`<div class='person-info-container'>
-			<div class='person-info'>
-				<img class="headshot" src='` + src + `'/>
-				<p class="first-name">` + firstName + `</p>
-				<p class="last-name">` + lastName + `</p>
-				<p class="last-name">` + major + " / " + title + `</p>
-			</div>
-		</div>`;
+		`<div class='person-info-background'></div>
+		 <div class='person-info'>
+			<img class="headshot" src='` + src + `'/>
+			<p class="first-name">` + firstName + `</p>
+			<p class="last-name">` + lastName + `</p>
+			<p class="last-name">` + major + " / " + title + `</p>
+		 </div>`;
 	var displayPersonDOM = $.parseHTML(displayPersonDiv);
 	$("body").append(displayPersonDOM);
-	$(".person-info-container").click(function() {
-		$(this).fadeOut(300, function() { $(this).remove(); });
-	});
+	$(".person-info-background").click(removeDisplayPerson);
+}
+
+function removeDisplayPerson() {
+	$(".person-info").fadeOut(200, function() { $(".person-info").remove(); });
+	$(".person-info-background").fadeOut(200, function() { $(this).remove(); });
 }

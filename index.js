@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 })
 
-app.get(/^(\babout|lines|people\b)/, function (req, res) {
+app.get(/^\/(about|lines|people)$/, function (req, res) {
     res.sendFile(__dirname + '/public/' + req.path + '.html');
 });
 

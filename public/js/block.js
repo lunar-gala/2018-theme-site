@@ -95,8 +95,8 @@ function animateBlock(block, rowsDown, colsRight) {
     curBlock.bounds.bottom = rowsDown;
     curBlock.bounds.right = colsRight;
 
-    for (var row=i; row < Math.min(grid_rows, i + 1 + rowsDown); row++) {
-      for (var col=j; col < Math.min(grid_cols, j + 1 + colsRight); col++) {
+    for (var row = i; row < Math.min(grid_rows, i + 1 + rowsDown); row++) {
+      for (var col = j; col < Math.min(grid_cols, j + 1 + colsRight); col++) {
         if (row == i && col == j && (grid[row][col].bounds.right != 0 || grid[row][col].bounds.bottom != 0)) {
           continue
         }
@@ -182,6 +182,7 @@ function collapse(direction, block) {
     block.update(regular_w, regular_h)
 }
 $(window).ready(function(){
+  //initiating the grid
   grid = initGrid(grid_rows, grid_cols);
   grid.map(function(inner){
     inner.map(function(cur){
@@ -189,12 +190,6 @@ $(window).ready(function(){
       cur.update(cur.width, cur.height);
     })
   })
-
-  // $(".block").click(function(){
-  //   console.log(this.id)
-  //   animateBlock(this, 2,2);
-  // });
-
   $(window).keydown(function(e) {
     if (e.key == "r") {
       resetAllBlocks();
@@ -209,4 +204,3 @@ $(window).resize(function(){
     })
   })
 });
-console.log(grid);

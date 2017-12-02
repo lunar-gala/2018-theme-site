@@ -875,6 +875,21 @@ hr {
   src: url("../fonts/Druk-Wide-Super.otf") format("opentype");
   font-weight: 700;
   font-style: normal; }
+@font-face {
+  font-family: 'Theinhardt';
+  src: url("../fonts/TheindartUltraLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal; }
+@font-face {
+  font-family: 'Theinhardt';
+  src: url("../fonts/TheindartUltraLightIt.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic; }
+@font-face {
+  font-family: 'Theinhardt';
+  src: url("../fonts/TheindartRegular.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal; }
 body {
   background-color: black; }
 
@@ -899,14 +914,42 @@ body {
   .mainGrid .inner {
     color: white;
     text-align: center; }
-    .mainGrid .inner.navBlock {
-      line-height: calc(100vh / 4); }
+    .mainGrid .inner .navBox {
+      margin-top: calc(calc(12.5vh - 16px) - 6px); }
+      .mainGrid .inner .navBox .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row nowrap; }
+        .mainGrid .inner .navBox .row div {
+          width: 16px;
+          height: 16px; }
+          .mainGrid .inner .navBox .row div.active {
+            background-color: #FF2224; }
+          .mainGrid .inner .navBox .row div#navInner_00, .mainGrid .inner .navBox .row div#navInner_02 {
+            border: 1px solid white; }
+          .mainGrid .inner .navBox .row div#navInner_01 {
+            border-top: 1px solid white;
+            border-bottom: 1px solid white; }
+          .mainGrid .inner .navBox .row div#navInner_10, .mainGrid .inner .navBox .row div#navInner_12 {
+            border: 1px solid white;
+            border-top: none; }
+          .mainGrid .inner .navBox .row div#navInner_11 {
+            border-bottom: 1px solid white; }
     .mainGrid .inner.title {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
       font-size: 32pt;
       color: #FF2224;
       line-height: calc(100vh / 8); }
+    .mainGrid .inner.text {
+      text-align: left;
+      padding: 7vh 4vw 7vh 4vw;
+      font-family: "Theinhardt",sans-serif;
+      font-weight: 300;
+      font-size: 12pt;
+      line-height: 14pt;
+      color: white; }
     .mainGrid .inner.topLink {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
@@ -938,6 +981,8 @@ body {
       color: white;
       font-size: 26pt;
       text-align: center; }
+      .navGrid.fullNav .inner.active {
+        background-color: #FF2224; }
       .navGrid.fullNav .inner:hover {
         text-decoration: underline; }
 

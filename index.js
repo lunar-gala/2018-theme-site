@@ -38,6 +38,7 @@ app.get("/data/people", function (req, res) {
 });
 
 app.get('*', function (req, res) {
+  console.log(req)
   res.status(404).send("Status code 404 - The URL you are looking for does not exist");
 });
 

@@ -1,11 +1,13 @@
 @import "prereqs";
 @import "fonts";
+$color-red : #FF2224;
+
 body{
   background-color:black;
 }
 .block{
   position:absolute;
-  padding:6px;
+  padding:0.25%;
   transition:all 0.3s;
   .inner{
     transition:opacity 1s 0.1s;
@@ -44,17 +46,57 @@ body{
 	.inner{
 		color:white;
 		text-align:center;
-		//CHANGE THIS LATER
-		&.navBlock{
-			line-height:calc(100vh / 4);
+		.navBox{
+      //change this later accordingly
+      $box-size: 16px;
+      margin-top:calc(calc(12.5vh - 16px) - 6px);
+      .row{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow:row nowrap;
+        div{
+          width:$box-size;
+          height:$box-size;
+          $b : 1px solid white;
+          &.active{
+            background-color:$color-red;
+          }
+          &#navInner_00,
+          &#navInner_02{
+            border:$b
+          }
+          &#navInner_01{
+            border-top:$b;
+            border-bottom:$b;
+          }
+          &#navInner_10,
+          &#navInner_12{
+            border:$b;
+            border-top:none;
+          }
+          &#navInner_11{
+            border-bottom:$b;
+          }
+        }
+      }
 		}
 		&.title{
 			font-family:"Druk Wide",sans-serif;
 			font-weight:400;
 			font-size:32pt;
-			color:#FF2224;
+			color:$color-red;
 			line-height:calc(100vh / 8);
 		}
+    &.text{
+      text-align:left;
+      padding:7vh 4vw 7vh 4vw;
+      font-family:"Theinhardt",sans-serif;
+      font-weight:300;
+      font-size:12pt;
+      line-height:14pt;
+      color:white;
+    }
 		&.topLink{
 			font-family:"Druk Wide",sans-serif;
 			font-weight:400;
@@ -99,6 +141,9 @@ body{
 			color:white;
 			font-size:26pt;
 			text-align:center;
+      &.active{
+        background-color:$color-red;
+      }
 			&:hover{
 				text-decoration:underline;
 			}

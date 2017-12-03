@@ -1,8 +1,8 @@
-function summonFullScreenNav(){
+function summonFullNav(){
   //getting the grid structure for the fullscreen nav
   $(".navGrid").children().remove();
   navGrid = initGrid(2,3);
-  console.log(navGrid);
+  //hide the main grid for the time being
   $(".mainGrid").toggleClass("fullNav");
   navGrid.map(function(inner){
     inner.map(function(cur){
@@ -10,14 +10,18 @@ function summonFullScreenNav(){
       cur.update(cur.width, cur.height);
     });
   });
+
+
   $(".navGrid").toggleClass("fullNav");
-
-  // About link
+  //Manually insert the data into the grid
   $(".navGrid #0_0 .inner").text("About");
-  $(".navGrid #0_0 .inner").css("background-color","#FF2224");
 
-  // Lines link
-  // $(".navGrid #0_1 .inner").append($("<a href='/lines'>Lines</a>"));
+  currentPath = window.location.pathname;
+  options = {"/about":[0,0], "/lines":[0,1], "/humans":[1,0] , "/sponsors":[1,1]}
+  currentIndices = options[currentPath];
+
+  $(".navGrid #"+currentIndices.join("_")+" .inner").addClass("active");
+
   $(".navGrid #0_1 .inner").text("Lines");
 
   $(".navGrid #0_1 .inner").click(function () {
@@ -43,19 +47,30 @@ function summonFullScreenNav(){
   $(".navGrid #1_2 .inner").text("History");
 }
 
+//This is the mini nav
+function summonMiniNav(){
+  animateBlock("#1_6",1,1);
+
+  //creating the nav box
+  currentPath = window.location.pathname;
+  options = {"/about":[0,0], "/lines":[0,1], "/humans":[1,0] , "/sponsors":[1,1]}
+  currentIndices = options[currentPath];
+  navBox = `<div class="navBox">`;
+  for(var i = 0;  i < 2; i++){
+    navBox += `<div class ="row">`
+    for(var j = 0; j < 3; j ++){
+      navBox += `<div class="" id="navInner_`+parseInt(i)+parseInt(j)+`"></div>`
+    }
+    navBox += `</div>`
+  }
+  navBox  += `</div>`
+  $("#1_6 .inner").html(navBox);
+  $("#navInner_"+currentIndices.join("")).toggleClass("active");
+  $("#1_6 .inner").click(function(){
+    summonFullNav();
+  });
+}
+
 $(window).ready(function(){
-    animateBlock("#1_6",1,1);
-    // MOVE THIS TO ANOTHER JS FILE
-    // CONTENT FOR THE ABOUT
-    animateBlock("#1_1",0,1);
-    animateBlock("#0_6",0,1);
-    $(".mainGrid #0_6 .inner").text("Humans").addClass("topLink");
-    animateBlock("#4_5",1,2);
-    animateBlock("#3_1",2,1);
-    $(".mainGrid #1_1 .inner").text("About").addClass("title");
-    $(".mainGrid #3_1 .inner").addClass("aboutImg1");
-    $("#1_6 .inner").text("NAV").addClass("navBlock");
-    $("#1_6 .inner").click(function(){
-      summonFullScreenNav();
-    });
-});
+    summonMiniNav();
+})

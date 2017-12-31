@@ -29,7 +29,7 @@
 	height: 100%;
 	position: absolute;
 	z-index: 99999;
-	background-color: rgba(0, 0, 0, 0.75);
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 .person-info {
@@ -44,7 +44,6 @@
 	left: 0;
 	right: 0;
 	margin: auto;
-	// transition: opacity 0.2s;
 
 	.rotated-text {
 		transform: translateX(-65%) translateY(-212%) rotate(-90deg);
@@ -63,19 +62,16 @@
 .first-name {
 	font-family: "Druk Wide",sans-serif;
 	margin: 0;
-	// left: -50px;
 }
 
 .last-name {
 	font-family: "Druk Wide",sans-serif;
 	margin: 0;
-	// left: -40px;
 }
 
 .title {
 	margin-top: 10px;
 	font-size: 16px;
-	letter-spacing: 1px;
 }
 
 .headshot {

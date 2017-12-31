@@ -70,17 +70,20 @@ function displayPerson () {
 	var firstName = "Margaret";
 	var lastName = "Morrison";
 	var major = "Design '18";
-	var title = "Creative Director";
+	var position = "Creative Director";
 	var displayPersonDiv = 
 		`<div class='person-info-background'></div>
 		 <div class='person-info'>
 			<img class="headshot" src='` + src + `'/>
-			<p class="first-name">` + firstName + `</p>
-			<p class="last-name">` + lastName + `</p>
-			<p class="last-name">` + major + " / " + title + `</p>
+			<div class="rotated-text">
+				<p class="first-name">` + firstName + `</p>
+				<p class="last-name">` + lastName + `</p>
+				<p class="title">` + major + ' / ' + position + `</p>
+			</div>
+			
 		 </div>`;
 	var displayPersonDOM = $.parseHTML(displayPersonDiv);
-	$("body").append(displayPersonDOM);
+	$(displayPersonDOM).hide().appendTo("body").fadeIn(200);
 	$(".person-info-background").click(removeDisplayPerson);
 }
 

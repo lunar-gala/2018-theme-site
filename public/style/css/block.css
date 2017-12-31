@@ -925,7 +925,8 @@ body {
   transition: opacity 1s; }
   .mainGrid .inner {
     color: white;
-    text-align: center; }
+    text-align: center;
+    margin: 0; }
     .mainGrid .inner .navBox {
       margin-top: calc(calc(12.5vh - 16px) - 6px); }
       .mainGrid .inner .navBox .row {

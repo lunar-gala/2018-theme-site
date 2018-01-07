@@ -13,7 +13,13 @@ $(window).ready(function () {
     animateBlock("#1_6",1,1);
     $("#1_6 .inner").text("NAV").addClass("navBlock");
 
+    $(".inner").click(function () {
+        if ($(".highlighted")[0]) {
+            $(".block").removeClass("muted");
+            $(".highlighted").removeClass("highlighted");
+        }
 
+    });
     // $(window).scroll(function () {
 
     //     var blocksToChange = {}
@@ -60,18 +66,13 @@ $(window).ready(function () {
     // LEFT BLOCK
     animateBlock("#3_0", 2,0, true);
     $(LEFTBLOCK)
-        .html("<div class='content'><h1 class='title'></h1><p style='display: none;' class='designers'></p><p style='display: none;' class='description'></p></div>")
+        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
         .addClass("linesBlock aboutImg1 left")
         .click(function () {
-            $(".block").toggleClass('muted')
-            $("#3_0.block").toggleClass('highlighted')
-
-            $(LEFTBLOCK).toggleClass('clicked')
-            $(LEFTBLOCK + " .description").toggle();
-            $(LEFTBLOCK + " .designers").toggle();
-
-            $(MIDDLEBLOCK + " .content").toggle();
-            $(MIDDLEBLOCK).toggleClass("aboutImg1");
+            if (!$(".highlighted")[0]) {
+                $(".block").toggleClass('muted')
+                $("#3_0.block").toggleClass('highlighted')
+            }
         });
 
     // MIDDLE BLOCK
@@ -80,8 +81,10 @@ $(window).ready(function () {
         .html("<div class='content'><h1 class='title'></h1></div>")
         .addClass("linesBlock aboutImg1 middle")
         .click(function () {
-            $(".block").toggleClass('muted')
-            $("#5_3.block").toggleClass('highlighted')
+            if (!$(".highlighted")[0]) {
+                $(".block").toggleClass('muted')
+                $("#5_3.block").toggleClass('highlighted')
+            }
         });
 
     // RIGHT BLOCK
@@ -133,41 +136,5 @@ function setRightLinesBlock(title) {
 
 function setBottomLinesBlock(title) {
     $(BOTTOMBLOCK + " .title").text(title);
-}
-
-
-function changeContent(blockSizings) {
-    $.each(blockSizings, function (blockSelector, val) {
-        console.log(blockSelector)
-        $(blockSelector + " .inner").text(val)
-    })
-
-    // // amzu-amzu
-    // $(".mainGrid #3_2 .inner")
-    //     .text("amzu-amzu")
-    //     .removeClass("aboutImg1")
-
-    // // 2228
-    // $(".mainGrid #3_0 .inner")
-    //     .text("2288")
-    //     .removeClass("aboutImg1")
-    //     .click(function () {
-    //         $(".block").toggleClass('clicked')
-    //     });
-
-    // // chinoiseries
-    // $(".mainGrid #5_3 .inner")
-    //     .text("chinoiseries")
-    //     .removeClass("aboutImg1")
-
-    // // chroma
-    // $(".mainGrid #3_6 .inner")
-    //     .text("chroma")
-    //     .removeClass("aboutImg1")
-
-    // // descent
-    // $(".mainGrid #7_0 .inner")
-    //     .text("descent")
-    //     .removeClass("aboutImg1")
 }
 

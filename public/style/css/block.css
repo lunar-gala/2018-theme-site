@@ -895,9 +895,8 @@ hr {
   font-weight: 400;
   color: white;
   font-size: 18pt; }
-  .linesBlock.clicked {
-    z-index: 9999999;
-    opacity: 1; }
+  .linesBlock p {
+    display: none; }
   .linesBlock.top .content {
     margin-top: 5%;
     margin-left: 50%; }
@@ -927,6 +926,8 @@ hr {
   .linesBlock.middle .content {
     margin-left: -100%;
     margin-top: 5%; }
+  .highlighted .linesBlock p {
+    display: block; }
 
 body {
   background-color: black; }

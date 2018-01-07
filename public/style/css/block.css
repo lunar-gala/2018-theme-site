@@ -890,6 +890,13 @@ hr {
   src: url("../fonts/TheindartRegular.otf") format("opentype");
   font-weight: 300;
   font-style: normal; }
+.linesBlock {
+  font-family: "Druk Wide",sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 18pt;
+  line-height: calc(100vh / 8); }
+
 body {
   background-color: black; }
 
@@ -967,12 +974,6 @@ body {
       font-weight: 400;
       color: white;
       font-size: 22pt;
-      line-height: calc(100vh / 8); }
-    .mainGrid .inner.contentLink {
-      font-family: "Druk Wide",sans-serif;
-      font-weight: 400;
-      color: white;
-      font-size: 18pt;
       line-height: calc(100vh / 8); }
   .mainGrid.fullNav {
     opacity: 0;

@@ -5,6 +5,11 @@ var RIGHTSELECTOR = "#3_6"
 var MIDDLESELECTOR = "#5_3"
 
 $(window).ready(function () {
+    // TODO: make call this on every page, instead of hardcoding it for each endpoint
+    animateBlock("#1_6",1,1);
+    $("#1_6 .inner").text("NAV").addClass("navBlock");
+
+
     $(window).scroll(function () {
 
         var blocksToChange = {}
@@ -29,7 +34,7 @@ $(window).ready(function () {
     animateBlock("#0_6", 0,1);
     $(".mainGrid #0_6 .inner")
         .text("About ⟶")
-        .addClass("contentLink")
+        .addClass("topLink")
         .click(function () {
             // go to about page
         });
@@ -37,20 +42,21 @@ $(window).ready(function () {
     animateBlock("#1_1",0,1);
     $(".mainGrid #1_1 .inner").text("Lines").addClass("title");
 
-    // amzu-amzu
+
+    // amzu-amzu - TOP
     animateBlock("#3_2", 0, 3, true)
     $(".mainGrid #3_2 .inner")
-        .addClass("contentLink aboutImg1")
+        .addClass("linesBlock aboutImg1 top")
         .click(function () {
             $(".block").toggleClass('clicked')
         })
-        .html("<div class='linesTop' style='margin-left: 50%'>amzu-amzu</div>")
+        .html("<div style='margin-left: 50%'>amzu-amzu</div>")
 
     // 2228
     animateBlock("#3_0", 2,0, true);
     $(".mainGrid #3_0 .inner")
-        .html("<div class='linesLeft' style='margin-top: 65%; margin-left: 66%'>2288</div>")
-        .addClass("contentLink aboutImg1")
+        .html("<div style='margin-top: 65%; margin-left: 66%'>2288</div>")
+        .addClass("linesBlock aboutImg1 left")
         .click(function () {
             $(".block").toggleClass('clicked')
         });
@@ -58,8 +64,8 @@ $(window).ready(function () {
     // chinoiseries
     animateBlock("#5_3", 0,2, true);
     $(".mainGrid #5_3 .inner")
-        .html("<div class='linesMiddle' style='margin-left: -100%'>chinoiseries</div>")
-        .addClass("contentLink aboutImg1")
+        .html("<div style='margin-left: -100%'>chinoiseries</div>")
+        .addClass("linesBlock aboutImg1 middle")
         .click(function () {
             $(".block").toggleClass('clicked')
         });
@@ -67,17 +73,18 @@ $(window).ready(function () {
     // chroma
     animateBlock("#3_6", 2,0, true);
     $(".mainGrid #3_6 .inner")
-        .html("<div class='linesRight' ='margin-top: 65%; margin-left: 60%'>chroma</div>")
-        .addClass("contentLink aboutImg1")
+        .html("<div style='margin-top: 65%; margin-left: 60%'>chroma</div>")
+        .addClass("linesBlock aboutImg1 right")
         .click(function () {
+
             $(".block").toggleClass('clicked')
         });
 
     // descent
     animateBlock("#7_0", 0,2, true);
     $(".mainGrid #7_0 .inner")
-        .html("<div class='linesBottom' style='margin-left: 85%'>descent</div>")
-        .addClass("contentLink aboutImg1")
+        .html("<div style='margin-left: 85%'>descent</div>")
+        .addClass("linesBlock aboutImg1 bottom")
         .click(function () {
             $(".block").toggleClass('clicked')
         });
@@ -88,6 +95,8 @@ $(window).ready(function () {
 function changeLeftBlock(text, imgClass) {
 
 }
+
+
 
 function changeContent(blockSizings) {
     $.each(blockSizings, function (blockSelector, val) {

@@ -1,5 +1,6 @@
 @import "prereqs";
 @import "fonts";
+@import "lines";
 $color-red : #FF2224;
 
 body{
@@ -104,14 +105,6 @@ body{
 			font-size:22pt;
 			line-height:calc(100vh / 8);
 		}
-		&.contentLink{
-			font-family:"Druk Wide",sans-serif;
-			font-weight:400;
-			color:white;
-			font-size:18pt;
-			line-height:calc(100vh / 8);
-		}
-
 	}
 	&.fullNav{
 		opacity:0;

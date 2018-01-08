@@ -26,13 +26,13 @@ body{
   }
 
   &.muted {
-  	opacity: .5;
+  	opacity: .2;
     transition: opacity .5s .1s;
-
   }
 
   &.highlighted {
     opacity: 1;
+    border-color: red;
   }
 }
 
@@ -155,4 +155,5 @@ body{
 .aboutImg1{
 	background-image:url("../../images/About-Asset-1.png");
 	background-size: cover;
+  z-index: 0;
 }

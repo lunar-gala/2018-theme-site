@@ -17,6 +17,7 @@ $(window).ready(function () {
         if ($(".highlighted")[0]) {
             $(".block").removeClass("muted");
             $(".highlighted").removeClass("highlighted");
+            console.log("1")
         }
 
     });
@@ -66,13 +67,14 @@ $(window).ready(function () {
     // LEFT BLOCK
     animateBlock("#3_0", 2,0, true);
     $(LEFTBLOCK)
-        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
+        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div><div class='filler'></div><div class='filler'></div><div class='filler'></div>")
         .addClass("linesBlock aboutImg1 left")
         .click(function () {
             if (!$(".highlighted")[0]) {
                 $(".block").toggleClass('muted')
                 $("#3_0.block").toggleClass('highlighted')
             }
+            console.log("2");
         });
 
     // MIDDLE BLOCK

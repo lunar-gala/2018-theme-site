@@ -32,7 +32,17 @@
     }
 
     &.left {
+        .filler {
+            z-index: 99999999999999;
+            position: relative;
+            display: block;
+            height: 33.33%;
+            width: 100%;
+            border: 1px solid white;
+            padding: 0.25%;
+        }
         .content {
+            position: absolute;
             width: 400px;
             margin-top: 80%;
             margin-left: 66%;

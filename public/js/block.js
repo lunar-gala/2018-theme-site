@@ -82,7 +82,6 @@ function Block(row, col, x, y, width, height){
 }
 
 function animateBlock(block, rowsDown, colsRight, gridlines = false) {
-  console.log(gridlines)
     var regular_w = (window.innerWidth/grid_cols);
     var regular_h = (window.innerHeight/grid_rows);
 
@@ -128,7 +127,7 @@ function animateBlock(block, rowsDown, colsRight, gridlines = false) {
     //         continue
     //       }
     //       var block = "#" + i + "_" + j; 
-    //       $(block).append($("<div class=row></div>"))
+    //       $(block).append($("<div class='filler'></div>"))
     //       console.log(b)
     //     }
     //   }

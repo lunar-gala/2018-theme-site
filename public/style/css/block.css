@@ -903,7 +903,16 @@ hr {
   .linesBlock.bottom .content {
     margin-left: 85%;
     margin-top: 5%; }
+  .linesBlock.left .filler {
+    z-index: 99999999999999;
+    position: relative;
+    display: block;
+    height: 33.33%;
+    width: 100%;
+    border: 1px solid white;
+    padding: 0.25%; }
   .linesBlock.left .content {
+    position: absolute;
     width: 400px;
     margin-top: 80%;
     margin-left: 66%; }
@@ -948,10 +957,11 @@ body {
     opacity: 0;
     z-index: -1; }
   .block.muted {
-    opacity: .5;
+    opacity: .2;
     transition: opacity .5s .1s; }
   .block.highlighted {
-    opacity: 1; }
+    opacity: 1;
+    border-color: red; }
 
 .dummy-block {
   position: absolute;
@@ -1042,6 +1052,7 @@ body {
 
 .aboutImg1 {
   background-image: url("../../images/About-Asset-1.png");
-  background-size: cover; }
+  background-size: cover;
+  z-index: 0; }
 
 /*# sourceMappingURL=block.css.map */

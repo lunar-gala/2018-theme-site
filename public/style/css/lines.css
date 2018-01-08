@@ -1,0 +1,59 @@
+.linesBlock {
+  font-family: "Druk Wide",sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 18pt; }
+  .linesBlock p {
+    display: none; }
+  .linesBlock .content {
+    position: absolute; }
+  .linesBlock.top {
+    border: none; }
+    .linesBlock.top .content {
+      margin-top: 5%;
+      margin-left: 50%; }
+  .linesBlock.bottom {
+    border: none; }
+    .linesBlock.bottom .content {
+      margin-left: 85%;
+      margin-top: 5%; }
+  .linesBlock.left {
+    border: none; }
+    .linesBlock.left .filler {
+      z-index: 99999999999999;
+      display: none;
+      height: 33.33%;
+      width: 100%;
+      border: 1px solid white;
+      padding-top: 1px; }
+    .linesBlock.left .content {
+      width: 400px;
+      margin-top: 80%;
+      margin-left: 66%; }
+    .linesBlock.left h1 {
+      text-align: left;
+      line-height: 1.5; }
+    .linesBlock.left p.designers {
+      text-align: left;
+      font-family: sans-serif;
+      font-size: 12pt;
+      line-height: 1.5; }
+    .linesBlock.left p.description {
+      font-size: 9pt;
+      font-family: sans-serif;
+      text-align: left;
+      line-height: 1.5; }
+  .linesBlock.right {
+    border: none; }
+    .linesBlock.right .content {
+      margin-top: 80%;
+      margin-left: 60%; }
+  .linesBlock.middle {
+    border: none; }
+    .linesBlock.middle .content {
+      margin-left: -23%;
+      margin-top: 5%; }
+  .highlighted .linesBlock p {
+    display: block; }
+
+/*# sourceMappingURL=lines.css.map */

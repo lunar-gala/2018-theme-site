@@ -14,23 +14,9 @@ var TOTALLINES = 19;
 var currentLineIndex = 0;
 
 $(window).ready(function () {
-    console.log(FAKELINESDATA)
     // TODO: make call this on every page, instead of hardcoding it for each endpoint
     animateBlock("#1_6",1,1);
     $("#1_6 .inner").text("NAV").addClass("navBlock");
-
-    // $(window).scroll(function () {
-
-    //     var blocksToChange = {}
-    //     blocksToChange[TOPSELECTOR] = "top"
-    //     blocksToChange[BOTTOMSELECTOR] = "bottom"
-    //     blocksToChange[LEFTSELECTOR] = "left"
-    //     blocksToChange[RIGHTSELECTOR] = "right"
-    //     blocksToChange[MIDDLESELECTOR] = "middle"
-
-    //     changeContent(blocksToChange)
-    //     console.log("scrolled")
-    // })
 
     $(document).keydown(function (e) {
         var LEFT = 37;
@@ -55,11 +41,11 @@ $(window).ready(function () {
             } else {
                 return
             }
+        } else {
+            return;
         }
 
         var line = FAKELINESDATA[currentLineIndex];
-
-
         setLine(line)
     })
     
@@ -71,35 +57,7 @@ $(window).ready(function () {
             console.log('scrolling down !');
         }
     });
-    $(".inner").click(function (e) {
-        // var x = $(this).attr("id")
-        // console.log(e.target)
-        // var elem = e.target
 
-        // if ($(elem).attr("class") === "block") {
-
-        // } else if ($(elem).hasClass("inner") && $(elem).hasClass("linesBlock")) {
-        //     var blockid = $(this).parent().attr("id");
-        //     if (!!HIGHLIGHTEDBLOCK && HIGHLIGHTEDBLOCK.attr("id") !== ) {
-        //         $(".block").removeClass("muted");
-        //         $(".highlighted").removeClass("highlighted");
-        //         console.log("1")
-        //         HIGHLIGHTEDBLOCK = null;
-
-        //     }
-        // }
-
-        var blockid = $(this).parent().attr("id");
-        if (!!HIGHLIGHTEDBLOCK) {
-            $(".block").removeClass("muted");
-            $(".highlighted").removeClass("highlighted");
-            console.log("1")
-            HIGHLIGHTEDBLOCK = null;
-
-        }
-        return true;
-
-    });
     animateBlock("#0_0", 0,1);
     $(".mainGrid #0_0 .inner")
         .text("⟵ Humans")
@@ -154,23 +112,32 @@ $(window).ready(function () {
         .html("<div class='content'><h1 class='title'></h1></div>")
         .addClass("linesBlock aboutImg1 bottom")
 
-    $(".linesBlock").click(function () {
-        var blockid = $(this).parent().attr("id");
-        if (!HIGHLIGHTEDBLOCK){
-            $(".block").toggleClass('muted')
-            $("#" + blockid + ".block").toggleClass('highlighted')
-            HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
-        }
-        return false;
-    });
 
     setLine(FAKELINESDATA[0])
 
     $(document).keydown(function (e) { if (e.key == "c") { changeContent({}); } });
+
+
+    $("body").click(function (e) {
+        var elem = e.target;
+
+        if ($(elem).hasClass("linesBlock")) {
+            var blockid = $(elem).parent().attr("id");
+            if (!HIGHLIGHTEDBLOCK){
+                $(".block").toggleClass('muted')
+                $("#" + blockid + ".block").toggleClass('highlighted')
+                HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
+                return;
+            }
+        }
+
+        $(".block").removeClass("muted");
+        $(".highlighted").removeClass("highlighted");
+        HIGHLIGHTEDBLOCK = null;
+    })
 });
 
 function setLine(line) {
-    console.log(line.topBlock)
     setLeftLinesBlock(line.leftBlock);
     setTopLinesBlock(line.topBlock);
     setMiddleLinesBlock(line.middleBlock);
@@ -185,7 +152,6 @@ function setLeftLinesBlock(blockData) {
 }
 
 function setTopLinesBlock(blockData) {
-    console.log(blockData)
     $(TOPBLOCK + " .title").text(blockData.title);
 }
 

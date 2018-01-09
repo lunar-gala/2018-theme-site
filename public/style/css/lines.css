@@ -19,13 +19,6 @@
       margin-top: 5%; }
   .linesBlock.left {
     border: none; }
-    .linesBlock.left .filler {
-      z-index: 99999999999999;
-      display: none;
-      height: 33.33%;
-      width: 100%;
-      border: 1px solid white;
-      padding-top: 1px; }
     .linesBlock.left .content {
       width: 400px;
       margin-top: 80%;

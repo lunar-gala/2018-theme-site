@@ -37,6 +37,7 @@ app.get("/data/people", function (req, res) {
     res.send(JSON.stringify({ content: "this is the content for people" }));
 });
 
+app.get(/^\/data\/lines\/(^([0-9]|1[0-9])$)/)
 app.get('*', function (req, res) {
   console.log(req)
   res.status(404).send("Status code 404 - The URL you are looking for does not exist");

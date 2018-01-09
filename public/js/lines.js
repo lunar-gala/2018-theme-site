@@ -8,19 +8,17 @@ var leftBlockTitle = "2268"
 var leftBlockDesc = "Welcome to the year 2268. After centuries of disastrous climate change, where rapid urbanization and pollution have distorted the way we approach growth in an urban landscape, where do we stand? 2268 explores this inquisition from two perspectives. The first perspective captures extreme pollution and the second perspective captures sustainability to the extreme where urbanization has gotten out of control and the soil has become rotten, forcing us to carry the food we need to eat"
 var leftBlockDesigners = "Hamza Quereshi, Susie Lee, Anny Fan"
 
+var HIGHLIGHTEDBLOCK = null;
+
+var TOTALLINES = 19;
+var currentLineIndex = 0;
+
 $(window).ready(function () {
+    console.log(FAKELINESDATA)
     // TODO: make call this on every page, instead of hardcoding it for each endpoint
     animateBlock("#1_6",1,1);
     $("#1_6 .inner").text("NAV").addClass("navBlock");
 
-    $(".inner").click(function () {
-        if ($(".highlighted")[0]) {
-            $(".block").removeClass("muted");
-            $(".highlighted").removeClass("highlighted");
-            console.log("1")
-        }
-
-    });
     // $(window).scroll(function () {
 
     //     var blocksToChange = {}
@@ -34,6 +32,69 @@ $(window).ready(function () {
     //     console.log("scrolled")
     // })
 
+    $(document).keydown(function (e) {
+        var LEFT = 37;
+        var RIGHT = 39;
+
+        if (e.which === LEFT) {
+            if (currentLineIndex > 0) {
+                currentLineIndex--;
+            } else {
+                return
+            }
+            // previous line
+        } else if (e.which === RIGHT) {
+            // next line
+            if (currentLineIndex < TOTALLINES - 1) {
+                currentLineIndex++;
+            } else {
+                return
+            }
+        }
+
+        var line = FAKELINESDATA[currentLineIndex];
+
+
+        setLine(line)
+    })
+    
+    $("body").bind('mousewheel', function(e){
+        if(e.originalEvent.wheelDelta /120 > 30) {
+            console.log('scrolling up !');
+        }
+        else{
+            console.log('scrolling down !');
+        }
+    });
+    $(".inner").click(function (e) {
+        // var x = $(this).attr("id")
+        // console.log(e.target)
+        // var elem = e.target
+
+        // if ($(elem).attr("class") === "block") {
+
+        // } else if ($(elem).hasClass("inner") && $(elem).hasClass("linesBlock")) {
+        //     var blockid = $(this).parent().attr("id");
+        //     if (!!HIGHLIGHTEDBLOCK && HIGHLIGHTEDBLOCK.attr("id") !== ) {
+        //         $(".block").removeClass("muted");
+        //         $(".highlighted").removeClass("highlighted");
+        //         console.log("1")
+        //         HIGHLIGHTEDBLOCK = null;
+
+        //     }
+        // }
+
+        var blockid = $(this).parent().attr("id");
+        if (!!HIGHLIGHTEDBLOCK) {
+            $(".block").removeClass("muted");
+            $(".highlighted").removeClass("highlighted");
+            console.log("1")
+            HIGHLIGHTEDBLOCK = null;
+
+        }
+        return true;
+
+    });
     animateBlock("#0_0", 0,1);
     $(".mainGrid #0_0 .inner")
         .text("⟵ Humans")
@@ -54,89 +115,120 @@ $(window).ready(function () {
     animateBlock("#1_1",0,1);
     $(".mainGrid #1_1 .inner").text("Lines").addClass("title");
 
-    // TOP BLOCK
-    animateBlock("#3_2", 0, 3, true)
+    // initial animates
+    animateBlock("#3_2", 0, 3, true) // top
+    animateBlock("#3_0", 2,0, true); // left
+    animateBlock("#5_3", 0,2, true); // middle
+    animateBlock("#3_6", 2,0, true); // right
+    animateBlock("#7_0", 0,2, true); // bottom
+
     $(TOPBLOCK)
         .addClass("linesBlock aboutImg1 top")
-        .click(function () {
-            $(".block").toggleClass('muted')
-            $("#3_2.block").toggleClass('highlighted')
-        })
         .html("<div class='content'><h1 class='title'></h1></div>")
 
     // LEFT BLOCK
-    animateBlock("#3_0", 2,0, true);
     $(LEFTBLOCK)
-        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div><div class='filler'></div><div class='filler'></div><div class='filler'></div>")
+        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
         .addClass("linesBlock aboutImg1 left")
-        .click(function () {
-            if (!$(".highlighted")[0]) {
-                $(".block").toggleClass('muted')
-                $("#3_0.block").toggleClass('highlighted')
-            }
-            console.log("2");
-        });
+
+    // TODO: filler gridlines
+    $("#3_0.block").append("<div class='block filler'></div><div class='block filler'></div><div class='block filler'></div>")
 
     // MIDDLE BLOCK
-    animateBlock("#5_3", 0,2, true);
     $(MIDDLEBLOCK)
         .html("<div class='content'><h1 class='title'></h1></div>")
         .addClass("linesBlock aboutImg1 middle")
-        .click(function () {
-            if (!$(".highlighted")[0]) {
-                $(".block").toggleClass('muted')
-                $("#5_3.block").toggleClass('highlighted')
-            }
-        });
 
     // RIGHT BLOCK
-    animateBlock("#3_6", 2,0, true);
     $(RIGHTBLOCK)
         .html("<div class='content'><h1 class='title'></h1></div>")
         .addClass("linesBlock aboutImg1 right")
-        .click(function () {
-            $(".block").toggleClass('muted')
-            $("#3_6.block").toggleClass('highlighted')
-        });
 
     // BOTTOM BLOCK
-    animateBlock("#7_0", 0,2, true);
     $(BOTTOMBLOCK)
         .html("<div class='content'><h1 class='title'></h1></div>")
         .addClass("linesBlock aboutImg1 bottom")
-        .click(function () {
-            $(".block").toggleClass('muted')
-            $("#7_0.block").toggleClass('highlighted')
-        });
 
-    setLeftLinesBlock(leftBlockTitle, leftBlockDesigners, leftBlockDesc);
-    setTopLinesBlock("amzu-amzu");
-    setRightLinesBlock("chroma");
-    setBottomLinesBlock("descent");
-    setMiddleLinesBlock("chinoiseries")
+    $(".linesBlock").click(function () {
+        var blockid = $(this).parent().attr("id");
+        if (!HIGHLIGHTEDBLOCK){
+            $(".block").toggleClass('muted')
+            $("#" + blockid + ".block").toggleClass('highlighted')
+            HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
+        }
+        return false;
+    });
+
+    setLine(FAKELINESDATA[0])
 
     $(document).keydown(function (e) { if (e.key == "c") { changeContent({}); } });
 });
 
-function setLeftLinesBlock(title, designers, description) {
-    $(LEFTBLOCK + " .title").text(title);
-    $(LEFTBLOCK + " .designers").text(designers);
-    $(LEFTBLOCK + " .description").text(description);
+function setLine(line) {
+    setLeftLinesBlock(line.leftBlock);
+    setTopLinesBlock(line.topBlock);
+    setMiddleLinesBlock(line.middleBlock);
+    setRightLinesBlock(line.rightBlock);
+    setBottomLinesBlock(line.bottomBlock);
 }
 
-function setTopLinesBlock(title) {
-    $(TOPBLOCK + " .title").text(title);
+function setLeftLinesBlock(blockData) {
+    $(LEFTBLOCK + " .title").text(blockData.title);
+    $(LEFTBLOCK + " .designers").text(blockData.designers);
+    $(LEFTBLOCK + " .description").text(blockData.description);
 }
 
-function setMiddleLinesBlock(title) {
-    $(MIDDLEBLOCK + " .title").text(title);
+function setTopLinesBlock(blockData) {
+    $(TOPBLOCK + " .title").text(blockData.title);
 }
 
-function setRightLinesBlock(title) {
-    $(RIGHTBLOCK + " .title").text(title);
+function setMiddleLinesBlock(blockData) {
+    $(MIDDLEBLOCK + " .title").text(blockData.title);
 }
 
-function setBottomLinesBlock(title) {
-    $(BOTTOMBLOCK + " .title").text(title);
+function setRightLinesBlock(blockData) {
+    $(RIGHTBLOCK + " .title").text(blockData.title);
+}
+
+function setBottomLinesBlock(blockData) {
+    $(BOTTOMBLOCK + " .title").text(blockData.title);
+}
+
+var FAKELINESDATA = []
+
+function Line(leftBlock, topBlock, rightBlock, bottomBlock, middleBlock) {
+    this.leftBlock = leftBlock;
+    this.topBlock = topBlock;
+    this.rightBlock = rightBlock;
+    this.bottomBlock = bottomBlock;
+    this.middleBlock = middleBlock;
+}
+
+
+for (var i = 0; i < TOTALLINES; i++) {
+    var lineNum = '(line ' + i + ')'
+    var left = {
+        title: '2268 ' + lineNum,
+        designers: "Hamza Quereshi, Susie Lee, Anny Fan",
+        description: leftBlockDesc
+    }
+
+    var top = {
+        title: "amzu-amzu " + lineNum
+    }
+
+    var right = {
+        title: "chroma " + lineNum
+    }
+
+    var bottom = {
+        title: "descent " + lineNum
+    }
+
+    var middle = {
+        title: "chinoiseries " + lineNum
+    }
+
+    FAKELINESDATA.push(new Line(left,top,right,bottom,middle))
 }
 

@@ -4,8 +4,6 @@
     color:white;
     font-size:18pt;
 
-    //position: absolute;
-
 
     p {
         display: none;
@@ -44,15 +42,7 @@
     &.left {
 
         border: none;
-        .filler {
-            z-index: 99999999999999;
 
-            display: none;
-            height: 33.33%;
-            width: 100%;
-            border: 1px solid rgba(255,255,255,25);
-            padding-top: 1px;
-        }
         .content {
 
             width: 400px;
@@ -99,7 +89,6 @@
     &.middle {
         border: none;
         .content {
-
             margin-left: -23%;
             margin-top: 5%;
         }

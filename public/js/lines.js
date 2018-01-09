@@ -35,6 +35,11 @@ $(window).ready(function () {
     $(document).keydown(function (e) {
         var LEFT = 37;
         var RIGHT = 39;
+        // TODO: left/right analagous to scrolling
+        // should not be able to change lines when a block is highlighted
+        if (HIGHLIGHTEDBLOCK) {
+            return;
+        }
 
         if (e.which === LEFT) {
             if (currentLineIndex > 0) {
@@ -165,6 +170,7 @@ $(window).ready(function () {
 });
 
 function setLine(line) {
+    console.log(line.topBlock)
     setLeftLinesBlock(line.leftBlock);
     setTopLinesBlock(line.topBlock);
     setMiddleLinesBlock(line.middleBlock);
@@ -179,6 +185,7 @@ function setLeftLinesBlock(blockData) {
 }
 
 function setTopLinesBlock(blockData) {
+    console.log(blockData)
     $(TOPBLOCK + " .title").text(blockData.title);
 }
 
@@ -213,7 +220,7 @@ for (var i = 0; i < TOTALLINES; i++) {
         description: leftBlockDesc
     }
 
-    var top = {
+    var topBlock = { // top is a built-in JS variable
         title: "amzu-amzu " + lineNum
     }
 
@@ -229,6 +236,6 @@ for (var i = 0; i < TOTALLINES; i++) {
         title: "chinoiseries " + lineNum
     }
 
-    FAKELINESDATA.push(new Line(left,top,right,bottom,middle))
+    FAKELINESDATA.push(new Line(left,topBlock,right,bottom,middle));
 }
 

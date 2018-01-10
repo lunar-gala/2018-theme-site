@@ -121,8 +121,10 @@ $(window).ready(function () {
     $("body").click(function (e) {
         var elem = e.target;
 
-        if ($(elem).hasClass("linesBlock")) {
-            var blockid = $(elem).parent().attr("id");
+        // second check is if you click on the text
+        var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || ($(elem).parent().parent().parent().attr("id"))
+        if (blockid) {
+            // var blockid = $(elem).parent().attr("id");
             if (!HIGHLIGHTEDBLOCK){
                 $(".block").toggleClass('muted')
                 $("#" + blockid + ".block").toggleClass('highlighted')

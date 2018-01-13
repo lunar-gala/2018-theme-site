@@ -156,11 +156,12 @@ body{
 	}
 }
 
+// https://stackoverflow.com/questions/4183948/css-set-background-image-with-opacity
 .aboutImg1 {
   position: relative;
 }
 
-.aboutImg1::after {
+.aboutImg1::before {
   content: " ";
   position: absolute;
   top: 0px;
@@ -168,7 +169,24 @@ body{
   width: 100%;
   height: 100%;
   z-index:-99999;
-	background-image:url("../../images/About-Asset-1.png");
-	background-size: cover;
-  opacity: 0.8; // CHANGE THIS
+  background-image:url("../../images/About-Asset-1.png");
+  background-size: cover;
+  opacity: 0.5; // CHANGE THIS
+}
+
+.aboutImg2 {
+  position: relative;
+}
+
+.aboutImg2::before {
+  content: " ";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index:-99999;
+  background-image:url("../../images/About-Asset-1.png");
+  background-size: cover;
+  opacity: 1; // CHANGE THIS
 }

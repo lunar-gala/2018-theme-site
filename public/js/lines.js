@@ -49,6 +49,7 @@ $(window).ready(function () {
         setLine(line)
     })
     
+
     $("body").bind('mousewheel', function(e){
         if(e.originalEvent.wheelDelta /120 > 30) {
             console.log('scrolling up !');
@@ -129,12 +130,21 @@ $(window).ready(function () {
                 $(".block").toggleClass('muted')
                 $("#" + blockid + ".block").toggleClass('highlighted')
                 HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
+
+                var content = $(HIGHLIGHTEDBLOCK).find(".aboutImg1");
+                $(content).toggleClass("aboutImg1 aboutImg2");
+
                 return;
             }
+
         }
 
-        $(".block").removeClass("muted");
+        $(".block").removeClass("muted")
         $(".highlighted").removeClass("highlighted");
+
+        var content = $(HIGHLIGHTEDBLOCK).find(".aboutImg2");
+        $(content).toggleClass("aboutImg1 aboutImg2");
+
         HIGHLIGHTEDBLOCK = null;
     })
 });
@@ -147,26 +157,34 @@ function setLine(line) {
     setBottomLinesBlock(line.bottomBlock);
 }
 
+// TODO: play around with these numbers
+var FADEIN_DURATION = 300;
+var FADEOUT_DURATION = 300;
+
 function setLeftLinesBlock(blockData) {
-    $(LEFTBLOCK + " .title").text(blockData.title);
+    $(LEFTBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
     $(LEFTBLOCK + " .designers").text(blockData.designers);
     $(LEFTBLOCK + " .description").text(blockData.description);
 }
 
 function setTopLinesBlock(blockData) {
-    $(TOPBLOCK + " .title").text(blockData.title);
+    $(TOPBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
 }
 
 function setMiddleLinesBlock(blockData) {
-    $(MIDDLEBLOCK + " .title").text(blockData.title);
+    $(MIDDLEBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
 }
 
 function setRightLinesBlock(blockData) {
-    $(RIGHTBLOCK + " .title").text(blockData.title);
+    $(RIGHTBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
 }
 
 function setBottomLinesBlock(blockData) {
-    $(BOTTOMBLOCK + " .title").text(blockData.title);
+    $(BOTTOMBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
+}
+
+function setBlockImage(blockSelector, img) {
+
 }
 
 var FAKELINESDATA = []
@@ -179,7 +197,7 @@ function Line(leftBlock, topBlock, rightBlock, bottomBlock, middleBlock) {
     this.middleBlock = middleBlock;
 }
 
-
+// 19 lines - this is fake data
 for (var i = 0; i < TOTALLINES; i++) {
     var lineNum = '(line ' + i + ')'
     var left = {
@@ -188,7 +206,7 @@ for (var i = 0; i < TOTALLINES; i++) {
         description: leftBlockDesc
     }
 
-    var topBlock = { // top is a built-in JS variable
+    var topBlock = { // can't use variable name "top" since it is a built-in JS variable
         title: "amzu-amzu " + lineNum
     }
 

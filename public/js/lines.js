@@ -97,7 +97,7 @@ $(window).ready(function () {
         .addClass("linesBlock aboutImg1 left")
 
     // TODO: filler gridlines
-    $("#3_0.block").append("<div class='dummy-block'></div><div class='dummy-block'></div><div class='dummy-block'></div>")
+    // $("#3_0.block").append("<div class='dummy-block'></div><div class='dummy-block'></div><div class='dummy-block'></div>")/
 
     // MIDDLE BLOCK
     $(MIDDLEBLOCK)
@@ -123,8 +123,12 @@ $(window).ready(function () {
     $("body").click(function (e) {
         var elem = e.target;
 
-        // second check is if you click on the text
-        var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || ($(elem).parent().parent().parent().attr("id"))
+        // this is ugly but it works (i think)
+        var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || 
+                        ($(elem).parent().parent().attr("id")) || 
+                        ($(elem).parent().parent().parent().attr("id"))
+
+        console.log(elem, blockid)
         if (blockid) {
             // var blockid = $(elem).parent().attr("id");
             if (!HIGHLIGHTEDBLOCK){
@@ -133,7 +137,7 @@ $(window).ready(function () {
                 HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
 
                 $(HIGHLIGHTEDBLOCK).find(".aboutImg1").toggleClass("aboutImg1 aboutImg2");
-                
+
                 return;
             }
 
@@ -144,8 +148,6 @@ $(window).ready(function () {
 
         // go back to dim background
         $(HIGHLIGHTEDBLOCK).find(".aboutImg2").toggleClass("aboutImg1 aboutImg2");
-        // $(HIGHLIGHTEDBLOCK).find(".aboutImg2").toggleClass("aboutImg1 aboutImg2");
-
         HIGHLIGHTEDBLOCK = null;
     })
 });

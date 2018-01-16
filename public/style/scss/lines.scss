@@ -1,14 +1,16 @@
 .linesBlock {
     font-family:"Druk Wide",sans-serif;
     font-weight:400;
-    color:white;
     font-size:18pt;
 
+
+    -webkit-transition: background-image 0.2s ease-in-out;
+    transition: background-image 0.2s ease-in-out;
 
     p {
       visibility: hidden;
       opacity: 0;
-      transition: visibility 0s, opacity 0.5s linear;
+      transition: visibility 0.2s, opacity 0.25s linear;
     }
 
     .content {
@@ -38,7 +40,6 @@
         .highlighted & {
 
         }
-
     }
 
     &.left {

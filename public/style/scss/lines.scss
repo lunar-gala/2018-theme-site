@@ -6,7 +6,9 @@
 
 
     p {
-        display: none;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.5s linear;
     }
 
     .content {
@@ -94,10 +96,14 @@
         }
     }
 
+    
+
     .highlighted & {
+        
 
         p {
-            display: block;
+            visibility: visible;
+            opacity: 1;
         }
     }
 }

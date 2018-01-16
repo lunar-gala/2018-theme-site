@@ -896,7 +896,9 @@ hr {
   color: white;
   font-size: 18pt; }
   .linesBlock p {
-    display: none; }
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear; }
   .linesBlock .content {
     position: absolute; }
   .linesBlock.top {
@@ -939,7 +941,8 @@ hr {
       margin-left: -23%;
       margin-top: 5%; }
   .highlighted .linesBlock p {
-    display: block; }
+    visibility: visible;
+    opacity: 1; }
 
 body {
   background-color: black; }
@@ -970,13 +973,13 @@ body {
 
 .dummy-block {
   position: absolute;
+  transition: all 0.3s;
+  top: 0px;
+  transition: opacity 1s 0.1s;
+  border: 1px solid white;
+  width: 100%;
   padding: 6px;
-  transition: all 0.3s; }
-  .dummy-block .inner {
-    transition: opacity 1s 0.1s;
-    border: 1px solid white;
-    width: 100%;
-    height: 100%; }
+  height: 33.333333%; }
 
 .mainGrid {
   transition: opacity 1s; }
@@ -1068,7 +1071,7 @@ body {
   z-index: -99999;
   background-image: url("../../images/About-Asset-1.png");
   background-size: cover;
-  opacity: 0.5; }
+  opacity: 0.6; }
 
 .aboutImg2 {
   position: relative; }

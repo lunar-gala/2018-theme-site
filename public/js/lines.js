@@ -50,6 +50,7 @@ $(window).ready(function () {
     })
     
 
+    // TODO: change data on scroll
     $("body").bind('mousewheel', function(e){
         if(e.originalEvent.wheelDelta /120 > 30) {
             console.log('scrolling up !');
@@ -96,7 +97,7 @@ $(window).ready(function () {
         .addClass("linesBlock aboutImg1 left")
 
     // TODO: filler gridlines
-    $("#3_0.block").append("<div class='block filler'></div><div class='block filler'></div><div class='block filler'></div>")
+    $("#3_0.block").append("<div class='dummy-block'></div><div class='dummy-block'></div><div class='dummy-block'></div>")
 
     // MIDDLE BLOCK
     $(MIDDLEBLOCK)
@@ -128,12 +129,11 @@ $(window).ready(function () {
             // var blockid = $(elem).parent().attr("id");
             if (!HIGHLIGHTEDBLOCK){
                 $(".block").toggleClass('muted')
-                $("#" + blockid + ".block").toggleClass('highlighted')
+                $("#" + blockid + ".block").toggleClass('highlighted');
                 HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
 
-                var content = $(HIGHLIGHTEDBLOCK).find(".aboutImg1");
-                $(content).toggleClass("aboutImg1 aboutImg2");
-
+                $(HIGHLIGHTEDBLOCK).find(".aboutImg1").toggleClass("aboutImg1 aboutImg2");
+                
                 return;
             }
 
@@ -142,8 +142,9 @@ $(window).ready(function () {
         $(".block").removeClass("muted")
         $(".highlighted").removeClass("highlighted");
 
-        var content = $(HIGHLIGHTEDBLOCK).find(".aboutImg2");
-        $(content).toggleClass("aboutImg1 aboutImg2");
+        // go back to dim background
+        $(HIGHLIGHTEDBLOCK).find(".aboutImg2").toggleClass("aboutImg1 aboutImg2");
+        // $(HIGHLIGHTEDBLOCK).find(".aboutImg2").toggleClass("aboutImg1 aboutImg2");
 
         HIGHLIGHTEDBLOCK = null;
     })

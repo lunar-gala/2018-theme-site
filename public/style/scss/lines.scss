@@ -19,6 +19,7 @@
 
     &.top {
         border: none;
+        position:relative;
         .content {      
 
             margin-top: 5%;
@@ -61,14 +62,14 @@
         p {
             &.designers {
                 text-align: left;
-                font-family: sans-serif;
+                font-family: Theinard Regular;
                 font-size: 12pt;
                 line-height: 1.5;
             }
 
             &.description {
-                font-size: 9pt;
-                font-family: sans-serif;
+                font-size: 10pt;
+                font-family: Theinard Regular;
                 text-align:left;
                 line-height: 1.5;
             }

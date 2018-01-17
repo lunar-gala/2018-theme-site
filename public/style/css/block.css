@@ -903,7 +903,8 @@ hr {
   .linesBlock .content {
     position: absolute; }
   .linesBlock.top {
-    border: none; }
+    border: none;
+    position: relative; }
     .linesBlock.top .content {
       margin-top: 5%;
       margin-left: 50%; }
@@ -923,12 +924,12 @@ hr {
       line-height: 1.5; }
     .linesBlock.left p.designers {
       text-align: left;
-      font-family: sans-serif;
+      font-family: Theinard Regular;
       font-size: 12pt;
       line-height: 1.5; }
     .linesBlock.left p.description {
-      font-size: 9pt;
-      font-family: sans-serif;
+      font-size: 10pt;
+      font-family: Theinard Regular;
       text-align: left;
       line-height: 1.5; }
   .linesBlock.right {
@@ -1072,7 +1073,7 @@ body {
   z-index: -99999;
   background-image: url("../../images/About-Asset-1.png");
   background-size: cover;
-  opacity: 0.6; }
+  opacity: 0.7; }
 
 .aboutImg2 {
   position: relative; }

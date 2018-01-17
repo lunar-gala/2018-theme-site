@@ -45,6 +45,20 @@ function Block(row, col, x, y, width, height){
     //checking if collapsed
     
     if (this.collapsed && Object.values(this.bounds).includes(-1)) {
+        var y = this.row * h;
+        var x = this.col * w;
+
+        $("#"+this.id).css({
+          "top": y,
+          "left": x,
+          "width": w,
+          "height": h
+        });
+
+        this.y = y;
+        this.x = x;
+        this.width = w;
+        this.height = h;
       return;
     }
 

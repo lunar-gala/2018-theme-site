@@ -16,6 +16,8 @@
     .linesBlock.top .content {
       margin-top: 5%;
       margin-left: 50%; }
+    .highlighted .linesBlock.top .filler-block {
+      opacity: 1; }
   .linesBlock.bottom {
     border: none; }
     .linesBlock.bottom .content {

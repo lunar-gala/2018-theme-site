@@ -908,6 +908,8 @@ hr {
     .linesBlock.top .content {
       margin-top: 5%;
       margin-left: 50%; }
+    .highlighted .linesBlock.top .filler-block {
+      opacity: 1; }
   .linesBlock.bottom {
     border: none; }
     .linesBlock.bottom .content {
@@ -958,20 +960,23 @@ body {
     border: 1px solid white;
     width: 100%;
     height: 100%; }
-  .block.filler {
-    height: 33.33%; }
   .block.collapsed {
     z-index: -1; }
   .block.collapsed .inner {
     transition: opacity 0.1s;
     opacity: 0;
     z-index: -1; }
+  .block.collapsed.filler-block .inner, .block .filler-block {
+    opacity: 0.2; }
   .block.muted {
     opacity: .2;
     transition: opacity .5s .1s; }
   .block.highlighted {
     opacity: 1;
-    border: none; }
+    border: none;
+    z-index: 9999; }
+    .block.highlighted .filler-block {
+      opacity: 0; }
 
 .dummy-block {
   position: absolute;

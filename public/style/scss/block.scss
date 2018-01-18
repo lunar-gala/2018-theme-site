@@ -17,18 +17,18 @@ body{
     height:100%;
   }
 
-  &.filler {
-    height: 33.33%;
-  }
 	&.collapsed{
 		z-index:-1;
 	}
 
   &.collapsed .inner{
-  
 		transition:opacity 0.1s;
     opacity: 0;
 		z-index:-1;
+  }
+
+  &.collapsed.filler-block .inner, .filler-block {
+    opacity: 0.2;
   }
 
   &.muted {
@@ -39,6 +39,10 @@ body{
   &.highlighted {
     opacity: 1;
     border: none;
+    z-index: 9999;
+    .filler-block {
+      opacity: 0;
+    }
   }
 }
 

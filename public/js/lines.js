@@ -123,8 +123,10 @@ $(window).ready(function () {
     $("body").click(function (e) {
         var elem = e.target;
 
+
         // this is ugly but it works (i think)
         var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || 
+                        ($(elem).parent().hasClass("filler-block") && $(elem).parent().attr("id")) ||
                         ($(elem).parent().parent().attr("id")) || 
                         ($(elem).parent().parent().parent().attr("id"))
 

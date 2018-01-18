@@ -2,8 +2,7 @@
     font-family:"Druk Wide",sans-serif;
     font-weight:400;
     font-size:18pt;
-    -webkit-transition: background-image 0.2s ease-in-out;
-    transition: background-image 0.2s ease-in-out;
+
 
     p {
       visibility: hidden;
@@ -25,9 +24,7 @@
         }
         
         .highlighted & {
-            .filler-block {
-                opacity: 1;
-            }
+
         }
     }
 

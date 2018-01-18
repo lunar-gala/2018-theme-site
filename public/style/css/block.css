@@ -893,9 +893,7 @@ hr {
 .linesBlock {
   font-family: "Druk Wide",sans-serif;
   font-weight: 400;
-  font-size: 18pt;
-  -webkit-transition: background-image 0.2s ease-in-out;
-  transition: background-image 0.2s ease-in-out; }
+  font-size: 18pt; }
   .linesBlock p {
     visibility: hidden;
     opacity: 0;
@@ -908,8 +906,6 @@ hr {
     .linesBlock.top .content {
       margin-top: 5%;
       margin-left: 50%; }
-    .highlighted .linesBlock.top .filler-block {
-      opacity: 1; }
   .linesBlock.bottom {
     border: none; }
     .linesBlock.bottom .content {
@@ -954,7 +950,7 @@ body {
 .block {
   position: absolute;
   padding: 0.25%;
-  transition: all 0.3s; }
+  transition: all 0.1s; }
   .block .inner {
     transition: opacity 1s 0.1s;
     border: 1px solid white;
@@ -962,31 +958,15 @@ body {
     height: 100%; }
   .block.collapsed {
     z-index: -1; }
-  .block.collapsed .inner {
-    transition: opacity 0.1s;
-    opacity: 0;
-    z-index: -1; }
+  .block.muted {
+    opacity: 0.2;
+    transition: opacity .5s .1s; }
   .block.collapsed.filler-block .inner, .block .filler-block {
     opacity: 0.2; }
-  .block.muted {
-    opacity: .2;
-    transition: opacity .5s .1s; }
   .block.highlighted {
     opacity: 1;
     border: none;
     z-index: 9999; }
-    .block.highlighted .filler-block {
-      opacity: 0; }
-
-.dummy-block {
-  position: absolute;
-  transition: all 0.3s;
-  top: 0px;
-  transition: opacity 1s 0.1s;
-  border: 1px solid white;
-  width: 100%;
-  padding: 6px;
-  height: 33.333333%; }
 
 .mainGrid {
   transition: opacity 1s; }

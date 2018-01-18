@@ -1,9 +1,7 @@
 .linesBlock {
   font-family: "Druk Wide",sans-serif;
   font-weight: 400;
-  font-size: 18pt;
-  -webkit-transition: background-image 0.2s ease-in-out;
-  transition: background-image 0.2s ease-in-out; }
+  font-size: 18pt; }
   .linesBlock p {
     visibility: hidden;
     opacity: 0;
@@ -16,8 +14,6 @@
     .linesBlock.top .content {
       margin-top: 5%;
       margin-left: 50%; }
-    .highlighted .linesBlock.top .filler-block {
-      opacity: 1; }
   .linesBlock.bottom {
     border: none; }
     .linesBlock.bottom .content {

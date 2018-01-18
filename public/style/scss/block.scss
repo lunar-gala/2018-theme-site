@@ -9,7 +9,7 @@ body{
 .block{
   position:absolute;
   padding:0.25%;
-  transition:all 0.3s;
+  transition:all 0.1s;
   .inner{
     transition:opacity 1s 0.1s;
     border:1px solid white;
@@ -21,42 +21,20 @@ body{
 		z-index:-1;
 	}
 
-  &.collapsed .inner{
-		transition:opacity 0.1s;
-    opacity: 0;
-		z-index:-1;
+  &.muted {
+    opacity: 0.2;
+    transition: opacity .5s .1s;
   }
-
   &.collapsed.filler-block .inner, .filler-block {
     opacity: 0.2;
-  }
-
-  &.muted {
-  	opacity: .2;
-    transition: opacity .5s .1s;
   }
 
   &.highlighted {
     opacity: 1;
     border: none;
     z-index: 9999;
-    .filler-block {
-      opacity: 0;
-    }
+
   }
-}
-
-.dummy-block {
-  position:absolute;
-
-  transition:all 0.3s;
-  top: 0px; 
-  transition:opacity 1s 0.1s;
-  border:1px solid white;
-  width:100%;
-  padding: 6px;
-  height:33.333333%;
-
 }
 
 .mainGrid{

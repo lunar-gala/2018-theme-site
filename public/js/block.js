@@ -35,6 +35,7 @@ function Block(row, col, x, y, width, height){
   this.height = height;
   this.bounds = {right:0, bottom:0}
   this.DOM = `<div class="block" id="`+this.id+`"><div class="inner"></div></div>`;
+  this.collapsed = false;
 
   this.create = function(target){
     $(target).append(this.DOM);
@@ -42,10 +43,13 @@ function Block(row, col, x, y, width, height){
 
   this.update = function(w,h){
     //checking if collapsed
-    collapsing = false;
+    
+    if (this.collapsed && Object.values(this.bounds).includes(-1)) {
+      return;
+    }
 
     if(Object.values(this.bounds).includes(-1)) {
-      collapsing = true;
+      this.collapsed = true;
       $("#"+this.id).toggleClass("collapsed");
       // TODO: maybe need to fix width and height so we can click on the entire expanded box
       // $("#"+this.id).css({
@@ -53,6 +57,7 @@ function Block(row, col, x, y, width, height){
       //   "height": 0
       // });
     } else {
+        this.collapsed = false;
         var y;
         var x;
         var width = w + this.bounds.right * w;

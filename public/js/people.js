@@ -6,7 +6,7 @@ $(window).ready(function(){
 	    if (e.keyCode == 27) { 
 	    	removeDisplayPerson();
 		}
-	});
+	}); 
 });
 
 function populatePeopleHeader () {
@@ -30,9 +30,20 @@ function populatePeopleContent () {
 		for (var j = 0; j < grid_cols; j++) {
 			if (i == 4 && j == 0) {
 				animateBlock("#" + grid[i][j].id, 1, 0);
-				$("#" + grid[i][j].id + " .inner").append("<p class='board-title'>Board</p>");
+				$("#" + grid[i][j].id + " .inner").css({
+		          	"background-image" : "url('../../images/Humans-Surveillance 1.png')",
+		          	"background-size" : "cover",
+				  	"background-repeat" : "no-repeat",
+				  	"background-position" : "center center"
+		        });
 			} else if (i == 4 && j == 6) {
 				animateBlock("#" + grid[i][j].id, 1, 1);
+				$("#" + grid[i][j].id + " .inner").css({
+		          	"background-image" : "url('../../images/Humans-Surveillance 2.png')",
+		          	"background-size" : "cover",
+				  	"background-repeat" : "no-repeat",
+				  	"background-position" : "center center"
+		        });
 			} else if (i == 6 && j == 3) {
 				animateBlock("#" + grid[i][j].id, 1, 1);
 				$("#" + grid[i][j].id + " .inner").append("<p class='designers-link'>Designers</p>");

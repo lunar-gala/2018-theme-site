@@ -893,7 +893,9 @@ hr {
 .linesBlock {
   font-family: "Druk Wide",sans-serif;
   font-weight: 400;
-  font-size: 18pt; }
+  font-size: 18pt;
+  -webkit-transition: background-image 0.2s ease-in-out;
+  transition: background-image 0.2s ease-in-out; }
   .linesBlock p {
     visibility: hidden;
     opacity: 0;
@@ -944,29 +946,48 @@ hr {
     visibility: visible;
     opacity: 1; }
 
+.block .filler-filler-block {
+  opacity: 0.2; }
+.block .top + .filler-filler-block {
+  padding: 0.5%; }
+.block .middle + .filler-filler-block, .block .bottom + .filler-filler-block {
+  padding: 0.75%; }
+.block .left + .filler-filler-block, .block .right + .filler-filler-block {
+  padding: 2.25%; }
+
 body {
   background-color: black; }
 
 .block {
   position: absolute;
   padding: 0.25%;
-  transition: all 0.1s; }
+  transition: all 0.3s; }
   .block .inner {
     transition: opacity 1s 0.1s;
     border: 1px solid white;
     width: 100%;
     height: 100%; }
-  .block.collapsed {
-    z-index: -1; }
+  .block.collapsed:not(.filler-block) {
+    z-index: -999999999999999999;
+    opacity: 0; }
   .block.muted {
     opacity: 0.2;
     transition: opacity .5s .1s; }
-  .block.collapsed.filler-block .inner, .block .filler-block {
+  .block.muted, .block.collapsed.filler-block .inner {
     opacity: 0.2; }
   .block.highlighted {
     opacity: 1;
     border: none;
     z-index: 9999; }
+
+.filler-filler-block {
+  position: absolute; }
+  .highlighted .filler-filler-block {
+    z-index: -999999999; }
+  .filler-filler-block .filler-inner {
+    border: 1px solid white;
+    width: 100%;
+    height: 100%; }
 
 .mainGrid {
   transition: opacity 1s; }
@@ -1055,7 +1076,7 @@ body {
   left: 0px;
   width: 100%;
   height: 100%;
-  z-index: -99999;
+  z-index: -99999999;
   background-image: url("../../images/About-Asset-1.png");
   background-size: cover;
   opacity: 0.7; }
@@ -1070,7 +1091,7 @@ body {
   left: 0px;
   width: 100%;
   height: 100%;
-  z-index: -99999;
+  z-index: -99999999;
   background-image: url("../../images/About-Asset-1.png");
   background-size: cover;
   opacity: 1; }

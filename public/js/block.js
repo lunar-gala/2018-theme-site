@@ -37,6 +37,7 @@ function Block(row, col, x, y, width, height){
   this.DOM = `<div class="block" id="`+this.id+`"><div class="inner"></div></div>`;
   this.collapsed = false;
   this.showgridlines = false;
+  this.belongsto = null;
 
   this.create = function(target){
     $(target).append(this.DOM);
@@ -89,20 +90,19 @@ function Block(row, col, x, y, width, height){
 
         this.y = y;
         this.x = x;
-        this.width = w;
-        this.height = h;
-        console.log(this.showgridlines)
-        if (this.showgridlines) {
-          console.log(blockElem.find(".filler-block"), blockElem)
-          blockElem.find(" .filler-block").remove()
-          blockElem.append($("<div class='filler-block'></div>").css({
+        this.width = width;
+        this.height = height;
+
+        if (this.showgridlines && (this.bounds.right > 1 || this.bounds.bottom > 1)) {
+          blockElem.find(" .filler-filler-block").remove()
+          blockElem.append($("<div class='filler-filler-block'><div class='filler-inner'></div></div>").css({
             top: 0,
             left: 0,
-            width: w,
-            height: h,
-            position: "absolute",
-            border: "solid 1px white"
+            width: (window.innerWidth/grid[0].length),
+            height: (window.innerHeight/grid.length)
           }))
+
+          console.log((window.innerWidth/grid[0].length), (window.innerHeight/grid[0].length))
         }
     }
   }
@@ -134,6 +134,7 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
         }
         var b = grid[row][col];
         b.showgridlines = showgridlines;
+        $("#"+b.id).attr("belongs-to", $(block).attr("id"))
 
         if (col == j) {
           // vertical
@@ -147,7 +148,7 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
         }
       }
     }
-    // TODO: add a filler-block the size of a collapsed one
+
     curBlock.showgridlines = showgridlines;
     curBlock.update(regular_w,regular_h);
 }
@@ -174,6 +175,9 @@ function resetBlock(block) {
         b.bounds.bottom = 0;
 
         b.update(regular_w, regular_h)
+
+        b.showgridlines = false;
+        $("#"+b.id).removeAttr("belongs-to")
 
         if ($("#"+row+"_"+col).hasClass('collapsed')) {
           $("#"+row+"_"+col).toggleClass('collapsed');

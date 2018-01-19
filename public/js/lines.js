@@ -12,6 +12,18 @@ var HIGHLIGHTEDBLOCK = null;
 
 var TOTALLINES = 19;
 var currentLineIndex = 0;
+$.fn.extend({
+    animateCss: function (animationName, callback) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, function() {
+            $(this).removeClass('animated ' + animationName);
+            if (callback) {
+              callback();
+            }
+        });
+        return this;
+    }
+});
 
 $(window).ready(function () {
     // TODO: make call this on every page, instead of hardcoding it for each endpoint
@@ -122,27 +134,24 @@ $(window).ready(function () {
 
     $("body").click(function (e) {
         var elem = e.target;
-
-
+        console.log(elem)
+        // TODO: check to see if the clicked block is on top of a highlighted block and get the highlighted block's id
         // this is ugly but it works (i think)
         var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || 
-                        ($(elem).parent().hasClass("filler-block") && $(elem).parent().attr("id")) ||
+                        ($(elem).attr("belongs-to")) ||
+                        ($(elem).parent().hasClass("filler-block") && $(elem).parent().attr("belongs-to")) ||
                         ($(elem).parent().parent().attr("id")) || 
                         ($(elem).parent().parent().parent().attr("id"))
 
-        console.log(elem, blockid)
-        if (blockid) {
-            // var blockid = $(elem).parent().attr("id");
-            if (!HIGHLIGHTEDBLOCK){
-                $(".block").toggleClass('muted')
-                $("#" + blockid + ".block").toggleClass('highlighted');
-                HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
+        
+        if (blockid && !HIGHLIGHTEDBLOCK) {
+            $(".block").toggleClass('muted')
+            $("#" + blockid + ".block").toggleClass('highlighted');
+            HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
 
-                $(HIGHLIGHTEDBLOCK).find(".aboutImg1").toggleClass("aboutImg1 aboutImg2");
+            $(HIGHLIGHTEDBLOCK).find(".aboutImg1").toggleClass("aboutImg1 aboutImg2");
 
-                return;
-            }
-
+            return;
         }
 
         $(".block").removeClass("muted")
@@ -173,7 +182,14 @@ function setLeftLinesBlock(blockData) {
 }
 
 function setTopLinesBlock(blockData) {
-    $(TOPBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
+    $(TOPBLOCK + " .title").removeClass('animated')
+    $(TOPBLOCK + " .title").text(blockData.title)
+    $(TOPBLOCK + " .title").animateCss('fadeInDown', function() {
+        // $(this).text(blockData.title);
+        // $(this).toggleClass('animated fadeInDown')
+    })
+    
+    // $(TOPBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
 }
 
 function setMiddleLinesBlock(blockData) {

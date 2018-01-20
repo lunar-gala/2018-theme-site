@@ -9,8 +9,8 @@ var leftBlockDesc = "Welcome to the year 2268. After centuries of disastrous cli
 var leftBlockDesigners = "Hamza Quereshi, Susie Lee, Anny Fan"
 
 var HIGHLIGHTEDBLOCK = null;
+var TOTALLINES = 16;
 
-var TOTALLINES = 19;
 var currentLineIndex = 0;
 $.fn.extend({
     animateCss: function (animationName, callback) {
@@ -57,7 +57,7 @@ $(window).ready(function () {
             return;
         }
 
-        var line = FAKELINESDATA[currentLineIndex];
+        var line = LINESDATA[currentLineIndex];
         setLine(line)
     })
     
@@ -93,7 +93,7 @@ $(window).ready(function () {
     $(".mainGrid #1_1 .inner").text("Lines").addClass("title");
 
     // initial animates
-    animateBlock("#3_2", 0, 3, true) // top
+    animateBlock("#3_2", 0, 2, true) // top
     animateBlock("#3_0", 2,0, true); // left
     animateBlock("#5_3", 0,2, true); // middle
     animateBlock("#3_6", 2,0, true); // right
@@ -127,7 +127,7 @@ $(window).ready(function () {
         .addClass("linesBlock aboutImg1 bottom")
 
 
-    setLine(FAKELINESDATA[0])
+    setLine(LINESDATA[0])
 
     $(document).keydown(function (e) { if (e.key == "c") { changeContent({}); } });
 
@@ -208,7 +208,7 @@ function setBlockImage(blockSelector, img) {
 
 }
 
-var FAKELINESDATA = []
+var LINESDATA = []
 
 function Line(leftBlock, topBlock, rightBlock, bottomBlock, middleBlock) {
     this.leftBlock = leftBlock;
@@ -303,6 +303,7 @@ var linedata = [
 
 for (var i = 0; i < linedata.length; i++) {
     var line = linedata[i];
+
     var left = line;
 
     var topBlock = { // can't use variable name "top" since it is a built-in JS variable
@@ -321,5 +322,5 @@ for (var i = 0; i < linedata.length; i++) {
         title: line.title
     }
 
-    FAKELINESDATA.push(new Line(left,topBlock,right,bottom,middle));
+    LINESDATA.push(new Line(left,topBlock,right,bottom,middle));
 }

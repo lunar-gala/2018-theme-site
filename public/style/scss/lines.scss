@@ -12,7 +12,9 @@
     }
 
     .content {
+        overflow: hidden;
         position: absolute;
+        white-space: nowrap; // TODO: MIGHT NEED TO CHANGE THIS
     }
 
     &.top {
@@ -20,8 +22,9 @@
         position:relative;
         .content {      
 
-            margin-top: 5%;
-            margin-left: 50%;
+            left: 100%;
+            top: 35%;
+            margin-left: -25px; // TODO: CENTER ALIGN THE TEXT
         }
     }
 
@@ -29,8 +32,9 @@
         border: none;
         .content {
 
-            margin-left: 85%;
-            margin-top: 5%;
+            left: 100%;
+            top: 35%;
+            margin-left: -25px; // TODO: CENTER ALIGN TEXT BASED ON TEXT WIDTH
         }
         .highlighted & {
 
@@ -72,17 +76,18 @@
 
         border: none;
         .content {
-
-            margin-top: 80%;
-            margin-left: 60%;
+            left: 100%;
+            top: 45%;
+            margin-left: -25px; // TODO: CENTER ALIGN TEXT
         }
     }
 
     &.middle {
         border: none;
         .content {
-            margin-left: -23%;
-            margin-top: 5%;
+            left: 0%;
+            top: 36%;
+            margin-left: -25px; // TODO: CENTER ALIGN THE TEXT
         }
     }
 

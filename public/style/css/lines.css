@@ -9,18 +9,22 @@
     opacity: 0;
     transition: visibility 0.2s, opacity 0.25s linear; }
   .linesBlock .content {
-    position: absolute; }
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap; }
   .linesBlock.top {
     border: none;
     position: relative; }
     .linesBlock.top .content {
-      margin-top: 5%;
-      margin-left: 50%; }
+      left: 100%;
+      top: 35%;
+      margin-left: -25px; }
   .linesBlock.bottom {
     border: none; }
     .linesBlock.bottom .content {
-      margin-left: 85%;
-      margin-top: 5%; }
+      left: 100%;
+      top: 35%;
+      margin-left: -25px; }
   .linesBlock.left {
     border: none; }
     .linesBlock.left .content {
@@ -43,13 +47,15 @@
   .linesBlock.right {
     border: none; }
     .linesBlock.right .content {
-      margin-top: 80%;
-      margin-left: 60%; }
+      left: 100%;
+      top: 45%;
+      margin-left: -25px; }
   .linesBlock.middle {
     border: none; }
     .linesBlock.middle .content {
-      margin-left: -23%;
-      margin-top: 5%; }
+      left: 0%;
+      top: 36%;
+      margin-left: -25px; }
   .highlighted .linesBlock p {
     visibility: visible;
     opacity: 1; }

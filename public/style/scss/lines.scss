@@ -3,9 +3,7 @@
 }
 .linesBlock {
     cursor: pointer;
-    font-family:"Druk Wide",sans-serif;
-    font-weight:400;
-    font-size:18pt;
+    // might not need these
     -webkit-transition: background-image 0.2s ease-in-out;
     transition: background-image 0.2s ease-in-out;
 
@@ -25,13 +23,17 @@
         }
 
         .title {
+            font-family:"Druk Wide",sans-serif;
+            font-weight:400;
+            font-size:18pt;
             line-height: 1.5;
         }
         
         p {
+          display: none;
           visibility: hidden;
           opacity: 0;
-          transition: visibility 0.2s, opacity 0.25s linear;
+          transition: visibility 0.2s, opacity 1s linear;
           font-family: Theinard Regular;
           
           &.designers {
@@ -51,19 +53,19 @@
         .content {
             left: 100%; // Should be 100% - (width of header text/2) px
             top: 44%;
-            transform: translateX(-15%); // TODO: GET ALL ALIASES
+            transform: translateX(-10%); // TODO: GET ALL ALIASES
             width: 300%;
         }
     }
 
     &.top {
         border: none;
-        position:relative;
         .content {      
             left: 100%;
             top: 35%;
-            transform: translateX(-10%);
+            transform: translateX(-10%); // need to translate based on title size...
             width: 100%;
+
         }
     }
 
@@ -82,24 +84,35 @@
         .content {
             left: 55%;
             top: 45%;
-            width: 300%;
         }
     }
 
     &.bottom {
         border: none;
         .content {
-            left: 100%;
             top: 35%;
-            transform: translateX(-20%);
+            transform: translateX(80%);
             width: 100%;
         }
     }
 
     .highlighted & {
+        &.bottom {
+            .content {
+                top:-100%;
+            }
+        }
+        &.right {
+            .content {
+                left:-100%;
+                width: 300%;
+            }
+        }
         p {
+            
             visibility: visible;
             opacity: 1;
+            display: block;
         }
     }
 }
@@ -135,7 +148,7 @@
     height: 100%;
     z-index:-99999999;
     background-size: cover;
-    opacity: 0.7; // CHANGE THIS
+    opacity: 0.6; // CHANGE THIS
 }
 
 .lineBlockPic {

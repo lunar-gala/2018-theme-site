@@ -91,18 +91,14 @@ function init_lines() {
 
     selectorblocks.forEach(function(selector,i) {
         $(selector)
-            .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
+            .html("<div class='content'><span class='title'></span><p class='designers'></p><p class='description'></p></div>")
             .addClass("linesBlock lineBlockPicMuted aboutImg1 " + selectornames[i])
     })
 
     setLines(0)
 
-    $(document).keydown(function (e) { if (e.key == "c") { changeContent({}); } });
-
-
     $("body").click(function (e) {
         var elem = e.target;
-        console.log(elem)
         // TODO: check to see if the clicked block is on top of a highlighted block and get the highlighted block's id
         // this is ugly but it works (i think)
         var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || 
@@ -158,9 +154,12 @@ function setLineBlock(selector, line) {
         return;
     }
 
+
+
     $(titleSelector).fadeOut(FADEOUT_DURATION,function() { $(this).text(line.title).fadeIn(FADEIN_DURATION)});
     $(designerSelector).text(line.designers);
     $(descriptionSelector).text(line.description);
+    console.log($(titleSelector)[0].style.width)
 }
 
 var LINESDATA = []

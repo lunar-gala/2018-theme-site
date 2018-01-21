@@ -8,8 +8,14 @@ app.use(express.static(path.join(__dirname,'./public')));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 })
+app.get('/about', function (req, res) {
+  res.sendFile(path.join(__dirname, '/public/index.html'));
+})
+app.get('/testAnimation',function(req,res){
+  res.sendFile(path.join(__dirname, '/public/animationTest.html'));
+});
 
-app.get(/^\/(about|lines|people)$/, function (req, res) {
+app.get(/^\/(lines|people)$/, function (req, res) {
     res.sendFile(__dirname + '/public/' + req.path + '.html');
 });
 

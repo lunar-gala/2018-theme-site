@@ -917,7 +917,7 @@ hr {
     .linesBlock.bottom .content {
       left: 100%;
       top: 35%;
-      margin-left: -25px; }
+      transform: translateX(-44%); }
   .linesBlock.left {
     border: none; }
     .linesBlock.left .content {
@@ -948,7 +948,7 @@ hr {
     .linesBlock.middle .content {
       left: 0%;
       top: 36%;
-      margin-left: -25px; }
+      transform: translateX(-50%); }
   .highlighted .linesBlock p {
     visibility: visible;
     opacity: 1; }

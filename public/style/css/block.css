@@ -902,7 +902,18 @@ hr {
     transition: visibility 0.2s, opacity 0.25s linear; }
   .linesBlock .content {
     overflow: hidden;
-    position: absolute; }
+    position: absolute;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none; }
     .linesBlock .content h1, .linesBlock .content .designers {
       white-space: nowrap; }
   .linesBlock.top {
@@ -911,19 +922,47 @@ hr {
     .linesBlock.top .content {
       left: 100%;
       top: 35%;
-      transform: translateX(-44%); }
+      transform: translateX(-10%);
+      width: 400px; }
+    .linesBlock.top h1 {
+      text-align: left;
+      line-height: 1.5; }
+    .linesBlock.top p.designers {
+      text-align: left;
+      font-family: Theinard Regular;
+      font-size: 12pt;
+      line-height: 1.5; }
+    .linesBlock.top p.description {
+      font-size: 10pt;
+      font-family: Theinard Regular;
+      text-align: left;
+      line-height: 1.5; }
   .linesBlock.bottom {
     border: none; }
     .linesBlock.bottom .content {
       left: 100%;
       top: 35%;
-      transform: translateX(-44%); }
+      transform: translateX(-20%);
+      width: 400px; }
+    .linesBlock.bottom h1 {
+      text-align: left;
+      line-height: 1.5; }
+    .linesBlock.bottom p.designers {
+      text-align: left;
+      font-family: Theinard Regular;
+      font-size: 12pt;
+      line-height: 1.5; }
+    .linesBlock.bottom p.description {
+      font-size: 10pt;
+      font-family: Theinard Regular;
+      text-align: left;
+      line-height: 1.5; }
   .linesBlock.left {
     border: none; }
     .linesBlock.left .content {
       left: 100%;
       top: 44%;
-      transform: translateX(-12%);
+      transform: translateX(-15%);
       width: 400px; }
     .linesBlock.left h1 {
       text-align: left;
@@ -941,14 +980,42 @@ hr {
   .linesBlock.right {
     border: none; }
     .linesBlock.right .content {
-      left: 65%;
-      top: 45%; }
+      left: 55%;
+      top: 45%;
+      width: 400px; }
+    .linesBlock.right h1 {
+      text-align: left;
+      line-height: 1.5; }
+    .linesBlock.right p.designers {
+      text-align: left;
+      font-family: Theinard Regular;
+      font-size: 12pt;
+      line-height: 1.5; }
+    .linesBlock.right p.description {
+      font-size: 10pt;
+      font-family: Theinard Regular;
+      text-align: left;
+      line-height: 1.5; }
   .linesBlock.middle {
     border: none; }
     .linesBlock.middle .content {
       left: 0%;
       top: 36%;
-      transform: translateX(-50%); }
+      transform: translateX(-25%);
+      width: 400px; }
+    .linesBlock.middle h1 {
+      text-align: left;
+      line-height: 1.5; }
+    .linesBlock.middle p.designers {
+      text-align: left;
+      font-family: Theinard Regular;
+      font-size: 12pt;
+      line-height: 1.5; }
+    .linesBlock.middle p.description {
+      font-size: 10pt;
+      font-family: Theinard Regular;
+      text-align: left;
+      line-height: 1.5; }
   .highlighted .linesBlock p {
     visibility: visible;
     opacity: 1; }

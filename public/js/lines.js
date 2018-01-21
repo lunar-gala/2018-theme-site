@@ -9,9 +9,9 @@ var leftBlockDesc = "Welcome to the year 2268. After centuries of disastrous cli
 var leftBlockDesigners = "Hamza Quereshi, Susie Lee, Anny Fan"
 
 var HIGHLIGHTEDBLOCK = null;
-var TOTALLINES = 16;
+var LINESETSIZE = 5;
 
-var currentLineIndex = 0;
+var currentLineSet = 0;
 $.fn.extend({
     animateCss: function (animationName, callback) {
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -40,16 +40,16 @@ $(window).ready(function () {
         }
 
         if (e.which === LEFT) {
-            if (currentLineIndex > 0) {
-                currentLineIndex--;
+            if (currentLineSet > 0) {
+                currentLineSet--;
             } else {
                 return
             }
             // previous line
         } else if (e.which === RIGHT) {
             // next line
-            if (currentLineIndex < TOTALLINES - 1) {
-                currentLineIndex++;
+            if (currentLineSet < 3) {
+                currentLineSet++;
             } else {
                 return
             }
@@ -57,8 +57,7 @@ $(window).ready(function () {
             return;
         }
 
-        var line = LINESDATA[currentLineIndex];
-        setLine(line)
+        setLines(currentLineSet)
     })
     
 
@@ -100,34 +99,31 @@ $(window).ready(function () {
     animateBlock("#7_0", 0,2, true); // bottom
 
     $(TOPBLOCK)
+        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
         .addClass("linesBlock aboutImg1 top")
-        .html("<div class='content'><h1 class='title'></h1></div>")
 
     // LEFT BLOCK
     $(LEFTBLOCK)
         .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
         .addClass("linesBlock aboutImg1 left")
 
-    // TODO: filler gridlines
-    // $("#3_0.block").append("<div class='dummy-block'></div><div class='dummy-block'></div><div class='dummy-block'></div>")/
-
     // MIDDLE BLOCK
     $(MIDDLEBLOCK)
-        .html("<div class='content'><h1 class='title'></h1></div>")
+        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
         .addClass("linesBlock aboutImg1 middle")
 
     // RIGHT BLOCK
     $(RIGHTBLOCK)
-        .html("<div class='content'><h1 class='title'></h1></div>")
+        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
         .addClass("linesBlock aboutImg1 right")
 
     // BOTTOM BLOCK
     $(BOTTOMBLOCK)
-        .html("<div class='content'><h1 class='title'></h1></div>")
+        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
         .addClass("linesBlock aboutImg1 bottom")
 
 
-    setLine(LINESDATA[0])
+    setLines(0)
 
     $(document).keydown(function (e) { if (e.key == "c") { changeContent({}); } });
 
@@ -163,22 +159,38 @@ $(window).ready(function () {
     })
 });
 
-function setLine(line) {
-    setLeftLinesBlock(line.leftBlock);
-    setTopLinesBlock(line.topBlock);
-    setMiddleLinesBlock(line.middleBlock);
-    setRightLinesBlock(line.rightBlock);
-    setBottomLinesBlock(line.bottomBlock);
+function setLines(lineSet) {
+    var lowerBound = lineSet * LINESETSIZE;
+    var upperBound = (lineSet + 1) * LINESETSIZE;
+
+    var selectorblocks = [TOPBLOCK, LEFTBLOCK, MIDDLEBLOCK, RIGHTBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
+
+    for (var i=lowerBound; i<upperBound; i++) {
+        var line = LINESDATA[i];
+        var selector = selectorblocks[i%LINESETSIZE];
+        setLineBlock(selector, line);
+    }
 }
 
 // TODO: play around with these numbers
 var FADEIN_DURATION = 300;
 var FADEOUT_DURATION = 300;
 
-function setLeftLinesBlock(blockData) {
-    $(LEFTBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
-    $(LEFTBLOCK + " .designers").text(blockData.designers);
-    $(LEFTBLOCK + " .description").text(blockData.description);
+function setLineBlock(selector, line) {
+    var titleSelector = selector + " .title"
+    var designerSelector = selector + " .designers"
+    var descriptionSelector = selector + " .description"
+
+    if (!line) {
+        $(titleSelector).text("");
+        $(designerSelector).text("");
+        $(descriptionSelector).text("");
+        return;
+    }
+
+    $(titleSelector).fadeOut(FADEOUT_DURATION,function() { $(this).text(line.title).fadeIn(FADEIN_DURATION)});
+    $(designerSelector).text(line.designers);
+    $(descriptionSelector).text(line.description);
 }
 
 function setTopLinesBlock(blockData) {
@@ -192,30 +204,14 @@ function setTopLinesBlock(blockData) {
     // $(TOPBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
 }
 
-function setMiddleLinesBlock(blockData) {
-    $(MIDDLEBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
-}
-
-function setRightLinesBlock(blockData) {
-    $(RIGHTBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
-}
-
-function setBottomLinesBlock(blockData) {
-    $(BOTTOMBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
-}
-
-function setBlockImage(blockSelector, img) {
-
-}
+// }
 
 var LINESDATA = []
 
-function Line(leftBlock, topBlock, rightBlock, bottomBlock, middleBlock) {
-    this.leftBlock = leftBlock;
-    this.topBlock = topBlock;
-    this.rightBlock = rightBlock;
-    this.bottomBlock = bottomBlock;
-    this.middleBlock = middleBlock;
+function Line(title, designers, description) {
+    this.title = title;
+    this.designers = designers; 
+    this.description = description;
 }
 
 var linedata = [
@@ -304,23 +300,5 @@ var linedata = [
 for (var i = 0; i < linedata.length; i++) {
     var line = linedata[i];
 
-    var left = line;
-
-    var topBlock = { // can't use variable name "top" since it is a built-in JS variable
-        title: line.title
-    }
-
-    var right = {
-        title: line.title
-    }
-
-    var bottom = {
-        title: line.title
-    }
-
-    var middle = {
-        title: line.title
-    }
-
-    LINESDATA.push(new Line(left,topBlock,right,bottom,middle));
+    LINESDATA.push(new Line(line.title, line.designers, line.description));
 }

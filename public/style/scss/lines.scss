@@ -1,27 +1,50 @@
+.filler-block, .filler-filler-block {
+    cursor: pointer;
+}
 .linesBlock {
+    cursor: pointer;
     font-family:"Druk Wide",sans-serif;
     font-weight:400;
     font-size:18pt;
     -webkit-transition: background-image 0.2s ease-in-out;
     transition: background-image 0.2s ease-in-out;
 
-    p {
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0.2s, opacity 0.25s linear;
-    }
-
     .content {
         overflow: hidden;
         position: absolute;
-      -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Safari */
-         -khtml-user-select: none; /* Konqueror HTML */
-           -moz-user-select: none; /* Firefox */
-            -ms-user-select: none; /* Internet Explorer/Edge */
-                user-select: none; 
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; 
         h1, .designers {
             white-space: nowrap; // TODO: MIGHT NEED TO CHANGE THIS
+        }
+        h1 {
+            text-align:left;
+            line-height: 1.5;
+        }
+        
+        p {
+          visibility: hidden;
+          opacity: 0;
+          transition: visibility 0.2s, opacity 0.25s linear;
+          &.designers {
+
+            text-align: left;
+            font-family: Theinard Regular;
+            font-size: 12pt;
+            line-height: 1.5;
+          }
+
+          &.description {
+            font-size: 10pt;
+            font-family: Theinard Regular;
+            text-align:left;
+            line-height: 1.5;
+            width: 400px;
+          }
         }
     }
 
@@ -29,140 +52,38 @@
         border: none;
         position:relative;
         .content {      
-
             left: 100%;
             top: 35%;
             transform: translateX(-10%);
-            width: 400px;
-        }
-
-        h1 {
-
-            text-align:left;
-
-            line-height: 1.5;
-        }
-
-        p {
-            &.designers {
-
-                text-align: left;
-                font-family: Theinard Regular;
-                font-size: 12pt;
-                line-height: 1.5;
-            }
-
-            &.description {
-                font-size: 10pt;
-                font-family: Theinard Regular;
-                text-align:left;
-                line-height: 1.5;
-            }
+            width: 100%;
         }
     }
 
     &.bottom {
         border: none;
         .content {
-
             left: 100%;
             top: 35%;
             transform: translateX(-20%);
-            width: 400px;
-
-        }
-        h1 {
-
-            text-align:left;
-
-            line-height: 1.5;
-        }
-
-        p {
-            &.designers {
-
-                text-align: left;
-                font-family: Theinard Regular;
-                font-size: 12pt;
-                line-height: 1.5;
-            }
-
-            &.description {
-                font-size: 10pt;
-                font-family: Theinard Regular;
-                text-align:left;
-                line-height: 1.5;
-            }
+            width: 100%;
         }
     }
 
     &.left {
-        border: none;
-
         .content {
-            
             left: 100%; // Should be 100% - (width of header text/2) px
             top: 44%;
-            transform: translateX(-15%);
-            width: 400px;
-            //TODO: CENTER ALIGN TEXT, moz-webkit
-        }
-
-        h1 {
-
-            text-align:left;
-
-            line-height: 1.5;
-        }
-
-        p {
-            &.designers {
-
-                text-align: left;
-                font-family: Theinard Regular;
-                font-size: 12pt;
-                line-height: 1.5;
-            }
-
-            &.description {
-                font-size: 10pt;
-                font-family: Theinard Regular;
-                text-align:left;
-                line-height: 1.5;
-            }
+            transform: translateX(-15%); // TODO: GET ALL ALIASES
+            width: 300%;
         }
     }
 
     &.right {
-
         border: none;
         .content {
             left: 55%;
             top: 45%;
-            width: 400px;
-        }
-        h1 {
-
-            text-align:left;
-
-            line-height: 1.5;
-        }
-
-        p {
-            &.designers {
-
-                text-align: left;
-                font-family: Theinard Regular;
-                font-size: 12pt;
-                line-height: 1.5;
-            }
-
-            &.description {
-                font-size: 10pt;
-                font-family: Theinard Regular;
-                text-align:left;
-                line-height: 1.5;
-            }
+            width: 300%;
         }
     }
 
@@ -172,30 +93,7 @@
             left: 0%;
             top: 36%;
             transform: translateX(-25%);
-            width: 400px;
-        }
-        h1 {
-
-            text-align:left;
-
-            line-height: 1.5;
-        }
-
-        p {
-            &.designers {
-
-                text-align: left;
-                font-family: Theinard Regular;
-                font-size: 12pt;
-                line-height: 1.5;
-            }
-
-            &.description {
-                font-size: 10pt;
-                font-family: Theinard Regular;
-                text-align:left;
-                line-height: 1.5;
-            }
+            width: 100%;
         }
     }
 
@@ -223,4 +121,3 @@
         padding: 2.25%;
     }
 }
-

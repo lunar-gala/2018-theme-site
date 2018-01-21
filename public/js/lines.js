@@ -4,14 +4,14 @@ var LEFTBLOCK = ".mainGrid #3_0 .inner"
 var RIGHTBLOCK = ".mainGrid #3_6 .inner"
 var MIDDLEBLOCK = ".mainGrid #5_3 .inner"
 
-var leftBlockTitle = "2268"
-var leftBlockDesc = "Welcome to the year 2268. After centuries of disastrous climate change, where rapid urbanization and pollution have distorted the way we approach growth in an urban landscape, where do we stand? 2268 explores this inquisition from two perspectives. The first perspective captures extreme pollution and the second perspective captures sustainability to the extreme where urbanization has gotten out of control and the soil has become rotten, forcing us to carry the food we need to eat"
-var leftBlockDesigners = "Hamza Quereshi, Susie Lee, Anny Fan"
+var selectorblocks = [TOPBLOCK, LEFTBLOCK, MIDDLEBLOCK, RIGHTBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
+var selectornames = ['top', 'left', 'middle', 'right', 'bottom']
 
 var HIGHLIGHTEDBLOCK = null;
 var LINESETSIZE = 5;
 
 var currentLineSet = 0;
+
 $.fn.extend({
     animateCss: function (animationName, callback) {
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -59,17 +59,6 @@ $(window).ready(function () {
 
         setLines(currentLineSet)
     })
-    
-
-    // TODO: change data on scroll
-    $("body").bind('mousewheel', function(e){
-        if(e.originalEvent.wheelDelta /120 > 30) {
-            console.log('scrolling up !');
-        }
-        else{
-            console.log('scrolling down !');
-        }
-    });
 
     animateBlock("#0_0", 0,1);
     $(".mainGrid #0_0 .inner")
@@ -98,30 +87,11 @@ $(window).ready(function () {
     animateBlock("#3_6", 2,0, true); // right
     animateBlock("#7_0", 0,2, true); // bottom
 
-    $(TOPBLOCK)
-        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
-        .addClass("linesBlock aboutImg1 top")
-
-    // LEFT BLOCK
-    $(LEFTBLOCK)
-        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
-        .addClass("linesBlock aboutImg1 left")
-
-    // MIDDLE BLOCK
-    $(MIDDLEBLOCK)
-        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
-        .addClass("linesBlock aboutImg1 middle")
-
-    // RIGHT BLOCK
-    $(RIGHTBLOCK)
-        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
-        .addClass("linesBlock aboutImg1 right")
-
-    // BOTTOM BLOCK
-    $(BOTTOMBLOCK)
-        .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
-        .addClass("linesBlock aboutImg1 bottom")
-
+    selectorblocks.forEach(function(selector,i) {
+        $(selector)
+            .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
+            .addClass("linesBlock aboutImg1 " + selectornames[i])
+    })
 
     setLines(0)
 
@@ -163,11 +133,10 @@ function setLines(lineSet) {
     var lowerBound = lineSet * LINESETSIZE;
     var upperBound = (lineSet + 1) * LINESETSIZE;
 
-    var selectorblocks = [TOPBLOCK, LEFTBLOCK, MIDDLEBLOCK, RIGHTBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
-
     for (var i=lowerBound; i<upperBound; i++) {
         var line = LINESDATA[i];
         var selector = selectorblocks[i%LINESETSIZE];
+
         setLineBlock(selector, line);
     }
 }
@@ -193,16 +162,16 @@ function setLineBlock(selector, line) {
     $(descriptionSelector).text(line.description);
 }
 
-function setTopLinesBlock(blockData) {
-    $(TOPBLOCK + " .title").removeClass('animated')
-    $(TOPBLOCK + " .title").text(blockData.title)
-    $(TOPBLOCK + " .title").animateCss('fadeInDown', function() {
-        // $(this).text(blockData.title);
-        // $(this).toggleClass('animated fadeInDown')
-    })
+// function setTopLinesBlock(blockData) {
+//     $(TOPBLOCK + " .title").removeClass('animated')
+//     $(TOPBLOCK + " .title").text(blockData.title)
+//     $(TOPBLOCK + " .title").animateCss('fadeInDown', function() {
+//         // $(this).text(blockData.title);
+//         // $(this).toggleClass('animated fadeInDown')
+//     })
     
-    // $(TOPBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
-}
+//     // $(TOPBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
+// }
 
 // }
 

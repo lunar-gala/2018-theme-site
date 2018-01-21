@@ -25,7 +25,9 @@ $.fn.extend({
     }
 });
 
-$(window).ready(function () {
+$(window).ready(init_lines);
+
+function init_lines() {
     // TODO: make call this on every page, instead of hardcoding it for each endpoint
     animateBlock("#1_6",1,1);
     $("#1_6 .inner").text("NAV").addClass("navBlock");
@@ -127,7 +129,7 @@ $(window).ready(function () {
         $(HIGHLIGHTEDBLOCK).find(".lineBlockPic").toggleClass("lineBlockPicMuted lineBlockPic");
         HIGHLIGHTEDBLOCK = null;
     })
-});
+}
 
 function setLines(lineSet) {
     var lowerBound = lineSet * LINESETSIZE;
@@ -136,7 +138,6 @@ function setLines(lineSet) {
     for (var i=lowerBound; i<upperBound; i++) {
         var line = LINESDATA[i];
         var selector = selectorblocks[i%LINESETSIZE];
-
         setLineBlock(selector, line);
     }
 }

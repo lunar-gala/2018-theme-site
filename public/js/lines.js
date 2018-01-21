@@ -90,7 +90,7 @@ $(window).ready(function () {
     selectorblocks.forEach(function(selector,i) {
         $(selector)
             .html("<div class='content'><h1 class='title'></h1><p class='designers'></p><p class='description'></p></div>")
-            .addClass("linesBlock aboutImg1 " + selectornames[i])
+            .addClass("linesBlock lineBlockPicMuted aboutImg1 " + selectornames[i])
     })
 
     setLines(0)
@@ -115,7 +115,7 @@ $(window).ready(function () {
             $("#" + blockid + ".block").toggleClass('highlighted');
             HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
 
-            $(HIGHLIGHTEDBLOCK).find(".aboutImg1").toggleClass("aboutImg1 aboutImg2");
+            $(HIGHLIGHTEDBLOCK).find(".aboutImg1").toggleClass("lineBlockPicMuted lineBlockPic");
 
             return;
         }
@@ -124,7 +124,7 @@ $(window).ready(function () {
         $(".highlighted").removeClass("highlighted");
 
         // go back to dim background
-        $(HIGHLIGHTEDBLOCK).find(".aboutImg2").toggleClass("aboutImg1 aboutImg2");
+        $(HIGHLIGHTEDBLOCK).find(".lineBlockPic").toggleClass("lineBlockPicMuted lineBlockPic");
         HIGHLIGHTEDBLOCK = null;
     })
 });
@@ -161,19 +161,6 @@ function setLineBlock(selector, line) {
     $(designerSelector).text(line.designers);
     $(descriptionSelector).text(line.description);
 }
-
-// function setTopLinesBlock(blockData) {
-//     $(TOPBLOCK + " .title").removeClass('animated')
-//     $(TOPBLOCK + " .title").text(blockData.title)
-//     $(TOPBLOCK + " .title").animateCss('fadeInDown', function() {
-//         // $(this).text(blockData.title);
-//         // $(this).toggleClass('animated fadeInDown')
-//     })
-    
-//     // $(TOPBLOCK + " .title").fadeOut(FADEOUT_DURATION,function() { $(this).text(blockData.title).fadeIn(FADEIN_DURATION)});
-// }
-
-// }
 
 var LINESDATA = []
 

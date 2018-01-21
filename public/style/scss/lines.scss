@@ -14,7 +14,9 @@
     .content {
         overflow: hidden;
         position: absolute;
-        white-space: nowrap; // TODO: MIGHT NEED TO CHANGE THIS
+        h1, .designers {
+            white-space: nowrap; // TODO: MIGHT NEED TO CHANGE THIS
+        }
     }
 
     &.top {
@@ -24,7 +26,7 @@
 
             left: 100%;
             top: 35%;
-            margin-left: -25px; // TODO: CENTER ALIGN THE TEXT
+            transform: translateX(-44%);
         }
     }
 
@@ -45,18 +47,24 @@
         border: none;
 
         .content {
+            
+            left: 100%; // Should be 100% - (width of header text/2) px
+            top: 44%;
+            transform: translateX(-12%);
             width: 400px;
-            margin-top: 80%;
-            margin-left: 66%;
+            //TODO: CENTER ALIGN TEXT
         }
 
         h1 {
+
             text-align:left;
+
             line-height: 1.5;
         }
 
         p {
             &.designers {
+
                 text-align: left;
                 font-family: Theinard Regular;
                 font-size: 12pt;
@@ -76,9 +84,8 @@
 
         border: none;
         .content {
-            left: 100%;
+            left: 65%;
             top: 45%;
-            margin-left: -25px; // TODO: CENTER ALIGN TEXT
         }
     }
 

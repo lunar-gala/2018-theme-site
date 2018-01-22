@@ -174,7 +174,7 @@ var linedata = [
         description: "The year 2268 marks two hundred and fifty years after next year’s Lunar Gala. After centuries of disastrous climate change, where rapid urbanization and pollution have distorted the way we approach growth in an urban landscape, where do we stand? 2268 explores this inquisition from two perspectives. The first perspective captures extreme pollution and the second perspective captures sustainability to the extreme where urbanization has gotten out of control and the soil has become rotten, forcing us to carry the food we need to eat."
     },
     {
-        title: "amzu-amzu",
+        title: "amzu",
         designers: "Amber Lee, Kazumi Kanagawa",
         description: "Fashion often emphasizes aesthetic over utility. Inspired by Errolson Hugh’s “smart” and flexible ACRONYM 2014 S/S collection, this line explores the gap between clothing and technology through garments that utilize transformative elements to adapt to its wearers’ needs and environments."
     },

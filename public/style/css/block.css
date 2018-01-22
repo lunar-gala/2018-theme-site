@@ -899,17 +899,62 @@ body {
   transition: all 0.3s; }
   .block .inner {
     transition: opacity 1s 0.1s;
-    border: 1px solid white;
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    position: relative;
+    z-index: 100; }
   .block.collapsed {
     z-index: -1; }
+    .block.collapsed .borders {
+      opacity: 0; }
   .block.collapsed .inner {
     transition: opacity 0.1s;
     opacity: 0;
     z-index: -1; }
   .block.clicked {
     opacity: .8; }
+  .block .borders {
+    position: relative;
+    top: -100%;
+    width: 100%;
+    height: 100%; }
+    .block .borders .borders-inner {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative; }
+      .block .borders .borders-inner span {
+        z-index: 2000;
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        transition: transform ease-in; }
+        .block .borders .borders-inner span.border-top.left-out, .block .borders .borders-inner span.border-bottom.left-out {
+          transform: translateX(-101%); }
+        .block .borders .borders-inner span.border-top.right-out, .block .borders .borders-inner span.border-bottom.right-out {
+          transform: translateX(101%); }
+        .block .borders .borders-inner span.border-right.down-out, .block .borders .borders-inner span.border-left.down-out {
+          transform: translateY(101%); }
+        .block .borders .borders-inner span.border-right.up-out, .block .borders .borders-inner span.border-left.up-out {
+          transform: translateY(-101%); }
+        .block .borders .borders-inner span.border-top, .block .borders .borders-inner span.border-bottom {
+          left: 0;
+          width: 100%;
+          height: 1px;
+          transform: translateX(0); }
+        .block .borders .borders-inner span.border-left, .block .borders .borders-inner span.border-right {
+          top: 0;
+          width: 1px;
+          height: 100%;
+          transform: translateY(0); }
+        .block .borders .borders-inner span.border-top {
+          top: 0; }
+        .block .borders .borders-inner span.border-right {
+          right: 0; }
+        .block .borders .borders-inner span.border-bottom {
+          bottom: 0; }
+        .block .borders .borders-inner span.border-left {
+          left: 0; }
 
 .dummy-block {
   position: absolute;
@@ -928,7 +973,7 @@ body {
     text-align: center;
     margin: 0; }
     .mainGrid .inner .navBox {
-      margin-top: calc(calc(12.5vh - 16px) - 6px); }
+      padding-top: calc(calc(12.5vh - 16px) - 6px); }
       .mainGrid .inner .navBox .row {
         display: flex;
         align-items: center;
@@ -981,29 +1026,30 @@ body {
     .mainGrid.fullNav .block {
       z-index: -1; }
 
-.navGrid {
-  transition: all .2s 0s;
-  opacity: 0; }
-  .navGrid .block {
-    padding: 0px; }
-    .navGrid .block:hover {
-      cursor: pointer; }
-  .navGrid.fullNav {
-    opacity: 1;
-    transition: opacity 2s .5s; }
-    .navGrid.fullNav .block {
-      z-index: 2; }
-    .navGrid.fullNav .inner {
-      font-family: "Druk Wide",sans-serif;
-      font-weight: 400;
-      line-height: 50vh;
-      color: white;
-      font-size: 26pt;
-      text-align: center; }
-      .navGrid.fullNav .inner.active {
-        background-color: #FF2224; }
-      .navGrid.fullNav .inner:hover {
-        text-decoration: underline; }
+.navGrid .block {
+  padding: 0px; }
+  .navGrid .block .inner {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    transition-delay: 1s;
+    font-family: "Druk Wide",sans-serif;
+    font-weight: 400;
+    line-height: 50vh;
+    color: white;
+    font-size: 26pt;
+    text-align: center; }
+    .navGrid .block .inner.active {
+      background-color: #FF2224; }
+    .navGrid .block .inner:hover {
+      text-decoration: underline; }
+  .navGrid .block:hover {
+    cursor: pointer; }
+.navGrid.fullNav .block {
+  z-index: 2; }
+.navGrid.fullNav .inner {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  transition-delay: .5s; }
 
 .aboutImg1 {
   background-image: url("../../images/About-Asset-1.png");

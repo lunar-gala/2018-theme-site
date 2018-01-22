@@ -952,7 +952,7 @@ body {
     .mainGrid .inner.title {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
-      font-size: 32pt;
+      font-size: 3vw;
       color: #FF2224;
       line-height: calc(100vh / 8); }
     .mainGrid .inner.text {

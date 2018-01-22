@@ -36,8 +36,8 @@
 	color: white;
 	position: absolute;
 	z-index: 99999999;
-	width: 380px;
-	height: 380px;
+	width: 350px;
+	height: 350px;
 	background-color: red;
 	top: 0;
 	bottom: 10%;
@@ -46,32 +46,32 @@
 	margin: auto;
 
 	.rotated-text {
-		transform: translateX(-65%) translateY(-212%) rotate(-90deg);
+		transform: translateX(-61%) translateY(-212%) rotate(-90deg);
 	    color: #FF2224;
 	    font-size: 25px;
 	    position: absolute;
-	    top: 354px;
-	    width: 300px;
+	    top: 279px;
+	    width: 350px;
 
 	    p {
 	    	letter-spacing: 1px;
 	    }
+
+	    .name {
+			font-family: "Druk Wide",sans-serif;
+			margin: 0;
+		}
+
+		.major {
+			margin-top: 5px;
+			font-size: 14px;
+		}
+
+		.title {
+			margin-top: 5px;
+			font-size: 14px;
+		}
 	}
-}
-
-.first-name {
-	font-family: "Druk Wide",sans-serif;
-	margin: 0;
-}
-
-.last-name {
-	font-family: "Druk Wide",sans-serif;
-	margin: 0;
-}
-
-.title {
-	margin-top: 10px;
-	font-size: 16px;
 }
 
 .headshot {

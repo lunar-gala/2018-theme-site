@@ -894,9 +894,7 @@ hr {
   cursor: pointer; }
 
 .linesBlock {
-  cursor: pointer;
-  -webkit-transition: background-image 0.2s ease-in-out;
-  transition: background-image 0.2s ease-in-out; }
+  cursor: pointer; }
   .linesBlock .content {
     position: absolute;
     -webkit-touch-callout: none;
@@ -930,45 +928,37 @@ hr {
       .linesBlock .content p.description {
         font-size: 10pt;
         line-height: 1.5; }
-  .linesBlock.left {
+  .linesBlock.left, .linesBlock.top, .linesBlock.middle, .linesBlock.right, .linesBlock.bottom {
     border: none; }
-    .linesBlock.left .content {
-      left: 100%;
-      top: 44%;
-      transform: translateX(-10%);
-      width: 300%; }
-  .linesBlock.top {
-    border: none; }
-    .linesBlock.top .content {
-      left: 100%;
-      top: 35%;
-      transform: translateX(-10%);
-      width: 100%; }
-  .linesBlock.middle {
-    border: none; }
-    .linesBlock.middle .content {
-      left: 0%;
-      top: 36%;
-      transform: translateX(-25%);
-      width: 100%; }
-  .linesBlock.right {
-    border: none; }
-    .linesBlock.right .content {
-      left: 55%;
-      top: 45%;
-      width: 100%; }
-      .linesBlock.right .content p {
-        height: 0px;
-        width: 0px; }
-  .linesBlock.bottom {
-    border: none; }
-    .linesBlock.bottom .content {
-      top: 35%;
-      transform: translateX(80%);
-      width: 100%; }
-      .linesBlock.bottom .content p {
-        height: 0px;
-        width: 0px; }
+  .linesBlock.left .content {
+    left: 100%;
+    top: 44%;
+    transform: translateX(-10%);
+    width: 300%; }
+  .linesBlock.top .content {
+    left: 100%;
+    top: 35%;
+    transform: translateX(-10%);
+    width: 100%; }
+  .linesBlock.middle .content {
+    left: 0%;
+    top: 36%;
+    transform: translateX(-25%);
+    width: 100%; }
+  .linesBlock.right .content {
+    left: 55%;
+    top: 45%;
+    width: 100%; }
+    .linesBlock.right .content p {
+      height: 0px;
+      width: 0px; }
+  .linesBlock.bottom .content {
+    top: 35%;
+    transform: translateX(80%);
+    width: 100%; }
+    .linesBlock.bottom .content p {
+      height: 0px;
+      width: 0px; }
   .highlighted .linesBlock.bottom .content {
     top: -100%; }
     .highlighted .linesBlock.bottom .content p {

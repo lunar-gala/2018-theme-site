@@ -3,12 +3,8 @@
 }
 .linesBlock {
     cursor: pointer;
-    // might not need these
-    -webkit-transition: background-image 0.2s ease-in-out;
-    transition: background-image 0.2s ease-in-out;
 
     .content {
-        
         position: absolute;
         -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Safari */
@@ -16,7 +12,7 @@
         -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
         user-select: none;
-        text-align: left; // block styling centers text
+        text-align: left; // initial block styling centers text
 
         .title, .designers {
             white-space: nowrap; // TODO: MIGHT NEED TO CHANGE THIS
@@ -48,8 +44,11 @@
         }
     }
 
+    &.left, &.top, &.middle, &.right, &.bottom {
+        border:none;
+    }
+
     &.left {
-        border: none;
         .content {
             left: 100%; // Should be 100% - (width of header text/2) px
             top: 44%;
@@ -59,7 +58,6 @@
     }
 
     &.top {
-        border: none;
         .content {      
             left: 100%;
             top: 35%;
@@ -69,7 +67,6 @@
     }
 
     &.middle {
-        border: none;
         .content {
             left: 0%;
             top: 36%;
@@ -79,11 +76,11 @@
     }
 
     &.right {
-        border: none;
         .content {
             left: 55%;
             top: 45%;
             width: 100%;
+
             p {
                 height: 0px;
                 width: 0px;
@@ -92,7 +89,6 @@
     }
 
     &.bottom {
-        border: none;
         .content {
             top: 35%;
             transform: translateX(80%);
@@ -106,24 +102,22 @@
     }
 
     .highlighted & {
-        &.bottom {
-            .content {
-                top:-100%;
-                p {
-                    height: 100%;
-                    width: 100%;
-                }
+        &.bottom .content{
+            top:-100%;
+
+            p {
+                height: 100%;
+                width: 100%;
             }
         }
-        &.right {
-            .content {
-                left:-100%;
-                width: 300%;
 
-                p {
-                    width: 100%;
-                    height: 100%;
-                }
+        &.right .content{
+            left:-100%;
+            width: 300%;
+
+            p {
+                width: 100%;
+                height: 100%;
             }
         }
         p {

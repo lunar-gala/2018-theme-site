@@ -8,7 +8,7 @@
     transition: background-image 0.2s ease-in-out;
 
     .content {
-        overflow: hidden;
+        
         position: absolute;
         -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Safari */
@@ -30,10 +30,10 @@
         }
         
         p {
-          display: none;
+          overflow: hidden;
           visibility: hidden;
           opacity: 0;
-          transition: visibility 0.2s, opacity 1s linear;
+          transition: visibility 0.2s, opacity .2s linear;
           font-family: Theinard Regular;
           
           &.designers {
@@ -65,7 +65,6 @@
             top: 35%;
             transform: translateX(-10%); // need to translate based on title size...
             width: 100%;
-
         }
     }
 
@@ -84,6 +83,11 @@
         .content {
             left: 55%;
             top: 45%;
+            width: 100%;
+            p {
+                height: 0px;
+                width: 0px;
+            }
         }
     }
 
@@ -93,6 +97,11 @@
             top: 35%;
             transform: translateX(80%);
             width: 100%;
+
+            p {
+                height: 0px;
+                width: 0px;
+            }
         }
     }
 
@@ -100,19 +109,26 @@
         &.bottom {
             .content {
                 top:-100%;
+                p {
+                    height: 100%;
+                    width: 100%;
+                }
             }
         }
         &.right {
             .content {
                 left:-100%;
                 width: 300%;
+
+                p {
+                    width: 100%;
+                    height: 100%;
+                }
             }
         }
         p {
-            
             visibility: visible;
             opacity: 1;
-            display: block;
         }
     }
 }

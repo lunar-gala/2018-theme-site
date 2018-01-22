@@ -82,10 +82,12 @@
     visibility: visible;
     opacity: 1; }
 
+.block.highlighted .filler-inner {
+  border: none; }
 .block .filler-filler-block {
   opacity: 0.2; }
 .block .top + .filler-filler-block {
-  padding: 0.5%; }
+  padding: 0.6%; }
 .block .middle + .filler-filler-block, .block .bottom + .filler-filler-block {
   padding: 0.75%; }
 .block .left + .filler-filler-block, .block .right + .filler-filler-block {

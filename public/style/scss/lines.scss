@@ -1,6 +1,7 @@
 .filler-block, .filler-filler-block {
     cursor: pointer;
 }
+
 .linesBlock {
     cursor: pointer;
 
@@ -128,11 +129,17 @@
 }
 
 .block {
+    &.highlighted {
+        .filler-inner {
+            border: none;
+        }
+    }
+
     .filler-filler-block {
         opacity: 0.2;
     }
     .top + .filler-filler-block {
-        padding: 0.5%;
+        padding: 0.6%;
     }
 
     .middle + .filler-filler-block, .bottom + .filler-filler-block {

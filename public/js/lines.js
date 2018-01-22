@@ -154,12 +154,9 @@ function setLineBlock(selector, line) {
         return;
     }
 
-
-
     $(titleSelector).fadeOut(FADEOUT_DURATION,function() { $(this).text(line.title).fadeIn(FADEIN_DURATION)});
     $(designerSelector).text(line.designers);
     $(descriptionSelector).text(line.description);
-    console.log($(titleSelector)[0].style.width)
 }
 
 var LINESDATA = []

@@ -73,7 +73,7 @@
     &.top {
         .content {      
             left: 100%;
-            top: 35%;
+            top: 32%;
             transform: translateX(-10%); // need to translate based on title size...
             width: 100%;
         }
@@ -82,7 +82,7 @@
     &.middle {
         .content {
             left: 0%;
-            top: 36%;
+            top: 32%;
             transform: translateX(-25%);
             width: 100%;
         }
@@ -91,7 +91,7 @@
     &.right {
         .content {
             left: 100%;
-            top: 45%;
+            top: 44%;
             width: 100%;
 
             p {
@@ -103,7 +103,7 @@
 
     &.bottom {
         .content {
-            top: 35%;
+            top: 32%;
             left: 100%;
             width: 100%;
 
@@ -116,22 +116,20 @@
 
     .highlighted & {
         &.bottom .content{
-            top:-100%;
-
             p {
                 height: 100%;
                 width: 100%;
             }
+            top:-100%;
         }
 
         &.right .content{
-            left:-100%;
-            width: 300%;
-
             p {
                 width: 100%;
                 height: 100%;
             }
+            left:-100%;
+            width: 300%;
         }
         p {
             visibility: visible;

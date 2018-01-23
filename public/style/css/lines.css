@@ -49,23 +49,23 @@
     width: 350%; }
   .linesBlock.top .content {
     left: 100%;
-    top: 35%;
+    top: 32%;
     transform: translateX(-10%);
     width: 100%; }
   .linesBlock.middle .content {
     left: 0%;
-    top: 36%;
+    top: 32%;
     transform: translateX(-25%);
     width: 100%; }
   .linesBlock.right .content {
     left: 100%;
-    top: 45%;
+    top: 44%;
     width: 100%; }
     .linesBlock.right .content p {
       height: 0px;
       width: 0px; }
   .linesBlock.bottom .content {
-    top: 35%;
+    top: 32%;
     left: 100%;
     width: 100%; }
     .linesBlock.bottom .content p {

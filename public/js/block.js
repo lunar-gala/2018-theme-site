@@ -1,9 +1,10 @@
-var grid;
+var grid = [];
+var navGrid = [];
 var grid_cols = 8;
 var grid_rows = 8;
 
-function initGrid (rows, cols) {
-  var grid = [];
+function initGrid (rows, cols, grid, preString) {
+  // var grid = [];
   var block_width = window.innerWidth / cols;
   var block_height = window.innerHeight / rows;
 
@@ -14,7 +15,7 @@ function initGrid (rows, cols) {
       var x = j * block_width;
 
       var block = new Block(i, j, x, y,
-                            block_width, block_height);
+                            block_width, block_height,preString);
       currentRow.push(block);
     }
     grid.push(currentRow);
@@ -22,22 +23,91 @@ function initGrid (rows, cols) {
   return grid;
 }
 
-function Block(row, col, x, y, width, height){
+function Block(row, col, x, y, width, height, preString){
   this.row = row;
   this.col = col;
-
   //initial values
   this.x = x;
   this.y = y;
-  this.id = row+"_"+col;
+  this.id = preString+row+"_"+col;
   this.state = "normal";
   this.width = width;
   this.height = height;
   this.bounds = {right:0, bottom:0}
-  this.DOM = `<div class="block" id="`+this.id+`"><div class="inner"></div></div>`;
+  this.DOM = `<div class="block" id="`+this.id+`">
+                  <div class="inner"></div>
+                  <div class ="borders">
+                    <div class ="borders-inner">
+                      <span class="border-top"></span>
+                      <span class="border-right"></span>
+                      <span class="border-bottom"></span>
+                      <span class="border-left"></span>
+                    </div>
+                  </div>
+              </div>`;
   this.collapsed = false;
   this.showgridlines = false;
   this.belongsto = null;
+
+  this.animateOut = function(){
+    directions = [];
+    // 1- Top border
+    // 2- Right border
+    // 3- Bottom border
+    // 4- Left border
+    if(Math.random() > .5){
+      directions.push("left-out");
+    }
+    else{
+      directions.push("right-out");
+    }
+    if(Math.random() > .5){
+      directions.push("up-out");
+    }
+    else{
+      directions.push("down-out");
+    }
+    if(Math.random() > .5){
+      directions.push("left-out");
+    }
+    else{
+      directions.push("right-out");
+    }
+    if(Math.random() > .5){
+      directions.push("up-out");
+    }
+    else{
+      directions.push("down-out");
+    }
+    directions.forEach(function(val,index){
+      //Creating the random second measured delay.
+      randomDuration = parseFloat(.25+(Math.random()*.5))+"s";
+      randomDelay = parseFloat(Math.random()*.5)+"s";
+      directions[index] = [val,randomDelay,randomDuration];
+    })
+    $("#"+this.id+" .borders .border-top")
+    .css('transition-delay',directions[0][1])
+    .css('transition-duration',directions[0][2])
+    .addClass(directions[0][0]);
+    $("#"+this.id+" .borders .border-right")
+    .css('transition-delay',directions[1][1])
+    .css('transition-duration',directions[1][2])
+    .addClass(directions[1][0]);
+    $("#"+this.id+" .borders .border-bottom")
+    .css('transition-delay',directions[2][1])
+    .css('transition-duration',directions[2][2])
+    .addClass(directions[2][0]);
+    $("#"+this.id+" .borders .border-left")
+    .css('transition-delay',directions[3][1])
+    .css('transition-duration',directions[3][2])
+    .addClass(directions[3][0]);
+
+  }
+
+  this.animateIn = function(){
+    console.log('animating the navbar in');
+    $("#"+this.id+" .borders span").removeClass("left-out right-out up-out down-out");
+  }
 
   this.create = function(target){
     $(target).append(this.DOM);
@@ -48,7 +118,6 @@ function Block(row, col, x, y, width, height){
 
     this.showgridlines ? blockElem.addClass("filler-block") : blockElem.removeClass("filler-block");
     
-    // TODO: check this again to ensure initial behavior
     if (this.collapsed && Object.values(this.bounds).includes(-1)) {
         var y = this.row * h;
         var x = this.col * w;
@@ -189,12 +258,21 @@ function resetBlock(block) {
 function resetAllBlocks() {
   for (var row=0; row < grid_rows; row++) {
     for (var col=0; col < grid_cols; col++) {
-
       var b = grid[row][col];
-
       if (b.bounds.right > 0 || b.bounds.bottom > 0) {
         resetBlock(b);
       }
+    }
+  }
+}
+
+function destroyAllBlocks(){
+  for (var row=0; row < grid_rows; row++) {
+    for (var col=0; col < grid_cols; col++) {
+      var b = grid[row][col];
+      $("#"+b.id).remove();
+      // Call this once implemented
+      // b.animateOut()
     }
   }
 }
@@ -219,9 +297,10 @@ function collapse(direction, block) {
 
     block.update(regular_w, regular_h)
 }
+
 $(window).ready(function(){
   //initiating the grid
-  grid = initGrid(grid_rows, grid_cols);
+  grid = initGrid(grid_rows, grid_cols,grid,"");
   grid.map(function(inner){
     inner.map(function(cur){
       cur.create(".mainGrid");

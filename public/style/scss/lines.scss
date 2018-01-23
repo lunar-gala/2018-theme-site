@@ -1,5 +1,16 @@
 .filler-block, .filler-filler-block {
     cursor: pointer;
+    .inner {
+        border:1px solid white;
+    }    
+}
+
+.linesBlock ~ .borders {
+    .borders-inner {
+        span {
+            opacity: 0;
+        }
+    }
 }
 
 .linesBlock {
@@ -138,15 +149,16 @@
     .filler-filler-block {
         opacity: 0.2;
     }
-    .top + .filler-filler-block {
+
+    .top ~ .filler-filler-block {
         padding: 0.6%;
     }
 
-    .middle + .filler-filler-block, .bottom + .filler-filler-block {
+    .middle ~ .filler-filler-block, .bottom ~ .filler-filler-block {
         padding: 0.75%;
     }
 
-    .left + .filler-filler-block, .right + .filler-filler-block {
+    .left ~ .filler-filler-block, .right ~ .filler-filler-block {
         padding: 2.25%;
     }
 }

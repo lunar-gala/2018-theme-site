@@ -892,6 +892,11 @@ hr {
   font-style: normal; }
 .filler-block, .filler-filler-block {
   cursor: pointer; }
+  .filler-block .inner, .filler-filler-block .inner {
+    border: 1px solid white; }
+
+.linesBlock ~ .borders .borders-inner span {
+  opacity: 0; }
 
 .linesBlock {
   cursor: pointer; }
@@ -977,11 +982,11 @@ hr {
   border: none; }
 .block .filler-filler-block {
   opacity: 0.2; }
-.block .top + .filler-filler-block {
+.block .top ~ .filler-filler-block {
   padding: 0.6%; }
-.block .middle + .filler-filler-block, .block .bottom + .filler-filler-block {
+.block .middle ~ .filler-filler-block, .block .bottom ~ .filler-filler-block {
   padding: 0.75%; }
-.block .left + .filler-filler-block, .block .right + .filler-filler-block {
+.block .left ~ .filler-filler-block, .block .right ~ .filler-filler-block {
   padding: 2.25%; }
 
 .lineBlockPicMuted {

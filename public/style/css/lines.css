@@ -41,8 +41,7 @@
   .linesBlock.left .content {
     left: 100%;
     top: 44%;
-    transform: translateX(-10%);
-    width: 300%; }
+    width: 350%; }
   .linesBlock.top .content {
     left: 100%;
     top: 35%;
@@ -54,7 +53,7 @@
     transform: translateX(-25%);
     width: 100%; }
   .linesBlock.right .content {
-    left: 55%;
+    left: 100%;
     top: 45%;
     width: 100%; }
     .linesBlock.right .content p {
@@ -62,7 +61,7 @@
       width: 0px; }
   .linesBlock.bottom .content {
     top: 35%;
-    transform: translateX(80%);
+    left: 100%;
     width: 100%; }
     .linesBlock.bottom .content p {
       height: 0px;

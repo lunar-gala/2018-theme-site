@@ -53,8 +53,8 @@
         .content {
             left: 100%; // Should be 100% - (width of header text/2) px
             top: 44%;
-            transform: translateX(-10%); // TODO: GET ALL ALIASES
-            width: 300%;
+            //transform: translateX(-10%); // TODO: GET ALL ALIASES
+            width: 350%;
         }
     }
 
@@ -78,7 +78,7 @@
 
     &.right {
         .content {
-            left: 55%;
+            left: 100%;
             top: 45%;
             width: 100%;
 
@@ -92,7 +92,7 @@
     &.bottom {
         .content {
             top: 35%;
-            transform: translateX(80%);
+            left: 100%;
             width: 100%;
 
             p {

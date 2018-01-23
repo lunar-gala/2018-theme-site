@@ -91,7 +91,7 @@ function init_lines() {
 
     selectorblocks.forEach(function(selector,i) {
         $(selector)
-            .html("<div class='content'><span class='title'></span><p class='designers'></p><p class='description'></p></div>")
+            .html("<div class='content'><span id='" + selectornames[i] + "-title' " + "class='title'></span><p class='designers'></p><p class='description'></p></div>")
             .addClass("linesBlock lineBlockPicMuted aboutImg1 " + selectornames[i])
     })
 
@@ -136,6 +136,17 @@ function setLines(lineSet) {
         var selector = selectorblocks[i%LINESETSIZE];
         setLineBlock(selector, line);
     }
+
+    setTimeout(function(){
+        selectornames.forEach(function(position) {
+            var elemwidth = document.getElementById(position + "-title").getBoundingClientRect().width/2;
+            var translatestring = "translateX(-"+elemwidth+"px)"
+            $("."+position + " .content").css({
+                transform: translatestring
+            })
+        })
+    },330);
+    
 }
 
 // TODO: play around with these numbers

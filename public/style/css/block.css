@@ -1111,7 +1111,10 @@ body {
     color: white;
     text-align: center; }
     .mainGrid .inner .navBox {
-      padding-top: calc(calc(12.5vh - 16px) - 6px); }
+      padding-top: calc(calc(12.5vh - 16px) - 6px);
+      padding-bottom: calc(calc(12.5vh - 16px) - 6px); }
+      .mainGrid .inner .navBox:hover {
+        cursor: pointer; }
       .mainGrid .inner .navBox .row {
         display: flex;
         align-items: center;

@@ -8,12 +8,14 @@ if (!String.prototype.includes) {
 $(window).ready(function(){
   currentPath = window.location.pathname;
   load_page(currentPath);
-  console.log(currentPath)
   $(".router-link").click(function(){
     url = $(this).attr("url");
     load_page(url);
-
   })
+  $(window).bind("popstate", function() {
+    currentPath = window.location.pathname;
+    load_page(currentPath);
+  });
 })
 
 

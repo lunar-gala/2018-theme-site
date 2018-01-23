@@ -79,7 +79,7 @@ function Block(row, col, x, y, width, height, preString){
     }
     directions.forEach(function(val,index){
       //Creating the random second measured delay.
-      randomDuration = parseFloat(.25+(Math.random()*.5))+"s";
+      randomDuration = parseFloat(.1+(Math.random()*.5))+"s";
       randomDelay = parseFloat(Math.random()*.5)+"s";
       directions[index] = [val,randomDelay,randomDuration];
     })
@@ -103,7 +103,6 @@ function Block(row, col, x, y, width, height, preString){
   }
 
   this.animateIn = function(){
-    console.log('animating the navbar in');
     $("#"+this.id+" .borders span").removeClass("left-out right-out up-out down-out");
   }
 
@@ -152,7 +151,6 @@ function Block(row, col, x, y, width, height, preString){
 }
 
 function animateBlock(block, rowsDown, colsRight, gridlines = false) {
-  console.log(gridlines)
     var regular_w = (window.innerWidth/grid_cols);
     var regular_h = (window.innerHeight/grid_rows);
 
@@ -248,13 +246,15 @@ function resetAllBlocks() {
   }
 }
 
-function destroyAllBlocks(){
-  for (var row=0; row < grid_rows; row++) {
-    for (var col=0; col < grid_cols; col++) {
-      var b = grid[row][col];
-      $("#"+b.id).remove();
-      // Call this once implemented
-      // b.animateOut()
+function destroyAllBlocks(grid){
+  if(grid.length > 0){
+    for (var row = 0; row < grid_rows; row++) {
+      for (var col = 0; col < grid_cols; col++) {
+        var b = grid[row][col];
+        $("#"+b.id).remove();
+        // Call this once implemented
+        // b.animateOut()
+      }
     }
   }
 }
@@ -282,13 +282,6 @@ function collapse(direction, block) {
 
 $(window).ready(function(){
   //initiating the grid
-  grid = initGrid(grid_rows, grid_cols,grid,"");
-  grid.map(function(inner){
-    inner.map(function(cur){
-      cur.create(".mainGrid");
-      cur.update(cur.width, cur.height);
-    })
-  })
 
   $(window).keydown(function(e) {
     if (e.key == "r") {

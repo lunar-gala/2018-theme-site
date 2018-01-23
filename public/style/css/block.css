@@ -877,17 +877,17 @@ hr {
   font-style: normal; }
 @font-face {
   font-family: 'Theinhardt';
-  src: url("../fonts/TheindartUltraLight.otf") format("opentype");
+  src: url("../fonts/TheinhardtUltraLight.otf") format("opentype");
   font-weight: 200;
   font-style: normal; }
 @font-face {
   font-family: 'Theinhardt';
-  src: url("../fonts/TheindartUltraLightIt.otf") format("opentype");
+  src: url("../fonts/TheinhardtUltraLightIt.otf") format("opentype");
   font-weight: 200;
   font-style: italic; }
 @font-face {
   font-family: 'Theinhardt';
-  src: url("../fonts/TheindartRegular.otf") format("opentype");
+  src: url("../fonts/TheinhardtRegular.otf") format("opentype");
   font-weight: 300;
   font-style: normal; }
 body {
@@ -967,7 +967,8 @@ body {
     height: 100%; }
 
 .mainGrid {
-  transition: opacity 1s; }
+  transition: opacity 1s;
+  transition-delay: 0s; }
   .mainGrid .inner {
     color: white;
     text-align: center; }
@@ -1020,8 +1021,9 @@ body {
       font-size: 18pt;
       line-height: calc(100vh / 8); }
   .mainGrid.fullNav {
-    opacity: 0;
-    transition: all 2s; }
+    opacity: 0 !important;
+    transition-delay: 0s;
+    transition: all 1s; }
     .mainGrid.fullNav .block {
       z-index: -1; }
 
@@ -1030,7 +1032,7 @@ body {
   .navGrid .block .inner {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    transition-delay: 1s;
+    transition-delay: .3s;
     font-family: "Druk Wide",sans-serif;
     font-weight: 400;
     line-height: 50vh;
@@ -1048,7 +1050,7 @@ body {
 .navGrid.fullNav .inner {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
-  transition-delay: .5s; }
+  transition-delay: .3s; }
 
 .aboutImg1 {
   background-image: url("../../images/About-Asset-1.png");

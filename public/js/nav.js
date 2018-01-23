@@ -2,7 +2,8 @@ function summonFullNav(){
   //getting the grid structure for the fullscreen nav
   grid.map((row)=>{row.map((block)=>{block.animateOut()})})
 
-  $(".navGrid").children().remove();
+  $(".navGrid").empty();
+
   navGrid = [];
   navGrid = initGrid(2,3,navGrid,"nav");
   //hide the main grid for the time being
@@ -17,6 +18,16 @@ function summonFullNav(){
     });
     //Manually insert the data into the grid
     $(".navGrid #nav0_0 .inner").text("About");
+    $(".navGrid #nav0_0 .inner").click(function (e) {
+      navGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
+      $(".navGrid").toggleClass("fullNav");
+      window.setTimeout(function(){
+        $(".mainGrid").toggleClass("fullNav");
+        grid.map((row)=>{row.map((block)=>{
+          block.animateIn()})})
+        load_page("/about");
+      },1250);
+    });
 
     currentPath = window.location.pathname;
     options = {"/about":[0,0], "/lines":[0,1], "/humans":[1,0] , "/sponsors":[1,1]}
@@ -27,10 +38,14 @@ function summonFullNav(){
     $(".navGrid #nav0_1 .inner").text("Lines");
     $(".navGrid #nav0_1 .border-left").remove();
     $(".navGrid #nav0_1 .inner").click(function () {
-        $(".mainGrid").toggleClass("fullNav");
+        navGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
         $(".navGrid").toggleClass("fullNav");
-        deleteMiniNav();
-        load_page("/lines");
+        window.setTimeout(function(){
+          $(".mainGrid").toggleClass("fullNav");
+          grid.map((row)=>{row.map((block)=>{
+            block.animateIn()})})
+          load_page("/lines");
+        },1250);
     });
 
     // Close nav
@@ -42,7 +57,6 @@ function summonFullNav(){
       window.setTimeout(function(){
         $(".mainGrid").toggleClass("fullNav");
         grid.map((row)=>{row.map((block)=>{
-          console.log(block.id);
           block.animateIn()})})
       },1250);
     });

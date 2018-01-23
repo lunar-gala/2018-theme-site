@@ -25,8 +25,6 @@ $.fn.extend({
     }
 });
 
-$(window).ready(init_lines);
-
 function init_lines() {
     // TODO: make call this on every page, instead of hardcoding it for each endpoint
     animateBlock("#1_6",1,1);

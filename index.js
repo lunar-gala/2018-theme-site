@@ -11,13 +11,16 @@ app.get('/', function (req, res) {
 app.get('/about', function (req, res) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 })
+app.get('/lines', function (req, res) {
+  res.sendFile(path.join(__dirname, '/public/index.html'));
+})
 app.get('/testAnimation',function(req,res){
   res.sendFile(path.join(__dirname, '/public/animationTest.html'));
 });
 
-app.get(/^\/(lines|people)$/, function (req, res) {
-    res.sendFile(__dirname + '/public/' + req.path + '.html');
-});
+// app.get(/^\/(lines|people)$/, function (req, res) {
+//     res.sendFile(__dirname + '/public/' + req.path + '.html');
+// });
 
 //testing the ajax requests
 app.get("/test/about", function (req, res) {
@@ -43,6 +46,7 @@ app.get("/data/people", function (req, res) {
     res.send(JSON.stringify({ content: "this is the content for people" }));
 });
 
+app.get(/^\/data\/lines\/(^([0-9]|1[0-9])$)/)
 app.get('*', function (req, res) {
   console.log(req)
   res.status(404).send("Status code 404 - The URL you are looking for does not exist");

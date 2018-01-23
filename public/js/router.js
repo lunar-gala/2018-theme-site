@@ -8,9 +8,11 @@ if (!String.prototype.includes) {
 $(window).ready(function(){
   currentPath = window.location.pathname;
   load_page(currentPath);
+  console.log(currentPath)
   $(".router-link").click(function(){
     url = $(this).attr("url");
     load_page(url);
+
   })
 })
 
@@ -52,8 +54,7 @@ function call_function(url){
     init_about();
   }
   else if(url == "/lines"){
-    init_about();
-    // init_lines();
+    init_lines();
   }
   else if(url == "/humans"){
     init_humans();

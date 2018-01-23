@@ -890,8 +890,139 @@ hr {
   src: url("../fonts/TheinhardtRegular.otf") format("opentype");
   font-weight: 300;
   font-style: normal; }
+.filler-block, .animated-filler-block {
+  cursor: pointer; }
+  .filler-block .inner, .animated-filler-block .inner {
+    border: 1px solid white; }
+
+.linesBlock ~ .borders .borders-inner span {
+  opacity: 0; }
+
+.linesBlock {
+  cursor: pointer; }
+  .linesBlock .content {
+    position: absolute;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    text-align: left; }
+    .linesBlock .content .title, .linesBlock .content .designers {
+      white-space: nowrap; }
+    .linesBlock .content .title {
+      font-family: "Druk Wide",sans-serif;
+      font-weight: 400;
+      font-size: 18pt;
+      line-height: 1.5; }
+    .linesBlock .content p {
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.2s, opacity .2s linear;
+      font-family: Theinard Regular; }
+      .linesBlock .content p.designers {
+        font-size: 12pt;
+        line-height: 1.5; }
+      .linesBlock .content p.description {
+        font-size: 10pt;
+        line-height: 1.5; }
+  .linesBlock.left, .linesBlock.top, .linesBlock.middle, .linesBlock.right, .linesBlock.bottom {
+    border: none; }
+  .linesBlock.left .content {
+    left: 100%;
+    top: 44%;
+    width: 350%; }
+  .linesBlock.top .content {
+    left: 100%;
+    top: 32%;
+    transform: translateX(-10%);
+    width: 100%; }
+  .linesBlock.middle .content {
+    left: 0%;
+    top: 32%;
+    transform: translateX(-25%);
+    width: 100%; }
+  .linesBlock.right .content {
+    left: 100%;
+    top: 44%;
+    width: 100%; }
+    .linesBlock.right .content p {
+      height: 0px;
+      width: 0px; }
+  .linesBlock.bottom .content {
+    top: 32%;
+    left: 100%;
+    width: 100%; }
+    .linesBlock.bottom .content p {
+      height: 0px;
+      width: 0px; }
+  .highlighted .linesBlock.bottom .content {
+    top: -100%; }
+    .highlighted .linesBlock.bottom .content p {
+      height: 100%;
+      width: 100%; }
+  .highlighted .linesBlock.right .content {
+    left: -100%;
+    width: 300%; }
+    .highlighted .linesBlock.right .content p {
+      width: 100%;
+      height: 100%; }
+  .highlighted .linesBlock p {
+    visibility: visible;
+    opacity: 1; }
+
+.block.highlighted .filler-inner {
+  border: none; }
+.block .animated-filler-block {
+  opacity: 0.2; }
+.block .top ~ .animated-filler-block {
+  padding: 0.6%; }
+.block .middle ~ .animated-filler-block, .block .bottom ~ .animated-filler-block {
+  padding: 0.75%; }
+.block .left ~ .animated-filler-block, .block .right ~ .animated-filler-block {
+  padding: 2.25%; }
+
+.lineBlockPicMuted {
+  position: relative; }
+
+.lineBlockPicMuted::after {
+  content: " ";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -99999999;
+  background-size: cover;
+  opacity: 0.6; }
+
+.lineBlockPic {
+  position: relative; }
+
+.lineBlockPic::after {
+  content: " ";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -99999999;
+  background-size: cover;
+  opacity: 1; }
+
+.aboutImg1:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
 body {
-  background-color: black; }
+  background-color: black;
+  overflow-x: hidden; }
 
 .block {
   position: absolute;
@@ -903,16 +1034,24 @@ body {
     height: 100%;
     position: relative;
     z-index: 100; }
+  .block.collapsed:not(.filler-block) {
+    z-index: -999999999999999999; }
   .block.collapsed {
     z-index: -1; }
     .block.collapsed .borders {
       opacity: 0; }
   .block.collapsed .inner {
     transition: opacity 0.1s;
-    opacity: 0;
-    z-index: -1; }
-  .block.clicked {
-    opacity: .8; }
+    opacity: 0; }
+  .block.muted {
+    opacity: 0.2;
+    transition: opacity .5s .1s; }
+  .block.muted, .block.collapsed.filler-block .inner {
+    opacity: 0.2; }
+  .block.highlighted {
+    opacity: 1;
+    border: none;
+    z-index: 9999; }
   .block .borders {
     position: relative;
     top: -100%;
@@ -956,12 +1095,11 @@ body {
         .block .borders .borders-inner span.border-left {
           left: 0; }
 
-.dummy-block {
-  position: absolute;
-  padding: 6px;
-  transition: all 0.3s; }
-  .dummy-block .inner {
-    transition: opacity 1s 0.1s;
+.animated-filler-block {
+  position: absolute; }
+  .highlighted .animated-filler-block {
+    z-index: -999999999; }
+  .animated-filler-block .filler-inner {
     border: 1px solid white;
     width: 100%;
     height: 100%; }
@@ -1013,12 +1151,6 @@ body {
       font-weight: 400;
       color: white;
       font-size: 22pt;
-      line-height: calc(100vh / 8); }
-    .mainGrid .inner.contentLink {
-      font-family: "Druk Wide",sans-serif;
-      font-weight: 400;
-      color: white;
-      font-size: 18pt;
       line-height: calc(100vh / 8); }
   .mainGrid.fullNav {
     opacity: 0 !important;

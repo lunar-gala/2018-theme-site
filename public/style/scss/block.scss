@@ -1,9 +1,11 @@
 @import "prereqs";
 @import "fonts";
+@import "lines";
 $color-red : #FF2224;
 
 body{
   background-color:black;
+  overflow-x: hidden;
 }
 
 .block{
@@ -12,11 +14,15 @@ body{
   transition:all 0.3s;
   .inner{
     transition:opacity 1s 0.1s;
-    // border:1px solid white;
+    
     width:100%;
     height:100%;
     position:relative;
     z-index:100;
+  }
+
+	&.collapsed:not(.filler-block){
+		z-index:-999999999999999999;
   }
 	&.collapsed{
 		z-index:-1;
@@ -27,11 +33,21 @@ body{
   &.collapsed .inner{
 		transition:opacity 0.1s;
     opacity: 0;
-		z-index:-1;
+	}
+
+  &.muted {
+    opacity: 0.2;
+    transition: opacity .5s .1s;
   }
 
-  &.clicked {
-  	opacity: .8;
+  &.muted, &.collapsed.filler-block .inner {
+    opacity: 0.2;
+  }
+
+  &.highlighted {
+    opacity: 1;
+    border: none;
+    z-index: 9999;
   }
   .borders{
     position:relative;
@@ -94,15 +110,16 @@ body{
   }
 }
 
-.dummy-block {
-  position:absolute;
-  padding:6px;
-  transition:all 0.3s;
-  .inner{
-    transition:opacity 1s 0.1s;
-    border:1px solid white;
-    width:100%;
-    height:100%;
+.animated-filler-block {
+  .highlighted & {
+    z-index: -999999999;
+  }
+
+  position: absolute;
+  .filler-inner {
+    border: 1px solid white;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -170,14 +187,6 @@ body{
 			font-size:22pt;
 			line-height:calc(100vh / 8);
 		}
-		&.contentLink{
-			font-family:"Druk Wide",sans-serif;
-			font-weight:400;
-			color:white;
-			font-size:18pt;
-			line-height:calc(100vh / 8);
-		}
-
 	}
 	&.fullNav{
 		opacity:0!important;
@@ -224,7 +233,7 @@ body{
 	}
 }
 
-.aboutImg1{
-	background-image:url("../../images/About-Asset-1.png");
-	background-size: cover;
+.aboutImg1 {
+  background-image: url("../../images/About-Asset-1.png");
+  background-size: cover;
 }

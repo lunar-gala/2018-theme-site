@@ -46,6 +46,8 @@ function Block(row, col, x, y, width, height, preString){
                   </div>
               </div>`;
   this.collapsed = false;
+  this.showgridlines = false;
+  this.belongsto = null;
 
   this.animateOut = function(){
     directions = [];
@@ -111,21 +113,33 @@ function Block(row, col, x, y, width, height, preString){
   }
 
   this.update = function(w,h){
-    //checking if collapsed
+    var blockElem = $("#"+this.id)
 
+    this.showgridlines ? blockElem.addClass("filler-block") : blockElem.removeClass("filler-block");
+    
     if (this.collapsed && Object.values(this.bounds).includes(-1)) {
-      return;
+        var y = this.row * h;
+        var x = this.col * w;
+
+        blockElem.css({
+          "top": y,
+          "left": x,
+          "width": w,
+          "height": h
+        });
+
+        this.y = y;
+        this.x = x;
+        this.width = w;
+        this.height = h;
+        return;
     }
 
     if(Object.values(this.bounds).includes(-1)) {
       this.collapsed = true;
-      $("#"+this.id).toggleClass("collapsed");
-      // TODO: maybe need to fix width and height so we can click on the entire expanded box
-      // $("#"+this.id).css({
-      //   "width": 0,
-      //   "height": 0
-      // });
+      blockElem.toggleClass("collapsed");
     } else {
+
         this.collapsed = false;
         var y;
         var x;
@@ -135,7 +149,7 @@ function Block(row, col, x, y, width, height, preString){
         y = this.row * h;
         x = this.col * w;
 
-        $("#"+this.id).css({
+        blockElem.css({
           "top": y,
           "left": x,
           "width": width,
@@ -144,13 +158,25 @@ function Block(row, col, x, y, width, height, preString){
 
         this.y = y;
         this.x = x;
-        this.width = w;
-        this.height = h;
+        this.width = width;
+        this.height = height;
+
+        if (this.showgridlines && (this.bounds.right > 1 || this.bounds.bottom > 1)) {
+          blockElem.find(" .animated-filler-block").remove()
+          blockElem.append($("<div class='animated-filler-block'><div class='filler-inner'></div></div>").css({
+            top: 0,
+            left: 0,
+            width: (window.innerWidth/grid[0].length),
+            height: (window.innerHeight/grid.length)
+          }))
+
+          console.log((window.innerWidth/grid[0].length), (window.innerHeight/grid[0].length))
+        }
     }
   }
 }
 
-function animateBlock(block, rowsDown, colsRight, gridlines = false) {
+function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
     var regular_w = (window.innerWidth/grid_cols);
     var regular_h = (window.innerHeight/grid_rows);
 
@@ -175,6 +201,8 @@ function animateBlock(block, rowsDown, colsRight, gridlines = false) {
           continue
         }
         var b = grid[row][col];
+        b.showgridlines = showgridlines;
+        $("#"+b.id).attr("belongs-to", $(block).attr("id"))
 
         if (col == j) {
           // vertical
@@ -189,19 +217,7 @@ function animateBlock(block, rowsDown, colsRight, gridlines = false) {
       }
     }
 
-    // if (gridlines) {
-    //   for (var row=i; row < Math.min(grid_rows, i + 1 + rowsDown); row++) {
-    //     for (var col=j; col < Math.min(grid_cols, j + 1 + colsRight); col++) {
-    //       if (row == i && col == j && (grid[row][col].bounds.right != 0 || grid[row][col].bounds.bottom != 0)) {
-    //         continue
-    //       }
-    //       var block = "#" + i + "_" + j;
-    //       $(block).append($("<div class=row></div>"))
-    //       console.log(b)
-    //     }
-    //   }
-    // }
-
+    curBlock.showgridlines = showgridlines;
     curBlock.update(regular_w,regular_h);
 }
 
@@ -227,6 +243,9 @@ function resetBlock(block) {
         b.bounds.bottom = 0;
 
         b.update(regular_w, regular_h)
+
+        b.showgridlines = false;
+        $("#"+b.id).removeAttr("belongs-to")
 
         if ($("#"+row+"_"+col).hasClass('collapsed')) {
           $("#"+row+"_"+col).toggleClass('collapsed');

@@ -163,8 +163,8 @@ function Block(row, col, x, y, width, height, preString){
         this.height = height;
 
         if (this.showgridlines && (this.bounds.right > 1 || this.bounds.bottom > 1)) {
-          blockElem.find(" .filler-filler-block").remove()
-          blockElem.append($("<div class='filler-filler-block'><div class='filler-inner'></div></div>").css({
+          blockElem.find(" .animated-filler-block").remove()
+          blockElem.append($("<div class='animated-filler-block'><div class='filler-inner'></div></div>").css({
             top: 0,
             left: 0,
             width: (window.innerWidth/grid[0].length),

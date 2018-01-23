@@ -1,6 +1,6 @@
-.filler-block, .filler-filler-block {
+.filler-block, .animated-filler-block {
   cursor: pointer; }
-  .filler-block .inner, .filler-filler-block .inner {
+  .filler-block .inner, .animated-filler-block .inner {
     border: 1px solid white; }
 
 .linesBlock ~ .borders .borders-inner span {
@@ -88,13 +88,13 @@
 
 .block.highlighted .filler-inner {
   border: none; }
-.block .filler-filler-block {
+.block .animated-filler-block {
   opacity: 0.2; }
-.block .top ~ .filler-filler-block {
+.block .top ~ .animated-filler-block {
   padding: 0.6%; }
-.block .middle ~ .filler-filler-block, .block .bottom ~ .filler-filler-block {
+.block .middle ~ .animated-filler-block, .block .bottom ~ .animated-filler-block {
   padding: 0.75%; }
-.block .left ~ .filler-filler-block, .block .right ~ .filler-filler-block {
+.block .left ~ .animated-filler-block, .block .right ~ .animated-filler-block {
   padding: 2.25%; }
 
 .lineBlockPicMuted {

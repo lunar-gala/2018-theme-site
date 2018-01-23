@@ -890,9 +890,9 @@ hr {
   src: url("../fonts/TheindartRegular.otf") format("opentype");
   font-weight: 300;
   font-style: normal; }
-.filler-block, .filler-filler-block {
+.filler-block, .animated-filler-block {
   cursor: pointer; }
-  .filler-block .inner, .filler-filler-block .inner {
+  .filler-block .inner, .animated-filler-block .inner {
     border: 1px solid white; }
 
 .linesBlock ~ .borders .borders-inner span {
@@ -980,13 +980,13 @@ hr {
 
 .block.highlighted .filler-inner {
   border: none; }
-.block .filler-filler-block {
+.block .animated-filler-block {
   opacity: 0.2; }
-.block .top ~ .filler-filler-block {
+.block .top ~ .animated-filler-block {
   padding: 0.6%; }
-.block .middle ~ .filler-filler-block, .block .bottom ~ .filler-filler-block {
+.block .middle ~ .animated-filler-block, .block .bottom ~ .animated-filler-block {
   padding: 0.75%; }
-.block .left ~ .filler-filler-block, .block .right ~ .filler-filler-block {
+.block .left ~ .animated-filler-block, .block .right ~ .animated-filler-block {
   padding: 2.25%; }
 
 .lineBlockPicMuted {
@@ -1094,11 +1094,11 @@ body {
         .block .borders .borders-inner span.border-left {
           left: 0; }
 
-.filler-filler-block {
+.animated-filler-block {
   position: absolute; }
-  .highlighted .filler-filler-block {
+  .highlighted .animated-filler-block {
     z-index: -999999999; }
-  .filler-filler-block .filler-inner {
+  .animated-filler-block .filler-inner {
     border: 1px solid white;
     width: 100%;
     height: 100%; }

@@ -41,7 +41,6 @@ body{
 
   &.muted, &.collapsed.filler-block .inner {
     opacity: 0.2;
-    
   }
 
   &.highlighted {
@@ -110,7 +109,7 @@ body{
   }
 }
 
-.filler-filler-block {
+.animated-filler-block {
   .highlighted & {
     z-index: -999999999;
   }

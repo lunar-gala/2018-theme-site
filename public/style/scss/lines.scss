@@ -1,4 +1,4 @@
-.filler-block, .filler-filler-block {
+.filler-block, .animated-filler-block {
     cursor: pointer;
     .inner {
         border:1px solid white;
@@ -10,6 +10,7 @@
         span {
             opacity: 0;
         }
+        
     }
 }
 
@@ -146,19 +147,19 @@
         }
     }
 
-    .filler-filler-block {
+    .animated-filler-block {
         opacity: 0.2;
     }
 
-    .top ~ .filler-filler-block {
+    .top ~ .animated-filler-block {
         padding: 0.6%;
     }
 
-    .middle ~ .filler-filler-block, .bottom ~ .filler-filler-block {
+    .middle ~ .animated-filler-block, .bottom ~ .animated-filler-block {
         padding: 0.75%;
     }
 
-    .left ~ .filler-filler-block, .right ~ .filler-filler-block {
+    .left ~ .animated-filler-block, .right ~ .animated-filler-block {
         padding: 2.25%;
     }
 }

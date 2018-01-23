@@ -263,6 +263,5 @@ var linedata = [
 
 for (var i = 0; i < linedata.length; i++) {
     var line = linedata[i];
-
     LINESDATA.push(new Line(line.title, line.designers, line.description));
 }

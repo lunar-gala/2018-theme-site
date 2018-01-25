@@ -200,7 +200,7 @@ var linedata = [
     },
     {
         title: "Descent",
-        designers: "?",
+        designers: "Nana Cheon",
         description: "Descent challenges gender norms and identity through amorphous, androgynous, and anonymous designs. The garments will exaggerate and reshape the body in a way that obscures and mystifies the gender of the wearer. In the end, however, gender is a construct and all variations of identity can be appreciated and admired."
     },
     {
@@ -226,7 +226,7 @@ var linedata = [
     {
         title: "Intreped",
         designers: "Jules Przybylska",
-        description: "??"
+        description: "The use of perspective points highlights and complements the female form showing her boldness and strength. The designs emphasize the features of the body in a way that portrays the model in a position of power. In the past women have been subject to criticism based on how they presented themselves. This clothing line takes on a different side showing the power that the female form symbolizes."
     },
     {
         title: "Maille",
@@ -235,7 +235,7 @@ var linedata = [
     },
     {
         title: "mien",
-        designers: "??",
+        designers: "Bernice Yu",
         description: "This collection will consider the human being’s obsession with the face as a frame for personal expression, enshrine the neurotic self, and attempt to reunite the internal and abstract self with the warm and physical body-vehicle. It will do this through the use of head-pieces, proportion, and silhouettes. Throughout the line, the relationship and balance between face (abstract self) and body (flesh and bone) will be explored, and the collection will hopefully culminate in their unification."
     },
     {

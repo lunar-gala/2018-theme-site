@@ -169,8 +169,6 @@ function Block(row, col, x, y, width, height, preString){
             width: (window.innerWidth/grid[0].length),
             height: (window.innerHeight/grid.length)
           }))
-
-          console.log((window.innerWidth/grid[0].length), (window.innerHeight/grid[0].length))
         }
     }
   }

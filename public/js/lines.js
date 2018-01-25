@@ -27,6 +27,7 @@ $.fn.extend({
 
 function init_lines() {
     // TODO: make call this on every page, instead of hardcoding it for each endpoint
+    $("body").off("click");
     animateBlock("#1_6",1,1);
     $("#1_6 .inner").text("NAV").addClass("navBlock");
 
@@ -62,7 +63,7 @@ function init_lines() {
 
     animateBlock("#0_0", 0,1);
     $(".mainGrid #0_0 .inner")
-        .text("⟵ Humans")
+        .text("Humans")
         .addClass("topLink")
         .click(function () {
             // go to humans page
@@ -70,7 +71,7 @@ function init_lines() {
 
     animateBlock("#0_6", 0,1);
     $(".mainGrid #0_6 .inner")
-        .text("About ⟶")
+        .text("About")
         .addClass("topLink")
         .click(function () {
             // go to about page

@@ -25,6 +25,10 @@ $.fn.extend({
     }
 });
 
+function init_lines_mobile() {
+    
+}
+
 function init_lines() {
     // TODO: make call this on every page, instead of hardcoding it for each endpoint
     $("body").off("click");

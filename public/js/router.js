@@ -56,7 +56,12 @@ function call_function(url){
     init_about();
   }
   else if(url == "/lines"){
-    init_lines();
+
+    if (grid.length !== grid[0].length) {
+      init_lines_mobile();
+    } else {
+      init_lines();
+    } 
   }
   else if(url == "/humans"){
     init_humans();

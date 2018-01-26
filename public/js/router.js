@@ -5,9 +5,18 @@ if (!String.prototype.includes) {
     return String.prototype.indexOf.apply(this, arguments) !== -1;
   };
 }
-$(window).ready(function(){
+// get rid of window.ready here and load this into a
+
+// TODO: every launch should be handled by the resizing functions
+// The code here should be called by __load_desktop() and __load_mobile()
+
+function createRouting(){
+  $(window).unbind('popstate');
+  $('.router-link').off('click');
+
   currentPath = window.location.pathname;
   load_page(currentPath);
+
   $(".router-link").click(function(){
     url = $(this).attr("url");
     load_page(url);
@@ -16,8 +25,7 @@ $(window).ready(function(){
     currentPath = window.location.pathname;
     load_page(currentPath);
   });
-})
-
+}
 
 function load_page(url){
   destroyAllBlocks(grid);
@@ -51,17 +59,23 @@ function load_page(url){
     },500);
 }
 
-function call_function(url){
-  if(url == "/about"){
+function call_function(url,isMobile = false){
+  if(url == "/about" && !isMobile){
     init_about();
   }
-  else if(url == "/lines"){
+  else if(url == "/about" && isMobile){
+    init_about_mobile();
+  }
+  if(url == "/lines" && !isMobile){
     init_lines();
   }
-  else if(url == "/humans"){
-    init_humans();
+  else if(url == "/lines" && isMobile){
+    init_about_mobile();
   }
-  // else if(url == "/"){
-  //   init_homepage();
-  // }
+  if(url == "/humans" && !isMobile){
+    init_about();
+  }
+  else if(url == "/humans" && isMobile){
+    init_about_mobile();
+  }
 }

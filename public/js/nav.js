@@ -19,6 +19,9 @@ function summonFullNav(){
     //Manually insert the data into the grid
     $(".navGrid #nav0_0 .inner").text("About");
     $(".navGrid #nav0_0 .inner").click(function (e) {
+      if (!isFullNavOpen()) {
+        return;
+      }
       navGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
       $(".navGrid").toggleClass("fullNav");
       window.setTimeout(function(){
@@ -38,6 +41,9 @@ function summonFullNav(){
     $(".navGrid #nav0_1 .inner").text("Lines");
     $(".navGrid #nav0_1 .border-left").remove();
     $(".navGrid #nav0_1 .inner").click(function () {
+        if (!isFullNavOpen()) {
+          return;
+        }
         navGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
         $(".navGrid").toggleClass("fullNav");
         window.setTimeout(function(){
@@ -52,6 +58,9 @@ function summonFullNav(){
     $(".navGrid #nav0_2 .inner").text("X");
     $(".navGrid #nav0_2 .border-left").remove();
     $(".navGrid #nav0_2 .inner").click(function(){
+      if (!isFullNavOpen()) {
+        return;
+      }
       navGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
       $(".navGrid").toggleClass("fullNav");
       window.setTimeout(function(){
@@ -109,6 +118,10 @@ function summonMiniNav(){
 function deleteMiniNav(){
   resetBlock($("#1_6")[0]);
   $("#1_6 .inner").html("");
+}
+
+function isFullNavOpen() {
+  return $(".mainGrid").hasClass("fullNav")
 }
 
 // $(window).ready(function(){

@@ -11,19 +11,6 @@ var HIGHLIGHTEDBLOCK = null;
 var currentLineSet = 0;
 var HIGHLIGHTEDBLOCK = null;
 
-// $.fn.extend({
-//     animateCss: function (animationName, callback) {
-//         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-//         this.addClass('animated ' + animationName).one(animationEnd, function() {
-//             $(this).removeClass('animated ' + animationName);
-//             if (callback) {
-//               callback();
-//             }
-//         });
-//         return this;
-//     }
-// });
-
 function init_lines_mobile() {
     LEFTBLOCK = ".mainGrid #3_0 .inner"
     TOPBLOCK = ".mainGrid #3_1 .inner" 

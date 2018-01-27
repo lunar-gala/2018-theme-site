@@ -1017,7 +1017,7 @@ hr {
   background-size: cover;
   opacity: 1; }
 
-.aboutImg1:after {
+.fakelineimg:after {
   background-image: url("../../images/About-Asset-1.png"); }
 
 body {

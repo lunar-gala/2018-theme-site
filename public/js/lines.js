@@ -11,18 +11,18 @@ var HIGHLIGHTEDBLOCK = null;
 var currentLineSet = 0;
 var HIGHLIGHTEDBLOCK = null;
 
-$.fn.extend({
-    animateCss: function (animationName, callback) {
-        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-        this.addClass('animated ' + animationName).one(animationEnd, function() {
-            $(this).removeClass('animated ' + animationName);
-            if (callback) {
-              callback();
-            }
-        });
-        return this;
-    }
-});
+// $.fn.extend({
+//     animateCss: function (animationName, callback) {
+//         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+//         this.addClass('animated ' + animationName).one(animationEnd, function() {
+//             $(this).removeClass('animated ' + animationName);
+//             if (callback) {
+//               callback();
+//             }
+//         });
+//         return this;
+//     }
+// });
 
 function init_lines_mobile() {
     LEFTBLOCK = ".mainGrid #3_0 .inner"
@@ -37,10 +37,9 @@ function init_lines_mobile() {
     animateBlock("#3_1", 0,2, true); // TOP BLOCK
     animateBlock("#5_1", 0,1, true); // MIDDLE BLOCK
 
-    $("body").off("click");
     populateLinesBlocks();
     setLines(0)
-    $("body").click(clickLinesPicture);
+    $("body").off("click").click(clickLinesPicture);
 }
 
 function init_lines() {
@@ -54,39 +53,11 @@ function init_lines() {
     selectornames = ['top', 'left', 'middle', 'right', 'bottom']
     LINESETSIZE = 5;
 
-    $("body").off("click");
+    
     animateBlock("#1_6",1,1);
     $("#1_6 .inner").text("NAV").addClass("navBlock");
 
-    $(document).keydown(function (e) {
-        var LEFT = 37;
-        var RIGHT = 39;
-        // TODO: left/right analagous to scrolling
-        // should not be able to change lines when a block is highlighted
-        if (HIGHLIGHTEDBLOCK) {
-            return;
-        }
-
-        if (e.which === LEFT) {
-            if (currentLineSet > 0) {
-                currentLineSet--;
-            } else {
-                return
-            }
-            // previous line
-        } else if (e.which === RIGHT) {
-            // next line
-            if (currentLineSet < 3) {
-                currentLineSet++;
-            } else {
-                return
-            }
-        } else {
-            return;
-        }
-
-        setLines(currentLineSet)
-    })
+    $(document).keydown(changeLineSet);
 
     animateBlock("#0_0", 0,1);
     $(".mainGrid #0_0 .inner")
@@ -115,10 +86,9 @@ function init_lines() {
     animateBlock("#3_6", 2,0, true); // right
     animateBlock("#7_0", 0,2, true); // bottom
 
-
     populateLinesBlocks()
     setLines(0)
-    $("body").click(clickLinesPicture);
+    $("body").off("click").click(clickLinesPicture);
 }
 
 function setLines(lineSet) {
@@ -199,6 +169,35 @@ function populateLinesBlocks() {
             .html("<div class='content'><span id='" + selectornames[i] + "-title' " + "class='title'></span><p class='designers'></p><p class='description'></p></div>")
             .addClass("linesBlock lineBlockPicMuted aboutImg1 " + selectornames[i])
     })
+}
+
+function changeLineSet (e) {
+    var LEFT = 37;
+    var RIGHT = 39;
+    // TODO: left/right analagous to scrolling
+    // should not be able to change lines when a block is highlighted
+    if (HIGHLIGHTEDBLOCK) {
+        return;
+    }
+
+    if (e.which === LEFT) {
+        if (currentLineSet > 0) {
+            currentLineSet--;
+        } else {
+            return
+        }
+        // previous line
+    } else if (e.which === RIGHT) {
+        // next line
+        if (currentLineSet < 3) {
+            currentLineSet++;
+        } else {
+            return
+        }
+    } else {
+        return;
+    }
+    setLines(currentLineSet)
 }
 
 var LINESDATA = []

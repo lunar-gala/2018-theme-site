@@ -11,7 +11,7 @@ var HIGHLIGHTEDBLOCK = null;
 var currentLineSet = 0;
 var HIGHLIGHTEDBLOCK = null;
 
-var LINESDATA = []
+var LINES = []
 
 function Line(title, designers, description) {
     this.title = title;
@@ -21,7 +21,7 @@ function Line(title, designers, description) {
 
 for (var i = 0; i < linedata.length; i++) {
     var line = linedata[i];
-    LINESDATA.push(new Line(line.title, line.designers, line.description));
+    LINES.push(new Line(line.title, line.designers, line.description));
 }
 
 function init_lines_mobile() {
@@ -96,7 +96,7 @@ function setLines(lineSet) {
     var upperBound = (lineSet + 1) * LINESETSIZE;
 
     for (var i=lowerBound; i<upperBound; i++) {
-        var line = LINESDATA[i];
+        var line = LINES[i];
         var selector = selectorblocks[i%LINESETSIZE];
         setLineBlock(selector, line);
     }

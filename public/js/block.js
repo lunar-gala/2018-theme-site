@@ -3,6 +3,9 @@ var navGrid = [];
 var grid_cols = 8;
 var grid_rows = 8;
 
+//var grid_cols = 3;
+//var grid_rows = 8;
+
 function initGrid (rows, cols, grid, preString) {
   // var grid = [];
   var block_width = window.innerWidth / cols;

@@ -11,19 +11,6 @@ var HIGHLIGHTEDBLOCK = null;
 var currentLineSet = 0;
 var HIGHLIGHTEDBLOCK = null;
 
-// $.fn.extend({
-//     animateCss: function (animationName, callback) {
-//         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-//         this.addClass('animated ' + animationName).one(animationEnd, function() {
-//             $(this).removeClass('animated ' + animationName);
-//             if (callback) {
-//               callback();
-//             }
-//         });
-//         return this;
-//     }
-// });
-
 function init_lines_mobile() {
     LEFTBLOCK = ".mainGrid #3_0 .inner"
     TOPBLOCK = ".mainGrid #3_1 .inner" 
@@ -150,7 +137,7 @@ function clickLinesPicture(e) {
         $("#" + blockid + ".block").toggleClass('highlighted');
         HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
 
-        $(HIGHLIGHTEDBLOCK).find(".aboutImg1").toggleClass("lineBlockPicMuted lineBlockPic");
+        $(HIGHLIGHTEDBLOCK).find(".fakelineimg").toggleClass("lineBlockPicMuted lineBlockPic");
 
         return;
     }
@@ -167,7 +154,7 @@ function populateLinesBlocks() {
     selectorblocks.forEach(function(selector,i) {
         $(selector)
             .html("<div class='content'><span id='" + selectornames[i] + "-title' " + "class='title'></span><p class='designers'></p><p class='description'></p></div>")
-            .addClass("linesBlock lineBlockPicMuted aboutImg1 " + selectornames[i])
+            .addClass("linesBlock lineBlockPicMuted fakelineimg " + selectornames[i])
     })
 }
 

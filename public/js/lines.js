@@ -137,7 +137,7 @@ function clickLinesPicture(e) {
         $("#" + blockid + ".block").toggleClass('highlighted');
         HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
 
-        $(HIGHLIGHTEDBLOCK).find(".aboutImg1").toggleClass("lineBlockPicMuted lineBlockPic");
+        $(HIGHLIGHTEDBLOCK).find(".fakelineimg").toggleClass("lineBlockPicMuted lineBlockPic");
 
         return;
     }
@@ -154,7 +154,7 @@ function populateLinesBlocks() {
     selectorblocks.forEach(function(selector,i) {
         $(selector)
             .html("<div class='content'><span id='" + selectornames[i] + "-title' " + "class='title'></span><p class='designers'></p><p class='description'></p></div>")
-            .addClass("linesBlock lineBlockPicMuted aboutImg1 " + selectornames[i])
+            .addClass("linesBlock lineBlockPicMuted fakelineimg " + selectornames[i])
     })
 }
 

@@ -116,7 +116,7 @@ function Block(row, col, x, y, width, height, preString){
     var blockElem = $("#"+this.id)
 
     this.showgridlines ? blockElem.addClass("filler-block") : blockElem.removeClass("filler-block");
-    
+
     if (this.collapsed && Object.values(this.bounds).includes(-1)) {
         var y = this.row * h;
         var x = this.col * w;

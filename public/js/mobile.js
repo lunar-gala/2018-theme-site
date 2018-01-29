@@ -33,4 +33,5 @@ function __load_desktop(){
 function __load_mobile(){
   console.log('Loading Mobile version...');
   //Add init code here
+  createMobileRouting();
 }

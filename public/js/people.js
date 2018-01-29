@@ -1,12 +1,12 @@
 $(window).ready(function(){
 	console.log(grid);
-	populatePeopleHeader();
-	populatePeopleContent();
-	$(document).keyup(function(e) {
-	    if (e.keyCode == 27) { 
-	    	removeDisplayPerson();
-		}
-	}); 
+	// populatePeopleHeader();
+	// populatePeopleContent();
+	// $(document).keyup(function(e) {
+	//     if (e.keyCode == 27) { 
+	//     	removeDisplayPerson();
+	// 	}
+	// }); 
 });
 
 function populatePeopleHeader () {
@@ -31,7 +31,7 @@ function populatePeopleContent () {
 			if (i == 4 && j == 0) {
 				animateBlock("#" + grid[i][j].id, 1, 0);
 				$("#" + grid[i][j].id + " .inner").css({
-		          	"background-image" : "url('../../images/Humans-Surveillance 1.png')",
+		          	"background-image" : "url('../../images/red on blue 2.gif')",
 		          	"background-size" : "cover",
 				  	"background-repeat" : "no-repeat",
 				  	"background-position" : "center center"
@@ -39,7 +39,7 @@ function populatePeopleContent () {
 			} else if (i == 4 && j == 6) {
 				animateBlock("#" + grid[i][j].id, 1, 1);
 				$("#" + grid[i][j].id + " .inner").css({
-		          	"background-image" : "url('../../images/Humans-Surveillance 2.png')",
+		          	"background-image" : "url('../../images/blue on red 2.gif')",
 		          	"background-size" : "cover",
 				  	"background-repeat" : "no-repeat",
 				  	"background-position" : "center center"
@@ -54,40 +54,40 @@ function populatePeopleContent () {
 					    || (i == 6 && j == 4)
 					    || (i == 7 && j == 4)
 					    || (i == 7 && j == 3))) {
+				console.log(getIndex(i, j));
+				var index = getIndex(i, j);
+				var dataObject = board1[index];
+				var firstName = dataObject.firstname;
+				var lastName = dataObject.lastname;
 				$("#" + grid[i][j].id + " .inner").css({
-		          	"background-image" : "url('../../images/Humans-Asset-Eye-1.png')",
+		          	"background-image" : "url('../../images/Final Eye Photos/" + firstName + lastName + "Eye.png')",
 		          	"background-size" : "cover",
 				  	"background-repeat" : "no-repeat",
 				  	"background-position" : "center center"
 		        });
-		        $("#" + grid[i][j].id + " .inner").hover(function () {
+		        $("#" + grid[i][j].id + " .inner").append("<div class='overlay'></div>")
+		        $("#" + grid[i][j].id + " .overlay").hover(function () {
 			        $(this).css({
-			        	"background-image" : "url('../../images/Humans-Asset-Eye-2.png')",
+			        	"opacity" : "1",
 					});
-		        }, function() {
-		        	$(this).css({
-			          	"background-image" : "url('../../images/Humans-Asset-Eye-1.png')",
-			        });
-		        });
+		        }, function (i, j)  {
+		        	return function () {
+			        	console.log(getIndex(i, j));
+			        	var index = getIndex(i, j);
+						var dataObject = board1[index];
+						var firstName = dataObject.firstname;
+						var lastName = dataObject.lastname;
+						$(this).css({
+				        	"opacity" : "0",
+						});
+			        	$(this).parent().css({
+				          	"background-image" : "url('../../images/Final Eye Photos/" + firstName + lastName + "Eye.png')",
+				        });
+				    }
+		        }(i, j));
 		        $("#" + grid[i][j].id + " .inner").click(function (i, j) {
-		        	return function () { 
-		        		var offset = 3 * grid_cols;
-			        	var index = (i * grid_cols + j) - offset;
-			        	if (index > 8) {
-			        		index -= 1;
-			        		if (index > 15) {
-			        			index -= 3;
-			        			if (index > 17) {
-					        		index -= 2;
-					        		if (index > 20) {
-					        			index -= 2;
-					        			if (index > 26) {
-					        				index -= 2;
-					        			}
-					        		}
-					        	}
-			        		}
-			        	}
+		        	return function () {
+		        		var index = getIndex(i, j);
 			        	console.log(index);
 		        		displayPerson(index);
 		        	};
@@ -97,18 +97,39 @@ function populatePeopleContent () {
 	}
 }
 
+function getIndex(i, j) { 
+	var offset = 3 * grid_cols;
+	var index = (i * grid_cols + j) - offset;
+	if (index > 8) {
+		index -= 1;
+		if (index > 15) {
+			index -= 3;
+			if (index > 17) {
+	    		index -= 2;
+	    		if (index > 20) {
+	    			index -= 2;
+	    			if (index > 26) {
+	    				index -= 2;
+	    			}
+	    		}
+	    	}
+		}
+	}
+	return index;
+}
+
 function displayPerson (index) {
 	var dataObject = board1[index];
-	var src = "../../images/About-Asset-1.png";
 	var firstName = dataObject.firstname;
 	var lastName = dataObject.lastname;
+	var src = "../../images/Final Full Photos/" + firstName + lastName + "Full.png";
 	var major = dataObject.major;
 	var year = dataObject.year;
 	var position = dataObject.position;
 	var displayPersonDiv = 
 		`<div class='person-info-background'></div>
 		 <div class='person-info'>
-			<img class="headshot" src='` + src + `'/>
+			<div class="headshot" style="background-image:url('` + src + `')"></div>
 			<div class="rotated-text">
 				<p class="name">` + firstName + " " + lastName + `</p>
 				<p class="major">` + major + " " + year + `</p>

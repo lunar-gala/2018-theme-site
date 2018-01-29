@@ -891,7 +891,8 @@ hr {
   font-weight: 300;
   font-style: normal; }
 body {
-  background-color: black; }
+  background-color: black;
+  overflow-y: scroll; }
 
 .block {
   position: absolute;

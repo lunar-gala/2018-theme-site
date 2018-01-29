@@ -1,3 +1,6 @@
+.mainGrid {
+  width: 100%; }
+
 .designers-link {
   font-family: "Druk Wide",sans-serif;
   font-weight: 400;
@@ -27,7 +30,8 @@
   height: 100%;
   position: absolute;
   z-index: 99999;
-  background-color: rgba(0, 0, 0, 0.8); }
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0; }
 
 .person-info {
   color: white;
@@ -35,7 +39,6 @@
   z-index: 99999999;
   width: 350px;
   height: 350px;
-  background-color: red;
   top: 0;
   bottom: 10%;
   left: 0;
@@ -61,6 +64,20 @@
       font-size: 14px; }
 
 .headshot {
-  width: 100%; }
+  width: 350px;
+  height: 350px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 350px;
+  background-color: black; }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 0, 0, 0.3);
+  opacity: 0; }
 
 /*# sourceMappingURL=people.css.map */

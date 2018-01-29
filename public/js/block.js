@@ -1,13 +1,16 @@
 var grid = [];
+var titleGrid = [];
 var navGrid = [];
+var title_grid_cols = 8;
+var title_grid_rows = 3;
 var grid_cols = 8;
-var grid_rows = 8;
+var grid_rows = 10;
 
-function initGrid (rows, cols, grid, preString) {
+function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   // var grid = [];
-  var block_width = window.innerWidth / cols;
-  var block_height = window.innerHeight / rows;
-
+  var block_width = $(containerName).width() / cols;
+  var block_height = $(containerName).height() / rows;
+  console.log(offset);
   for(var i = 0; i < rows; i++) {
     var currentRow = [];
     for(var j = 0; j < cols; j++) {
@@ -15,7 +18,7 @@ function initGrid (rows, cols, grid, preString) {
       var x = j * block_width;
 
       var block = new Block(i, j, x, y,
-                            block_width, block_height,preString);
+                            block_width, block_height, preString, containerName, offset);
       currentRow.push(block);
     }
     grid.push(currentRow);
@@ -23,13 +26,20 @@ function initGrid (rows, cols, grid, preString) {
   return grid;
 }
 
-function Block(row, col, x, y, width, height, preString){
+function Block(row, col, x, y, width, height, preString, containerName, offset){
   this.row = row;
   this.col = col;
+  this.containerName = containerName;
+
   //initial values
   this.x = x;
   this.y = y;
-  this.id = preString+row+"_"+col;
+  if (preString.length > 0) {
+    this.id = preString+"_"+row+"_"+col;
+  } else {
+    this.id = row+"_"+col;
+  }
+  this.offset = offset;
   this.state = "normal";
   this.width = width;
   this.height = height;
@@ -111,8 +121,10 @@ function Block(row, col, x, y, width, height, preString){
     $(target).append(this.DOM);
   }
 
-  this.update = function(w,h){
+  this.update = function(w, h, offset){
     //checking if collapsed
+    if (this.containerName == ".titleGrid")
+      console.log(offset);
 
     if (this.collapsed && Object.values(this.bounds).includes(-1)) {
       return;
@@ -133,7 +145,7 @@ function Block(row, col, x, y, width, height, preString){
         var width = w + this.bounds.right * w;
         var height = h + this.bounds.bottom * h;
 
-        y = this.row * h;
+        y = this.row * h + offset;
         x = this.col * w;
 
         $("#"+this.id).css({
@@ -147,21 +159,21 @@ function Block(row, col, x, y, width, height, preString){
         this.x = x;
         this.width = w;
         this.height = h;
+        this.offset = offset;
     }
   }
 }
 
 function animateBlock(block, rowsDown, colsRight, gridlines = false) {
-  console.log(gridlines)
-    var regular_w = (window.innerWidth/grid_cols);
-    var regular_h = (window.innerHeight/grid_rows);
-
+    console.log(gridlines);
     var id = $(block).attr("id").split("_");
 
-    var i = parseInt(id[0]);
-    var j = parseInt(id[1]);
+    var i = parseInt(id[id.length - 2]);
+    var j = parseInt(id[id.length - 1]);
 
     var curBlock = grid[i][j];
+    var regular_w = ($(curBlock.containerName).width()/grid_cols);
+    var regular_h = ($(curBlock.containerName).height()/grid_rows);
 
     if (curBlock.bounds.bottom != 0 || curBlock.bounds.right != 0) {
       resetBlock(block);
@@ -204,19 +216,18 @@ function animateBlock(block, rowsDown, colsRight, gridlines = false) {
     //   }
     // }
 
-    curBlock.update(regular_w,regular_h);
+    curBlock.update(regular_w, regular_h, curBlock.offset);
 }
 
 function resetBlock(block) {
     var id = $(block).attr("id").split("_");
 
-    var i = parseInt(id[0]);
-    var j = parseInt(id[1]);
+    var i = parseInt(id[id.length - 2]);
+    var j = parseInt(id[id.length - 1]);
 
     var curBlock = grid[i][j];
-
-    var regular_w = (window.innerWidth/grid_cols);
-    var regular_h = (window.innerHeight/grid_rows);
+    var regular_w = ($(curBlock.containerName).width()/grid_cols);
+    var regular_h = ($(curBlock.containerName).height()/grid_rows);
 
     var blocksDown = curBlock.bounds.bottom;
     var blocksRight = curBlock.bounds.right;
@@ -228,7 +239,7 @@ function resetBlock(block) {
         b.bounds.right = 0
         b.bounds.bottom = 0;
 
-        b.update(regular_w, regular_h)
+        b.update(regular_w, regular_h, curBlock.offset)
 
         if ($("#"+row+"_"+col).hasClass('collapsed')) {
           $("#"+row+"_"+col).toggleClass('collapsed');
@@ -274,21 +285,58 @@ function collapse(direction, block) {
         break;
     }
 
-    var regular_w = (window.innerWidth/grid_cols);
-    var regular_h = (window.innerHeight/grid_rows);
+    var regular_w = ($(block.containerName).width()/grid_cols);
+    var regular_h = ($(block.containerName).height()/grid_rows);
 
-    block.update(regular_w, regular_h)
+    block.update(regular_w, regular_h, block.offset);
 }
 
 $(window).ready(function(){
+  var wheeling;
+  var wheeldelta = {
+  x: 0,
+  y: 0
+};
+  $("body").bind('mousewheel', function(e) {
+    var isScrollingUp = false;
+    if(e.originalEvent.wheelDelta / 120 > 0) {
+      isScrollingUp = true;
+    } else {
+      isScrollingUp = false;
+    }
+
+    if (Math.abs(e.originalEvent.wheelDelta) > 80) {
+      if (isScrollingUp) {
+        console.log("up");
+        // e.preventDefault();
+        // return;
+      } else {
+        console.log("down");
+        // e.preventDefault();
+        // return;
+      }
+    }
+  });
+
+  $(".mainGrid").height(($(window).innerHeight() / 8) * grid_rows + 'px');
+  $(".titleGrid").height(($(window).innerHeight() / 8) * title_grid_rows + 'px');
+
+  titleGrid = initGrid(title_grid_rows, title_grid_cols, titleGrid, "title", ".titleGrid", 0);
+  titleGrid.map(function(inner){
+    inner.map(function(cur){
+      cur.create(".titleGrid");
+      cur.update(cur.width, cur.height, cur.offset);
+    });
+  });
+
   //initiating the grid
-  grid = initGrid(grid_rows, grid_cols,grid,"");
+  grid = initGrid(grid_rows, grid_cols, grid, "", ".mainGrid", $(".titleGrid").height());
   grid.map(function(inner){
     inner.map(function(cur){
       cur.create(".mainGrid");
-      cur.update(cur.width, cur.height);
-    })
-  })
+      cur.update(cur.width, cur.height, cur.offset);
+    });
+  });
 
   $(window).keydown(function(e) {
     if (e.key == "r") {
@@ -300,7 +348,14 @@ $(window).ready(function(){
 $(window).resize(function(){
   grid.map(function(inner){
     inner.map(function(cur){
-      cur.update((window.innerWidth/grid[0].length),(window.innerHeight/grid.length));
+      cur.update(($(cur.containerName).width()/grid[0].length),($(cur.containerName).height()/grid.length), $(".titleGrid").height());
+    })
+  })
+
+  titleGrid.map(function(inner){
+    inner.map(function(cur){
+      cur.update(($(cur.containerName).width()/titleGrid[0].length),($(cur.containerName).height()/titleGrid.length), 0);
     })
   })
 });
+

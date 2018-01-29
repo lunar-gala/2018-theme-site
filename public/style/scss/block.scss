@@ -4,8 +4,10 @@ $color-red : #FF2224;
 
 body{
   background-color:black;
-  overflow-y:scroll;
+  overflow-y:hidden;
 }
+
+
 
 .block{
   position:absolute;
@@ -108,7 +110,7 @@ body{
 }
 
 .mainGrid{
-	transition:opacity 1s;
+	transition:opacity 1s,transform 1s ease-in-out;;
 	.inner{
 		color:white;
 		text-align:center;

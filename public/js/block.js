@@ -4,7 +4,7 @@ var navGrid = [];
 var title_grid_cols = 8;
 var title_grid_rows = 3;
 var grid_cols = 8;
-var grid_rows = 10;
+var grid_rows = 15;
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   // var grid = [];
@@ -291,29 +291,74 @@ function collapse(direction, block) {
     block.update(regular_w, regular_h, block.offset);
 }
 
+function movePage(curPage,pageCount,direction,cb){
+
+  blockDimension = { h: grid[0][0].height, w:grid[0][0].width };
+  blockPerPage = 5;
+
+  if ((curPage == 0 && direction == 'up') ||
+      (curPage == pageCount - 1 && direction == 'down')){
+    cb(curPage);
+    return;
+  }
+
+  if (direction == 'up') {
+    newPage = curPage - 1;
+  }
+
+  else if (direction == 'down') {
+    newPage = curPage + 1;
+  }
+
+  targetDist = -(blockPerPage * blockDimension.h * newPage);
+  $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
+  cb(newPage);
+
+}
+
 $(window).ready(function(){
   var wheeling;
-  var wheeldelta = {
-  x: 0,
-  y: 0
-};
+  var wheeldelta = { x: 0, y: 0 };
+  var totalDist = 0;
+  var threshold = 3000;
+  var currentPage = 0;
+  var isScrollingUp = false;
+
   $("body").bind('mousewheel', function(e) {
-    var isScrollingUp = false;
-    if(e.originalEvent.wheelDelta / 120 > 0) {
-      isScrollingUp = true;
-    } else {
+    if(e.originalEvent.wheelDelta > 0) {
+      if (!isScrollingUp) {
+        totalDist = 0;
+        isScrollingUp = true;
+      }
+    } else if (isScrollingUp) {
+      totalDist = 0;
+      isScrollingUp = false;
+    }
+    else{
       isScrollingUp = false;
     }
 
-    if (Math.abs(e.originalEvent.wheelDelta) > 80) {
+    if (Math.abs(e.originalEvent.wheelDelta) > 10) {
       if (isScrollingUp) {
-        console.log("up");
-        // e.preventDefault();
-        // return;
+        if(totalDist > threshold){
+          totalDist = 0;
+          movePage(currentPage,3,'up',function(newPage){
+            currentPage = newPage;
+            e.preventDefault();
+            console.log('one page up',currentPage);
+          });
+        }
+        totalDist += e.originalEvent.wheelDelta;
       } else {
-        console.log("down");
-        // e.preventDefault();
-        // return;
+        if(totalDist < -threshold){
+          totalDist = 0;
+          movePage(currentPage,3,'down',function(newPage){
+            currentPage = newPage;
+            e.preventDefault();
+            console.log('one page down',currentPage);
+          });
+        }
+        totalDist += e.originalEvent.wheelDelta;
       }
     }
   });
@@ -358,4 +403,3 @@ $(window).resize(function(){
     })
   })
 });
-

@@ -892,7 +892,7 @@ hr {
   font-style: normal; }
 body {
   background-color: black;
-  overflow-y: scroll; }
+  overflow-y: hidden; }
 
 .block {
   position: absolute;
@@ -968,7 +968,7 @@ body {
     height: 100%; }
 
 .mainGrid {
-  transition: opacity 1s; }
+  transition: opacity 1s,transform 1s ease-in-out; }
   .mainGrid .inner {
     color: white;
     text-align: center;

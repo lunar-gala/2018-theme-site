@@ -18,6 +18,7 @@
     cursor: pointer;
 
     .content {
+        cursor: default;
         position: absolute;
         -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Safari */
@@ -196,97 +197,115 @@
 }
 
 // TODO: add line pictures down here. Should be 
-.fakelineimg {
+.lineImg-amzu {
   &:after {
     background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg2 {
+.lineImg-2268 {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg3 {
+.lineImg-chinoiseries {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg4 {
+.lineImg-chroma {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg5 {
+.lineImg-descent {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg6 {
+.lineImg-homeostasis {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg7 {
+.lineImg-escape {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg8 {
+.lineImg-hooked {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg9 {
+.lineImg-inertia {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg10 {
+.lineImg-intrepid {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg11 {
+.lineImg-messiah {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg12 {
+.lineImg-maille {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg13 {
+.lineImg-morfologia {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg14 {
+.lineImg-mien {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg15 {
+.lineImg-nightmare {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg16 {
+.lineImg-surface {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.lineImg-stack {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.lineImg-travaille {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.lineImg-tambora {
   &:after {
     //background-image:url("../../images/About-Asset-1.png");
   }

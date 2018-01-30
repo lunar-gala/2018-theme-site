@@ -901,6 +901,7 @@ hr {
 .linesBlock {
   cursor: pointer; }
   .linesBlock .content {
+    cursor: default;
     position: absolute;
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -1017,7 +1018,7 @@ hr {
   background-size: cover;
   opacity: 1; }
 
-.fakelineimg:after {
+.lineImg-amzu:after {
   background-image: url("../../images/About-Asset-1.png"); }
 
 body {

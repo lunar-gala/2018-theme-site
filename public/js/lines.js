@@ -128,7 +128,7 @@ function setLineBlock(selector, line) {
         $(descriptionSelector).text("");
         return;
     }
-
+    console.log($(selector).hasClass("amzu-img"))
     $(titleSelector).fadeOut(FADEOUT_DURATION,function() { $(this).text(line.title).fadeIn(FADEIN_DURATION)});
     $(designerSelector).text(line.designers);
     $(descriptionSelector).text(line.description);
@@ -136,13 +136,12 @@ function setLineBlock(selector, line) {
 
 function clickLinesPicture(e) {
     var elem = e.target;
-    // TODO: check to see if the clicked block is on top of a highlighted block and get the highlighted block's id
-    // this is ugly but it works (i think)
+
     var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || 
                     ($(elem).attr("belongs-to")) ||
                     ($(elem).parent().hasClass("filler-block") && $(elem).parent().attr("belongs-to")) ||
-                    ($(elem).parent().parent().attr("id")) || 
-                    ($(elem).parent().parent().parent().attr("id"))
+                    ($(elem).parent().hasClass('linesBlock') && $(elem).parent().parent().attr("id")) || // content 
+                    ($(elem).parent().parent().hasClass('linesBlock') && $(elem).parent().parent().parent().attr("id"))
 
     
     if (blockid && !HIGHLIGHTEDBLOCK) {
@@ -150,7 +149,7 @@ function clickLinesPicture(e) {
         $("#" + blockid + ".block").toggleClass('highlighted');
         HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
 
-        $(HIGHLIGHTEDBLOCK).find(".fakelineimg").toggleClass("lineBlockPicMuted lineBlockPic");
+        $(HIGHLIGHTEDBLOCK).find(".lineImg-amzu").toggleClass("lineBlockPicMuted lineBlockPic");
 
         return;
     }
@@ -167,7 +166,7 @@ function populateLinesBlocks() {
     selectorblocks.forEach(function(selector,i) {
         $(selector)
             .html("<div class='content'><span id='" + selectornames[i] + "-title' " + "class='title'></span><p class='designers'></p><p class='description'></p></div>")
-            .addClass("linesBlock lineBlockPicMuted fakelineimg " + selectornames[i])
+            .addClass("linesBlock lineBlockPicMuted lineImg-amzu " + selectornames[i])
     })
 }
 

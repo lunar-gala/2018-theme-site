@@ -171,9 +171,18 @@ function animateBlock(block, rowsDown, colsRight, gridlines = false) {
     var i = parseInt(id[id.length - 2]);
     var j = parseInt(id[id.length - 1]);
 
-    var curBlock = grid[i][j];
-    var regular_w = ($(curBlock.containerName).width()/grid_cols);
-    var regular_h = ($(curBlock.containerName).height()/grid_rows);
+    var gridToUse;
+    if (id.length < 3) {
+      gridToUse = grid;
+    } else {
+      if (id[0] == "title") {
+        gridToUse = titleGrid;
+      }
+    }
+
+    var curBlock = gridToUse[i][j];
+    var regular_w = ($(curBlock.containerName).width()/gridToUse[0].length);
+    var regular_h = ($(curBlock.containerName).height()/gridToUse.length);
 
     if (curBlock.bounds.bottom != 0 || curBlock.bounds.right != 0) {
       resetBlock(block);
@@ -183,12 +192,12 @@ function animateBlock(block, rowsDown, colsRight, gridlines = false) {
     curBlock.bounds.bottom = rowsDown;
     curBlock.bounds.right = colsRight;
 
-    for (var row = i; row < Math.min(grid_rows, i + 1 + rowsDown); row++) {
-      for (var col = j; col < Math.min(grid_cols, j + 1 + colsRight); col++) {
-        if (row == i && col == j && (grid[row][col].bounds.right != 0 || grid[row][col].bounds.bottom != 0)) {
+    for (var row = i; row < Math.min(gridToUse.length, i + 1 + rowsDown); row++) {
+      for (var col = j; col < Math.min(gridToUse[0].length, j + 1 + colsRight); col++) {
+        if (row == i && col == j && (gridToUse[row][col].bounds.right != 0 || gridToUse[row][col].bounds.bottom != 0)) {
           continue
         }
-        var b = grid[row][col];
+        var b = gridToUse[row][col];
 
         if (col == j) {
           // vertical
@@ -225,24 +234,33 @@ function resetBlock(block) {
     var i = parseInt(id[id.length - 2]);
     var j = parseInt(id[id.length - 1]);
 
-    var curBlock = grid[i][j];
-    var regular_w = ($(curBlock.containerName).width()/grid_cols);
-    var regular_h = ($(curBlock.containerName).height()/grid_rows);
+    var gridToUse;
+    if (id.length < 3) {
+      gridToUse = grid;
+    } else {
+      if (id[0] == "title") {
+        gridToUse = titleGrid;
+      }
+    }
+
+    var curBlock = gridToUse[i][j];
+    var regular_w = ($(curBlock.containerName).width()/gridToUse[0].length);
+    var regular_h = ($(curBlock.containerName).height()/gridToUse.length);
 
     var blocksDown = curBlock.bounds.bottom;
     var blocksRight = curBlock.bounds.right;
 
-    for (var row=i; row < Math.min(grid_rows, i + 1 + blocksDown); row++) {
-      for (var col=j; col < Math.min(grid_cols, j + 1 + blocksRight); col++) {
-        var b = grid[row][col];
+    for (var row=i; row < Math.min(gridToUse.length, i + 1 + blocksDown); row++) {
+      for (var col=j; col < Math.min(gridToUse[0].length, j + 1 + blocksRight); col++) {
+        var b = gridToUse[row][col];
 
         b.bounds.right = 0
         b.bounds.bottom = 0;
 
         b.update(regular_w, regular_h, curBlock.offset)
 
-        if ($("#"+row+"_"+col).hasClass('collapsed')) {
-          $("#"+row+"_"+col).toggleClass('collapsed');
+        if ($("#"+b.id).hasClass('collapsed')) {
+          $("#"+b.id).toggleClass('collapsed');
         }
       }
     }
@@ -257,6 +275,15 @@ function resetAllBlocks() {
       }
     }
   }
+
+  for (var row=0; row < title_grid_rows; row++) {
+    for (var col=0; col < title_grid_cols; col++) {
+      var b = titleGrid[row][col];
+      $("#title_"+b.id).remove();
+      // Call this once implemented
+      // b.animateOut()
+    }
+  }
 }
 
 function destroyAllBlocks(){
@@ -264,6 +291,15 @@ function destroyAllBlocks(){
     for (var col=0; col < grid_cols; col++) {
       var b = grid[row][col];
       $("#"+b.id).remove();
+      // Call this once implemented
+      // b.animateOut()
+    }
+  }
+
+  for (var row=0; row < title_grid_rows; row++) {
+    for (var col=0; col < title_grid_cols; col++) {
+      var b = titleGrid[row][col];
+      $("#title_"+b.id).remove();
       // Call this once implemented
       // b.animateOut()
     }
@@ -338,11 +374,11 @@ $(window).ready(function(){
       isScrollingUp = false;
     }
 
-    if (Math.abs(e.originalEvent.wheelDelta) > 10) {
+    if (Math.abs(e.originalEvent.wheelDelta) > 12) {
       if (isScrollingUp) {
         if(totalDist > threshold){
           totalDist = 0;
-          movePage(currentPage,3,'up',function(newPage){
+          movePage(currentPage,grid_rows/5,'up',function(newPage){
             currentPage = newPage;
             e.preventDefault();
             console.log('one page up',currentPage);
@@ -352,7 +388,7 @@ $(window).ready(function(){
       } else {
         if(totalDist < -threshold){
           totalDist = 0;
-          movePage(currentPage,3,'down',function(newPage){
+          movePage(currentPage,grid_rows/5,'down',function(newPage){
             currentPage = newPage;
             e.preventDefault();
             console.log('one page down',currentPage);

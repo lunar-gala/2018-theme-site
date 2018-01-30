@@ -967,41 +967,41 @@ body {
     width: 100%;
     height: 100%; }
 
-.mainGrid {
+.mainGrid, .titleGrid {
   transition: opacity 1s,transform 1s ease-in-out; }
-  .mainGrid .inner {
+  .mainGrid .inner, .titleGrid .inner {
     color: white;
     text-align: center;
     margin: 0; }
-    .mainGrid .inner .navBox {
+    .mainGrid .inner .navBox, .titleGrid .inner .navBox {
       padding-top: calc(calc(12.5vh - 16px) - 6px); }
-      .mainGrid .inner .navBox .row {
+      .mainGrid .inner .navBox .row, .titleGrid .inner .navBox .row {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-flow: row nowrap; }
-        .mainGrid .inner .navBox .row div {
+        .mainGrid .inner .navBox .row div, .titleGrid .inner .navBox .row div {
           width: 16px;
           height: 16px; }
-          .mainGrid .inner .navBox .row div.active {
+          .mainGrid .inner .navBox .row div.active, .titleGrid .inner .navBox .row div.active {
             background-color: #FF2224; }
-          .mainGrid .inner .navBox .row div#navInner_00, .mainGrid .inner .navBox .row div#navInner_02 {
+          .mainGrid .inner .navBox .row div#navInner_00, .mainGrid .inner .navBox .row div#navInner_02, .titleGrid .inner .navBox .row div#navInner_00, .titleGrid .inner .navBox .row div#navInner_02 {
             border: 1px solid white; }
-          .mainGrid .inner .navBox .row div#navInner_01 {
+          .mainGrid .inner .navBox .row div#navInner_01, .titleGrid .inner .navBox .row div#navInner_01 {
             border-top: 1px solid white;
             border-bottom: 1px solid white; }
-          .mainGrid .inner .navBox .row div#navInner_10, .mainGrid .inner .navBox .row div#navInner_12 {
+          .mainGrid .inner .navBox .row div#navInner_10, .mainGrid .inner .navBox .row div#navInner_12, .titleGrid .inner .navBox .row div#navInner_10, .titleGrid .inner .navBox .row div#navInner_12 {
             border: 1px solid white;
             border-top: none; }
-          .mainGrid .inner .navBox .row div#navInner_11 {
+          .mainGrid .inner .navBox .row div#navInner_11, .titleGrid .inner .navBox .row div#navInner_11 {
             border-bottom: 1px solid white; }
-    .mainGrid .inner.title {
+    .mainGrid .inner.title, .titleGrid .inner.title {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
       font-size: 3vw;
       color: #FF2224;
       line-height: calc(100vh / 8); }
-    .mainGrid .inner.text {
+    .mainGrid .inner.text, .titleGrid .inner.text {
       text-align: left;
       padding: 7vh 4vw 7vh 4vw;
       font-family: "Theinhardt",sans-serif;
@@ -1009,22 +1009,22 @@ body {
       font-size: 12pt;
       line-height: 14pt;
       color: white; }
-    .mainGrid .inner.topLink {
+    .mainGrid .inner.topLink, .titleGrid .inner.topLink {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
       color: white;
       font-size: 22pt;
       line-height: calc(100vh / 8); }
-    .mainGrid .inner.contentLink {
+    .mainGrid .inner.contentLink, .titleGrid .inner.contentLink {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
       color: white;
       font-size: 18pt;
       line-height: calc(100vh / 8); }
-  .mainGrid.fullNav {
+  .mainGrid.fullNav, .titleGrid.fullNav {
     opacity: 0;
     transition: all 2s; }
-    .mainGrid.fullNav .block {
+    .mainGrid.fullNav .block, .titleGrid.fullNav .block {
       z-index: -1; }
 
 .navGrid .block {

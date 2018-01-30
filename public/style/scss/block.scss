@@ -109,7 +109,7 @@ body{
   }
 }
 
-.mainGrid{
+.mainGrid, .titleGrid{
 	transition:opacity 1s,transform 1s ease-in-out;;
 	.inner{
 		color:white;

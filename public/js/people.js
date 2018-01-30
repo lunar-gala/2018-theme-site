@@ -1,34 +1,35 @@
 $(window).ready(function(){
 	console.log(grid);
-	// populatePeopleHeader();
-	// populatePeopleContent();
-	// $(document).keyup(function(e) {
-	//     if (e.keyCode == 27) { 
-	//     	removeDisplayPerson();
-	// 	}
-	// }); 
+	populatePeopleHeader();
+	populatePeopleContent();
+	$(document).keyup(function(e) {
+	    if (e.keyCode == 27) { 
+	    	removeDisplayPerson();
+		}
+	}); 
 });
 
 function populatePeopleHeader () {
-	animateBlock("#0_0",0,1);
-	animateBlock("#1_6",1,1);
-    animateBlock("#1_1",0,1);
-    animateBlock("#0_6",0,1);
-    $(".mainGrid #0_0 .inner").text("About").addClass("topLink");
-    $(".mainGrid #0_6 .inner").text("Lines").addClass("topLink");
-    $(".mainGrid #1_1 .inner").text("Humans").addClass("title");
-    $("#1_6 .inner").text("NAV").addClass("navBlock");
-    $("#1_6 .inner").click(function(){
+	animateBlock("#title_0_0",0,1);
+	animateBlock("#title_1_6",1,1);
+    animateBlock("#title_1_1",0,1);
+    animateBlock("#title_0_6",0,1);
+    $("#title_0_0 .inner").text("About").addClass("topLink");
+    $("#title_0_6 .inner").text("Lines").addClass("topLink");
+    $("#title_1_1 .inner").text("Humans").addClass("title");
+    $("#title_1_6 .inner").text("NAV").addClass("navBlock");
+    $("#title_1_6 .inner").click(function(){
       summonFullScreenNav();
     });
 }
 
 function populatePeopleContent () {
-	var startEyes = 3;
+	var startEyes = 0;
 	var endEyes = grid_rows;
-	for (var i = startEyes; i < endEyes; i++) {
+	for (var i = 0; i < endEyes; i++) {
 		for (var j = 0; j < grid_cols; j++) {
-			if (i == 4 && j == 0) {
+			if (i == 1 && j == 0) {
+				console.log("AAAAAAWEFWERG");
 				animateBlock("#" + grid[i][j].id, 1, 0);
 				$("#" + grid[i][j].id + " .inner").css({
 		          	"background-image" : "url('../../images/red on blue 2.gif')",
@@ -36,7 +37,7 @@ function populatePeopleContent () {
 				  	"background-repeat" : "no-repeat",
 				  	"background-position" : "center center"
 		        });
-			} else if (i == 4 && j == 6) {
+			} else if (i == 1 && j == 6) {
 				animateBlock("#" + grid[i][j].id, 1, 1);
 				$("#" + grid[i][j].id + " .inner").css({
 		          	"background-image" : "url('../../images/blue on red 2.gif')",
@@ -44,17 +45,17 @@ function populatePeopleContent () {
 				  	"background-repeat" : "no-repeat",
 				  	"background-position" : "center center"
 		        });
-			} else if (i == 6 && j == 3) {
+			} else if (i == 3 && j == 3) {
 				animateBlock("#" + grid[i][j].id, 1, 1);
 				$("#" + grid[i][j].id + " .inner").append("<p class='designers-link'>Designers</p>");
-			} else if (!((i == 5 && j == 0) 
-					    || (i == 4 && j == 7)
-					    || (i == 5 && j == 7)
-					    || (i == 5 && j == 6)
-					    || (i == 6 && j == 4)
-					    || (i == 7 && j == 4)
-					    || (i == 7 && j == 3))) {
-				console.log(getIndex(i, j));
+			} else if (!((i == 2 && j == 0) 
+					    || (i == 1 && j == 7)
+					    || (i == 2 && j == 7)
+					    || (i == 2 && j == 6)
+					    || (i == 3 && j == 4)
+					    || (i == 4 && j == 4)
+					    || (i == 4 && j == 3))) {
+				console.log("(" + i + ", " + j + ")");
 				var index = getIndex(i, j);
 				var dataObject = board1[index];
 				var firstName = dataObject.firstname;
@@ -88,7 +89,6 @@ function populatePeopleContent () {
 		        $("#" + grid[i][j].id + " .inner").click(function (i, j) {
 		        	return function () {
 		        		var index = getIndex(i, j);
-			        	console.log(index);
 		        		displayPerson(index);
 		        	};
 		        }(i, j));
@@ -98,8 +98,9 @@ function populatePeopleContent () {
 }
 
 function getIndex(i, j) { 
-	var offset = 3 * grid_cols;
+	var offset = 0;
 	var index = (i * grid_cols + j) - offset;
+	console.log("get index: " + index);
 	if (index > 8) {
 		index -= 1;
 		if (index > 15) {

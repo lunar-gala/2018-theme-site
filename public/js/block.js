@@ -1,16 +1,15 @@
 var grid = [];
+var titleGrid = [];
 var navGrid = [];
+var title_grid_cols = 8;
+var title_grid_rows = 3;
 var grid_cols = 8;
-var grid_rows = 8;
+var grid_rows = 15;
 
-//var grid_cols = 3;
-//var grid_rows = 8;
-
-function initGrid (rows, cols, grid, preString) {
-  // var grid = [];
-  var block_width = window.innerWidth / cols;
-  var block_height = window.innerHeight / rows;
-
+function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
+  var block_width = $(containerName).width() / cols;
+  var block_height = $(containerName).height() / rows;
+  console.log(offset);
   for(var i = 0; i < rows; i++) {
     var currentRow = [];
     for(var j = 0; j < cols; j++) {
@@ -18,7 +17,7 @@ function initGrid (rows, cols, grid, preString) {
       var x = j * block_width;
 
       var block = new Block(i, j, x, y,
-                            block_width, block_height,preString);
+                            block_width, block_height, preString, containerName, offset);
       currentRow.push(block);
     }
     grid.push(currentRow);
@@ -26,13 +25,20 @@ function initGrid (rows, cols, grid, preString) {
   return grid;
 }
 
-function Block(row, col, x, y, width, height, preString){
+function Block(row, col, x, y, width, height, preString, containerName, offset){
   this.row = row;
   this.col = col;
+  this.containerName = containerName;
+
   //initial values
   this.x = x;
   this.y = y;
-  this.id = preString+row+"_"+col;
+  if (preString.length > 0) {
+    this.id = preString+"_"+row+"_"+col;
+  } else {
+    this.id = row+"_"+col;
+  }
+  this.offset = offset;
   this.state = "normal";
   this.width = width;
   this.height = height;
@@ -115,7 +121,8 @@ function Block(row, col, x, y, width, height, preString){
     $(target).append(this.DOM);
   }
 
-  this.update = function(w,h){
+  this.update = function(w, h, offset){
+    //checking if collapsed
     var blockElem = $("#"+this.id)
 
     this.showgridlines ? blockElem.addClass("filler-block") : blockElem.removeClass("filler-block");
@@ -149,7 +156,7 @@ function Block(row, col, x, y, width, height, preString){
         var width = w + this.bounds.right * w;
         var height = h + this.bounds.bottom * h;
 
-        y = this.row * h;
+        y = this.row * h + offset;
         x = this.col * w;
 
         blockElem.css({
@@ -161,6 +168,7 @@ function Block(row, col, x, y, width, height, preString){
 
         this.y = y;
         this.x = x;
+        this.offset = offset;
         this.width = width;
         this.height = height;
 
@@ -183,10 +191,21 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
 
     var id = $(block).attr("id").split("_");
 
-    var i = parseInt(id[0]);
-    var j = parseInt(id[1]);
+    var i = parseInt(id[id.length - 2]);
+    var j = parseInt(id[id.length - 1]);
 
-    var curBlock = grid[i][j];
+    var gridToUse;
+    if (id.length < 3) {
+      gridToUse = grid;
+    } else {
+      if (id[0] == "title") {
+        gridToUse = titleGrid;
+      }
+    }
+
+    var curBlock = gridToUse[i][j];
+    var regular_w = ($(curBlock.containerName).width()/gridToUse[0].length);
+    var regular_h = ($(curBlock.containerName).height()/gridToUse.length);
 
     if (curBlock.bounds.bottom != 0 || curBlock.bounds.right != 0) {
       resetBlock(block);
@@ -196,12 +215,12 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
     curBlock.bounds.bottom = rowsDown;
     curBlock.bounds.right = colsRight;
 
-    for (var row = i; row < Math.min(grid_rows, i + 1 + rowsDown); row++) {
-      for (var col = j; col < Math.min(grid_cols, j + 1 + colsRight); col++) {
-        if (row == i && col == j && (grid[row][col].bounds.right != 0 || grid[row][col].bounds.bottom != 0)) {
+    for (var row = i; row < Math.min(gridToUse.length, i + 1 + rowsDown); row++) {
+      for (var col = j; col < Math.min(gridToUse[0].length, j + 1 + colsRight); col++) {
+        if (row == i && col == j && (gridToUse[row][col].bounds.right != 0 || gridToUse[row][col].bounds.bottom != 0)) {
           continue
         }
-        var b = grid[row][col];
+        var b = gridToUse[row][col];
         b.showgridlines = showgridlines;
         $("#"+b.id).attr("belongs-to", $(block).attr("id"))
 
@@ -218,38 +237,46 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
       }
     }
 
+    curBlock.update(regular_w, regular_h, curBlock.offset);
     curBlock.showgridlines = showgridlines;
-    curBlock.update(regular_w,regular_h);
 }
 
 function resetBlock(block) {
     var id = $(block).attr("id").split("_");
 
-    var i = parseInt(id[0]);
-    var j = parseInt(id[1]);
+    var i = parseInt(id[id.length - 2]);
+    var j = parseInt(id[id.length - 1]);
 
-    var curBlock = grid[i][j];
+    var gridToUse;
+    if (id.length < 3) {
+      gridToUse = grid;
+    } else {
+      if (id[0] == "title") {
+        gridToUse = titleGrid;
+      }
+    }
 
-    var regular_w = (window.innerWidth/grid_cols);
-    var regular_h = (window.innerHeight/grid_rows);
+    var curBlock = gridToUse[i][j];
+    var regular_w = ($(curBlock.containerName).width()/gridToUse[0].length);
+    var regular_h = ($(curBlock.containerName).height()/gridToUse.length);
 
     var blocksDown = curBlock.bounds.bottom;
     var blocksRight = curBlock.bounds.right;
 
-    for (var row=i; row < Math.min(grid_rows, i + 1 + blocksDown); row++) {
-      for (var col=j; col < Math.min(grid_cols, j + 1 + blocksRight); col++) {
-        var b = grid[row][col];
+    for (var row=i; row < Math.min(gridToUse.length, i + 1 + blocksDown); row++) {
+      for (var col=j; col < Math.min(gridToUse[0].length, j + 1 + blocksRight); col++) {
+        var b = gridToUse[row][col];
 
         b.bounds.right = 0
         b.bounds.bottom = 0;
 
-        b.update(regular_w, regular_h)
+        b.update(regular_w, regular_h, curBlock.offset)
 
         b.showgridlines = false;
         $("#"+b.id).removeAttr("belongs-to")
 
-        if ($("#"+row+"_"+col).hasClass('collapsed')) {
-          $("#"+row+"_"+col).toggleClass('collapsed');
+        if ($("#"+b.id).hasClass('collapsed')) {
+          $("#"+b.id).toggleClass('collapsed');
         }
       }
     }
@@ -264,6 +291,15 @@ function resetAllBlocks() {
       }
     }
   }
+
+  for (var row=0; row < title_grid_rows; row++) {
+    for (var col=0; col < title_grid_cols; col++) {
+      var b = titleGrid[row][col];
+      $("#title_"+b.id).remove();
+      // Call this once implemented
+      // b.animateOut()
+    }
+  }
 }
 
 function destroyAllBlocks(grid){
@@ -275,6 +311,15 @@ function destroyAllBlocks(grid){
         // Call this once implemented
         // b.animateOut()
       }
+    }
+  }
+
+  for (var row=0; row < title_grid_rows; row++) {
+    for (var col=0; col < title_grid_cols; col++) {
+      var b = titleGrid[row][col];
+      $("#title_"+b.id).remove();
+      // Call this once implemented
+      // b.animateOut()
     }
   }
 }
@@ -293,15 +338,114 @@ function collapse(direction, block) {
       default:
         break;
     }
+  
+    var id = $(block).attr("id").split("_");
+    var gridToUse;
+    if (id.length < 3) {
+      gridToUse = grid;
+    } else {
+      if (id[0] == "title") {
+        gridToUse = titleGrid;
+      }
+    }
+  
+    var regular_w = ($(block.containerName).width()/gridToUse[0].length);
+    var regular_h = ($(block.containerName).height()/gridToUse.length);
 
-    var regular_w = (window.innerWidth/grid_cols);
-    var regular_h = (window.innerHeight/grid_rows);
+    block.update(regular_w, regular_h, block.offset);
+}
 
-    block.update(regular_w, regular_h)
+function movePage(curPage,pageCount,direction,cb){
+
+  blockDimension = { h: grid[0][0].height, w:grid[0][0].width };
+  blockPerPage = 5;
+
+  if ((curPage == 0 && direction == 'up') ||
+      (curPage == pageCount - 1 && direction == 'down')){
+    cb(curPage);
+    return;
+  }
+
+  if (direction == 'up') {
+    newPage = curPage - 1;
+  }
+
+  else if (direction == 'down') {
+    newPage = curPage + 1;
+  }
+
+  targetDist = -(blockPerPage * blockDimension.h * newPage);
+  $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
+  cb(newPage);
+
 }
 
 $(window).ready(function(){
+  var wheeling;
+  var wheeldelta = { x: 0, y: 0 };
+  var totalDist = 0;
+  var threshold = 3000;
+  var currentPage = 0;
+  var isScrollingUp = false;
+
+  $("body").bind('mousewheel', function(e) {
+    if(e.originalEvent.wheelDelta > 0) {
+      if (!isScrollingUp) {
+        totalDist = 0;
+        isScrollingUp = true;
+      }
+    } else if (isScrollingUp) {
+      totalDist = 0;
+      isScrollingUp = false;
+    }
+    else{
+      isScrollingUp = false;
+    }
+
+    if (Math.abs(e.originalEvent.wheelDelta) > 12) {
+      if (isScrollingUp) {
+        if(totalDist > threshold){
+          totalDist = 0;
+          movePage(currentPage,grid_rows/5,'up',function(newPage){
+            currentPage = newPage;
+            e.preventDefault();
+            console.log('one page up',currentPage);
+          });
+        }
+        totalDist += e.originalEvent.wheelDelta;
+      } else {
+        if(totalDist < -threshold){
+          totalDist = 0;
+          movePage(currentPage,grid_rows/5,'down',function(newPage){
+            currentPage = newPage;
+            e.preventDefault();
+            console.log('one page down',currentPage);
+          });
+        }
+        totalDist += e.originalEvent.wheelDelta;
+      }
+    }
+  });
+
+  $(".mainGrid").height(($(window).innerHeight() / 8) * grid_rows + 'px');
+  $(".titleGrid").height(($(window).innerHeight() / 8) * title_grid_rows + 'px');
+
+  titleGrid = initGrid(title_grid_rows, title_grid_cols, titleGrid, "title", ".titleGrid", 0);
+  titleGrid.map(function(inner){
+    inner.map(function(cur){
+      cur.create(".titleGrid");
+      cur.update(cur.width, cur.height, cur.offset);
+    });
+  });
+
   //initiating the grid
+  grid = initGrid(grid_rows, grid_cols, grid, "", ".mainGrid", $(".titleGrid").height());
+  grid.map(function(inner){
+    inner.map(function(cur){
+      cur.create(".mainGrid");
+      cur.update(cur.width, cur.height, cur.offset);
+    });
+  });
 
   $(window).keydown(function(e) {
     if (e.key == "r") {
@@ -313,7 +457,13 @@ $(window).ready(function(){
 $(window).resize(function(){
   grid.map(function(inner){
     inner.map(function(cur){
-      cur.update((window.innerWidth/grid[0].length),(window.innerHeight/grid.length));
+      cur.update(($(cur.containerName).width()/grid[0].length),($(cur.containerName).height()/grid.length), $(".titleGrid").height());
+    })
+  })
+
+  titleGrid.map(function(inner){
+    inner.map(function(cur){
+      cur.update(($(cur.containerName).width()/titleGrid[0].length),($(cur.containerName).height()/titleGrid.length), 0);
     })
   })
 });

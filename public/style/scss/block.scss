@@ -5,8 +5,11 @@ $color-red : #FF2224;
 
 body{
   background-color:black;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
+
+
 
 .block{
   position:absolute;
@@ -123,12 +126,13 @@ body{
   }
 }
 
-.mainGrid{
-	transition:opacity 1s;
+.mainGrid, .titleGrid{
+	transition:opacity 1s,transform 1s ease-in-out;
   transition-delay:0s;
 	.inner{
 		color:white;
 		text-align:center;
+    margin: 0;
 		.navBox{
       //change this later accordingly
       &:hover {
@@ -171,7 +175,7 @@ body{
 		&.title{
 			font-family:"Druk Wide",sans-serif;
 			font-weight:400;
-			font-size:32pt;
+			font-size: 3vw;
 			color:$color-red;
 			line-height:calc(100vh / 8);
 		}

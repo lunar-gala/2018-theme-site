@@ -1,0 +1,293 @@
+.filler-block, .animated-filler-block {
+    cursor: pointer;
+    .inner {
+        border:1px solid white;
+    }    
+}
+
+.linesBlock ~ .borders {
+    .borders-inner {
+        span {
+            opacity: 0;
+        }
+        
+    }
+}
+
+.linesBlock {
+    cursor: pointer;
+
+    .content {
+        position: absolute;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
+        text-align: left; // initial block styling centers text
+
+        .title, .designers {
+            white-space: nowrap; // TODO: MIGHT NEED TO CHANGE THIS
+        }
+
+        .title {
+            font-family:"Druk Wide",sans-serif;
+            font-weight:400;
+            font-size:18pt;
+            line-height: 1.5;
+        }
+        
+        p {
+          overflow: hidden;
+          visibility: hidden;
+          opacity: 0;
+          transition: visibility 0.2s, opacity .2s linear;
+          font-family: "Theinhardt";
+          
+          &.designers {
+            font-size: 12pt;
+            line-height: 1.5;
+          }
+
+          &.description {
+            font-size: 10pt;
+            line-height: 1.5;
+          }
+        }
+    }
+
+    &.left, &.top, &.middle, &.right, &.bottom {
+        border:none;
+    }
+
+    &.left {
+        .content {
+            left: 100%; // Should be 100% - (width of header text/2) px
+            top: 44%;
+            //transform: translateX(-10%); // TODO: GET ALL ALIASES
+            width: 350%;
+        }
+    }
+
+    &.top {
+        .content {      
+            left: 100%;
+            top: 32%;
+            transform: translateX(-10%); // need to translate based on title size...
+            width: 100%;
+        }
+    }
+
+    &.middle {
+        .content {
+            left: 0%;
+            top: 32%;
+            transform: translateX(-25%);
+            width: 100%;
+        }
+    }
+
+    &.right {
+        .content {
+            left: 100%;
+            top: 44%;
+            width: 100%;
+
+            p {
+                height: 0px;
+                width: 0px;
+            }
+        }
+    }
+
+    &.bottom {
+        .content {
+            top: 32%;
+            left: 100%;
+            width: 100%;
+
+            p {
+                height: 0px;
+                width: 0px;
+            }
+        }
+    }
+
+    .highlighted & {
+        &.bottom .content{
+            p {
+                height: 100%;
+                width: 100%;
+            }
+            top:-100%;
+        }
+
+        &.right .content{
+            p {
+                width: 100%;
+                height: 100%;
+            }
+            left:-100%;
+            width: 300%;
+        }
+        p {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+
+.block {
+    &.highlighted {
+        .filler-inner {
+            border: none;
+        }
+    }
+
+    .animated-filler-block {
+        opacity: 0.2;
+    }
+
+    .top ~ .animated-filler-block {
+        padding: 0.6%;
+    }
+
+    .middle ~ .animated-filler-block, .bottom ~ .animated-filler-block {
+        padding: 0.75%;
+    }
+
+    .left ~ .animated-filler-block, .right ~ .animated-filler-block {
+        padding: 2.25%;
+    }
+}
+
+// https://stackoverflow.com/questions/4183948/css-set-background-image-with-opacity
+.lineBlockPicMuted {
+    position: relative;
+}
+
+.lineBlockPicMuted::after {
+    content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index:-99999999;
+    background-size: cover;
+    opacity: 0.6; // CHANGE THIS
+}
+
+.lineBlockPic {
+    position: relative;
+}
+
+.lineBlockPic::after {
+    content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index:-99999999;
+    background-size: cover;
+    opacity: 1; // CHANGE THIS
+}
+
+// TODO: add line pictures down here. Should be 
+.fakelineimg {
+  &:after {
+    background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg2 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg3 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg4 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg5 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg6 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg7 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg8 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg9 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg10 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg11 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg12 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg13 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg14 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg15 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}
+
+.aboutImg16 {
+  &:after {
+    //background-image:url("../../images/About-Asset-1.png");
+  }
+}

@@ -7,7 +7,6 @@ var grid_cols = 8;
 var grid_rows = 15;
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
-  // var grid = [];
   var block_width = $(containerName).width() / cols;
   var block_height = $(containerName).height() / rows;
   console.log(offset);
@@ -56,6 +55,8 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
                   </div>
               </div>`;
   this.collapsed = false;
+  this.showgridlines = false;
+  this.belongsto = null;
 
   this.animateOut = function(){
     directions = [];
@@ -89,7 +90,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
     }
     directions.forEach(function(val,index){
       //Creating the random second measured delay.
-      randomDuration = parseFloat(.25+(Math.random()*.5))+"s";
+      randomDuration = parseFloat(.1+(Math.random()*.5))+"s";
       randomDelay = parseFloat(Math.random()*.5)+"s";
       directions[index] = [val,randomDelay,randomDuration];
     })
@@ -113,7 +114,6 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
   }
 
   this.animateIn = function(){
-    console.log('animating the navbar in');
     $("#"+this.id+" .borders span").removeClass("left-out right-out up-out down-out");
   }
 
@@ -123,22 +123,33 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
 
   this.update = function(w, h, offset){
     //checking if collapsed
-    if (this.containerName == ".titleGrid")
-      console.log(offset);
+    var blockElem = $("#"+this.id)
 
+    this.showgridlines ? blockElem.addClass("filler-block") : blockElem.removeClass("filler-block");
+    
     if (this.collapsed && Object.values(this.bounds).includes(-1)) {
-      return;
+        var y = this.row * h;
+        var x = this.col * w;
+
+        blockElem.css({
+          "top": y,
+          "left": x,
+          "width": w,
+          "height": h
+        });
+
+        this.y = y;
+        this.x = x;
+        this.width = w;
+        this.height = h;
+        return;
     }
 
     if(Object.values(this.bounds).includes(-1)) {
       this.collapsed = true;
-      $("#"+this.id).toggleClass("collapsed");
-      // TODO: maybe need to fix width and height so we can click on the entire expanded box
-      // $("#"+this.id).css({
-      //   "width": 0,
-      //   "height": 0
-      // });
+      blockElem.toggleClass("collapsed");
     } else {
+
         this.collapsed = false;
         var y;
         var x;
@@ -148,7 +159,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
         y = this.row * h + offset;
         x = this.col * w;
 
-        $("#"+this.id).css({
+        blockElem.css({
           "top": y,
           "left": x,
           "width": width,
@@ -157,15 +168,27 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
 
         this.y = y;
         this.x = x;
-        this.width = w;
-        this.height = h;
         this.offset = offset;
+        this.width = width;
+        this.height = height;
+
+        if (this.showgridlines && (this.bounds.right > 1 || this.bounds.bottom > 1)) {
+          blockElem.find(" .animated-filler-block").remove()
+          blockElem.append($("<div class='animated-filler-block'><div class='filler-inner'></div></div>").css({
+            top: 0,
+            left: 0,
+            width: (window.innerWidth/grid[0].length),
+            height: (window.innerHeight/grid.length)
+          }))
+        }
     }
   }
 }
 
-function animateBlock(block, rowsDown, colsRight, gridlines = false) {
-    console.log(gridlines);
+function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
+    var regular_w = (window.innerWidth/grid_cols);
+    var regular_h = (window.innerHeight/grid_rows);
+
     var id = $(block).attr("id").split("_");
 
     var i = parseInt(id[id.length - 2]);
@@ -198,6 +221,8 @@ function animateBlock(block, rowsDown, colsRight, gridlines = false) {
           continue
         }
         var b = gridToUse[row][col];
+        b.showgridlines = showgridlines;
+        $("#"+b.id).attr("belongs-to", $(block).attr("id"))
 
         if (col == j) {
           // vertical
@@ -212,20 +237,8 @@ function animateBlock(block, rowsDown, colsRight, gridlines = false) {
       }
     }
 
-    // if (gridlines) {
-    //   for (var row=i; row < Math.min(grid_rows, i + 1 + rowsDown); row++) {
-    //     for (var col=j; col < Math.min(grid_cols, j + 1 + colsRight); col++) {
-    //       if (row == i && col == j && (grid[row][col].bounds.right != 0 || grid[row][col].bounds.bottom != 0)) {
-    //         continue
-    //       }
-    //       var block = "#" + i + "_" + j;
-    //       $(block).append($("<div class=row></div>"))
-    //       console.log(b)
-    //     }
-    //   }
-    // }
-
     curBlock.update(regular_w, regular_h, curBlock.offset);
+    curBlock.showgridlines = showgridlines;
 }
 
 function resetBlock(block) {
@@ -259,6 +272,9 @@ function resetBlock(block) {
 
         b.update(regular_w, regular_h, curBlock.offset)
 
+        b.showgridlines = false;
+        $("#"+b.id).removeAttr("belongs-to")
+
         if ($("#"+b.id).hasClass('collapsed')) {
           $("#"+b.id).toggleClass('collapsed');
         }
@@ -286,13 +302,15 @@ function resetAllBlocks() {
   }
 }
 
-function destroyAllBlocks(){
-  for (var row=0; row < grid_rows; row++) {
-    for (var col=0; col < grid_cols; col++) {
-      var b = grid[row][col];
-      $("#"+b.id).remove();
-      // Call this once implemented
-      // b.animateOut()
+function destroyAllBlocks(grid){
+  if(grid.length > 0){
+    for (var row = 0; row < grid_rows; row++) {
+      for (var col = 0; col < grid_cols; col++) {
+        var b = grid[row][col];
+        $("#"+b.id).remove();
+        // Call this once implemented
+        // b.animateOut()
+      }
     }
   }
 
@@ -320,9 +338,19 @@ function collapse(direction, block) {
       default:
         break;
     }
-
-    var regular_w = ($(block.containerName).width()/grid_cols);
-    var regular_h = ($(block.containerName).height()/grid_rows);
+  
+    var id = $(block).attr("id").split("_");
+    var gridToUse;
+    if (id.length < 3) {
+      gridToUse = grid;
+    } else {
+      if (id[0] == "title") {
+        gridToUse = titleGrid;
+      }
+    }
+  
+    var regular_w = ($(block.containerName).width()/gridToUse[0].length);
+    var regular_h = ($(block.containerName).height()/gridToUse.length);
 
     block.update(regular_w, regular_h, block.offset);
 }

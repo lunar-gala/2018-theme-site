@@ -1,26 +1,67 @@
-var TOPSELECTOR = "#3_2"
-var BOTTOMSELECTOR = "#7_0"
-var LEFTSELECTOR = "#3_0"
-var RIGHTSELECTOR = "#3_6"
-var MIDDLESELECTOR = "#5_3"
+var TOPBLOCK;
+var BOTTOMBLOCK;
+var LEFTBLOCK;
+var RIGHTBLOCK;
+var MIDDLEBLOCK;
+var selectorblocks;
+var selectornames;
+var LINESETSIZE;
 
-$(window).ready(function () {
-    $(window).scroll(function () {
+var HIGHLIGHTEDBLOCK = null;
+var currentLineSet = 0;
+var HIGHLIGHTEDBLOCK = null;
 
-        var blocksToChange = {}
-        blocksToChange[TOPSELECTOR] = "top"
-        blocksToChange[BOTTOMSELECTOR] = "bottom"
-        blocksToChange[LEFTSELECTOR] = "left"
-        blocksToChange[RIGHTSELECTOR] = "right"
-        blocksToChange[MIDDLESELECTOR] = "middle"
+var LINES = []
 
-        changeContent(blocksToChange)
-        console.log("scrolled")
-    })
+function Line(title, designers, description) {
+    this.title = title;
+    this.designers = designers; 
+    this.description = description;
+}
+
+for (var i = 0; i < linedata.length; i++) {
+    var line = linedata[i];
+    LINES.push(new Line(line.title, line.designers, line.description));
+}
+
+function init_lines_mobile() {
+    LEFTBLOCK = ".mainGrid #3_0 .inner"
+    TOPBLOCK = ".mainGrid #3_1 .inner" 
+    BOTTOMBLOCK = ".mainGrid #5_1 .inner"
+
+    selectorblocks = [LEFTBLOCK, TOPBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
+    selectornames = ['left', 'top', 'bottom']
+    LINESETSIZE = 3;
+
+    animateBlock("#3_0", 0,1, true); // LEFT BLOCK
+    animateBlock("#3_1", 0,2, true); // TOP BLOCK
+    animateBlock("#5_1", 0,1, true); // MIDDLE BLOCK
+
+    populateLinesBlocks();
+    setLines(0)
+    $("body").off("click").click(clickLinesPicture);
+}
+
+function init_lines() {
+    TOPBLOCK = ".mainGrid #3_2 .inner"
+    BOTTOMBLOCK = ".mainGrid #7_0 .inner"
+    LEFTBLOCK = ".mainGrid #3_0 .inner" // SAME AS MOBILE
+    RIGHTBLOCK = ".mainGrid #3_6 .inner"
+    MIDDLEBLOCK = ".mainGrid #5_3 .inner"
+
+    selectorblocks = [TOPBLOCK, LEFTBLOCK, MIDDLEBLOCK, RIGHTBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
+    selectornames = ['top', 'left', 'middle', 'right', 'bottom']
+    LINESETSIZE = 5;
+
+    
+    animateBlock("#1_6",1,1);
+    $("#1_6 .inner").text("NAV").addClass("navBlock");
+
+    $(document).keydown(changeLineSet);
 
     animateBlock("#0_0", 0,1);
     $(".mainGrid #0_0 .inner")
-        .text("⟵ Humans")
+        .text("Humans")
         .addClass("topLink")
         .click(function () {
             // go to humans page
@@ -28,99 +69,133 @@ $(window).ready(function () {
 
     animateBlock("#0_6", 0,1);
     $(".mainGrid #0_6 .inner")
-        .text("About ⟶")
-        .addClass("contentLink")
+        .text("About")
+        .addClass("topLink")
         .click(function () {
             // go to about page
         });
 
+    // Lines title
     animateBlock("#1_1",0,1);
     $(".mainGrid #1_1 .inner").text("Lines").addClass("title");
 
-    // amzu-amzu
-    animateBlock("#3_2", 0, 3, true)
-    $(".mainGrid #3_2 .inner")
-        .addClass("contentLink aboutImg1")
-        .click(function () {
-            $(".block").toggleClass('clicked')
+    // initial animates
+    animateBlock("#3_2", 0, 2, true) // top
+    animateBlock("#3_0", 2,0, true); // left
+    animateBlock("#5_3", 0,2, true); // middle
+    animateBlock("#3_6", 2,0, true); // right
+    animateBlock("#7_0", 0,2, true); // bottom
+
+    populateLinesBlocks()
+    setLines(0)
+    $("body").off("click").click(clickLinesPicture);
+}
+
+function setLines(lineSet) {
+    var lowerBound = lineSet * LINESETSIZE;
+    var upperBound = (lineSet + 1) * LINESETSIZE;
+
+    for (var i=lowerBound; i<upperBound; i++) {
+        var line = LINES[i];
+        var selector = selectorblocks[i%LINESETSIZE];
+        setLineBlock(selector, line);
+    }
+
+    setTimeout(function(){
+        selectornames.forEach(function(position) {
+            var elemwidth = document.getElementById(position + "-title").getBoundingClientRect().width/2;
+            var translatestring = "translateX(-"+elemwidth+"px)"
+            $("."+position + " .content").css({
+                transform: translatestring
+            })
         })
-        .html("<div class='linesTop' style='margin-left: 50%'>amzu-amzu</div>")
-
-    // 2228
-    animateBlock("#3_0", 2,0, true);
-    $(".mainGrid #3_0 .inner")
-        .html("<div class='linesLeft' style='margin-top: 65%; margin-left: 66%'>2288</div>")
-        .addClass("contentLink aboutImg1")
-        .click(function () {
-            $(".block").toggleClass('clicked')
-        });
-
-    // chinoiseries
-    animateBlock("#5_3", 0,2, true);
-    $(".mainGrid #5_3 .inner")
-        .html("<div class='linesMiddle' style='margin-left: -100%'>chinoiseries</div>")
-        .addClass("contentLink aboutImg1")
-        .click(function () {
-            $(".block").toggleClass('clicked')
-        });
-
-    // chroma
-    animateBlock("#3_6", 2,0, true);
-    $(".mainGrid #3_6 .inner")
-        .html("<div class='linesRight' ='margin-top: 65%; margin-left: 60%'>chroma</div>")
-        .addClass("contentLink aboutImg1")
-        .click(function () {
-            $(".block").toggleClass('clicked')
-        });
-
-    // descent
-    animateBlock("#7_0", 0,2, true);
-    $(".mainGrid #7_0 .inner")
-        .html("<div class='linesBottom' style='margin-left: 85%'>descent</div>")
-        .addClass("contentLink aboutImg1")
-        .click(function () {
-            $(".block").toggleClass('clicked')
-        });
-
-    $(document).keydown(function (e) { if (e.key == "c") { changeContent({}); } });
-});
-
-function changeLeftBlock(text, imgClass) {
-
+    },330);
+    
 }
 
-function changeContent(blockSizings) {
-    $.each(blockSizings, function (blockSelector, val) {
-        console.log(blockSelector)
-        $(blockSelector + " .inner").text(val)
+// TODO: play around with these numbers
+var FADEIN_DURATION = 300;
+var FADEOUT_DURATION = 300;
+
+function setLineBlock(selector, line) {
+    var titleSelector = selector + " .title"
+    var designerSelector = selector + " .designers"
+    var descriptionSelector = selector + " .description"
+
+    if (!line) {
+        $(titleSelector).text("");
+        $(designerSelector).text("");
+        $(descriptionSelector).text("");
+        return;
+    }
+
+    $(titleSelector).fadeOut(FADEOUT_DURATION,function() { $(this).text(line.title).fadeIn(FADEIN_DURATION)});
+    $(designerSelector).text(line.designers);
+    $(descriptionSelector).text(line.description);
+}
+
+function clickLinesPicture(e) {
+    var elem = e.target;
+    // TODO: check to see if the clicked block is on top of a highlighted block and get the highlighted block's id
+    // this is ugly but it works (i think)
+    var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || 
+                    ($(elem).attr("belongs-to")) ||
+                    ($(elem).parent().hasClass("filler-block") && $(elem).parent().attr("belongs-to")) ||
+                    ($(elem).parent().parent().attr("id")) || 
+                    ($(elem).parent().parent().parent().attr("id"))
+
+    
+    if (blockid && !HIGHLIGHTEDBLOCK) {
+        $(".block").toggleClass('muted')
+        $("#" + blockid + ".block").toggleClass('highlighted');
+        HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
+
+        $(HIGHLIGHTEDBLOCK).find(".fakelineimg").toggleClass("lineBlockPicMuted lineBlockPic");
+
+        return;
+    }
+
+    $(".block").removeClass("muted")
+    $(".highlighted").removeClass("highlighted");
+
+    // go back to dim background
+    $(HIGHLIGHTEDBLOCK).find(".lineBlockPic").toggleClass("lineBlockPicMuted lineBlockPic");
+    HIGHLIGHTEDBLOCK = null;
+}
+
+function populateLinesBlocks() {
+    selectorblocks.forEach(function(selector,i) {
+        $(selector)
+            .html("<div class='content'><span id='" + selectornames[i] + "-title' " + "class='title'></span><p class='designers'></p><p class='description'></p></div>")
+            .addClass("linesBlock lineBlockPicMuted fakelineimg " + selectornames[i])
     })
-
-    // // amzu-amzu
-    // $(".mainGrid #3_2 .inner")
-    //     .text("amzu-amzu")
-    //     .removeClass("aboutImg1")
-
-    // // 2228
-    // $(".mainGrid #3_0 .inner")
-    //     .text("2288")
-    //     .removeClass("aboutImg1")
-    //     .click(function () {
-    //         $(".block").toggleClass('clicked')
-    //     });
-
-    // // chinoiseries
-    // $(".mainGrid #5_3 .inner")
-    //     .text("chinoiseries")
-    //     .removeClass("aboutImg1")
-
-    // // chroma
-    // $(".mainGrid #3_6 .inner")
-    //     .text("chroma")
-    //     .removeClass("aboutImg1")
-
-    // // descent
-    // $(".mainGrid #7_0 .inner")
-    //     .text("descent")
-    //     .removeClass("aboutImg1")
 }
 
+function changeLineSet(e) {
+    var LEFT = 37;
+    var RIGHT = 39;
+    // TODO: left/right analagous to scrolling
+    // should not be able to change lines when a block is highlighted
+    if (HIGHLIGHTEDBLOCK) {
+        return;
+    }
+
+    if (e.which === LEFT) {
+        if (currentLineSet > 0) {
+            currentLineSet--;
+        } else {
+            return
+        }
+        // previous line
+    } else if (e.which === RIGHT) {
+        // next line
+        if (currentLineSet < 3) {
+            currentLineSet++;
+        } else {
+            return
+        }
+    } else {
+        return;
+    }
+    setLines(currentLineSet)
+}

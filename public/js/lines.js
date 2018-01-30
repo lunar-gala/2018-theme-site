@@ -14,9 +14,15 @@ var HIGHLIGHTEDBLOCK = null;
 var LINES = []
 
 function Line(title, designers, description) {
+    var self = this;
+
     this.title = title;
     this.designers = designers; 
     this.description = description;
+
+    function imageClass() {
+        return "lineImg-" + self.title.toLowerCase();
+    }
 }
 
 for (var i = 0; i < linedata.length; i++) {
@@ -149,7 +155,7 @@ function clickLinesPicture(e) {
         $("#" + blockid + ".block").toggleClass('highlighted');
         HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
 
-        $(HIGHLIGHTEDBLOCK).find(".lineImg-amzu").toggleClass("lineBlockPicMuted lineBlockPic");
+        $(HIGHLIGHTEDBLOCK).find(".inner").toggleClass("lineBlockPicMuted lineBlockPic");
 
         return;
     }

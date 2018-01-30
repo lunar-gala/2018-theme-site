@@ -21,17 +21,27 @@ $(window).ready(function(){
 
 function load_page(url){
   destroyAllBlocks(grid);
+  destroyAllBlocks(titleGrid);
   //Creating the .mainGrid from scratch each time
-  grid = [];
-    grid = initGrid(grid_rows, grid_cols,grid,"");
-    grid.map(function(inner){
-      inner.map(function(cur){
-        cur.create(".mainGrid");
-        cur.update(cur.width, cur.height);
-        cur.animateOut();
-        $('.mainGrid').css("display","none");
-      })
-    })
+  $(".mainGrid").height(($(window).innerHeight() / 8) * grid_rows + 'px');
+  $(".titleGrid").height(($(window).innerHeight() / 8) * title_grid_rows + 'px');
+
+  titleGrid = initGrid(title_grid_rows, title_grid_cols, titleGrid, "title", ".titleGrid", 0);
+  titleGrid.map(function(inner){
+    inner.map(function(cur){
+      cur.create(".titleGrid");
+      cur.update(cur.width, cur.height, cur.offset);
+    });
+  });
+
+  //initiating the grid
+  grid = initGrid(grid_rows, grid_cols, grid, "", ".mainGrid", $(".titleGrid").height());
+  grid.map(function(inner){
+    inner.map(function(cur){
+      cur.create(".mainGrid");
+      cur.update(cur.width, cur.height, cur.offset);
+    });
+  });
     window.setTimeout(function(){
       call_function(url);
       if(!document.URL.includes(url))
@@ -61,7 +71,7 @@ function call_function(url){
       init_lines_mobile();
     } else {
       init_lines();
-    } 
+    }
   }
   else if(url == "/humans"){
     init_humans();

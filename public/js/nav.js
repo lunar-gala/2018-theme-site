@@ -88,14 +88,12 @@ function summonFullNav(){
       $(".navGrid").toggleClass("fullNav");
     },100);
 
-
   },1000);
 }
 
 //This is the mini nav
 function summonMiniNav(){
-  animateBlock("#1_6",1,1);
-
+  animateBlock("#title_1_6",1,1);
   //creating the nav box
   currentPath = window.location.pathname;
   options = {"/about":[0,0], "/lines":[0,1], "/humans":[1,0] , "/sponsors":[1,1]}
@@ -109,21 +107,17 @@ function summonMiniNav(){
     navBox += `</div>`
   }
   navBox  += `</div>`
-  $("#1_6 .inner").html(navBox);
+  $("#title_1_6 .inner").html(navBox);
   $("#navInner_"+currentIndices.join("")).toggleClass("active");
-  $("#1_6 .inner").click(function(){
+  $("#title_1_6 .inner").click(function(){
     summonFullNav();
   });
 }
 function deleteMiniNav(){
-  resetBlock($("#1_6")[0]);
-  $("#1_6 .inner").html("");
+  resetBlock($("#title_1_6")[0]);
+  $("#title_1_6 .inner").html("");
 }
 
 function isFullNavOpen() {
   return $(".mainGrid").hasClass("fullNav")
 }
-
-// $(window).ready(function(){
-//     summonMiniNav();
-// })

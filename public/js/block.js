@@ -9,7 +9,6 @@ var grid_rows = 15;
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   var block_width = $(containerName).width() / cols;
   var block_height = $(containerName).height() / rows;
-  console.log(offset);
   for(var i = 0; i < rows; i++) {
     var currentRow = [];
     for(var j = 0; j < cols; j++) {
@@ -126,7 +125,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
     var blockElem = $("#"+this.id)
 
     this.showgridlines ? blockElem.addClass("filler-block") : blockElem.removeClass("filler-block");
-    
+
     if (this.collapsed && Object.values(this.bounds).includes(-1)) {
         var y = this.row * h;
         var x = this.col * w;
@@ -313,15 +312,6 @@ function destroyAllBlocks(grid){
       }
     }
   }
-
-  for (var row=0; row < title_grid_rows; row++) {
-    for (var col=0; col < title_grid_cols; col++) {
-      var b = titleGrid[row][col];
-      $("#title_"+b.id).remove();
-      // Call this once implemented
-      // b.animateOut()
-    }
-  }
 }
 
 function collapse(direction, block) {
@@ -338,7 +328,7 @@ function collapse(direction, block) {
       default:
         break;
     }
-  
+
     var id = $(block).attr("id").split("_");
     var gridToUse;
     if (id.length < 3) {
@@ -348,7 +338,7 @@ function collapse(direction, block) {
         gridToUse = titleGrid;
       }
     }
-  
+
     var regular_w = ($(block.containerName).width()/gridToUse[0].length);
     var regular_h = ($(block.containerName).height()/gridToUse.length);
 
@@ -409,7 +399,7 @@ $(window).ready(function(){
           movePage(currentPage,grid_rows/5,'up',function(newPage){
             currentPage = newPage;
             e.preventDefault();
-            console.log('one page up',currentPage);
+            // console.log('one page up',currentPage);
           });
         }
         totalDist += e.originalEvent.wheelDelta;
@@ -419,39 +409,13 @@ $(window).ready(function(){
           movePage(currentPage,grid_rows/5,'down',function(newPage){
             currentPage = newPage;
             e.preventDefault();
-            console.log('one page down',currentPage);
+            // console.log('one page down',currentPage);
           });
         }
         totalDist += e.originalEvent.wheelDelta;
       }
     }
   });
-
-  $(".mainGrid").height(($(window).innerHeight() / 8) * grid_rows + 'px');
-  $(".titleGrid").height(($(window).innerHeight() / 8) * title_grid_rows + 'px');
-
-  titleGrid = initGrid(title_grid_rows, title_grid_cols, titleGrid, "title", ".titleGrid", 0);
-  titleGrid.map(function(inner){
-    inner.map(function(cur){
-      cur.create(".titleGrid");
-      cur.update(cur.width, cur.height, cur.offset);
-    });
-  });
-
-  //initiating the grid
-  grid = initGrid(grid_rows, grid_cols, grid, "", ".mainGrid", $(".titleGrid").height());
-  grid.map(function(inner){
-    inner.map(function(cur){
-      cur.create(".mainGrid");
-      cur.update(cur.width, cur.height, cur.offset);
-    });
-  });
-
-  $(window).keydown(function(e) {
-    if (e.key == "r") {
-      resetAllBlocks();
-    }
-  })
 });
 
 $(window).resize(function(){

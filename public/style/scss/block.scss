@@ -9,7 +9,9 @@ body{
   overflow-x: hidden;
 }
 
-
+.mainGrid, .titleGrid{
+  opacity:0;
+}
 
 .block{
   position:absolute;
@@ -63,7 +65,7 @@ body{
       overflow: hidden;
       position: relative;
       span{
-        z-index:2000;
+        z-index:1000000000;
         position:absolute;
         display:inline-block;
         background-color:white;

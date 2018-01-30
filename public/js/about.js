@@ -1,8 +1,4 @@
 function init_about(){
-
-  // animateBlock("#4_5",1,2);
-  // animateBlock("#6_3",1,1);
-
 	animateBlock("#title_0_0",0,1);
 	animateBlock("#title_1_6",1,1);
   animateBlock("#title_1_1",0,1);
@@ -18,4 +14,8 @@ function init_about(){
 
   animateBlock("#0_1",2,1);
   $(".mainGrid #0_1 .inner").addClass("aboutImg1");
+}
+
+function init_about_mobile(){
+
 }

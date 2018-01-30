@@ -20,8 +20,8 @@ function Line(title, designers, description) {
     this.designers = designers; 
     this.description = description;
 
-    function imageClass() {
-        return "lineImg-" + self.title.toLowerCase();
+    this.imageId = function () {
+        return self.title.toLowerCase();
     }
 }
 
@@ -132,12 +132,14 @@ function setLineBlock(selector, line) {
         $(titleSelector).text("");
         $(designerSelector).text("");
         $(descriptionSelector).text("");
+        $(selector).removeAttr("id")
         return;
     }
-    console.log($(selector).hasClass("amzu-img"))
+
     $(titleSelector).fadeOut(FADEOUT_DURATION,function() { $(this).text(line.title).fadeIn(FADEIN_DURATION)});
     $(designerSelector).text(line.designers);
     $(descriptionSelector).text(line.description);
+    $(selector).attr("id", line.imageId());
 }
 
 function clickLinesPicture(e) {
@@ -172,7 +174,7 @@ function populateLinesBlocks() {
     selectorblocks.forEach(function(selector,i) {
         $(selector)
             .html("<div class='content'><span id='" + selectornames[i] + "-title' " + "class='title'></span><p class='designers'></p><p class='description'></p></div>")
-            .addClass("linesBlock lineBlockPicMuted lineImg-amzu " + selectornames[i])
+            .addClass("linesBlock lineBlockPicMuted " + selectornames[i])
     })
 }
 

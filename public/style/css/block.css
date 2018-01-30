@@ -1018,7 +1018,16 @@ hr {
   background-size: cover;
   opacity: 1; }
 
-.lineImg-amzu:after {
+#amzu:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#2268:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#chinoiseries:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#chroma:after {
   background-image: url("../../images/About-Asset-1.png"); }
 
 body {

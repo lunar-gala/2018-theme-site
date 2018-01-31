@@ -5,8 +5,7 @@ function navOut(url){
 
 function summonFullNav(){
   //getting the grid structure for the fullscreen nav
-  grid.map((row)=>{row.map((block)=>{
-    block.animateOut()})})
+  grid.map((row)=>{row.map((block)=>{block.animateOut()})})
   titleGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
 
   $(".navGrid").empty();
@@ -15,17 +14,16 @@ function summonFullNav(){
   navGrid = initGrid(2,3,navGrid,"nav",'.navGrid',0);
 
   if(currentPage > 0){
-    $('.mainGrid').css('z-index','-9999999999');
+    // $('.mainGrid').css('z-index','-9999999999');
     window.setTimeout(function(){
       $('.mainGrid').css('transform','translateY(0px)');
       currentPage = 0;
       window.setTimeout(function(){
         __pageAnimating = false;
-        $('.mainGrid').css('display','block');
+        // $('.mainGrid').css('display','block');
       },700)
     },900)
   }
-
 
   //hide the main grid for the time being
   $(".mainGrid").toggleClass("fullNav");

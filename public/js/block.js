@@ -81,7 +81,10 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
   this.belongsto = null;
 
   this.animateOut = function(){
-    if(this.row > 4){
+    if(this.row > 4 && row_per_page == 5){
+      return;
+    }
+    else if(this.row > 5 && row_per_page == 6){
       return;
     }
     directions = [];
@@ -140,7 +143,10 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
   }
 
   this.animateIn = function(){
-    if(this.row > 4){
+    if(this.row > 4 && row_per_page == 5){
+      return;
+    }
+    else if(this.row > 5 && row_per_page == 6){
       return;
     }
     $("#"+this.id+" .borders span").removeClass("left-out right-out up-out down-out");

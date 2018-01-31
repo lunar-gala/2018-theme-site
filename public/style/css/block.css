@@ -981,8 +981,6 @@ hr {
 
 .block.highlighted .filler-inner {
   border: none; }
-.block .animated-filler-block {
-  opacity: 0.2; }
 .block .top ~ .animated-filler-block {
   padding: 0.6%; }
 .block .middle ~ .animated-filler-block, .block .bottom ~ .animated-filler-block {
@@ -1074,6 +1072,12 @@ hr {
 
 #tambora:after {
   background-image: url("../../images/About-Asset-1.png"); }
+
+.animated-filler-block.hidden {
+  opacity: 0 !important; }
+
+.filler-block .inner {
+  transition: opacity 1s !important; }
 
 body {
   background-color: black;

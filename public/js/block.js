@@ -9,14 +9,12 @@ var grid_rows = 20;
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   var block_width = $(containerName).width() / cols;
   var block_height = $(containerName).height() / rows;
-  console.log(containerName,rows,$(containerName).height(),window.innerHeight);
   for(var i = 0; i < rows; i++) {
     var currentRow = [];
     for(var j = 0; j < cols; j++) {
       var y = i * block_height;
       var x = j * block_width;
 
-      console.log(containerName,y);
 
       var block = new Block(i, j, x, y,
                             block_width, block_height, preString, containerName, offset);
@@ -63,6 +61,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
 
   this.animateOut = function(){
     if(this.row > 4){
+      console.log('returning');
       return;
     }
     directions = [];
@@ -96,8 +95,9 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
     }
     directions.forEach(function(val,index){
       //Creating the random second measured delay.
-      randomDuration = parseFloat(.1+(Math.random()*.5))+"s";
-      randomDelay = parseFloat(Math.random()*.5)+"s";
+      randomVal = Math.random();
+      randomDuration = parseFloat(.1+(randomVal*.5))+"s";
+      randomDelay = parseFloat(randomVal*.5)+"s";
       directions[index] = [val,randomDelay,randomDuration];
     })
     $("#"+this.id+" .borders .border-top")
@@ -138,7 +138,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
 
     if (this.collapsed && Object.values(this.bounds).includes(-1)) {
 
-        var y = this.row * h;
+        var y = this.row * h + this.offset;
         var x = this.col * w;
 
         blockElem.css({
@@ -170,9 +170,6 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
         y = this.row * h + offset;
         x = this.col * w;
 
-
-        console.log(this.id,this.y,y);
-
         blockElem.css({
           "top": y,
           "left": x,
@@ -185,11 +182,10 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
         this.offset = offset;
         this.width = width;
         this.height = height;
-        console.log((this.showgridlines))
 
         if (this.showgridlines) {
           blockElem.find(" .animated-filler-block").remove()
-          blockElem.append($("<div class='animated-filler-block'><div class='filler-inner'></div></div>").css({
+          blockElem.append($("<div class='animated-filler-block hidden'><div class='filler-inner'></div></div>").css({
             top: 0,
             left: 0,
             width: (window.innerWidth/8),
@@ -253,7 +249,7 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
     }
     curBlock.showgridlines = showgridlines;
     curBlock.update(regular_w, regular_h, curBlock.offset);
-    
+
 }
 
 function resetBlock(block) {
@@ -446,7 +442,6 @@ $(window).ready(function(){
               __pageAnimating = false;
             },700)
             e.preventDefault();
-            // console.log('one page down',currentPage);
           });
         }
         totalDist += e.originalEvent.wheelDelta;
@@ -458,9 +453,10 @@ $(window).ready(function(){
 $(window).resize(function(){
   grid.map(function(inner){
     inner.map(function(cur){
-      cur.update(($(cur.containerName).width()/grid[0].length),($(cur.containerName).height()/grid.length), $(".titleGrid").height());
+      cur.update(($(cur.containerName).width()/grid[0].length),($(cur.containerName).height()/grid.length), $(".titleGrid").height(),cur.showgridlines);
     })
   })
+  $('.animated-filler-block').removeClass('hidden');
 
   titleGrid.map(function(inner){
     inner.map(function(cur){

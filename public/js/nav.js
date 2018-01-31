@@ -56,7 +56,7 @@ function summonFullNav(){
     });
 
     currentPath = window.location.pathname;
-    options = {"/about":[0,0], "/lines":[0,1], "/humans":[1,0] , "/sponsors":[1,1]}
+    options = {"/about":[0,0], "/lines":[0,1], "/federation":[1,0] , "/sponsors":[1,1]}
     currentIndices = options[currentPath];
 
     $(".navGrid #nav_"+currentIndices.join("_")+" .inner").addClass("active");
@@ -116,7 +116,7 @@ function summonMiniNav(){
   animateBlock("#title_1_6",1,1);
   //creating the nav box
   currentPath = window.location.pathname;
-  options = {"/about":[0,0], "/lines":[0,1], "/humans":[1,0] , "/sponsors":[1,1]}
+  options = {"/about":[0,0], "/lines":[0,1], "/federation":[1,0] , "/sponsors":[1,1]}
   currentIndices = options[currentPath];
   navBox = `<div class="navBox">`;
   for(var i = 0;  i < 2; i++){

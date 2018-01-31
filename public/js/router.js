@@ -104,6 +104,7 @@ function load_page(url){
       call_function(url);
 
       deleteMiniNav();
+      console.log("AAAAAAAAAAAAAA");
       summonMiniNav();
 
       // $(".mainGrid").toggleClass("fullNav");
@@ -195,21 +196,26 @@ function load_page_mobile(url){
 
 function call_function(url,isMobile = false){
   if(url == "/about" && !isMobile){
+    console.log("AAAAAAAA");
     init_about();
   }
   else if(url == "/about" && isMobile){
     init_about_mobile();
-  }
+  } 
+
   if(url == "/lines" && !isMobile){
     init_lines();
   }
   else if(url == "/lines" && isMobile){
     init_lines_mobile();
   }
-  if(url == "/humans" && !isMobile){
-    init_about();
+
+  if(url == "/federation" && !isMobile){
+    console.log("AAAAAAAA");
+    init_people();
   }
-  else if(url == "/humans" && isMobile){
-    init_about_mobile();
+  else if(url == "/federation" && isMobile){
+    // init_about_mobile();
   }
+
 }

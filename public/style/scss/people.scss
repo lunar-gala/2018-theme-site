@@ -3,7 +3,19 @@
 	// height: 1000px;
 }
 
-.designers-link {
+.designers-link1 {
+	font-family: "Druk Wide",sans-serif;
+	font-weight: 400;
+	color: #FF2224;
+	font-size: 16pt;
+	position: absolute;
+	top: 12%;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.designers-link2 {
 	font-family: "Druk Wide",sans-serif;
 	font-weight: 400;
 	color: #FF2224;
@@ -83,7 +95,7 @@
 .headshot {
 	width: 350px;
 	height: 350px;
-	background-position: center;
+	background-position: center top;
 	background-repeat: no-repeat;
     background-size: 350px;
     background-color: black;

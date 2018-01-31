@@ -7,7 +7,7 @@ var __title_grid_cols = 8;
 var __title_grid_rows = 3;
 var __grid_cols = 8;
 //this number should be able to change according to the page
-var __grid_rows = 20;
+var __grid_rows = 35;
 
 //MOBILE VARIABLES
 var __mobile_title_grid_cols = 3;
@@ -15,16 +15,6 @@ var __mobile_title_grid_rows = 2;
 var __mobile_grid_cols = 3;
 //this number should be able to change according to the page
 var __mobile_grid_rows = 20;
-
-var title_grid_cols = 8;
-var title_grid_rows = 3;
-var grid_cols = 8;
-var grid_rows = 20;
-
-
-//
-//
-
 
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
@@ -220,9 +210,10 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
 }
 
 function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
-    var regular_w = (window.innerWidth/grid_cols);
-    var regular_h = (window.innerHeight/grid_rows);
+    var regular_w = (window.innerWidth/__grid_cols);
+    var regular_h = (window.innerHeight/__grid_rows);
 
+    // console.log($(block).attr("id"));
     var id = $(block).attr("id").split("_");
 
     var i = parseInt(id[id.length - 2]);
@@ -421,7 +412,7 @@ function movePage(curPage,pageCount,direction,cb){
   boundary_top = newPage * row_per_page + row_per_page
 
   for (i = boundary_low; i < boundary_top;i++){
-    console.log(i);
+    // console.log(i);
     $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','block');
   }
   //hide the outgoing boxes after animating out
@@ -431,8 +422,13 @@ function movePage(curPage,pageCount,direction,cb){
     boundary_low = oldPage * row_per_page
     boundary_top = oldPage * row_per_page + row_per_page
     for (i = boundary_low; i < boundary_top;i++){
+<<<<<<< HEAD
       console.log(i);
       $('.mainGrid [id^=\''+parseInt(i)+'_\']').css('display','none');
+=======
+      // console.log(i);
+      $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','none');
+>>>>>>> 49e15c7c3379bd4eee2514db04637d403851a06f
     }
     __pageAnimating = false;
   },1000)

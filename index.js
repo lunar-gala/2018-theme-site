@@ -14,6 +14,9 @@ app.get('/about', function (req, res) {
 app.get('/lines', function (req, res) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 })
+app.get('/federation', function (req, res) {
+  res.sendFile(path.join(__dirname, '/public/federation.html'));
+})
 app.get('/testAnimation',function(req,res){
   res.sendFile(path.join(__dirname, '/public/animationTest.html'));
 });
@@ -41,7 +44,7 @@ app.get("/data/lines", function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({ content: "this is the content for lines" }));
 });
-app.get("/data/people", function (req, res) {
+app.get("/data/federation", function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({ content: "this is the content for people" }));
 });

@@ -420,23 +420,19 @@ function movePage(curPage,pageCount,direction,cb){
   boundary_low = newPage * row_per_page
   boundary_top = newPage * row_per_page + row_per_page
   for (i = boundary_low; i < boundary_top;i++){
-    console.log(i);
+    // console.log(i);
     $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','block');
   }
   //hide the outgoing boxes after animating out
-
-
-
   $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
-
-
 
   window.setTimeout(function(){
     boundary_low = oldPage * row_per_page
     boundary_top = oldPage * row_per_page + row_per_page
     for (i = boundary_low; i < boundary_top;i++){
       console.log(i);
-      $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','none');
+      $('.mainGrid [id^=\''+parseInt(i)+'_\']').css('display','none');
+
     }
     __pageAnimating = false;
   },1000)

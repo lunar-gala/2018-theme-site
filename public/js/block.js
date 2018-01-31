@@ -13,6 +13,7 @@ var __grid_rows = 35;
 var __mobile_title_grid_cols = 3;
 var __mobile_title_grid_rows = 2;
 var __mobile_grid_cols = 3;
+
 //this number should be able to change according to the page
 var __mobile_grid_rows = 20;
 
@@ -259,7 +260,7 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
           continue
         }
         var b = gridToUse[row][col];
-        b.showgridlines = showgridlines;
+        b.showgridlines = false;
         $("#"+b.id).attr("belongs-to", $(block).attr("id"))
 
         if (col == j) {
@@ -275,7 +276,6 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
       }
     }
     curBlock.showgridlines = showgridlines;
-    // console.log(b,regular_w,regular_h);
     curBlock.update(regular_w, regular_h, curBlock.offset,true);
 
 }
@@ -439,7 +439,6 @@ function movePage(curPage,pageCount,direction,cb){
     boundary_low = oldPage * row_per_page
     boundary_top = oldPage * row_per_page + row_per_page
     for (i = boundary_low; i < boundary_top;i++){
-      // console.log(i);
       $('.mainGrid [id^=\''+parseInt(i)+'_\']').css('display','none');
     }
     __pageAnimating = false;

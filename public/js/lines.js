@@ -34,37 +34,44 @@ for (var i = 0; i < linedata.length; i++) {
 }
 
 function init_lines_mobile() {
-    LEFTBLOCK = ".mainGrid #0_0 .inner"
-    TOPBLOCK = ".mainGrid #0_1 .inner" 
-    BOTTOMBLOCK = ".mainGrid #2_1 .inner"
+    // requires 42 rows
+    console.log(grid_rows, grid_cols)
+    LEFTBLOCK = ".mainGrid #1_0 .inner"
+    TOPBLOCK = ".mainGrid #1_1 .inner" 
+    BOTTOMBLOCK = ".mainGrid #3_1 .inner"
 
     selectorblocks = [LEFTBLOCK, TOPBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
     selectornames = ['left', 'top', 'bottom']
     LINESETSIZE = 3;
 
-    animateBlock("#0_0", 0,1, true); // LEFT BLOCK
-    animateBlock("#0_1", 0,2, true); // TOP BLOCK
-    animateBlock("#2_1", 0,1, true); // MIDDLE BLOCK
+    animateBlock("#title_1_0", 0, 1)
+    $("#title_1_0 .inner").text("Lines").addClass("title")
 
-    animateBlock("#5_0", 0,1, true); // LEFT BLOCK
-    animateBlock("#5_1", 0,2, true); // TOP BLOCK
-    animateBlock("#7_1", 0,1, true); // MIDDLE BLOCK
+    animateBlock("#1_0", 2,0, true); // LEFT BLOCK
+    animateBlock("#1_1", 0,1, true); // TOP BLOCK
+    animateBlock("#3_1", 0,1, true); // MIDDLE BLOCK
 
-    animateBlock("#10_0", 0,1, true); // LEFT BLOCK
-    animateBlock("#10_1", 0,2, true); // TOP BLOCK
-    animateBlock("#12_1", 0,1, true); // MIDDLE BLOCK
+    animateBlock("#7_0", 2,0, true); // LEFT BLOCK
+    animateBlock("#7_1", 0,1, true); // TOP BLOCK
+    animateBlock("#9_1", 0,1, true); // MIDDLE BLOCK
 
-    animateBlock("#15_0", 0,1, true); // LEFT BLOCK
-    animateBlock("#15_1", 0,2, true); // TOP BLOCK
-    animateBlock("#17_1", 0,1, true); // MIDDLE BLOCK
+    animateBlock("#13_0", 2,0, true); // LEFT BLOCK
+    animateBlock("#13_1", 0,1, true); // TOP BLOCK
+    animateBlock("#15_1", 0,1, true); // MIDDLE BLOCK
 
-    animateBlock("#20_0", 0,1, true); // LEFT BLOCK
-    animateBlock("#20_1", 0,2, true); // TOP BLOCK
-    animateBlock("#22_1", 0,1, true); // MIDDLE BLOCK
+    animateBlock("#19_0", 2,0, true); // LEFT BLOCK
+    animateBlock("#19_1", 0,1, true); // TOP BLOCK
+    animateBlock("#21_1", 0,1, true); // MIDDLE BLOCK
 
-    animateBlock("#25_0", 0,1, true); // LEFT BLOCK
-    animateBlock("#25_1", 0,2, true); // TOP BLOCK
+    animateBlock("#25_0", 2,0, true); // LEFT BLOCK
+    animateBlock("#25_1", 0,1, true); // TOP BLOCK
     animateBlock("#27_1", 0,1, true); // MIDDLE BLOCK
+
+    animateBlock("#31_0", 2,0, true); // LEFT BLOCK
+    animateBlock("#31_1", 0,1, true); // TOP BLOCK
+    animateBlock("#33_1", 0,1, true); // MIDDLE BLOCK
+
+    animateBlock("#37_0", 2,0, true); // LEFT BLOCK
 
 
     populateLinesBlocks();
@@ -73,6 +80,7 @@ function init_lines_mobile() {
 }
 
 function init_lines() {
+    // requires 20 rows
     TOPBLOCK = ".mainGrid #0_2 .inner"
     BOTTOMBLOCK = ".mainGrid #4_0 .inner"
     LEFTBLOCK = ".mainGrid #0_0 .inner" // SAME AS MOBILE
@@ -171,8 +179,8 @@ function clickLinesPicture(e) {
 }
 
 function populateLinesBlocks() {
-    var totalSets = Math.round(LINES.length/LINESETSIZE);
-
+    var totalSets = Math.ceil(LINES.length/LINESETSIZE);
+    var rowsPerPage = LINESETSIZE == 3 ? 6 : 5;
     for (var lineset=0; lineset < totalSets; lineset++) {
         selectorblocks.forEach(function(selector, i) {
             if ((i + lineset * LINESETSIZE) > LINES.length - 1) {
@@ -181,7 +189,7 @@ function populateLinesBlocks() {
             var id = selector.split("#")[1]
             var baserow = id.split("_")[0];
             var basecol = id.split("_")[1];
-            var actualrow = parseInt(baserow) + lineset*5;
+            var actualrow = parseInt(baserow) + lineset*rowsPerPage;
             var actualselector = "#" + actualrow + "_" + basecol;
 
             $(actualselector)
@@ -190,7 +198,11 @@ function populateLinesBlocks() {
 
             var line = LINES[lineset*LINESETSIZE + i];
             setLineBlock(actualselector, line)
-            setTimeout(function(){centerContent(actualselector,line)},330);
+
+            if (title_grid_rows > 2) {
+                setTimeout(function(){centerContent(actualselector,line)},330);
+            }
+            
         })
     }
 }

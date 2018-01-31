@@ -48,11 +48,24 @@
     left: 100%;
     top: 44%;
     width: 350%; }
+    @media (max-width: 768px) {
+      .linesBlock.left .content {
+        text-align: center;
+        left: 0%;
+        width: 200%; }
+        .linesBlock.left .content .description, .linesBlock.left .content .designers {
+          text-align: left; } }
   .linesBlock.top .content {
     left: 100%;
     top: 32%;
-    transform: translateX(-10%);
     width: 100%; }
+    @media (max-width: 768px) {
+      .linesBlock.top .content {
+        text-align: center;
+        left: 0%;
+        width: 100%; }
+        .linesBlock.top .content .description, .linesBlock.top .content .designers {
+          text-align: left; } }
   .linesBlock.middle .content {
     left: 0%;
     top: 32%;
@@ -72,11 +85,19 @@
     .linesBlock.bottom .content p {
       height: 0px;
       width: 0px; }
-  .highlighted .linesBlock.bottom .content {
-    top: -130%; }
-    .highlighted .linesBlock.bottom .content p {
-      height: 100%;
-      width: 100%; }
+    @media (max-width: 768px) {
+      .linesBlock.bottom .content {
+        text-align: center;
+        left: 0%;
+        width: 100%; }
+        .linesBlock.bottom .content .description, .linesBlock.bottom .content .designers {
+          text-align: left; } }
+  .highlighted .linesBlock.bottom .content p {
+    height: 100%;
+    width: 100%; }
+  @media (min-width: 769px) {
+    .highlighted .linesBlock.bottom .content {
+      top: -130%; } }
   .highlighted .linesBlock.right .content {
     left: -100%;
     width: 300%; }

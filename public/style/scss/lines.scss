@@ -66,8 +66,17 @@
         .content {
             left: 100%; // Should be 100% - (width of header text/2) px
             top: 44%;
-            //transform: translateX(-10%); // TODO: GET ALL ALIASES
             width: 350%;
+
+            @media (max-width: 768px) {
+              text-align: center;
+              .description, .designers {
+                text-align: left;
+              }
+
+              left: 0%;
+              width: 200%;
+            }
         }
     }
 
@@ -75,8 +84,16 @@
         .content {
             left: 100%;
             top: 32%;
-            transform: translateX(-10%); // need to translate based on title size...
             width: 100%;
+
+            @media (max-width: 768px) {
+              text-align: center;
+              left: 0%;
+              width: 100%;
+              .description, .designers {
+                text-align: left;
+              }
+            }
         }
     }
 
@@ -94,7 +111,6 @@
             left: 100%;
             top: 44%;
             width: 100%;
-
             p {
                 height: 0px;
                 width: 0px;
@@ -112,6 +128,15 @@
                 height: 0px;
                 width: 0px;
             }
+            @media (max-width: 768px) {
+              text-align: center;
+              left: 0%;
+              width: 100%;
+
+              .description, .designers {
+                text-align: left;
+              }
+            }
         }
     }
 
@@ -121,7 +146,10 @@
                 height: 100%;
                 width: 100%;
             }
-            top:-130%;
+            @media (min-width: 769px) {
+              top:-130%;
+            }
+            
         }
 
         &.right .content{

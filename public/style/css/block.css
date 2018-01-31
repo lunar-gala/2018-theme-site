@@ -1025,9 +1025,6 @@ body {
   overflow-y: hidden;
   overflow-x: hidden; }
 
-.mainGrid, .titleGrid {
-  opacity: 0; }
-
 .navGrid {
   height: 100vh;
   width: 100vw;
@@ -1170,34 +1167,38 @@ body {
   .mainGrid.fullNav, .titleGrid.fullNav {
     opacity: 0 !important;
     transition-delay: 0s;
-    transition: all .5s; }
+    transition: all 1s; }
     .mainGrid.fullNav .block, .titleGrid.fullNav .block {
       z-index: -1; }
 
-.navGrid .block {
-  padding: 0px; }
-  .navGrid .block .inner {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    transition-delay: .3s;
-    font-family: "Druk Wide",sans-serif;
-    font-weight: 400;
-    line-height: 50vh;
-    color: white;
-    font-size: 26pt;
-    text-align: center; }
-    .navGrid .block .inner.active {
-      background-color: #FF2224; }
-    .navGrid .block .inner:hover {
-      text-decoration: underline; }
-  .navGrid .block:hover {
-    cursor: pointer; }
-.navGrid.fullNav .block {
-  z-index: 2; }
-.navGrid.fullNav .inner {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-  transition-delay: .3s; }
+.navGrid {
+  z-index: 0; }
+  .navGrid .block {
+    padding: 0px; }
+    .navGrid .block .inner {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      transition-delay: .3s;
+      font-family: "Druk Wide",sans-serif;
+      font-weight: 400;
+      line-height: 50vh;
+      color: white;
+      font-size: 26pt;
+      text-align: center; }
+      .navGrid .block .inner.active {
+        background-color: #FF2224; }
+      .navGrid .block .inner:hover {
+        text-decoration: underline; }
+    .navGrid .block:hover {
+      cursor: pointer; }
+  .navGrid.fullNav {
+    z-index: 100000000; }
+    .navGrid.fullNav .block {
+      z-index: 2; }
+    .navGrid.fullNav .inner {
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+      transition-delay: .3s; }
 
 .aboutImg1 {
   background-image: url("../../images/About-Asset-1.png");

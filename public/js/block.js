@@ -62,6 +62,9 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
   this.belongsto = null;
 
   this.animateOut = function(){
+    if(this.row > 4){
+      return;
+    }
     directions = [];
     // 1- Top border
     // 2- Right border
@@ -117,6 +120,9 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
   }
 
   this.animateIn = function(){
+    if(this.row > 4){
+      return;
+    }
     $("#"+this.id+" .borders span").removeClass("left-out right-out up-out down-out");
   }
 

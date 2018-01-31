@@ -47,30 +47,37 @@ function init_lines_mobile() {
     animateBlock("#title_1_0", 0, 1)
     $("#title_1_0 .inner").text("Lines").addClass("title")
 
+    // lineSet 0
     animateBlock("#1_0", 2,0, true); // LEFT BLOCK
     animateBlock("#1_1", 0,1, true); // TOP BLOCK
     animateBlock("#3_1", 0,1, true); // MIDDLE BLOCK
 
+    // lineSet 1
     animateBlock("#7_0", 2,0, true); // LEFT BLOCK
     animateBlock("#7_1", 0,1, true); // TOP BLOCK
     animateBlock("#9_1", 0,1, true); // MIDDLE BLOCK
 
+    // lineSet 2
     animateBlock("#13_0", 2,0, true); // LEFT BLOCK
     animateBlock("#13_1", 0,1, true); // TOP BLOCK
     animateBlock("#15_1", 0,1, true); // MIDDLE BLOCK
 
+    // lineSet 3
     animateBlock("#19_0", 2,0, true); // LEFT BLOCK
     animateBlock("#19_1", 0,1, true); // TOP BLOCK
     animateBlock("#21_1", 0,1, true); // MIDDLE BLOCK
 
+    // lineSet 4
     animateBlock("#25_0", 2,0, true); // LEFT BLOCK
     animateBlock("#25_1", 0,1, true); // TOP BLOCK
     animateBlock("#27_1", 0,1, true); // MIDDLE BLOCK
 
+    // lineSet 5
     animateBlock("#31_0", 2,0, true); // LEFT BLOCK
     animateBlock("#31_1", 0,1, true); // TOP BLOCK
     animateBlock("#33_1", 0,1, true); // MIDDLE BLOCK
 
+    // lineSet 6
     animateBlock("#37_0", 2,0, true); // LEFT BLOCK
 
 

@@ -82,7 +82,6 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
 
   this.animateOut = function(){
     if(this.row > 4){
-      console.log('returning');
       return;
     }
     directions = [];

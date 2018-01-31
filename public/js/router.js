@@ -176,7 +176,7 @@ function load_page_mobile(url){
         history.pushState(null, null, url);
       }
 
-      call_function(url);
+      call_function(url,true);
 
       deleteMiniNav();
       summonMiniNav();
@@ -190,20 +190,23 @@ function load_page_mobile(url){
     },500);
 }
 
-function call_function(url){
-
-  console.log("calling "+url)
-
-  if(url == "/about"){
+function call_function(url,isMobile = false){
+  if(url == "/about" && !isMobile){
     init_about();
   }
-  else if(url == "/lines"){
-      init_lines();
+  else if(url == "/about" && isMobile){
+    init_about_mobile();
   }
-  else if(url == "/humans"){
-    init_humans();
+  if(url == "/lines" && !isMobile){
+    init_lines();
   }
-  // else if(url == "/"){
-  //   init_homepage();
-  // }
+  else if(url == "/lines" && isMobile){
+    init_about_mobile();
+  }
+  if(url == "/humans" && !isMobile){
+    init_about();
+  }
+  else if(url == "/humans" && isMobile){
+    init_about_mobile();
+  }
 }

@@ -51,22 +51,16 @@
     width: 350%; }
     @media (max-width: 768px) {
       .linesBlock.left .content {
-        text-align: center;
         left: 0%;
-        width: 200%; }
-        .linesBlock.left .content .description, .linesBlock.left .content .designers {
-          text-align: left; } }
+        width: 260%; } }
   .linesBlock.top .content {
     left: 100%;
     top: 32%;
     width: 100%; }
     @media (max-width: 768px) {
       .linesBlock.top .content {
-        text-align: center;
         left: 0%;
-        width: 100%; }
-        .linesBlock.top .content .description, .linesBlock.top .content .designers {
-          text-align: left; } }
+        width: 100%; } }
   .linesBlock.middle .content {
     left: 0%;
     top: 32%;
@@ -88,17 +82,18 @@
       width: 0px; }
     @media (max-width: 768px) {
       .linesBlock.bottom .content {
-        text-align: center;
         left: 0%;
-        width: 100%; }
-        .linesBlock.bottom .content .description, .linesBlock.bottom .content .designers {
-          text-align: left; } }
+        width: 100%; } }
   .highlighted .linesBlock.bottom .content p {
     height: 100%;
     width: 100%; }
   @media (min-width: 769px) {
     .highlighted .linesBlock.bottom .content {
       top: -130%; } }
+  @media (max-width: 768px) {
+    .highlighted .linesBlock.bottom .content {
+      top: -180%;
+      left: -60%; } }
   .highlighted .linesBlock.right .content {
     left: -100%;
     width: 300%; }
@@ -111,6 +106,9 @@
   @media (max-width: 768px) {
     .highlighted .linesBlock.left .content {
       top: 12%; } }
+  @media (max-width: 768px) {
+    .highlighted .linesBlock.top .content {
+      left: -60%; } }
 
 .block.highlighted .filler-inner {
   border: none; }

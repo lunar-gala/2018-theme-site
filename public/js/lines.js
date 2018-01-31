@@ -224,5 +224,10 @@ function centerContent(selector, line) {
 }
 
 function centerContentMobile(selector, line) {
-    console.log(selector, line)
+    var elemwidth = $(selector)[0].getBoundingClientRect().width/2;
+    var translatestring = "translateX(+"+elemwidth+"px)"
+    var titlewidth = $(selector).find(".title")[0].getBoundingClientRect().width/2;
+    var diff = elemwidth - titlewidth
+    var translatestring = "translateX(+"+diff+"px)"
+    $(selector + " .content").css({transform: translatestring })
 }

@@ -70,14 +70,8 @@
             width: 350%;
 
             @media (max-width: 768px) {
-              text-align: center;
-
-              .description, .designers {
-                text-align: left;
-              }
-
               left: 0%;
-              width: 200%;
+              width: 260%;
             }
         }
     }
@@ -89,11 +83,10 @@
             width: 100%;
 
             @media (max-width: 768px) {
-              text-align: center;
+
               left: 0%;
               width: 100%;
               .description, .designers {
-                text-align: left;
               }
             }
         }
@@ -131,12 +124,10 @@
                 width: 0px;
             }
             @media (max-width: 768px) {
-              text-align: center;
               left: 0%;
               width: 100%;
 
               .description, .designers {
-                text-align: left;
               }
             }
         }
@@ -150,6 +141,10 @@
             }
             @media (min-width: 769px) {
               top:-130%;
+            }
+            @media (max-width: 768px) {
+              top:-180%;
+              left: -60%;
             }
             
         }
@@ -170,6 +165,11 @@
         &.left .content {
             @media (max-width: 768px) {
               top: 12%;
+            }
+        }
+        &.top .content {
+            @media (max-width: 768px) {
+              left: -60%;
             }
         }
     }

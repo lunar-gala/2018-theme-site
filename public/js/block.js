@@ -4,7 +4,7 @@ var navGrid = [];
 var title_grid_cols = 8;
 var title_grid_rows = 3;
 var grid_cols = 8;
-var grid_rows = 15;
+var grid_rows = 20;
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   var block_width = $(containerName).width() / cols;
@@ -185,14 +185,15 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
         this.offset = offset;
         this.width = width;
         this.height = height;
+        console.log((this.showgridlines))
 
-        if (this.showgridlines && (this.bounds.right > 1 || this.bounds.bottom > 1)) {
+        if (this.showgridlines) {
           blockElem.find(" .animated-filler-block").remove()
           blockElem.append($("<div class='animated-filler-block'><div class='filler-inner'></div></div>").css({
             top: 0,
             left: 0,
-            width: (window.innerWidth/grid[0].length),
-            height: (window.innerHeight/grid.length)
+            width: (window.innerWidth/8),
+            height: (window.innerHeight/8)
           }))
         }
     }
@@ -250,9 +251,9 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
         }
       }
     }
-
-    curBlock.update(regular_w, regular_h, curBlock.offset);
     curBlock.showgridlines = showgridlines;
+    curBlock.update(regular_w, regular_h, curBlock.offset);
+    
 }
 
 function resetBlock(block) {
@@ -370,9 +371,12 @@ function collapse(direction, block) {
     block.update(regular_w, regular_h, block.offset);
 }
 
+__pageAnimating = false;
+
 function movePage(curPage,pageCount,direction,cb){
 
-  blockDimension = { h: grid[0][0].height, w:grid[0][0].width };
+  __pageAnimating = true;
+  blockDimension = { h: titleGrid[0][0].height };
   blockPerPage = 5;
 
   if ((curPage == 0 && direction == 'up') ||
@@ -392,18 +396,20 @@ function movePage(curPage,pageCount,direction,cb){
   targetDist = -(blockPerPage * blockDimension.h * newPage);
   $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
   cb(newPage);
-
 }
 
 $(window).ready(function(){
   var wheeling;
   var wheeldelta = { x: 0, y: 0 };
   var totalDist = 0;
-  var threshold = 3000;
+  var threshold = 2000;
   var currentPage = 0;
   var isScrollingUp = false;
 
   $("body").bind('mousewheel', function(e) {
+    if(__pageAnimating){
+      return;
+    }
     if(e.originalEvent.wheelDelta > 0) {
       if (!isScrollingUp) {
         totalDist = 0;
@@ -418,13 +424,16 @@ $(window).ready(function(){
     }
 
     if (Math.abs(e.originalEvent.wheelDelta) > 12) {
+
       if (isScrollingUp) {
         if(totalDist > threshold){
           totalDist = 0;
           movePage(currentPage,grid_rows/5,'up',function(newPage){
             currentPage = newPage;
+            window.setTimeout(function(){
+              __pageAnimating = false;
+            },700)
             e.preventDefault();
-            // console.log('one page up',currentPage);
           });
         }
         totalDist += e.originalEvent.wheelDelta;
@@ -433,6 +442,9 @@ $(window).ready(function(){
           totalDist = 0;
           movePage(currentPage,grid_rows/5,'down',function(newPage){
             currentPage = newPage;
+            window.setTimeout(function(){
+              __pageAnimating = false;
+            },700)
             e.preventDefault();
             // console.log('one page down',currentPage);
           });

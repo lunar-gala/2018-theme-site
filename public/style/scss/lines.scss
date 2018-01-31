@@ -18,6 +18,7 @@
     cursor: pointer;
 
     .content {
+        cursor: default;
         position: absolute;
         -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Safari */
@@ -176,7 +177,7 @@
     height: 100%;
     z-index:-99999999;
     background-size: cover;
-    opacity: 0.6; // CHANGE THIS
+    opacity: 0.8;
 }
 
 .lineBlockPic {
@@ -196,98 +197,116 @@
 }
 
 // TODO: add line pictures down here. Should be 
-.fakelineimg {
+#amzu {
+  &:after {
+    background-image:url("../../images/lines/amzuImage.png");
+  }
+}
+
+#img-2268 {
+  &:after {
+    background-image:url("../../images/lines/2268Image.png");
+  }
+}
+
+#chinoiseries {
+  &:after {
+    background-image:url("../../images/lines/ChinoiseriesImage.png");
+  }
+}
+
+#chroma {
+  &:after {
+    background-image:url("../../images/lines/chromaImage.png");
+  }
+}
+
+#descent {
+  &:after {
+    background-image:url("../../images/lines/descentImage.png");
+  }
+}
+
+#homeostasis {
   &:after {
     background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg2 {
+#escape {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg3 {
+#hooked {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg4 {
+#inertia {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg5 {
+#intrepid {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg6 {
+#messiah {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg7 {
+#maille {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg8 {
+#morfologia {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg9 {
+#mien {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg10 {
+#nightmare {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg11 {
+#surface {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg12 {
+#stack {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg13 {
+#travaille {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }
 
-.aboutImg14 {
+#tambora {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
-  }
-}
-
-.aboutImg15 {
-  &:after {
-    //background-image:url("../../images/About-Asset-1.png");
-  }
-}
-
-.aboutImg16 {
-  &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/About-Asset-1.png");
   }
 }

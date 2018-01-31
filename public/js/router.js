@@ -44,7 +44,7 @@ function load_page(url){
       cur.animateOut();
       window.setTimeout(function(){
         cur.animateIn();
-        $('#'+cur.id+' .inner').css('opacity','1');
+        $('#'+cur.id+' > .inner').css('opacity','1');
         $('#'+cur.id+' .filler-inner').css('opacity','1');
       },1000);
     });
@@ -58,14 +58,14 @@ function load_page(url){
       cur.animateOut();
       window.setTimeout(function(){
         cur.animateIn();
-        $('#'+cur.id+" .inner").css('opacity','1')
+        $('#'+cur.id+" > .inner").css('opacity','1')
         $('#'+cur.id+" .filler-inner").css('opacity','1')
       },1000);
     });
   });
   $('.mainGrid').css("display","block");
   $('.mainGrid .inner').css('opacity','0');
-  $('.mainGrid .filler-inner').css('opacity','1');
+  $('.mainGrid .filler-inner').css('opacity','0');
   $('.titleGrid').css("display","block");
   $('.titleGrid .inner').css('opacity','0');
 
@@ -100,12 +100,7 @@ function call_function(url){
     init_about();
   }
   else if(url == "/lines"){
-
-    if (grid.length !== grid[0].length) {
-      init_lines_mobile();
-    } else {
       init_lines();
-    }
   }
   else if(url == "/humans"){
     init_humans();

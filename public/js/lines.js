@@ -14,9 +14,18 @@ var HIGHLIGHTEDBLOCK = null;
 var LINES = []
 
 function Line(title, designers, description) {
+    var self = this;
+
     this.title = title;
     this.designers = designers; 
     this.description = description;
+
+    this.imageId = function () {
+        if (self.title == "2268") {
+            return "img-2268";
+        }
+        return self.title.toLowerCase();
+    }
 }
 
 for (var i = 0; i < linedata.length; i++) {
@@ -25,97 +34,95 @@ for (var i = 0; i < linedata.length; i++) {
 }
 
 function init_lines_mobile() {
-    LEFTBLOCK = ".mainGrid #3_0 .inner"
-    TOPBLOCK = ".mainGrid #3_1 .inner" 
-    BOTTOMBLOCK = ".mainGrid #5_1 .inner"
+    LEFTBLOCK = ".mainGrid #0_0 .inner"
+    TOPBLOCK = ".mainGrid #0_1 .inner" 
+    BOTTOMBLOCK = ".mainGrid #2_1 .inner"
 
     selectorblocks = [LEFTBLOCK, TOPBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
     selectornames = ['left', 'top', 'bottom']
     LINESETSIZE = 3;
 
-    animateBlock("#3_0", 0,1, true); // LEFT BLOCK
-    animateBlock("#3_1", 0,2, true); // TOP BLOCK
-    animateBlock("#5_1", 0,1, true); // MIDDLE BLOCK
+    animateBlock("#0_0", 0,1, true); // LEFT BLOCK
+    animateBlock("#0_1", 0,2, true); // TOP BLOCK
+    animateBlock("#2_1", 0,1, true); // MIDDLE BLOCK
+
+    animateBlock("#5_0", 0,1, true); // LEFT BLOCK
+    animateBlock("#5_1", 0,2, true); // TOP BLOCK
+    animateBlock("#7_1", 0,1, true); // MIDDLE BLOCK
+
+    animateBlock("#10_0", 0,1, true); // LEFT BLOCK
+    animateBlock("#10_1", 0,2, true); // TOP BLOCK
+    animateBlock("#12_1", 0,1, true); // MIDDLE BLOCK
+
+    animateBlock("#15_0", 0,1, true); // LEFT BLOCK
+    animateBlock("#15_1", 0,2, true); // TOP BLOCK
+    animateBlock("#17_1", 0,1, true); // MIDDLE BLOCK
+
+    animateBlock("#20_0", 0,1, true); // LEFT BLOCK
+    animateBlock("#20_1", 0,2, true); // TOP BLOCK
+    animateBlock("#22_1", 0,1, true); // MIDDLE BLOCK
+
+    animateBlock("#25_0", 0,1, true); // LEFT BLOCK
+    animateBlock("#25_1", 0,2, true); // TOP BLOCK
+    animateBlock("#27_1", 0,1, true); // MIDDLE BLOCK
+
 
     populateLinesBlocks();
-    setLines(0)
+
     $("body").off("click").click(clickLinesPicture);
 }
 
 function init_lines() {
-    TOPBLOCK = ".mainGrid #3_2 .inner"
-    BOTTOMBLOCK = ".mainGrid #7_0 .inner"
-    LEFTBLOCK = ".mainGrid #3_0 .inner" // SAME AS MOBILE
-    RIGHTBLOCK = ".mainGrid #3_6 .inner"
-    MIDDLEBLOCK = ".mainGrid #5_3 .inner"
+    TOPBLOCK = ".mainGrid #0_2 .inner"
+    BOTTOMBLOCK = ".mainGrid #4_0 .inner"
+    LEFTBLOCK = ".mainGrid #0_0 .inner" // SAME AS MOBILE
+    RIGHTBLOCK = ".mainGrid #0_6 .inner"
+    MIDDLEBLOCK = ".mainGrid #2_3 .inner"
 
     selectorblocks = [TOPBLOCK, LEFTBLOCK, MIDDLEBLOCK, RIGHTBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
     selectornames = ['top', 'left', 'middle', 'right', 'bottom']
     LINESETSIZE = 5;
 
-    
-    animateBlock("#1_6",1,1);
-    $("#1_6 .inner").text("NAV").addClass("navBlock");
+    animateBlock("#title_0_0",0,1);
+    animateBlock("#title_1_6",1,1);
+    animateBlock("#title_1_1",0,1);
+    animateBlock("#title_0_6",0,1);
 
-    $(document).keydown(changeLineSet);
+    // nav links
+    $("#title_0_0 .inner").text("Humans").addClass("topLink");
+    $("#title_0_6 .inner").text("About").addClass("topLink");
 
-    animateBlock("#0_0", 0,1);
-    $(".mainGrid #0_0 .inner")
-        .text("Humans")
-        .addClass("topLink")
-        .click(function () {
-            // go to humans page
-        });
-
-    animateBlock("#0_6", 0,1);
-    $(".mainGrid #0_6 .inner")
-        .text("About")
-        .addClass("topLink")
-        .click(function () {
-            // go to about page
-        });
-
-    // Lines title
-    animateBlock("#1_1",0,1);
-    $(".mainGrid #1_1 .inner").text("Lines").addClass("title");
+    // page title
+    $("#title_1_1 .inner").text("Lines").addClass("topLink");
 
     // initial animates
-    animateBlock("#3_2", 0, 2, true) // top
-    animateBlock("#3_0", 2,0, true); // left
-    animateBlock("#5_3", 0,2, true); // middle
-    animateBlock("#3_6", 2,0, true); // right
-    animateBlock("#7_0", 0,2, true); // bottom
+    animateBlock("#0_2",0,2,true) // top
+    animateBlock("#0_0",2,0,true); // left
+    animateBlock("#2_3",0,2,true); // middle
+    animateBlock("#0_6",2,0,true); // right
+    animateBlock("#4_0",0,2,true); // bottom
+
+    animateBlock("#5_2",0,2,true) // top
+    animateBlock("#5_0",2,0,true); // left
+    animateBlock("#7_3",0,2,true); // middle
+    animateBlock("#5_6",2,0,true); // right
+    animateBlock("#9_0",0,2,true); // bottom
+
+    animateBlock("#10_2",0,2,true) // top
+    animateBlock("#10_0",2,0,true); // left
+    animateBlock("#12_3",0,2,true); // middle
+    animateBlock("#10_6",2,0,true); // right
+    animateBlock("#14_0",0,2,true); // bottom
+
+    animateBlock("#15_2",0,2,true) // top
+    animateBlock("#15_0",2,0,true); // left
+    animateBlock("#17_3",0,2,true); // middle
+    animateBlock("#15_6",2,0,true); // right
 
     populateLinesBlocks()
-    setLines(0)
+
     $("body").off("click").click(clickLinesPicture);
 }
-
-function setLines(lineSet) {
-    var lowerBound = lineSet * LINESETSIZE;
-    var upperBound = (lineSet + 1) * LINESETSIZE;
-
-    for (var i=lowerBound; i<upperBound; i++) {
-        var line = LINES[i];
-        var selector = selectorblocks[i%LINESETSIZE];
-        setLineBlock(selector, line);
-    }
-
-    setTimeout(function(){
-        selectornames.forEach(function(position) {
-            var elemwidth = document.getElementById(position + "-title").getBoundingClientRect().width/2;
-            var translatestring = "translateX(-"+elemwidth+"px)"
-            $("."+position + " .content").css({
-                transform: translatestring
-            })
-        })
-    },330);
-    
-}
-
-// TODO: play around with these numbers
-var FADEIN_DURATION = 300;
-var FADEOUT_DURATION = 300;
 
 function setLineBlock(selector, line) {
     var titleSelector = selector + " .title"
@@ -126,31 +133,31 @@ function setLineBlock(selector, line) {
         $(titleSelector).text("");
         $(designerSelector).text("");
         $(descriptionSelector).text("");
+        $(selector).removeAttr("id")
         return;
     }
 
-    $(titleSelector).fadeOut(FADEOUT_DURATION,function() { $(this).text(line.title).fadeIn(FADEIN_DURATION)});
+    $(titleSelector).text(line.title);
     $(designerSelector).text(line.designers);
     $(descriptionSelector).text(line.description);
+    $(selector).attr("id", line.imageId());
 }
 
 function clickLinesPicture(e) {
     var elem = e.target;
-    // TODO: check to see if the clicked block is on top of a highlighted block and get the highlighted block's id
-    // this is ugly but it works (i think)
+
     var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || 
                     ($(elem).attr("belongs-to")) ||
                     ($(elem).parent().hasClass("filler-block") && $(elem).parent().attr("belongs-to")) ||
-                    ($(elem).parent().parent().attr("id")) || 
-                    ($(elem).parent().parent().parent().attr("id"))
+                    ($(elem).parent().hasClass('linesBlock') && $(elem).parent().parent().attr("id")) || // content 
+                    ($(elem).parent().parent().hasClass('linesBlock') && $(elem).parent().parent().parent().attr("id"))
 
-    
     if (blockid && !HIGHLIGHTEDBLOCK) {
         $(".block").toggleClass('muted')
         $("#" + blockid + ".block").toggleClass('highlighted');
         HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
 
-        $(HIGHLIGHTEDBLOCK).find(".fakelineimg").toggleClass("lineBlockPicMuted lineBlockPic");
+        $(HIGHLIGHTEDBLOCK).find(".inner").toggleClass("lineBlockPicMuted lineBlockPic");
 
         return;
     }
@@ -164,38 +171,32 @@ function clickLinesPicture(e) {
 }
 
 function populateLinesBlocks() {
-    selectorblocks.forEach(function(selector,i) {
-        $(selector)
-            .html("<div class='content'><span id='" + selectornames[i] + "-title' " + "class='title'></span><p class='designers'></p><p class='description'></p></div>")
-            .addClass("linesBlock lineBlockPicMuted fakelineimg " + selectornames[i])
-    })
+    var totalSets = Math.round(LINES.length/LINESETSIZE);
+
+    for (var lineset=0; lineset < totalSets; lineset++) {
+        selectorblocks.forEach(function(selector, i) {
+            if ((i + lineset * LINESETSIZE) > LINES.length - 1) {
+                return;
+            }
+            var id = selector.split("#")[1]
+            var baserow = id.split("_")[0];
+            var basecol = id.split("_")[1];
+            var actualrow = parseInt(baserow) + lineset*5;
+            var actualselector = "#" + actualrow + "_" + basecol;
+
+            $(actualselector)
+                .html("<div class='content'><span class='title'></span><p class='designers'></p><p class='description'></p></div>")
+                .addClass("linesBlock lineBlockPicMuted " + selectornames[i])
+
+            var line = LINES[lineset*LINESETSIZE + i];
+            setLineBlock(actualselector, line)
+            setTimeout(function(){centerContent(actualselector,line)},330);
+        })
+    }
 }
 
-function changeLineSet(e) {
-    var LEFT = 37;
-    var RIGHT = 39;
-    // TODO: left/right analagous to scrolling
-    // should not be able to change lines when a block is highlighted
-    if (HIGHLIGHTEDBLOCK) {
-        return;
-    }
-
-    if (e.which === LEFT) {
-        if (currentLineSet > 0) {
-            currentLineSet--;
-        } else {
-            return
-        }
-        // previous line
-    } else if (e.which === RIGHT) {
-        // next line
-        if (currentLineSet < 3) {
-            currentLineSet++;
-        } else {
-            return
-        }
-    } else {
-        return;
-    }
-    setLines(currentLineSet)
+function centerContent(selector, line) {
+    var elemwidth = $(selector).find(".title")[0].getBoundingClientRect().width/2;
+    var translatestring = "translateX(-"+elemwidth+"px)"
+    $(selector + " .content").css({transform: translatestring })
 }

@@ -419,8 +419,9 @@ function movePage(curPage,pageCount,direction,cb){
   //reveal the target boxes
   boundary_low = newPage * row_per_page
   boundary_top = newPage * row_per_page + row_per_page
+
   for (i = boundary_low; i < boundary_top;i++){
-    // console.log(i);
+    console.log(i);
     $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','block');
   }
   //hide the outgoing boxes after animating out
@@ -432,7 +433,6 @@ function movePage(curPage,pageCount,direction,cb){
     for (i = boundary_low; i < boundary_top;i++){
       console.log(i);
       $('.mainGrid [id^=\''+parseInt(i)+'_\']').css('display','none');
-
     }
     __pageAnimating = false;
   },1000)

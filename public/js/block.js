@@ -9,14 +9,18 @@ var grid_rows = 15;
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   var block_width = $(containerName).width() / cols;
   var block_height = $(containerName).height() / rows;
+  console.log(containerName,rows,$(containerName).height(),window.innerHeight);
   for(var i = 0; i < rows; i++) {
     var currentRow = [];
     for(var j = 0; j < cols; j++) {
       var y = i * block_height;
       var x = j * block_width;
 
+      console.log(containerName,y);
+
       var block = new Block(i, j, x, y,
                             block_width, block_height, preString, containerName, offset);
+
       currentRow.push(block);
     }
     grid.push(currentRow);
@@ -24,7 +28,7 @@ function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   return grid;
 }
 
-function Block(row, col, x, y, width, height, preString, containerName, offset){
+function Block(row, col, x, y, width, height, preString, containerName, offset = 0){
   this.row = row;
   this.col = col;
   this.containerName = containerName;
@@ -120,13 +124,14 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
     $(target).append(this.DOM);
   }
 
-  this.update = function(w, h, offset){
+  this.update = function(w, h, offset = 0){
     //checking if collapsed
     var blockElem = $("#"+this.id)
 
     this.showgridlines ? blockElem.addClass("filler-block") : blockElem.removeClass("filler-block");
 
     if (this.collapsed && Object.values(this.bounds).includes(-1)) {
+
         var y = this.row * h;
         var x = this.col * w;
 
@@ -152,11 +157,15 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
         this.collapsed = false;
         var y;
         var x;
+
         var width = w + this.bounds.right * w;
         var height = h + this.bounds.bottom * h;
 
         y = this.row * h + offset;
         x = this.col * w;
+
+
+        console.log(this.id,this.y,y);
 
         blockElem.css({
           "top": y,
@@ -306,6 +315,16 @@ function destroyAllBlocks(grid){
     for (var row = 0; row < grid_rows; row++) {
       for (var col = 0; col < grid_cols; col++) {
         var b = grid[row][col];
+        $("#"+b.id).remove();
+        // Call this once implemented
+        // b.animateOut()
+      }
+    }
+  }
+  if(titleGrid.length > 0){
+    for (var row = 0; row < title_grid_rows; row++) {
+      for (var col = 0; col < title_grid_cols; col++) {
+        var b = titleGrid[row][col];
         $("#"+b.id).remove();
         // Call this once implemented
         // b.animateOut()

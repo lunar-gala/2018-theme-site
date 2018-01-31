@@ -22,14 +22,20 @@ $(window).ready(function(){
 function load_page(url){
 
   destroyAllBlocks(grid);
-  destroyAllBlocks(titleGrid);
 
+  titleGrid = [];
+  grid = [];
+
+  $('.mainGrid *').remove();
+  $('.titleGrid *').remove();
   //Creating the .mainGrid from scratch each time
 
   $(".mainGrid").height(($(window).innerHeight() / 8) * grid_rows + 'px');
   $(".titleGrid").height(($(window).innerHeight() / 8) * title_grid_rows + 'px');
 
   titleGrid = initGrid(title_grid_rows, title_grid_cols, titleGrid, "title", ".titleGrid", 0);
+  grid = initGrid(grid_rows, grid_cols, grid, "", ".mainGrid", $(".titleGrid").height());
+
   titleGrid.map(function(inner){
     inner.map(function(cur){
       cur.create(".titleGrid");
@@ -38,7 +44,6 @@ function load_page(url){
   });
 
   //initiating the grid
-  grid = initGrid(grid_rows, grid_cols, grid, "", ".mainGrid", $(".titleGrid").height());
   grid.map(function(inner){
     inner.map(function(cur){
       cur.create(".mainGrid");
@@ -64,24 +69,32 @@ function load_page(url){
       $('.titleGrid').css("display","block");
       $('.titleGrid').css('opacity','0');
 
+      $('.titleGrid').removeClass('fullNav');
+      $('.mainGrid').removeClass('fullNav');
+
       call_function(url);
 
       deleteMiniNav();
       summonMiniNav();
 
+
       // $(".mainGrid").toggleClass("fullNav");
       window.setTimeout(function(){
+
         $('.mainGrid').css("opacity","1");
         grid.map((row)=>{row.map((block)=>{
           block.animateIn()})})
         $('.titleGrid').css("opacity","1");
         titleGrid.map((row)=>{row.map((block)=>{
           block.animateIn()})})
-      },200);
+      },300);
     },500);
 }
 
 function call_function(url){
+
+  console.log("calling "+url)
+
   if(url == "/about"){
     init_about();
   }

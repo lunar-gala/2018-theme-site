@@ -1028,6 +1028,13 @@ body {
 .mainGrid, .titleGrid {
   opacity: 0; }
 
+.navGrid {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
 .block {
   position: absolute;
   padding: 0.25%;
@@ -1163,7 +1170,7 @@ body {
   .mainGrid.fullNav, .titleGrid.fullNav {
     opacity: 0 !important;
     transition-delay: 0s;
-    transition: all 1s; }
+    transition: all .5s; }
     .mainGrid.fullNav .block, .titleGrid.fullNav .block {
       z-index: -1; }
 

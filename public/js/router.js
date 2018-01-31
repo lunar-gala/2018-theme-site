@@ -5,9 +5,29 @@ if (!String.prototype.includes) {
     return String.prototype.indexOf.apply(this, arguments) !== -1;
   };
 }
-$(window).ready(function(){
+
+function createMobileRouting(){
+  $(window).unbind('popstate');
+  $('.router-link').off('click');
+  currentPath = window.location.pathname;
+  load_page_mobile(currentPath);
+  $(".router-link").click(function(){
+    url = $(this).attr("url");
+    load_page_mobile(url);
+  })
+  $(window).bind("popstate", function() {
+    currentPath = window.location.pathname;
+    load_page_mobile(currentPath);
+  });
+}
+
+function createRouting(){
+  $(window).unbind('popstate');
+  $('.router-link').off('click');
+
   currentPath = window.location.pathname;
   load_page(currentPath);
+
   $(".router-link").click(function(){
     url = $(this).attr("url");
     load_page(url);
@@ -16,8 +36,7 @@ $(window).ready(function(){
     currentPath = window.location.pathname;
     load_page(currentPath);
   });
-})
-
+}
 
 function load_page(url){
 

@@ -1002,7 +1002,7 @@ hr {
   height: 100%;
   z-index: -99999999;
   background-size: cover;
-  opacity: 0.6; }
+  opacity: 0.8; }
 
 .lineBlockPic {
   position: relative; }
@@ -1019,19 +1019,19 @@ hr {
   opacity: 1; }
 
 #amzu:after {
-  background-image: url("../../images/About-Asset-1.png"); }
+  background-image: url("../../images/lines/amzuImage.png"); }
 
 #img-2268:after {
-  background-image: url("../../images/About-Asset-1.png"); }
+  background-image: url("../../images/lines/2268Image.png"); }
 
 #chinoiseries:after {
-  background-image: url("../../images/About-Asset-1.png"); }
+  background-image: url("../../images/lines/ChinoiseriesImage.png"); }
 
 #chroma:after {
-  background-image: url("../../images/About-Asset-1.png"); }
+  background-image: url("../../images/lines/chromaImage.png"); }
 
 #descent:after {
-  background-image: url("../../images/About-Asset-1.png"); }
+  background-image: url("../../images/lines/descentImage.png"); }
 
 #homeostasis:after {
   background-image: url("../../images/About-Asset-1.png"); }

@@ -5,13 +5,27 @@ function navOut(url){
 
 function summonFullNav(){
   //getting the grid structure for the fullscreen nav
-  grid.map((row)=>{row.map((block)=>{block.animateOut()})})
+  grid.map((row)=>{row.map((block)=>{
+    block.animateOut()})})
   titleGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
 
   $(".navGrid").empty();
 
   navGrid = [];
   navGrid = initGrid(2,3,navGrid,"nav",'.navGrid',0);
+
+  if(currentPage > 0){
+    $('.mainGrid').css('z-index','-9999999999');
+    window.setTimeout(function(){
+      $('.mainGrid').css('transform','translateY(0px)');
+      currentPage = 0;
+      window.setTimeout(function(){
+        __pageAnimating = false;
+        $('.mainGrid').css('display','block');
+      },700)
+    },900)
+  }
+
 
   //hide the main grid for the time being
   $(".mainGrid").toggleClass("fullNav");
@@ -26,6 +40,8 @@ function summonFullNav(){
     });
     //Manually insert the data into the grid
     $(".navGrid #nav_0_0 .inner").text("About");
+
+
     $(".navGrid #nav_0_0 .inner").click(function (e) {
       if (!isFullNavOpen()) {
         return;
@@ -47,15 +63,18 @@ function summonFullNav(){
 
     $(".navGrid #nav_0_1 .inner").text("Lines");
     $(".navGrid #nav_0_1 .border-left").remove();
-    $(".navGrid #nav_0_1 .inner").click(function () {
-        if (!isFullNavOpen()) {
-          return;
-        }
-        navGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
-        $(".navGrid").toggleClass("fullNav");
-        window.setTimeout(function(){
-          navOut("/lines");
-        },000);
+
+    $(".navGrid #nav_0_1 .inner").click(function (e) {
+      if (!isFullNavOpen()) {
+        return;
+      }
+
+      navGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
+      $(".navGrid").toggleClass("fullNav");
+
+      window.setTimeout(function(){
+        navOut("/lines");
+      },1000);
     });
 
     // Close nav
@@ -119,6 +138,7 @@ function deleteMiniNav(){
   $("#title_1_6 .inner").html("");
 }
 console.log(deleteMiniNav)
+
 function isFullNavOpen() {
   return $(".mainGrid").hasClass("fullNav")
 }

@@ -81,10 +81,8 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
   this.belongsto = null;
 
   this.animateOut = function(){
-    if(this.row > 4 && row_per_page == 5){
-      return;
-    }
-    else if(this.row > 5 && row_per_page == 6){
+    // console.log(currentPage,row_per_page,this.row)
+    if(!(currentPage * row_per_page <= this.row && (currentPage * row_per_page) + row_per_page > this.row) && (this.containerName == '.mainGrid')){
       return;
     }
     directions = [];
@@ -143,10 +141,9 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
   }
 
   this.animateIn = function(){
-    if(this.row > 4 && row_per_page == 5){
-      return;
-    }
-    else if(this.row > 5 && row_per_page == 6){
+
+
+    if(!(currentPage * row_per_page <= this.row && (currentPage * row_per_page) + row_per_page > this.row) && (this.containerName == '.mainGrid')){
       return;
     }
     $("#"+this.id+" .borders span").removeClass("left-out right-out up-out down-out");
@@ -398,6 +395,8 @@ __pageAnimating = false;
 
 function movePage(curPage,pageCount,direction,cb){
 
+  oldPage = curPage;
+
   __pageAnimating = true;
   blockDimension = { h: titleGrid[0][0].height };
 
@@ -416,16 +415,42 @@ function movePage(curPage,pageCount,direction,cb){
   }
 
   targetDist = -(row_per_page * blockDimension.h * newPage);
+
+  //reveal the target boxes
+  boundary_low = newPage * row_per_page
+  boundary_top = newPage * row_per_page + row_per_page
+  for (i = boundary_low; i < boundary_top;i++){
+    console.log(i);
+    $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','block');
+  }
+  //hide the outgoing boxes after animating out
+
+
+
   $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
+
+
+
+  window.setTimeout(function(){
+    boundary_low = oldPage * row_per_page
+    boundary_top = oldPage * row_per_page + row_per_page
+    for (i = boundary_low; i < boundary_top;i++){
+      console.log(i);
+      $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','none');
+    }
+    __pageAnimating = false;
+  },1000)
+
   cb(newPage);
 }
+
+var currentPage = 0;
 
 $(window).ready(function(){
   var wheeling;
   var wheeldelta = { x: 0, y: 0 };
   var totalDist = 0;
-  var threshold = 2000;
-  var currentPage = 0;
+  var threshold = 400;
   var isScrollingUp = false;
 
   $("body").bind('mousewheel', function(e) {
@@ -452,9 +477,6 @@ $(window).ready(function(){
           totalDist = 0;
           movePage(currentPage,grid_rows/row_per_page,'up',function(newPage){
             currentPage = newPage;
-            window.setTimeout(function(){
-              __pageAnimating = false;
-            },700)
             e.preventDefault();
           });
         }
@@ -464,9 +486,6 @@ $(window).ready(function(){
           totalDist = 0;
           movePage(currentPage,grid_rows/row_per_page,'down',function(newPage){
             currentPage = newPage;
-            window.setTimeout(function(){
-              __pageAnimating = false;
-            },700)
             e.preventDefault();
           });
         }

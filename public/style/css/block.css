@@ -1234,6 +1234,9 @@ video {
   .highlighted .linesBlock p {
     visibility: visible;
     opacity: 1; }
+  @media (max-width: 768px) {
+    .highlighted .linesBlock.left .content {
+      top: 12%; } }
 
 .block.highlighted .filler-inner {
   border: none; }

@@ -4,7 +4,7 @@ var navGrid = [];
 var title_grid_cols = 8;
 var title_grid_rows = 3;
 var grid_cols = 8;
-var grid_rows = 15;
+var grid_rows = 35;
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   var block_width = $(containerName).width() / cols;

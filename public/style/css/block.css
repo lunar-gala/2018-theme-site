@@ -1022,7 +1022,7 @@ hr {
 
 body {
   background-color: black;
-  overflow-y: hidden; 
+  overflow-y: hidden;
   overflow-x: hidden; }
 
 .block {
@@ -1106,18 +1106,18 @@ body {
     height: 100%; }
 
 .mainGrid, .titleGrid {
-  transition: opacity 1s, transform 1s ease-in-out;
+  transition: opacity 1s,transform 1s ease-in-out;
   transition-delay: 0s; }
-  .mainGrid .inner,  .titleGrid .inner {
+  .mainGrid .inner, .titleGrid .inner {
     color: white;
-    text-align: center; 
+    text-align: center;
     margin: 0; }
     .mainGrid .inner .navBox, .titleGrid .inner .navBox {
       padding-top: calc(calc(12.5vh - 16px) - 6px);
       padding-bottom: calc(calc(12.5vh - 16px) - 6px); }
-      .mainGrid .inner .navBox:hover {
+      .mainGrid .inner .navBox:hover, .titleGrid .inner .navBox:hover {
         cursor: pointer; }
-      .mainGrid .inner .navBox .row, .titleGrid .inner .navBox .row { 
+      .mainGrid .inner .navBox .row, .titleGrid .inner .navBox .row {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1156,12 +1156,6 @@ body {
       font-weight: 400;
       color: white;
       font-size: 22pt;
-      line-height: calc(100vh / 8); }
-    .mainGrid .inner.contentLink, .titleGrid .inner.contentLink {
-      font-family: "Druk Wide",sans-serif;
-      font-weight: 400;
-      color: white;
-      font-size: 18pt;
       line-height: calc(100vh / 8); }
   .mainGrid.fullNav, .titleGrid.fullNav {
     opacity: 0 !important;

@@ -1,7 +1,7 @@
 var sections = ["Board", "Board (cont.)", "Designers", "Designers (cont.)", "Models", "Models (cont.)", "Dancers"]
 
-$(window).ready(function(){
-	console.log(grid);
+function init_people() {
+	// console.log(grid);
 	populatePeopleHeader();
 	populatePeopleContent();
 	$(document).keyup(function(e) {
@@ -9,25 +9,20 @@ $(window).ready(function(){
 	    	removeDisplayPerson();
 		}
 	}); 
-});
+};
 
 function populatePeopleHeader () {
 	animateBlock("#title_0_0",0,1);
-	animateBlock("#title_1_6",1,1);
     animateBlock("#title_1_1",0,1);
     animateBlock("#title_0_6",0,1);
     $("#title_0_0 .inner").text("About").addClass("topLink");
     $("#title_0_6 .inner").text("Lines").addClass("topLink");
-    $("#title_1_1 .inner").text("Humans").addClass("title");
-    $("#title_1_6 .inner").text("NAV").addClass("navBlock");
-    $("#title_1_6 .inner").click(function(){
-      summonFullScreenNav();
-    });
+    $("#title_1_1 .inner").text("Federation").addClass("title");
 }
 
 function populatePeopleContent () {
-	for (var i = 0; i < grid_rows; i++) {
-		for (var j = 0; j < grid_cols; j++) {
+	for (var i = 0; i < __grid_rows; i++) {
+		for (var j = 0; j < __grid_cols; j++) {
 			if (i%5 == 1 && j == 0) {
 				animateBlock("#" + grid[i][j].id, 1, 0);
 				if ((Math.floor(i/5))%2 == 0) {
@@ -143,10 +138,10 @@ function populatePeopleContent () {
 
 function getIndex(i, j) { 
 	var offset = 0;
-	var index = (i * grid_cols + j) - offset;
+	var index = (i * __grid_cols + j) - offset;
 	var arryIndex = index;
 
-	console.log("i: " + Math.floor(index/40));
+	// console.log("i: " + Math.floor(index/40));
 	var numIter = Math.floor(index/40) + 1;
 	for (var i = 0; i < numIter; i+=1) {
 		if (index > 8) {
@@ -167,7 +162,7 @@ function getIndex(i, j) {
 		index -= 40;
 	}
 	
-	console.log("get index: " + arryIndex);
+	// console.log("get index: " + arryIndex);
 	return arryIndex;
 }
 

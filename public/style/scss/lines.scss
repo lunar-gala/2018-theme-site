@@ -2,7 +2,7 @@
     cursor: pointer;
     .inner {
         border:1px solid white;
-    }    
+    }
 }
 
 .linesBlock ~ .borders {
@@ -10,7 +10,7 @@
         span {
             opacity: 0;
         }
-        
+
     }
 }
 
@@ -18,6 +18,7 @@
     cursor: pointer;
 
     .content {
+        cursor: default;
         position: absolute;
         -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Safari */
@@ -37,14 +38,14 @@
             font-size:18pt;
             line-height: 1.5;
         }
-        
+
         p {
           overflow: hidden;
           visibility: hidden;
           opacity: 0;
           transition: visibility 0.2s, opacity .2s linear;
           font-family: "Theinhardt";
-          
+
           &.designers {
             font-size: 12pt;
             line-height: 1.5;
@@ -71,7 +72,7 @@
     }
 
     &.top {
-        .content {      
+        .content {
             left: 100%;
             top: 32%;
             transform: translateX(-10%); // need to translate based on title size...
@@ -145,8 +146,15 @@
         }
     }
 
-    .animated-filler-block {
-        opacity: 0.2;
+    .animated-filler-block div {
+      opacity: .2!important;
+    }
+
+    &.filler-block.collapsed .inner,
+    .animated-filler-block div {
+      transition: opacity 1s;
+      position: relative;
+      z-index: 10000;
     }
 
     .top ~ .animated-filler-block {
@@ -176,7 +184,7 @@
     height: 100%;
     z-index:-99999999;
     background-size: cover;
-    opacity: 0.6; // CHANGE THIS
+    opacity: 0.8;
 }
 
 .lineBlockPic {
@@ -195,99 +203,128 @@
     opacity: 1; // CHANGE THIS
 }
 
-// TODO: add line pictures down here. Should be 
-.fakelineimg {
+// TODO: add line pictures down here. Should be
+#amzu {
   &:after {
-    background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/amzu.png");
   }
 }
 
-.aboutImg2 {
+#img-2268 {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/2268.png");
   }
 }
 
-.aboutImg3 {
+#chinoiseries {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/chinoiseries.png");
   }
 }
 
-.aboutImg4 {
+#chroma {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/chroma.png");
   }
 }
 
-.aboutImg5 {
+#descent {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/descent.png");
   }
 }
 
-.aboutImg6 {
+#homeostasis {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/homeostasis.png");
   }
 }
 
-.aboutImg7 {
+#escape {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/escape.png");
   }
 }
 
-.aboutImg8 {
+#hooked {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/hooked.png");
   }
 }
 
-.aboutImg9 {
+#inertia {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/inertia.png");
   }
 }
 
-.aboutImg10 {
+#intrepid {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/intrepid.png");
   }
 }
 
-.aboutImg11 {
+#messiah {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/messiah.png");
   }
 }
 
-.aboutImg12 {
+#maille {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/maille.png");
   }
 }
 
-.aboutImg13 {
+#morfologia {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/morfologia.png");
   }
 }
 
-.aboutImg14 {
+#mien {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/mien.png");
   }
 }
 
-.aboutImg15 {
+#nightmare {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/nightmare.png");
   }
 }
 
-.aboutImg16 {
+#surface {
   &:after {
-    //background-image:url("../../images/About-Asset-1.png");
+    background-image:url("../../images/lines/surface.png");
   }
+}
+
+#stack {
+  &:after {
+    background-image:url("../../images/lines/stack.png");
+  }
+}
+
+#travaille {
+  &:after {
+    background-image:url("../../images/lines/travaille.png");
+  }
+}
+
+#tambora {
+  &:after {
+    background-image:url("../../images/lines/tambora.png");
+  }
+
+}
+.animated-filler-block.hidden{
+  opacity:0!important;
+}
+.filler-block .inner{
+  transition:opacity 1s!important;
+}
+
+.block.filler-block.collapsed.pointEight .inner{
+  opacity: .8!important;
 }

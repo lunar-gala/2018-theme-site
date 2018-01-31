@@ -1,23 +1,35 @@
 var grid = [];
 var titleGrid = [];
 var navGrid = [];
-var title_grid_cols = 8;
-var title_grid_rows = 3;
-var grid_cols = 8;
-var grid_rows = 35;
+
+//DESKTOP VARIABLES
+var __title_grid_cols = 8;
+var __title_grid_rows = 3;
+var __grid_cols = 8;
+//this number should be able to change according to the page
+var __grid_rows = 35;
+
+//MOBILE VARIABLES
+var __mobile_title_grid_cols = 3;
+var __mobile_title_grid_rows = 2;
+var __mobile_grid_cols = 3;
+//this number should be able to change according to the page
+var __mobile_grid_rows = 20;
+
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   var block_width = $(containerName).width() / cols;
   var block_height = $(containerName).height() / rows;
-  console.log(offset);
   for(var i = 0; i < rows; i++) {
     var currentRow = [];
     for(var j = 0; j < cols; j++) {
       var y = i * block_height;
       var x = j * block_width;
 
+
       var block = new Block(i, j, x, y,
                             block_width, block_height, preString, containerName, offset);
+
       currentRow.push(block);
     }
     grid.push(currentRow);
@@ -25,7 +37,7 @@ function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   return grid;
 }
 
-function Block(row, col, x, y, width, height, preString, containerName, offset){
+function Block(row, col, x, y, width, height, preString, containerName, offset = 0){
   this.row = row;
   this.col = col;
   this.containerName = containerName;
@@ -59,6 +71,10 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
   this.belongsto = null;
 
   this.animateOut = function(){
+    // console.log(currentPage,row_per_page,this.row)
+    if(!(currentPage * row_per_page <= this.row && (currentPage * row_per_page) + row_per_page > this.row) && (this.containerName == '.mainGrid')){
+      return;
+    }
     directions = [];
     // 1- Top border
     // 2- Right border
@@ -90,8 +106,9 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
     }
     directions.forEach(function(val,index){
       //Creating the random second measured delay.
-      randomDuration = parseFloat(.1+(Math.random()*.5))+"s";
-      randomDelay = parseFloat(Math.random()*.5)+"s";
+      randomVal = Math.random();
+      randomDuration = parseFloat(.1+(randomVal*.5))+"s";
+      randomDelay = parseFloat(randomVal*.5)+"s";
       directions[index] = [val,randomDelay,randomDuration];
     })
     $("#"+this.id+" .borders .border-top")
@@ -114,6 +131,11 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
   }
 
   this.animateIn = function(){
+
+
+    if(!(currentPage * row_per_page <= this.row && (currentPage * row_per_page) + row_per_page > this.row) && (this.containerName == '.mainGrid')){
+      return;
+    }
     $("#"+this.id+" .borders span").removeClass("left-out right-out up-out down-out");
   }
 
@@ -121,21 +143,22 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
     $(target).append(this.DOM);
   }
 
-  this.update = function(w, h, offset){
+  this.update = function(w, h, offset = 0){
     //checking if collapsed
     var blockElem = $("#"+this.id)
 
     this.showgridlines ? blockElem.addClass("filler-block") : blockElem.removeClass("filler-block");
-    
+
     if (this.collapsed && Object.values(this.bounds).includes(-1)) {
-        var y = this.row * h;
+
+        var y = this.row * h + this.offset;
         var x = this.col * w;
 
         blockElem.css({
-          "top": y,
-          "left": x,
-          "width": w,
-          "height": h
+          "top": Math.ceil(y) + "px",
+          "left": Math.ceil(x) + "px",
+          "width": Math.floor(w) + "px",
+          "height": Math.floor(h) + "px"
         });
 
         this.y = y;
@@ -153,6 +176,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
         this.collapsed = false;
         var y;
         var x;
+
         var width = w + this.bounds.right * w;
         var height = h + this.bounds.bottom * h;
 
@@ -160,10 +184,10 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
         x = this.col * w;
 
         blockElem.css({
-          "top": y,
-          "left": x,
-          "width": width,
-          "height": height
+          "top": Math.ceil(y) + "px",
+          "left": Math.ceil(x) + "px",
+          "width": Math.floor(width) + "px",
+          "height": Math.floor(height) + "px"
         });
 
         this.y = y;
@@ -172,13 +196,13 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
         this.width = width;
         this.height = height;
 
-        if (this.showgridlines && (this.bounds.right > 1 || this.bounds.bottom > 1)) {
+        if (this.showgridlines) {
           blockElem.find(" .animated-filler-block").remove()
-          blockElem.append($("<div class='animated-filler-block'><div class='filler-inner'></div></div>").css({
+          blockElem.append($("<div class='animated-filler-block hidden'><div class='filler-inner'></div></div>").css({
             top: 0,
             left: 0,
-            width: (window.innerWidth/grid[0].length),
-            height: (window.innerHeight/grid.length)
+            width: w,
+            height: h
           }))
         }
     }
@@ -186,9 +210,10 @@ function Block(row, col, x, y, width, height, preString, containerName, offset){
 }
 
 function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
-    var regular_w = (window.innerWidth/grid_cols);
-    var regular_h = (window.innerHeight/grid_rows);
+    var regular_w = (window.innerWidth/__grid_cols);
+    var regular_h = (window.innerHeight/__grid_rows);
 
+    // console.log($(block).attr("id"));
     var id = $(block).attr("id").split("_");
 
     var i = parseInt(id[id.length - 2]);
@@ -236,9 +261,9 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
         }
       }
     }
-
-    curBlock.update(regular_w, regular_h, curBlock.offset);
     curBlock.showgridlines = showgridlines;
+    curBlock.update(regular_w, regular_h, curBlock.offset);
+
 }
 
 function resetBlock(block) {
@@ -307,19 +332,21 @@ function destroyAllBlocks(grid){
     for (var row = 0; row < grid_rows; row++) {
       for (var col = 0; col < grid_cols; col++) {
         var b = grid[row][col];
+        console.log(grid_cols);
         $("#"+b.id).remove();
         // Call this once implemented
         // b.animateOut()
       }
     }
   }
-
-  for (var row=0; row < title_grid_rows; row++) {
-    for (var col=0; col < title_grid_cols; col++) {
-      var b = titleGrid[row][col];
-      $("#title_"+b.id).remove();
-      // Call this once implemented
-      // b.animateOut()
+  if(titleGrid.length > 0){
+    for (var row = 0; row < title_grid_rows; row++) {
+      for (var col = 0; col < title_grid_cols; col++) {
+        var b = titleGrid[row][col];
+        $("#"+b.id).remove();
+        // Call this once implemented
+        // b.animateOut()
+      }
     }
   }
 }
@@ -338,7 +365,7 @@ function collapse(direction, block) {
       default:
         break;
     }
-  
+
     var id = $(block).attr("id").split("_");
     var gridToUse;
     if (id.length < 3) {
@@ -348,17 +375,21 @@ function collapse(direction, block) {
         gridToUse = titleGrid;
       }
     }
-  
+
     var regular_w = ($(block.containerName).width()/gridToUse[0].length);
     var regular_h = ($(block.containerName).height()/gridToUse.length);
 
     block.update(regular_w, regular_h, block.offset);
 }
 
+__pageAnimating = false;
+
 function movePage(curPage,pageCount,direction,cb){
 
-  blockDimension = { h: grid[0][0].height, w:grid[0][0].width };
-  blockPerPage = 5;
+  oldPage = curPage;
+
+  __pageAnimating = true;
+  blockDimension = { h: titleGrid[0][0].height };
 
   if ((curPage == 0 && direction == 'up') ||
       (curPage == pageCount - 1 && direction == 'down')){
@@ -374,21 +405,49 @@ function movePage(curPage,pageCount,direction,cb){
     newPage = curPage + 1;
   }
 
-  targetDist = -(blockPerPage * blockDimension.h * newPage);
-  $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
-  cb(newPage);
+  targetDist = -(row_per_page * blockDimension.h * newPage);
 
+  //reveal the target boxes
+  boundary_low = newPage * row_per_page
+  boundary_top = newPage * row_per_page + row_per_page
+  for (i = boundary_low; i < boundary_top;i++){
+    // console.log(i);
+    $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','block');
+  }
+  //hide the outgoing boxes after animating out
+
+
+
+  $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
+
+
+
+  window.setTimeout(function(){
+    boundary_low = oldPage * row_per_page
+    boundary_top = oldPage * row_per_page + row_per_page
+    for (i = boundary_low; i < boundary_top;i++){
+      // console.log(i);
+      $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','none');
+    }
+    __pageAnimating = false;
+  },1000)
+
+  cb(newPage);
 }
+
+var currentPage = 0;
 
 $(window).ready(function(){
   var wheeling;
   var wheeldelta = { x: 0, y: 0 };
   var totalDist = 0;
-  var threshold = 3000;
-  var currentPage = 0;
+  var threshold = 400;
   var isScrollingUp = false;
 
   $("body").bind('mousewheel', function(e) {
+    if(__pageAnimating){
+      return;
+    }
     if(e.originalEvent.wheelDelta > 0) {
       if (!isScrollingUp) {
         totalDist = 0;
@@ -403,55 +462,28 @@ $(window).ready(function(){
     }
 
     if (Math.abs(e.originalEvent.wheelDelta) > 12) {
+
       if (isScrollingUp) {
         if(totalDist > threshold){
           totalDist = 0;
-          movePage(currentPage,grid_rows/5,'up',function(newPage){
+          movePage(currentPage,grid_rows/row_per_page,'up',function(newPage){
             currentPage = newPage;
             e.preventDefault();
-            console.log('one page up',currentPage);
           });
         }
         totalDist += e.originalEvent.wheelDelta;
       } else {
         if(totalDist < -threshold){
           totalDist = 0;
-          movePage(currentPage,grid_rows/5,'down',function(newPage){
+          movePage(currentPage,grid_rows/row_per_page,'down',function(newPage){
             currentPage = newPage;
             e.preventDefault();
-            console.log('one page down',currentPage);
           });
         }
         totalDist += e.originalEvent.wheelDelta;
       }
     }
   });
-
-  $(".mainGrid").height(($(window).innerHeight() / 8) * grid_rows + 'px');
-  $(".titleGrid").height(($(window).innerHeight() / 8) * title_grid_rows + 'px');
-
-  titleGrid = initGrid(title_grid_rows, title_grid_cols, titleGrid, "title", ".titleGrid", 0);
-  titleGrid.map(function(inner){
-    inner.map(function(cur){
-      cur.create(".titleGrid");
-      cur.update(cur.width, cur.height, cur.offset);
-    });
-  });
-
-  //initiating the grid
-  grid = initGrid(grid_rows, grid_cols, grid, "", ".mainGrid", $(".titleGrid").height());
-  grid.map(function(inner){
-    inner.map(function(cur){
-      cur.create(".mainGrid");
-      cur.update(cur.width, cur.height, cur.offset);
-    });
-  });
-
-  $(window).keydown(function(e) {
-    if (e.key == "r") {
-      resetAllBlocks();
-    }
-  })
 });
 
 $(window).resize(function(){
@@ -460,6 +492,7 @@ $(window).resize(function(){
       cur.update(($(cur.containerName).width()/grid[0].length),($(cur.containerName).height()/grid.length), $(".titleGrid").height());
     })
   })
+  $('.animated-filler-block').removeClass('hidden');
 
   titleGrid.map(function(inner){
     inner.map(function(cur){

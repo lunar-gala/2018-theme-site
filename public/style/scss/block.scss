@@ -1,6 +1,5 @@
 @import "prereqs";
 @import "fonts";
-@import "lines";
 $color-red : #FF2224;
 
 body{
@@ -9,7 +8,14 @@ body{
   overflow-x: hidden;
 }
 
+.navGrid{
+  height: 100vh;
+  width:100vw;
+  position:absolute;
+  top:0;
+  left:0;
 
+}
 
 .block{
   position:absolute;
@@ -63,7 +69,7 @@ body{
       overflow: hidden;
       position: relative;
       span{
-        z-index:2000;
+        z-index:1000000000;
         position:absolute;
         display:inline-block;
         background-color:white;
@@ -207,6 +213,7 @@ body{
 }
 
 .navGrid{
+  z-index: 0;
 	.block{
 		padding:0px;
     .inner{
@@ -231,6 +238,7 @@ body{
 		}
 	}
 	&.fullNav{
+    z-index:100000000;
 		.block{
 			z-index:2;
 		}
@@ -241,8 +249,9 @@ body{
 		}
 	}
 }
-
 .aboutImg1 {
   background-image: url("../../images/About-Asset-1.png");
   background-size: cover;
 }
+
+@import "lines";

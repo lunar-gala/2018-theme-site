@@ -46,6 +46,7 @@ function load_page(url){
   title_grid_rows = __title_grid_rows;
   grid_cols = __grid_cols;
   grid_rows = __grid_rows;
+  setPageRowCount(url,false);
 
   titleGrid = [];
   grid = [];
@@ -123,7 +124,7 @@ function load_page_mobile(url){
   title_grid_cols = __mobile_title_grid_cols;
   title_grid_rows = __mobile_title_grid_rows;
   grid_cols = __mobile_grid_cols;
-  grid_rows = __mobile_grid_rows;
+  setPageRowCount(url,true);
 
   titleGrid = [];
   grid = [];
@@ -194,14 +195,36 @@ function load_page_mobile(url){
     },500);
 }
 
+function setPageRowCount (url,isMobile){
+  if(url == "/about" && !isMobile){
+    grid_rows = 15;
+  }
+  else if(url == "/about" && isMobile){
+    grid_rows = 18;
+  }
+
+  if(url == "/lines" && !isMobile){
+    grid_rows = 20;
+  }
+  else if(url == "/lines" && isMobile){
+    grid_rows = 24;
+  }
+
+  if(url == "/federation" && !isMobile){
+    grid_rows = 35;
+  }
+  else if(url == "/federation" && isMobile){
+    grid_rows = 42;
+  }
+}
+
 function call_function(url,isMobile = false){
   if(url == "/about" && !isMobile){
-    console.log("AAAAAAAA");
     init_about();
   }
   else if(url == "/about" && isMobile){
     init_about_mobile();
-  } 
+  }
 
   if(url == "/lines" && !isMobile){
     init_lines();

@@ -422,13 +422,8 @@ function movePage(curPage,pageCount,direction,cb){
     boundary_low = oldPage * row_per_page
     boundary_top = oldPage * row_per_page + row_per_page
     for (i = boundary_low; i < boundary_top;i++){
-<<<<<<< HEAD
       console.log(i);
       $('.mainGrid [id^=\''+parseInt(i)+'_\']').css('display','none');
-=======
-      // console.log(i);
-      $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','none');
->>>>>>> 49e15c7c3379bd4eee2514db04637d403851a06f
     }
     __pageAnimating = false;
   },1000)

@@ -4,7 +4,7 @@ var navGrid = [];
 var title_grid_cols = 8;
 var title_grid_rows = 3;
 var grid_cols = 8;
-var grid_rows = 15;
+var grid_rows = 20;
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   var block_width = $(containerName).width() / cols;
@@ -185,14 +185,15 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
         this.offset = offset;
         this.width = width;
         this.height = height;
+        console.log((this.showgridlines))
 
-        if (this.showgridlines && (this.bounds.right > 1 || this.bounds.bottom > 1)) {
+        if (this.showgridlines) {
           blockElem.find(" .animated-filler-block").remove()
           blockElem.append($("<div class='animated-filler-block'><div class='filler-inner'></div></div>").css({
             top: 0,
             left: 0,
-            width: (window.innerWidth/grid[0].length),
-            height: (window.innerHeight/grid.length)
+            width: (window.innerWidth/8),
+            height: (window.innerHeight/8)
           }))
         }
     }
@@ -250,9 +251,9 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
         }
       }
     }
-
-    curBlock.update(regular_w, regular_h, curBlock.offset);
     curBlock.showgridlines = showgridlines;
+    curBlock.update(regular_w, regular_h, curBlock.offset);
+    
 }
 
 function resetBlock(block) {

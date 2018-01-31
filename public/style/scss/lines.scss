@@ -45,6 +45,7 @@
           opacity: 0;
           transition: visibility 0.2s, opacity .2s linear;
           font-family: "Theinhardt";
+          margin-top: 15px;
 
           &.designers {
             font-size: 12pt;
@@ -70,6 +71,7 @@
 
             @media (max-width: 768px) {
               text-align: center;
+
               .description, .designers {
                 text-align: left;
               }

@@ -68,7 +68,8 @@ function load_page(url){
       cur.animateOut();
       window.setTimeout(function(){
         cur.animateIn();
-        $('#'+cur.id+' > .inner').css('opacity','1');
+        $('#'+cur.id+" > .inner").css('opacity','1')
+        $('.filler-block.collapsed').addClass('pointEight');
       },1000);
     });
   });
@@ -158,9 +159,11 @@ function load_page_mobile(url){
       window.setTimeout(function(){
         cur.animateIn();
         $('#'+cur.id+" > .inner").css('opacity','1')
+        $('.filler-block.collapsed > .inner').css('opacity','.8')
       },1000);
     });
   });
+  $('.mainGrid .filler-block.collapsed .inner').css('opacity','0');
   $('.mainGrid').css("display","block");
   $('.mainGrid .inner').css('opacity','0');
   $('.titleGrid').css("display","block");

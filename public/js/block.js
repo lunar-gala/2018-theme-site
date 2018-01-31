@@ -214,8 +214,8 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
           blockElem.append($("<div class='animated-filler-block hidden'><div class='filler-inner'></div></div>").css({
             top: 0,
             left: 0,
-            width: (window.innerWidth/8),
-            height: (window.innerHeight/8)
+            width: w,
+            height: h
           }))
         }
     }
@@ -479,7 +479,7 @@ $(window).ready(function(){
 $(window).resize(function(){
   grid.map(function(inner){
     inner.map(function(cur){
-      cur.update(($(cur.containerName).width()/grid[0].length),($(cur.containerName).height()/grid.length), $(".titleGrid").height(),cur.showgridlines);
+      cur.update(($(cur.containerName).width()/grid[0].length),($(cur.containerName).height()/grid.length), $(".titleGrid").height());
     })
   })
   $('.animated-filler-block').removeClass('hidden');

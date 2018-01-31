@@ -1,6 +1,5 @@
 @import "prereqs";
 @import "fonts";
-@import "lines";
 $color-red : #FF2224;
 
 body{
@@ -254,3 +253,5 @@ body{
   background-image: url("../../images/About-Asset-1.png");
   background-size: cover;
 }
+
+@import "lines";

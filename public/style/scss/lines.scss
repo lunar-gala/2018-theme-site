@@ -146,9 +146,16 @@
         }
     }
 
-    // .animated-filler-block {
-    //     opacity: 0.2;
-    // }
+    .animated-filler-block div {
+      opacity: .2!important;
+    }
+
+    &.filler-block.collapsed .inner,
+    .animated-filler-block div {
+      transition: opacity 1s;
+      position: relative;
+      z-index: 10000;
+    }
 
     .top ~ .animated-filler-block {
         padding: 0.6%;
@@ -315,4 +322,8 @@
 }
 .filler-block .inner{
   transition:opacity 1s!important;
+}
+
+.block.filler-block.collapsed.pointEight .inner{
+  opacity: .8!important;
 }

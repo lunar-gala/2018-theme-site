@@ -890,195 +890,6 @@ hr {
   src: url("../fonts/TheinhardtRegular.otf") format("opentype");
   font-weight: 300;
   font-style: normal; }
-.filler-block, .animated-filler-block {
-  cursor: pointer; }
-  .filler-block .inner, .animated-filler-block .inner {
-    border: 1px solid white; }
-
-.linesBlock ~ .borders .borders-inner span {
-  opacity: 0; }
-
-.linesBlock {
-  cursor: pointer; }
-  .linesBlock .content {
-    cursor: default;
-    position: absolute;
-    -webkit-touch-callout: none;
-    /* iOS Safari */
-    -webkit-user-select: none;
-    /* Safari */
-    -khtml-user-select: none;
-    /* Konqueror HTML */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-    text-align: left; }
-    .linesBlock .content .title, .linesBlock .content .designers {
-      white-space: nowrap; }
-    .linesBlock .content .title {
-      font-family: "Druk Wide",sans-serif;
-      font-weight: 400;
-      font-size: 18pt;
-      line-height: 1.5; }
-    .linesBlock .content p {
-      overflow: hidden;
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0.2s, opacity .2s linear;
-      font-family: "Theinhardt"; }
-      .linesBlock .content p.designers {
-        font-size: 12pt;
-        line-height: 1.5; }
-      .linesBlock .content p.description {
-        font-size: 10pt;
-        line-height: 1.5; }
-  .linesBlock.left, .linesBlock.top, .linesBlock.middle, .linesBlock.right, .linesBlock.bottom {
-    border: none; }
-  .linesBlock.left .content {
-    left: 100%;
-    top: 44%;
-    width: 350%; }
-  .linesBlock.top .content {
-    left: 100%;
-    top: 32%;
-    transform: translateX(-10%);
-    width: 100%; }
-  .linesBlock.middle .content {
-    left: 0%;
-    top: 32%;
-    transform: translateX(-25%);
-    width: 100%; }
-  .linesBlock.right .content {
-    left: 100%;
-    top: 44%;
-    width: 100%; }
-    .linesBlock.right .content p {
-      height: 0px;
-      width: 0px; }
-  .linesBlock.bottom .content {
-    top: 32%;
-    left: 100%;
-    width: 100%; }
-    .linesBlock.bottom .content p {
-      height: 0px;
-      width: 0px; }
-  .highlighted .linesBlock.bottom .content {
-    top: -100%; }
-    .highlighted .linesBlock.bottom .content p {
-      height: 100%;
-      width: 100%; }
-  .highlighted .linesBlock.right .content {
-    left: -100%;
-    width: 300%; }
-    .highlighted .linesBlock.right .content p {
-      width: 100%;
-      height: 100%; }
-  .highlighted .linesBlock p {
-    visibility: visible;
-    opacity: 1; }
-
-.block.highlighted .filler-inner {
-  border: none; }
-.block .top ~ .animated-filler-block {
-  padding: 0.6%; }
-.block .middle ~ .animated-filler-block, .block .bottom ~ .animated-filler-block {
-  padding: 0.75%; }
-.block .left ~ .animated-filler-block, .block .right ~ .animated-filler-block {
-  padding: 2.25%; }
-
-.lineBlockPicMuted {
-  position: relative; }
-
-.lineBlockPicMuted::after {
-  content: " ";
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: -99999999;
-  background-size: cover;
-  opacity: 0.8; }
-
-.lineBlockPic {
-  position: relative; }
-
-.lineBlockPic::after {
-  content: " ";
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: -99999999;
-  background-size: cover;
-  opacity: 1; }
-
-#amzu:after {
-  background-image: url("../../images/lines/amzuImage.png"); }
-
-#img-2268:after {
-  background-image: url("../../images/lines/2268Image.png"); }
-
-#chinoiseries:after {
-  background-image: url("../../images/lines/ChinoiseriesImage.png"); }
-
-#chroma:after {
-  background-image: url("../../images/lines/chromaImage.png"); }
-
-#descent:after {
-  background-image: url("../../images/lines/descentImage.png"); }
-
-#homeostasis:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#escape:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#hooked:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#inertia:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#intrepid:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#messiah:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#maille:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#morfologia:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#mien:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#nightmare:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#surface:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#stack:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#travaille:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-#tambora:after {
-  background-image: url("../../images/About-Asset-1.png"); }
-
-.animated-filler-block.hidden {
-  opacity: 0 !important; }
-
-.filler-block .inner {
-  transition: opacity 1s !important; }
-
 body {
   background-color: black;
   overflow-y: hidden;
@@ -1262,5 +1073,204 @@ body {
 .aboutImg1 {
   background-image: url("../../images/About-Asset-1.png");
   background-size: cover; }
+
+.filler-block, .animated-filler-block {
+  cursor: pointer; }
+  .filler-block .inner, .animated-filler-block .inner {
+    border: 1px solid white; }
+
+.linesBlock ~ .borders .borders-inner span {
+  opacity: 0; }
+
+.linesBlock {
+  cursor: pointer; }
+  .linesBlock .content {
+    cursor: default;
+    position: absolute;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    text-align: left; }
+    .linesBlock .content .title, .linesBlock .content .designers {
+      white-space: nowrap; }
+    .linesBlock .content .title {
+      font-family: "Druk Wide",sans-serif;
+      font-weight: 400;
+      font-size: 18pt;
+      line-height: 1.5; }
+    .linesBlock .content p {
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.2s, opacity .2s linear;
+      font-family: "Theinhardt"; }
+      .linesBlock .content p.designers {
+        font-size: 12pt;
+        line-height: 1.5; }
+      .linesBlock .content p.description {
+        font-size: 10pt;
+        line-height: 1.5; }
+  .linesBlock.left, .linesBlock.top, .linesBlock.middle, .linesBlock.right, .linesBlock.bottom {
+    border: none; }
+  .linesBlock.left .content {
+    left: 100%;
+    top: 44%;
+    width: 350%; }
+  .linesBlock.top .content {
+    left: 100%;
+    top: 32%;
+    transform: translateX(-10%);
+    width: 100%; }
+  .linesBlock.middle .content {
+    left: 0%;
+    top: 32%;
+    transform: translateX(-25%);
+    width: 100%; }
+  .linesBlock.right .content {
+    left: 100%;
+    top: 44%;
+    width: 100%; }
+    .linesBlock.right .content p {
+      height: 0px;
+      width: 0px; }
+  .linesBlock.bottom .content {
+    top: 32%;
+    left: 100%;
+    width: 100%; }
+    .linesBlock.bottom .content p {
+      height: 0px;
+      width: 0px; }
+  .highlighted .linesBlock.bottom .content {
+    top: -100%; }
+    .highlighted .linesBlock.bottom .content p {
+      height: 100%;
+      width: 100%; }
+  .highlighted .linesBlock.right .content {
+    left: -100%;
+    width: 300%; }
+    .highlighted .linesBlock.right .content p {
+      width: 100%;
+      height: 100%; }
+  .highlighted .linesBlock p {
+    visibility: visible;
+    opacity: 1; }
+
+.block.highlighted .filler-inner {
+  border: none; }
+.block .animated-filler-block div {
+  opacity: 0.2 !important; }
+.block.filler-block.collapsed .inner,
+.block .animated-filler-block div {
+  transition: opacity 1s;
+  position: relative;
+  z-index: 10000; }
+.block .top ~ .animated-filler-block {
+  padding: 0.6%; }
+.block .middle ~ .animated-filler-block, .block .bottom ~ .animated-filler-block {
+  padding: 0.75%; }
+.block .left ~ .animated-filler-block, .block .right ~ .animated-filler-block {
+  padding: 2.25%; }
+
+.lineBlockPicMuted {
+  position: relative; }
+
+.lineBlockPicMuted::after {
+  content: " ";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -99999999;
+  background-size: cover;
+  opacity: 0.8; }
+
+.lineBlockPic {
+  position: relative; }
+
+.lineBlockPic::after {
+  content: " ";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -99999999;
+  background-size: cover;
+  opacity: 1; }
+
+#amzu:after {
+  background-image: url("../../images/lines/amzuImage.png"); }
+
+#img-2268:after {
+  background-image: url("../../images/lines/2268Image.png"); }
+
+#chinoiseries:after {
+  background-image: url("../../images/lines/ChinoiseriesImage.png"); }
+
+#chroma:after {
+  background-image: url("../../images/lines/chromaImage.png"); }
+
+#descent:after {
+  background-image: url("../../images/lines/descentImage.png"); }
+
+#homeostasis:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#escape:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#hooked:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#inertia:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#intrepid:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#messiah:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#maille:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#morfologia:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#mien:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#nightmare:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#surface:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#stack:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#travaille:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+#tambora:after {
+  background-image: url("../../images/About-Asset-1.png"); }
+
+.animated-filler-block.hidden {
+  opacity: 0 !important; }
+
+.filler-block .inner {
+  transition: opacity 1s !important; }
+
+.block.filler-block.collapsed.pointEight .inner {
+  opacity: 0.8 !important; }
 
 /*# sourceMappingURL=block.css.map */

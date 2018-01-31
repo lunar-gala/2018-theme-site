@@ -203,7 +203,9 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
         this.height = height;
 
         if (this.showgridlines) {
+          console.log("show grid lines")
           blockElem.find(" .animated-filler-block").remove()
+          // TODO (bug): remove hidden class
           blockElem.append($("<div class='animated-filler-block hidden'><div class='filler-inner'></div></div>").css({
             top: 0,
             left: 0,

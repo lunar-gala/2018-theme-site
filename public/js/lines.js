@@ -160,12 +160,13 @@ function setLineBlock(selector, line) {
 
 function clickLinesPicture(e) {
     var elem = e.target;
-
+    console.log(elem)
     var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || 
                     ($(elem).attr("belongs-to")) ||
                     ($(elem).parent().hasClass("filler-block") && $(elem).parent().attr("belongs-to")) ||
                     ($(elem).parent().hasClass('linesBlock') && $(elem).parent().parent().attr("id")) || // content 
-                    ($(elem).parent().parent().hasClass('linesBlock') && $(elem).parent().parent().parent().attr("id"))
+                    ($(elem).parent().parent().hasClass('linesBlock') && $(elem).parent().parent().parent().attr("id")) ||
+                    ($(elem).hasClass("filler-inner") && $(elem).parent().parent().attr("id"))
 
     if (blockid && !HIGHLIGHTEDBLOCK) {
         $(".block").toggleClass('muted')

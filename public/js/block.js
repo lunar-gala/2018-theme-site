@@ -1,10 +1,31 @@
 var grid = [];
 var titleGrid = [];
 var navGrid = [];
+
+//DESKTOP VARIABLES
+var __title_grid_cols = 8;
+var __title_grid_rows = 3;
+var __grid_cols = 8;
+//this number should be able to change according to the page
+var __grid_rows = 20;
+
+//MOBILE VARIABLES
+var __mobile_title_grid_cols = 3;
+var __mobile_title_grid_rows = 2;
+var __mobile_grid_cols = 3;
+//this number should be able to change according to the page
+var __mobile_grid_rows = 20;
+
 var title_grid_cols = 8;
 var title_grid_rows = 3;
 var grid_cols = 8;
 var grid_rows = 20;
+
+
+//
+//
+
+
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   var block_width = $(containerName).width() / cols;
@@ -318,6 +339,7 @@ function destroyAllBlocks(grid){
     for (var row = 0; row < grid_rows; row++) {
       for (var col = 0; col < grid_cols; col++) {
         var b = grid[row][col];
+        console.log(grid_cols);
         $("#"+b.id).remove();
         // Call this once implemented
         // b.animateOut()
@@ -373,7 +395,6 @@ function movePage(curPage,pageCount,direction,cb){
 
   __pageAnimating = true;
   blockDimension = { h: titleGrid[0][0].height };
-  blockPerPage = 5;
 
   if ((curPage == 0 && direction == 'up') ||
       (curPage == pageCount - 1 && direction == 'down')){
@@ -389,7 +410,7 @@ function movePage(curPage,pageCount,direction,cb){
     newPage = curPage + 1;
   }
 
-  targetDist = -(blockPerPage * blockDimension.h * newPage);
+  targetDist = -(row_per_page * blockDimension.h * newPage);
   $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
   cb(newPage);
 }
@@ -424,7 +445,7 @@ $(window).ready(function(){
       if (isScrollingUp) {
         if(totalDist > threshold){
           totalDist = 0;
-          movePage(currentPage,grid_rows/5,'up',function(newPage){
+          movePage(currentPage,grid_rows/row_per_page,'up',function(newPage){
             currentPage = newPage;
             window.setTimeout(function(){
               __pageAnimating = false;
@@ -436,7 +457,7 @@ $(window).ready(function(){
       } else {
         if(totalDist < -threshold){
           totalDist = 0;
-          movePage(currentPage,grid_rows/5,'down',function(newPage){
+          movePage(currentPage,grid_rows/row_per_page,'down',function(newPage){
             currentPage = newPage;
             window.setTimeout(function(){
               __pageAnimating = false;

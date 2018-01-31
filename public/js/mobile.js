@@ -2,16 +2,25 @@ __MOBILE_BOOL = false;
 __DESKTOP_BOOL = false;
 __MOBILE_WIDTH = 768;
 
+if(window.innerWidth < __MOBILE_WIDTH){
+  row_per_page = 6;
+}
+else{
+  row_per_page = 5;
+}
+
 function checkSize(mobile,desktop){
   width = window.innerWidth;
   if(width <= __MOBILE_WIDTH && !__MOBILE_BOOL){
     __MOBILE_BOOL = true;
     __DESKTOP_BOOL = false;
+    row_per_page = 6;
     mobile();
   }
   else if(width > __MOBILE_WIDTH && !__DESKTOP_BOOL){
     __MOBILE_BOOL = false;
     __DESKTOP_BOOL = true;
+    row_per_page = 5;
     desktop();
   }
 }

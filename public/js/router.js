@@ -45,6 +45,7 @@ function load_page(url){
       window.setTimeout(function(){
         cur.animateIn();
         $('#'+cur.id+' .inner').css('opacity','1');
+        $('#'+cur.id+' .filler-inner').css('opacity','1');
       },1000);
     });
   });
@@ -58,11 +59,13 @@ function load_page(url){
       window.setTimeout(function(){
         cur.animateIn();
         $('#'+cur.id+" .inner").css('opacity','1')
+        $('#'+cur.id+" .filler-inner").css('opacity','1')
       },1000);
     });
   });
   $('.mainGrid').css("display","block");
   $('.mainGrid .inner').css('opacity','0');
+  $('.mainGrid .filler-inner').css('opacity','1');
   $('.titleGrid').css("display","block");
   $('.titleGrid .inner').css('opacity','0');
 

@@ -177,7 +177,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
       this.collapsed = true;
       blockElem.toggleClass("collapsed");
     } else {
-
+        this.offset = offset;
         this.collapsed = false;
         var y;
         var x;
@@ -197,7 +197,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
 
         this.y = y;
         this.x = x;
-        this.offset = offset;
+        
         this.width = width;
         this.height = height;
 

@@ -260,7 +260,7 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
           continue
         }
         var b = gridToUse[row][col];
-        b.showgridlines = false;
+        b.showgridlines = showgridlines;
         $("#"+b.id).attr("belongs-to", $(block).attr("id"))
 
         if (col == j) {
@@ -276,7 +276,7 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
       }
     }
     curBlock.showgridlines = showgridlines;
-    curBlock.update(regular_w, regular_h, curBlock.offset,true);
+    curBlock.update(regular_w, regular_h, curBlock.offset);
 
 }
 

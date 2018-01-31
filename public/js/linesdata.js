@@ -45,7 +45,7 @@ var linedata = [
         description: "Inertia is a collection based on an imaginary future society in which people refuse to change.The pieces are uniforms for the inhabitants of this alternative future, which implies a sense of “fashion communism” and their core value for efficiency. In each piece, a flowy material is contained by a stiff fabric (patent leather or denim), to show the oppression from the society. In addition, to embody the value of efficiency, the tailoring process of every piece is zero-waste."
     },
     {
-        title: "Intreped",
+        title: "Intrepid",
         designers: "Jules Przybylska",
         description: "Intrepid utilizes perspective points highlighting and complementing the female form showing her boldness and strength. The designs emphasize the features of the body in a way that portrays the model in a position of power. In the past women have been subject to criticism based on how they presented themselves. This clothing line takes on a different side showing the power that the female form symbolizes."
     },

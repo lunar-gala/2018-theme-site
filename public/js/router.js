@@ -204,7 +204,7 @@ function call_function(url,isMobile = false){
     init_lines();
   }
   else if(url == "/lines" && isMobile){
-    init_about_mobile();
+    init_lines_mobile();
   }
   if(url == "/humans" && !isMobile){
     init_about();

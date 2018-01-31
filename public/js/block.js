@@ -168,10 +168,10 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
         var x = this.col * w;
 
         blockElem.css({
-          "top": y,
-          "left": x,
-          "width": w,
-          "height": h
+          "top": Math.ceil(y) + "px",
+          "left": Math.ceil(x) + "px",
+          "width": Math.floor(w) + "px",
+          "height": Math.floor(h) + "px"
         });
 
         this.y = y;
@@ -197,10 +197,10 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
         x = this.col * w;
 
         blockElem.css({
-          "top": y,
-          "left": x,
-          "width": width,
-          "height": height
+          "top": Math.ceil(y) + "px",
+          "left": Math.ceil(x) + "px",
+          "width": Math.floor(width) + "px",
+          "height": Math.floor(height) + "px"
         });
 
         this.y = y;

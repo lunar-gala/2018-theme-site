@@ -79,8 +79,8 @@ function init_lines() {
     RIGHTBLOCK = ".mainGrid #0_6 .inner"
     MIDDLEBLOCK = ".mainGrid #2_3 .inner"
 
-    selectorblocks = [TOPBLOCK, LEFTBLOCK, MIDDLEBLOCK, RIGHTBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
-    selectornames = ['top', 'left', 'middle', 'right', 'bottom']
+    selectorblocks = [LEFTBLOCK, TOPBLOCK , MIDDLEBLOCK, RIGHTBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
+    selectornames = ['left', 'top', 'middle', 'right', 'bottom']
     LINESETSIZE = 5;
 
     animateBlock("#title_0_0",0,1);
@@ -93,7 +93,7 @@ function init_lines() {
     $("#title_0_6 .inner").text("About").addClass("topLink");
 
     // page title
-    $("#title_1_1 .inner").text("Lines").addClass("topLink");
+    $("#title_1_1 .inner").text("Lines").addClass("title");
 
     // initial animates
     animateBlock("#0_2",0,2,true) // top

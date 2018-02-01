@@ -109,7 +109,7 @@ function init_lines() {
 
     // nav links
     $("#title_0_0 .inner")
-        .text("Members")
+        .html("<span>Members</span>")
         .addClass("topLink router-link")
         .attr("url", "/members")
         .append("<img class='arrow-left' src='./../images/Arrows/pointingleft.png'/>");

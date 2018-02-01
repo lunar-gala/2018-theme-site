@@ -424,6 +424,9 @@ function movePage(curPage,pageCount,direction,cb){
   if(window.location.pathname == "/about" && newPage == 1 && $("#5_1 .inner")[0].innerHTML == "" && __DESKTOP_BOOL){
       add_video()
   }
+  if(window.location.pathname == "/about" && newPage == 1 && $("#6_0 .inner")[0].innerHTML == "" && __MOBILE_BOOL){
+      add_video_mobile();
+  }
 
   $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
 

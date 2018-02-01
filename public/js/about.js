@@ -56,6 +56,9 @@ function init_about(){
 function add_video(){
     $("#5_1 .inner")[0].innerHTML = "<div style='height:100%'><iframe src=\"https://player.vimeo.com/video/252741421?autoplay=1\" width=\"100%\" height=\"100%\" frameborder=\"0\"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>"
 }
+function add_video_mobile(){
+    $("#6_0 .inner")[0].innerHTML = "<div style='height:100%'><iframe src=\"https://player.vimeo.com/video/252741421?autoplay=1\" width=\"100%\" height=\"100%\" frameborder=\"0\"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>"
+}
 
 function init_about_mobile(){
     animateBlock('#title_1_0',0,1);
@@ -72,4 +75,11 @@ function init_about_mobile(){
         e.preventDefault();
       });
     })
+    animateBlock("#6_0",2,2);
+    // $("#6_0")
+    text2 = "<div>“<span class='italic'>Ferox</span>” is primal. “<span class='italic'>Ferox</span>” is chaotic. “<span class='italic'>Ferox</span>” is a return to instinct. “<span class='italic'>Ferox</span>” is everything that we, as Federation members, are not. Embodied by the human species, “<span class='italic'>Ferox</span>” represents a blind and reckless freedom that must be contained for the sake of maintaining the civility we all value and from which we all benefit. Ultimately… “<span class='italic'>Ferox</span>” must be quelled.<br><span class='aboutLine'></span>Lunar Gala is curated by Federation members at Carnegie Mellon University. A student-run organization with an interdisciplinary approach, the Lunar Gala team - comprised of student designers, models, dancers, videographers, motion designers, and technicians - strives to showcase the creative visions of our community members. Together, we present an IFPP-endorsed evening of imagination, innovation, and fashion.</div>"
+    animateBlock("#9_0",2,2);
+    $(".mainGrid #9_0 .inner").css('font-size','9pt');
+    $(".mainGrid #9_0 .inner").addClass("text");
+    $(".mainGrid #9_0 .inner")[0].innerHTML = text2;
 }

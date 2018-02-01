@@ -35,6 +35,7 @@ function init_about(){
   animateBlock('#8_1',1,2);
   content = "<div class='logoContainer'><div id='col1'><img src='images/cmoa.png'></div><div id='col2'><img id='img2' src='images/Style412.png'><img id='img1' src='images/ai.png'><img id='img3' src='images/alexs_eastend.png'></div><div class='.clear'></div></div>"
   $(".mainGrid #8_1 .inner")[0].innerHTML = content;
+  $(".mainGrid #8_1 .inner").addClass('logoInner');
 
   animateBlock("#0_1",2,1);
   $(".mainGrid #0_1 .inner")[0].innerHTML = "<div id='videoAboutContainer'><video id='videoAbout' width=\"320\" height=\"240\" autoplay=\"autoplay\" loop><source src=\"video/blue_heart.mp4\" type=\"video/mp4\" ></video></div>";

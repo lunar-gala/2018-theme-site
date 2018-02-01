@@ -973,32 +973,24 @@ body {
     .logoContainer #col2 img {
       opacity: .6; }
   .logoContainer #col1 img {
-    height: calc(100% - 48px);
+    height: 100%;
+    width: auto; }
+  .logoContainer #col2 img {
+    height: 26%;
     width: auto;
-    top: 0;
-    left: 0;
+    display: block;
     right: 0;
-    bottom: 0;
+    left: 0;
     position: absolute;
-    margin: auto; }
-  .logoContainer #col2 {
-    padding: 15px; }
-    .logoContainer #col2 img {
-      height: 20%;
-      width: auto;
-      display: block;
-      right: 0;
-      left: 0;
-      position: absolute;
-      margin: auto;
-      max-width: 90%; }
-      .logoContainer #col2 img#img2 {
-        top: 33%;
-        height: 30%;
-        margin-top: 0; }
-      .logoContainer #col2 img#img3 {
-        height: 25%;
-        top: 66%; }
+    margin: auto;
+    max-width: 90%; }
+    .logoContainer #col2 img#img2 {
+      top: 33%;
+      height: 33%;
+      margin-top: 0; }
+    .logoContainer #col2 img#img3 {
+      height: 25%;
+      top: 73%; }
   .logoContainer .clear {
     clear: both; }
 
@@ -1092,6 +1084,9 @@ body {
           bottom: 0; }
         .block .borders .borders-inner span.border-left {
           left: 0; }
+
+.logoInner {
+  padding: 6%; }
 
 .italic {
   font-style: italic; }

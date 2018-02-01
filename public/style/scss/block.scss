@@ -90,20 +90,13 @@ body{
   }
   #col1{
     img{
-      height:calc(100% - 48px);
+      height:100%;
       width:auto;
-      top:0;
-      left:0;
-      right:0;
-      bottom:0;
-      position:absolute;
-      margin:auto;
     }
   }
   #col2{
-    padding:15px;
     img{
-      height:20%;
+      height:26%;
       width:auto;
       display:block;
       right:0;
@@ -113,12 +106,12 @@ body{
       max-width:90%;
       &#img2{
         top:33%;
-        height:30%;
+        height:33%;
         margin-top:0;
       }
       &#img3{
         height:25%;
-        top:66%;
+        top:73%;
       }
     }
   }
@@ -252,7 +245,9 @@ body{
     }
   }
 }
-
+.logoInner{
+  padding:6%;
+}
 .italic{
   font-style: italic;
 }

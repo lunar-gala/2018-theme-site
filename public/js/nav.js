@@ -110,12 +110,12 @@ function summonFullNav(){
     $(".navGrid #nav_1_0 .border-top").remove();
 
     // Sponsors & Tickets link
-    $(".navGrid #nav_1_1 .inner").text("Sponsors & Tickets");
+    $(".navGrid #nav_1_1 .inner")[0].innerHTML = "<a href=\"https://www.eventbrite.com/e/lunar-gala-2018-ferox-tickets-39842752746?aff=efbeventtix\" target=\"_blank\">Tickets</a>"
     $(".navGrid #nav_1_1 .border-top").remove();
     $(".navGrid #nav_1_1 .border-left").remove();
 
     // History link
-    $(".navGrid #nav_1_2 .inner").text("History");
+    $(".navGrid #nav_1_2 .inner")[0].innerHTML = "<a href=\"http://www.lunargala.org\" target=\"_blank\">History</a>"
     $(".navGrid #nav_1_2 .border-left").remove();
     $(".navGrid #nav_1_2 .border-top").remove();
     window.setTimeout(function(){

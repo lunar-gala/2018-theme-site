@@ -15,8 +15,10 @@ function init_about(){
   animateBlock("#0_1",2,1);
   $(".mainGrid #0_1 .inner").addClass("aboutImg1");
 
-  animateBlock("#5_0",4,4);
-  $("#5_0 .inner")[0].innerHTML = "<div style='height:100%'><iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/qmjOd9Dlr34\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe></div>"
+  animateBlock("#5_1",2,2);
+  $("#5_1 .inner")[0].innerHTML = "<div style='height:100%'><iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/qmjOd9Dlr34\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe></div>"
+
+  // animateBlock("#6_5",3,3);
 }
 
 function init_about_mobile(){

@@ -26,16 +26,43 @@ function createRouting(){
   $('.router-link').off('click');
 
   currentPath = window.location.pathname;
-  load_page(currentPath);
-
+  if(currentPath == "/"){
+    load_intro_page();
+  }
+  else{
+    load_page(currentPath);
+  }
   $(".router-link").click(function(){
     url = $(this).attr("url");
-    load_page(url);
+    if(currentPath == "/"){
+      load_intro_page();
+    }
+    else{
+      load_page(currentPath);
+    }
   })
   $(window).bind("popstate", function() {
     currentPath = window.location.pathname;
-    load_page(currentPath);
+    if(currentPath == "/"){
+      load_intro_page();
+    }
+    else{
+      load_page(currentPath);
+    }
   });
+}
+
+function load_intro_page(){
+  videoToLoad = "<video id='video' width=\"320\" height=\"240\" autoplay=\"autoplay\"><source src=\"video/introVideo.mp4\" type=\"video/mp4\"></video>";
+  $('body').append(videoToLoad);
+  video = document.getElementById("video")
+  video.addEventListener('loadeddata', function() {
+   videoLength = 8290;
+   window.setTimeout(function(){
+     $('#video').remove();
+     load_page("/about");
+   },videoLength)
+  }, false);
 }
 
 function load_page(url){

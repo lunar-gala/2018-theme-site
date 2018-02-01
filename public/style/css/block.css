@@ -902,7 +902,7 @@ body {
   top: 0;
   left: 0; }
 
-video {
+#video {
   position: absolute;
   top: 0;
   right: 0;
@@ -913,6 +913,21 @@ video {
   height: 100% !important;
   width: auto !important;
   margin: auto; }
+
+#videoAboutContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; }
+  #videoAboutContainer #videoAbout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    height: 100% !important;
+    width: auto !important; }
 
 .router-link {
   cursor: pointer; }
@@ -1037,11 +1052,11 @@ video {
       line-height: calc(100vh / 8); }
     .mainGrid .inner.text, .titleGrid .inner.text {
       text-align: left;
-      padding: 7vh 4vw 7vh 4vw;
+      padding: 5vh 4vw;
       font-family: "Theinhardt",sans-serif;
       font-weight: 300;
-      font-size: 12pt;
-      line-height: 14pt;
+      font-size: 10pt;
+      line-height: 1.5;
       color: white; }
     .mainGrid .inner.topLink, .titleGrid .inner.topLink {
       font-family: "Druk Wide",sans-serif;

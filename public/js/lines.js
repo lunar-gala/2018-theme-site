@@ -108,8 +108,17 @@ function init_lines() {
     animateBlock("#title_0_6",0,1);
 
     // nav links
-    $("#title_0_0 .inner").text("Members").addClass("topLink router-link").attr("url", "/members");
-    $("#title_0_6 .inner").text("About").addClass("topLink router-link").attr("url", "/about");
+    $("#title_0_0 .inner")
+        .text("Members")
+        .addClass("topLink router-link")
+        .attr("url", "/members")
+        .append("<img class='arrow-left' src='./../images/Arrows/pointingleft.png'/>");
+
+    $("#title_0_6 .inner")
+        .text("About")
+        .addClass("topLink router-link")
+        .attr("url", "/about")
+        .append("<img class='arrow-right' src='./../images/Arrows/pointingright.png'/>");
 
     // page title
     $("#title_1_1 .inner").text("Lines").addClass("title");
@@ -173,16 +182,38 @@ function clickLinesPicture(e) {
 
     if (blockid && !HIGHLIGHTEDBLOCK) {
         $(".block").toggleClass('muted')
-        $("#" + blockid + ".block").toggleClass('highlighted');
         HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
+        var content = $(HIGHLIGHTEDBLOCK).find(".inner .content")
+
+        $("#" + blockid + ".block").toggleClass('highlighted');
         $(HIGHLIGHTEDBLOCK).find(".inner").toggleClass("lineBlockPicMuted lineBlockPic");
+        
+        var blockDims = content[0].getBoundingClientRect()
+        var isBottom = $(HIGHLIGHTEDBLOCK).find(".inner").hasClass("bottom")
+
+        if (blockDims.bottom > window.innerHeight && isBottom) {
+            var diff = blockDims.bottom - window.innerHeight;
+            $(HIGHLIGHTEDBLOCK).find(".inner .content").css({top: -diff})
+        }
+
         return false;
     }
 
     $(".block").removeClass("muted")
     $(".highlighted").removeClass("highlighted");
 
-    // go back to dim background
+    var content = $(HIGHLIGHTEDBLOCK).find(".inner .content")
+    var block = $(HIGHLIGHTEDBLOCK).find(".inner")
+    var isBottom = $(HIGHLIGHTEDBLOCK).find(".inner").hasClass("bottom")
+
+    if (content.offset().top < block.offset().top && isBottom) {
+        var blockTop = block.offset().top
+        var blockHeight = block.height()
+        var titleHeight = content.find(".title").height()
+        content.offset({top: blockTop + blockHeight/2 - titleHeight/2})
+    }
+
+    // go back to dim background    
     $(HIGHLIGHTEDBLOCK).find(".lineBlockPic").toggleClass("lineBlockPicMuted lineBlockPic");
     HIGHLIGHTEDBLOCK = null;
 }
@@ -232,5 +263,6 @@ function centerContentMobile(selector, line) {
     diff = (diff < 0) ? Math.floor(elemwidth/4) : diff
 
     var translatestring = "translateX(+"+diff+"px)"
+    console.log($(selector + " .content").css('transform'))
     $(selector + " .content").css({transform: translatestring })
 }

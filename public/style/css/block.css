@@ -1260,6 +1260,10 @@ body {
   right: 2vw;
   margin: auto; }
 
+.arrow-left {
+  width: 4.3vw;
+  left: 1vw; }
+
 .filler-block, .animated-filler-block {
   cursor: pointer; }
   .filler-block .inner, .animated-filler-block .inner {
@@ -1354,7 +1358,7 @@ body {
     visibility: visible;
     opacity: 1; }
   .highlighted .linesBlock.bottom .content {
-    top: -150%; }
+    top: -160%; }
     .highlighted .linesBlock.bottom .content p {
       height: 100%;
       width: 100%; }

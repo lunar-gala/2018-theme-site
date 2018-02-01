@@ -18,7 +18,7 @@ var __mobile_grid_cols = 3;
 var __mobile_grid_rows = 20;
 
 __pageCounts = {
-  '/about':[15,18],
+  '/about':[10,12],
   '/lines':[20,42],
   '/members':[35,42]
 }
@@ -428,7 +428,7 @@ function movePage(curPage,pageCount,direction,cb){
     $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','block');
   }
   //hide the outgoing boxes after animating out
-  if(window.location.pathname == "/about" && newPage == 1 && $("#5_1 .inner")[0].innerHTML == ""){
+  if(window.location.pathname == "/about" && newPage == 1 && $("#5_1 .inner")[0].innerHTML == "" && __DESKTOP_BOOL){
       $("#5_1 .inner")[0].innerHTML = "<div style='height:100%'><iframe src=\"https://player.vimeo.com/video/252741421?autoplay=1\" width=\"100%\" height=\"100%\" frameborder=\"0\"  ></iframe></div>"
       useThis = "webkitallowfullscreen mozallowfullscreen allowfullscreen"
   }

@@ -230,6 +230,12 @@ body{
       //change this later accordingly
       &:hover {
         cursor:pointer;
+        div:not(.row){
+            background-color:$color-red;
+          &.active{
+            background-color:black;
+          }
+        }
       }
       $box-size: 16px;
       padding-top:calc(calc(12.5vh - 16px) - 6px);
@@ -240,8 +246,10 @@ body{
         justify-content: center;
         flex-flow:row nowrap;
         div{
+          transition:background-color .5s;
           width:$box-size;
           height:$box-size;
+          box-sizing:border-box;
           $b : 1px solid white;
           &.active{
             background-color:$color-red;
@@ -253,14 +261,19 @@ body{
           &#navInner_01{
             border-top:$b;
             border-bottom:$b;
+            border-left:1px solid transparent;
+            border-right:1px solid transparent;
           }
           &#navInner_10,
           &#navInner_12{
             border:$b;
-            border-top:none;
+            border-top:1px solid transparent;
           }
           &#navInner_11{
             border-bottom:$b;
+            border-left:1px solid transparent;
+            border-right:1px solid transparent;
+            border-top:1px solid transparent;
           }
         }
       }

@@ -469,6 +469,14 @@ var designers =
     "pictured": "yes"
   },
   {
+    "firstname": "Kazumi",
+    "lastname": "Kanagawa",
+    "position": "Designer",
+    "major": "Design",
+    "year": 2019,
+    "pictured": "yes"
+  },
+  {
     "firstname": "Krista",
     "lastname": "Wilhelm",
     "position": "Designer (External)",
@@ -1222,22 +1230,6 @@ var notPictured =
     "position": "Designer",
     "major": "HCI",
     "year": "PhD",
-    "pictured": "no"
-  },
-  {
-    "firstname": "Kazumi",
-    "lastname": "Kanagawa",
-    "position": "Designer",
-    "major": "Design",
-    "year": 2019,
-    "pictured": "no"
-  },
-  {
-    "firstname": "Kabir",
-    "lastname": "Mantha",
-    "position": "Designer",
-    "major": "?",
-    "year": "?",
     "pictured": "no"
   },
   {

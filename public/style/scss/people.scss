@@ -30,18 +30,37 @@
 .person-info-background{
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	position: fixed;
 	z-index: 999999999999;
 	background-color: rgba(0, 0, 0, 0.8);
 	top: 0;
 }
 
 .person-info {
-	color: white;
-	position: absolute;
-	z-index: 999999999999999;
 	width: 350px;
 	height: 350px;
+}
+
+.person-info-mobile {
+	max-width: 350px;
+	max-height: 350px;
+	width: 60vw;
+	height: 60vw;
+
+	.headshot {
+		width: 100%;
+		height: 100%;
+		background-position: center top;
+		background-repeat: no-repeat;
+	    background-size: 100%;
+	    background-color: black;
+	}
+}
+
+.person-info, .person-info-mobile {
+	color: white;
+	position: fixed;
+	z-index: 999999999999999;
 	// background-color: red;
 	top: 0;
 	bottom: 10%;
@@ -51,11 +70,18 @@
 
 	.rotated-text {
 		transform: translateX(-61%) translateY(-212%) rotate(-90deg);
-	    color: #FF2224;
-	    font-size: 25px;
 	    position: absolute;
 	    top: 279px;
 	    width: 350px;
+	}
+
+	.rotated-text-mobile {
+		margin-top: 10px;
+	}
+
+	.rotated-text, .rotated-text-mobile {
+		color: #FF2224;
+	    font-size: 25px;
 
 	    p {
 	    	letter-spacing: 1px;
@@ -125,4 +151,22 @@
  	font-weight: 400;
  	font-size: 4vh;
  	color: white;
+}
+
+.not-pictured-text {
+	text-align: left;
+    font-size: 1.2vw;
+    line-height: 3vh;
+    position: absolute;
+    top: 17%;
+    left: 3%;
+
+}
+
+.not-pictured-text-mobile {
+    text-align: left;
+    font-size: 2.6vw;
+    line-height: 20px;
+    left: 3%;
+    margin-top: 8%;
 }

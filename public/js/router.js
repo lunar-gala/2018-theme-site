@@ -24,26 +24,41 @@ function createRouting(){
 
   currentPath = window.location.pathname;
   if(currentPath == "/"){
-    load_intro_page();
+      load_intro_page();
   }
   else{
     load_page(currentPath);
   }
   $(".router-link").click(function(){
     url = $(this).attr("url");
-    if(currentPath == "/"){
-      load_intro_page();
-    }
-    else{
-      load_page(currentPath);
-    }
+    load_page(currentPath);
   })
   $(window).bind("popstate", function() {
     currentPath = window.location.pathname;
     if(currentPath == "/"){
-      load_intro_page();
+      if(grid && titleGrid){
+        grid.map((row)=>{row.map((block)=>{block.animateOut()})})
+        titleGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
+        window.setTimeout(function(){
+          $('.mainGrid').addClass('fullNav');
+          $('.titleGrid').addClass('fullNav');
+        },200);
+        window.setTimeout(function(){
+          $('.mainGrid').removeClass('fullNav');
+          $('.titleGrid').removeClass('fullNav');
+          titleGrid = [];
+          grid = [];
+          $('.mainGrid *').remove();
+          $('.titleGrid *').remove();
+          load_intro_page();
+        },1000)
+      }
+      else{
+        load_intro_page();
+      }
     }
     else{
+      $('.video-container').remove();
       load_page(currentPath);
     }
   });
@@ -54,13 +69,13 @@ function attach_router_link(){
     grid.map((row)=>{row.map((block)=>{block.animateOut()})})
     titleGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
     window.setTimeout(function(){
-      // $('.mainGrid').addClass('fullNav');
-      // $('.titleGrid').addClass('fullNav');
+      $('.mainGrid').addClass('fullNav');
+      $('.titleGrid').addClass('fullNav');
     },200);
     url = $(this).attr("url");
     window.setTimeout(function(){
-      // $('.mainGrid').removeClass('fullNav');
-      // $('.titleGrid').removeClass('fullNav');
+      $('.mainGrid').removeClass('fullNav');
+      $('.titleGrid').removeClass('fullNav');
       load_page(url);
     },1000)
 
@@ -69,18 +84,25 @@ function attach_router_link(){
 
 function load_intro_page(){
   if(__MOBILE_BOOL){
-    console.log('doing this!!!')
     load_page_mobile('/about');
     return;
   }
-  videoToLoad = "<video id='video' width=\"320\" height=\"240\" autoplay=\"autoplay\"><source src=\"video/introVideo.mp4\" type=\"video/mp4\"></video>";
+  videoToLoad = "<div class='video-container'><div class='xButton'>X</div><video id='video' width=\"320\" height=\"240\" autoplay=\"autoplay\"><source src=\"video/introVideo.mp4\" type=\"video/mp4\"></video></div>";
   $('body').append(videoToLoad);
+  clicked = false;
+  $('.xButton').click(function(){
+    clicked = true;
+    $('.video-container').remove();
+    load_page("/about");
+  })
   video = document.getElementById("video")
   video.addEventListener('loadeddata', function() {
    videoLength = 8290;
    window.setTimeout(function(){
-     $('#video').remove();
-     load_page("/about");
+     if(!clicked){
+       $('.video-container').remove();
+       load_page("/about");
+     }
    },videoLength)
   }, false);
 }

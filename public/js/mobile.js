@@ -36,13 +36,13 @@ $(window).ready(function(){
 });
 
 function __load_desktop(){
-  console.log('Loading Desktop version...');
+  // console.log('Loading Desktop version...');
   //Add init code here
   createRouting();
 }
 
 function __load_mobile(){
-  console.log('Loading Mobile version...');
+  // console.log('Loading Mobile version...');
   //Add init code here
   createMobileRouting();
 }

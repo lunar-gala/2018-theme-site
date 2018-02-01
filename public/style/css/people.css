@@ -32,35 +32,50 @@
   top: 0; }
 
 .person-info {
+  width: 350px;
+  height: 350px; }
+
+.person-info-mobile {
+  max-width: 350px;
+  max-height: 350px;
+  width: 60vw;
+  height: 60vw; }
+  .person-info-mobile .headshot {
+    width: 100%;
+    height: 100%;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: black; }
+
+.person-info, .person-info-mobile {
   color: white;
   position: fixed;
   z-index: 999999999999999;
-  width: 350px;
-  height: 350px;
   top: 0;
   bottom: 10%;
   left: 0;
   right: 0;
   margin: auto; }
-  .person-info .rotated-text {
+  .person-info .rotated-text, .person-info-mobile .rotated-text {
     transform: translateX(-61%) translateY(-212%) rotate(-90deg);
     position: absolute;
     top: 279px;
     width: 350px; }
-  .person-info .rotated-text-mobile {
+  .person-info .rotated-text-mobile, .person-info-mobile .rotated-text-mobile {
     margin-top: 10px; }
-  .person-info .rotated-text, .person-info .rotated-text-mobile {
+  .person-info .rotated-text, .person-info .rotated-text-mobile, .person-info-mobile .rotated-text, .person-info-mobile .rotated-text-mobile {
     color: #FF2224;
     font-size: 25px; }
-    .person-info .rotated-text p, .person-info .rotated-text-mobile p {
+    .person-info .rotated-text p, .person-info .rotated-text-mobile p, .person-info-mobile .rotated-text p, .person-info-mobile .rotated-text-mobile p {
       letter-spacing: 1px; }
-    .person-info .rotated-text .name, .person-info .rotated-text-mobile .name {
+    .person-info .rotated-text .name, .person-info .rotated-text-mobile .name, .person-info-mobile .rotated-text .name, .person-info-mobile .rotated-text-mobile .name {
       font-family: "Druk Wide",sans-serif;
       margin: 0; }
-    .person-info .rotated-text .major, .person-info .rotated-text-mobile .major {
+    .person-info .rotated-text .major, .person-info .rotated-text-mobile .major, .person-info-mobile .rotated-text .major, .person-info-mobile .rotated-text-mobile .major {
       margin-top: 5px;
       font-size: 14px; }
-    .person-info .rotated-text .title, .person-info .rotated-text-mobile .title {
+    .person-info .rotated-text .title, .person-info .rotated-text-mobile .title, .person-info-mobile .rotated-text .title, .person-info-mobile .rotated-text-mobile .title {
       margin-top: 5px;
       font-size: 14px; }
 

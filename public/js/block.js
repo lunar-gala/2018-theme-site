@@ -208,9 +208,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
         this.height = height;
 
         if (this.showgridlines) {
-          console.log("show grid lines")
           blockElem.find(" .animated-filler-block").remove()
-          // TODO (bug): remove hidden class
           blockElem.append($("<div class='animated-filler-block hidden'><div class='filler-inner'></div></div>").css({
             top: 0,
             left: 0,
@@ -513,16 +511,17 @@ $(window).ready(function(){
 });
 
 $(window).resize(function(){
-  grid.map(function(inner){
-    inner.map(function(cur){
-      cur.update(($(cur.containerName).width()/grid[0].length),($(cur.containerName).height()/grid.length), $(".titleGrid").height());
-    })
-  })
   $('.animated-filler-block').removeClass('hidden');
 
   titleGrid.map(function(inner){
     inner.map(function(cur){
       cur.update(($(cur.containerName).width()/titleGrid[0].length),($(cur.containerName).height()/titleGrid.length), 0);
+    })
+  })
+
+  grid.map(function(inner){
+    inner.map(function(cur){
+      cur.update(($(cur.containerName).width()/grid[0].length),($(cur.containerName).height()/grid.length), $(".titleGrid").height());
     })
   })
 

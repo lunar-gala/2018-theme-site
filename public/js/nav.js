@@ -151,7 +151,6 @@ function deleteMiniNav(){
   resetBlock($("#title_1_6")[0]);
   $("#title_1_6 .inner").html("");
 }
-console.log(deleteMiniNav)
 
 function isFullNavOpen() {
   return $(".mainGrid").hasClass("fullNav")

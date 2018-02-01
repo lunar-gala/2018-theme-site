@@ -12,7 +12,6 @@ $mobile-size:768px;
         span {
             opacity: 0;
         }
-
     }
 }
 
@@ -20,7 +19,8 @@ $mobile-size:768px;
     cursor: pointer;
 
     .content {
-        transition: all 0.8s ease 0s; // PLAY WITH THIS
+        transition: left 0.5s ease 0s, top 0.5s ease 0s; // PLAY WITH THIS
+        //transition: transform 0.8s ease 0s;
         cursor: default;
         position: absolute;
         -webkit-touch-callout: none; /* iOS Safari */
@@ -32,7 +32,7 @@ $mobile-size:768px;
         text-align: left; // initial block styling centers text
 
         .title, .designers {
-            white-space: nowrap; // TODO: MIGHT NEED TO CHANGE THIS
+            //white-space: nowrap; // TODO: MIGHT NEED TO CHANGE THIS
         }
 
         .title {
@@ -90,11 +90,8 @@ $mobile-size:768px;
             width: 100%;
 
             @media (max-width: $mobile-size) {
-
               left: 0%;
               width: 0%;
-              .description, .designers {
-              }
             }
         }
     }

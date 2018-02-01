@@ -9,7 +9,7 @@
 .linesBlock {
   cursor: pointer; }
   .linesBlock .content {
-    transition: all 0.8s ease 0s;
+    transition: left 0.5s ease 0s, top 0.5s ease 0s;
     cursor: default;
     position: absolute;
     -webkit-touch-callout: none;
@@ -24,8 +24,6 @@
     /* Internet Explorer/Edge */
     user-select: none;
     text-align: left; }
-    .linesBlock .content .title, .linesBlock .content .designers {
-      white-space: nowrap; }
     .linesBlock .content .title {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;

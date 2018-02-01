@@ -86,7 +86,8 @@ function init_lines_mobile() {
 
     populateLinesBlocks();
 
-    $("body").off("click").click(clickLinesPicture);
+    $("body").off("touchstart")
+    $("body").on("touchstart", clickLinesPicture)
 }
 
 function init_lines() {
@@ -163,7 +164,6 @@ function setLineBlock(selector, line) {
 
 function clickLinesPicture(e) {
     var elem = e.target;
-    console.log(elem)
     var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || 
                     ($(elem).attr("belongs-to")) ||
                     ($(elem).parent().hasClass("filler-block") && $(elem).parent().attr("belongs-to")) ||
@@ -175,10 +175,8 @@ function clickLinesPicture(e) {
         $(".block").toggleClass('muted')
         $("#" + blockid + ".block").toggleClass('highlighted');
         HIGHLIGHTEDBLOCK = $("#" + blockid + ".block");
-
         $(HIGHLIGHTEDBLOCK).find(".inner").toggleClass("lineBlockPicMuted lineBlockPic");
-
-        return;
+        return false;
     }
 
     $(".block").removeClass("muted")

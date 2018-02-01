@@ -135,7 +135,7 @@ function populatePeopleContent () {
 					(index >= 90 && index < 90 + models.length) ||
 					(index >= 150 && index < 150 + dancers.length) ) {
 		        	$("#" + grid[i][j].id + " .inner").hover(function () {
-		        		console.log(90 + models.length);
+		        		// console.log(90 + models.length);
 				        $(this).css({
 				        	'background-color': '#ff2124',
   							'background-blend-mode': 'multiply',
@@ -359,7 +359,7 @@ function populatePeopleContent_mobile () {
 					(index >= 75 && index < 75 + models.length) ||
 					(index >= 135 && index < 135 + dancers.length) ) {
 		        	$("#" + grid[i][j].id + " .inner").hover(function () {
-		        		console.log(90 + models.length);
+		        		// console.log(90 + models.length);
 				        $(this).css({
 				        	'background-color': '#ff2124',
   							'background-blend-mode': 'multiply',
@@ -403,7 +403,5 @@ function getIndex_mobile(i, j) {
 		}
 		index -= 18;
 	}
-
-	console.log("get index: " + arryIndex);
 	return arryIndex;
 }

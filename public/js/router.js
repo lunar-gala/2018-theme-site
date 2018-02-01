@@ -269,8 +269,8 @@ function load_page_mobile(url){
 
       call_function(url,true);
 
-      // deleteMiniNav();
-      // summonMiniNav();
+      deleteMiniNavMobile();
+      summonMiniNavMobile();
 
       // $(".mainGrid").toggleClass("fullNav");
       window.setTimeout(function(){

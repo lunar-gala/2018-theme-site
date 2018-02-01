@@ -1106,37 +1106,58 @@ body {
     .mainGrid .inner .navBox, .titleGrid .inner .navBox {
       padding-top: calc(calc(12.5vh - 16px) - 6px);
       padding-bottom: calc(calc(12.5vh - 16px) - 6px); }
-      .mainGrid .inner .navBox:hover, .titleGrid .inner .navBox:hover {
+      .mainGrid .inner .navBox:hover, .mainGrid .inner .navBox.active, .titleGrid .inner .navBox:hover, .titleGrid .inner .navBox.active {
         cursor: pointer; }
-        .mainGrid .inner .navBox:hover div:not(.row), .titleGrid .inner .navBox:hover div:not(.row) {
+        .mainGrid .inner .navBox:hover div > div, .mainGrid .inner .navBox.active div > div, .titleGrid .inner .navBox:hover div > div, .titleGrid .inner .navBox.active div > div {
           background-color: #FF2124; }
-          .mainGrid .inner .navBox:hover div:not(.row).active, .titleGrid .inner .navBox:hover div:not(.row).active {
+          .mainGrid .inner .navBox:hover div > div.active, .mainGrid .inner .navBox.active div > div.active, .titleGrid .inner .navBox:hover div > div.active, .titleGrid .inner .navBox.active div > div.active {
             background-color: black; }
-      .mainGrid .inner .navBox .row, .titleGrid .inner .navBox .row {
+      .mainGrid .inner .navBox.mobileBox, .titleGrid .inner .navBox.mobileBox {
+        padding-top: calc(calc(6.25vh - 16px) - 1px);
+        padding-bottom: calc(calc(6.25vh - 16px) - 1px); }
+      .mainGrid .inner .navBox .row,
+      .mainGrid .inner .navBox .mobileRow, .titleGrid .inner .navBox .row,
+      .titleGrid .inner .navBox .mobileRow {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-flow: row nowrap; }
-        .mainGrid .inner .navBox .row div, .titleGrid .inner .navBox .row div {
+        .mainGrid .inner .navBox .row div,
+        .mainGrid .inner .navBox .mobileRow div, .titleGrid .inner .navBox .row div,
+        .titleGrid .inner .navBox .mobileRow div {
           transition: background-color .5s;
           width: 16px;
           height: 16px;
           box-sizing: border-box; }
-          .mainGrid .inner .navBox .row div.active, .titleGrid .inner .navBox .row div.active {
+          .mainGrid .inner .navBox .row div.active,
+          .mainGrid .inner .navBox .mobileRow div.active, .titleGrid .inner .navBox .row div.active,
+          .titleGrid .inner .navBox .mobileRow div.active {
             background-color: #FF2124; }
-          .mainGrid .inner .navBox .row div#navInner_00, .mainGrid .inner .navBox .row div#navInner_02, .titleGrid .inner .navBox .row div#navInner_00, .titleGrid .inner .navBox .row div#navInner_02 {
+          .mainGrid .inner .navBox .row div#navInner_00, .mainGrid .inner .navBox .row div#navInner_02,
+          .mainGrid .inner .navBox .mobileRow div#navInner_00,
+          .mainGrid .inner .navBox .mobileRow div#navInner_02, .titleGrid .inner .navBox .row div#navInner_00, .titleGrid .inner .navBox .row div#navInner_02,
+          .titleGrid .inner .navBox .mobileRow div#navInner_00,
+          .titleGrid .inner .navBox .mobileRow div#navInner_02 {
             border: 1px solid white; }
-          .mainGrid .inner .navBox .row div#navInner_01, .titleGrid .inner .navBox .row div#navInner_01 {
+          .mainGrid .inner .navBox .row div#navInner_01,
+          .mainGrid .inner .navBox .mobileRow div#navInner_01, .titleGrid .inner .navBox .row div#navInner_01,
+          .titleGrid .inner .navBox .mobileRow div#navInner_01 {
             border-top: 1px solid white;
             border-bottom: 1px solid white;
             border-left: 1px solid transparent;
             border-right: 1px solid transparent;
             width: 14px; }
-          .mainGrid .inner .navBox .row div#navInner_10, .mainGrid .inner .navBox .row div#navInner_12, .titleGrid .inner .navBox .row div#navInner_10, .titleGrid .inner .navBox .row div#navInner_12 {
+          .mainGrid .inner .navBox .row div#navInner_10, .mainGrid .inner .navBox .row div#navInner_12,
+          .mainGrid .inner .navBox .mobileRow div#navInner_10,
+          .mainGrid .inner .navBox .mobileRow div#navInner_12, .titleGrid .inner .navBox .row div#navInner_10, .titleGrid .inner .navBox .row div#navInner_12,
+          .titleGrid .inner .navBox .mobileRow div#navInner_10,
+          .titleGrid .inner .navBox .mobileRow div#navInner_12 {
             border: 1px solid white;
             border-top: 1px solid transparent;
             height: 15px; }
-          .mainGrid .inner .navBox .row div#navInner_11, .titleGrid .inner .navBox .row div#navInner_11 {
+          .mainGrid .inner .navBox .row div#navInner_11,
+          .mainGrid .inner .navBox .mobileRow div#navInner_11, .titleGrid .inner .navBox .row div#navInner_11,
+          .titleGrid .inner .navBox .mobileRow div#navInner_11 {
             border-bottom: 1px solid white;
             border-left: 1px solid transparent;
             border-right: 1px solid transparent;

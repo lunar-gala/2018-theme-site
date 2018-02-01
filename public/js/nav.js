@@ -147,6 +147,37 @@ function summonMiniNav(){
     summonFullNav();
   });
 }
+
+function summonMiniNavMobile(){
+  //creating the nav box
+  currentPath = window.location.pathname;
+  options = {"/about":[0,0], "/lines":[0,1], "/members":[1,0] , "/sponsors":[1,1]}
+  currentIndices = options[currentPath];
+  navBox = `<div class="navBox mobileBox">`;
+  for(var i = 0;  i < 2; i++){
+    navBox += `<div class ="mobileRow">`
+    for(var j = 0; j < 3; j ++){
+      navBox += `<div class="" id="navInner_`+parseInt(i)+parseInt(j)+`"></div>`
+    }
+    navBox += `</div>`
+  }
+  navBox  += `</div>`
+  $("#title_0_2 .inner").html(navBox);
+  $("#navInner_"+currentIndices.join("")).toggleClass("active");
+  $("#title_2_2 .inner").click(function(){
+    summonFullNavMobile();
+  });
+}
+
+function summonFullNavMobile(){
+
+}
+
+function deleteMiniNavMobile(){
+  resetBlock($("#title_0_2")[0]);
+  $("#title_0_02 .inner").html("");
+}
+
 function deleteMiniNav(){
   resetBlock($("#title_1_6")[0]);
   $("#title_1_6 .inner").html("");

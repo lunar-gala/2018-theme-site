@@ -270,20 +270,25 @@ body{
 		text-align:center;
     margin: 0;
 		.navBox{
-      //change this later accordingly
-      &:hover {
+      padding-top:calc(calc(12.5vh - 16px) - 6px);
+      padding-bottom:calc(calc(12.5vh - 16px) - 6px);
+      &:hover,
+      &.active{
         cursor:pointer;
-        div:not(.row){
+        div > div{
             background-color:$color-red;
           &.active{
             background-color:black;
           }
         }
       }
+      &.mobileBox{
+        padding-top:calc(calc(6.25vh - 16px) - 1px);
+        padding-bottom:calc(calc(6.25vh - 16px) - 1px);
+      }
       $box-size: 16px;
-      padding-top:calc(calc(12.5vh - 16px) - 6px);
-      padding-bottom:calc(calc(12.5vh - 16px) - 6px);
-      .row{
+      .row,
+      .mobileRow{
         display: flex;
         align-items: center;
         justify-content: center;

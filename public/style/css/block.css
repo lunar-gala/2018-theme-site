@@ -914,6 +914,9 @@ video {
   width: auto !important;
   margin: auto; }
 
+.router-link {
+  cursor: pointer; }
+
 .block {
   position: absolute;
   padding: 0.25%;

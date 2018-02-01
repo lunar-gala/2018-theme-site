@@ -108,8 +108,8 @@ function init_lines() {
     animateBlock("#title_0_6",0,1);
 
     // nav links
-    $("#title_0_0 .inner").text("Humans").addClass("topLink");
-    $("#title_0_6 .inner").text("About").addClass("topLink");
+    $("#title_0_0 .inner").text("Members").addClass("topLink router-link").attr("url", "/members");
+    $("#title_0_6 .inner").text("About").addClass("topLink router-link").attr("url", "/about");
 
     // page title
     $("#title_1_1 .inner").text("Lines").addClass("title");
@@ -214,7 +214,6 @@ function populateLinesBlocks() {
                 console.log("centering")
                 setTimeout(function(){centerContentMobile(actualselector, line)}, 330);
             }
-            
         })
     }
 }

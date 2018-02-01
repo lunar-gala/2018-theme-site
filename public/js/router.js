@@ -11,10 +11,7 @@ function createMobileRouting(){
   $('.router-link').off('click');
   currentPath = window.location.pathname;
   load_page_mobile(currentPath);
-  $(".router-link").click(function(){
-    url = $(this).attr("url");
-    load_page_mobile(url);
-  })
+
   $(window).bind("popstate", function() {
     currentPath = window.location.pathname;
     load_page_mobile(currentPath);
@@ -148,6 +145,11 @@ function load_page(url){
       $('.mainGrid').css("opacity","1");
       $('.titleGrid').css("opacity","1");
       $('.mainGrid .animated-filler-block').removeClass('hidden');
+      $(".router-link").click(function(){
+        console.log(this, $(this).attr("url"))
+        url = $(this).attr("url");
+        load_page(url);
+      })
     },700);
   },500);
 }
@@ -234,6 +236,10 @@ function load_page_mobile(url){
         $('.mainGrid').css("opacity","1");
         $('.titleGrid').css("opacity","1");
         $('.mainGrid .animated-filler-block').removeClass('hidden');
+        $(".router-link").click(function(){
+          url = $(this).attr("url");
+          load_page_mobile(url);
+        })
       },700);
     },500);
 }

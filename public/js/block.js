@@ -19,7 +19,7 @@ var __mobile_grid_rows = 20;
 
 __pageCounts = {
   '/about':[15,18],
-  '/lines':[20,24],
+  '/lines':[20,42],
   '/members':[35,42]
 }
 
@@ -469,6 +469,7 @@ $(window).ready(function(){
           break;
     }
   };
+
   $("body").bind('mousewheel', function(e) {
     if(__pageAnimating){
       return;

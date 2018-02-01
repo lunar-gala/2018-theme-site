@@ -32,7 +32,6 @@ function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
       var y = i * block_height;
       var x = j * block_width;
 
-
       var block = new Block(i, j, x, y,
                             block_width, block_height, preString, containerName, offset);
 
@@ -44,6 +43,7 @@ function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
 }
 
 function Block(row, col, x, y, width, height, preString, containerName, offset = 0){
+
   this.row = row;
   this.col = col;
   this.containerName = containerName;
@@ -51,11 +51,13 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
   //initial values
   this.x = x;
   this.y = y;
+
   if (preString.length > 0) {
     this.id = preString+"_"+row+"_"+col;
   } else {
     this.id = row+"_"+col;
   }
+
   this.offset = offset;
   this.state = "normal";
   this.width = width;
@@ -77,7 +79,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
   this.belongsto = null;
 
   this.animateOut = function(){
-    // console.log(currentPage,row_per_page,this.row)
+    //if the block isn't on the page don't animate
     if(!(currentPage * row_per_page <= this.row && (currentPage * row_per_page) + row_per_page > this.row) && (this.containerName == '.mainGrid')){
       return;
     }
@@ -137,11 +139,11 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
   }
 
   this.animateIn = function(){
-
-
+    //if the block isn't on the page don't animate
     if(!(currentPage * row_per_page <= this.row && (currentPage * row_per_page) + row_per_page > this.row) && (this.containerName == '.mainGrid')){
       return;
     }
+
     $("#"+this.id+" .borders span").removeClass("left-out right-out up-out down-out");
   }
 
@@ -175,9 +177,12 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
     }
 
     if(Object.values(this.bounds).includes(-1)) {
+
       this.collapsed = true;
       blockElem.toggleClass("collapsed");
+
     } else {
+
         this.offset = offset;
         this.collapsed = false;
         var y;
@@ -218,9 +223,6 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
 }
 
 function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
-
-    // var regular_w = (window.innerWidth/grid_cols);
-    // var regular_h = (window.innerHeight/grid_rows);
 
     var id = $(block).attr("id").split("_");
 
@@ -298,6 +300,7 @@ function resetBlock(block) {
 
     for (var row=i; row < Math.min(gridToUse.length, i + 1 + blocksDown); row++) {
       for (var col=j; col < Math.min(gridToUse[0].length, j + 1 + blocksRight); col++) {
+
         var b = gridToUse[row][col];
 
         b.bounds.right = 0
@@ -329,8 +332,6 @@ function resetAllBlocks() {
     for (var col=0; col < title_grid_cols; col++) {
       var b = titleGrid[row][col];
       $("#title_"+b.id).remove();
-      // Call this once implemented
-      // b.animateOut()
     }
   }
 }
@@ -340,10 +341,7 @@ function destroyAllBlocks(grid){
     for (var row = 0; row < grid_rows; row++) {
       for (var col = 0; col < grid_cols; col++) {
         var b = grid[row][col];
-        // console.log(grid_cols);
         $("#"+b.id).remove();
-        // Call this once implemented
-        // b.animateOut()
       }
     }
   }
@@ -352,8 +350,6 @@ function destroyAllBlocks(grid){
       for (var col = 0; col < title_grid_cols; col++) {
         var b = titleGrid[row][col];
         $("#"+b.id).remove();
-        // Call this once implemented
-        // b.animateOut()
       }
     }
   }
@@ -423,18 +419,18 @@ function movePage(curPage,pageCount,direction,cb){
   boundary_top = newPage * row_per_page + row_per_page
 
   for (i = boundary_low; i < boundary_top;i++){
-    // console.log(i);
     $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','block');
   }
-  //hide the outgoing boxes after animating out
+
+  //add video for about page 2
   if(window.location.pathname == "/about" && newPage == 1 && $("#5_1 .inner")[0].innerHTML == "" && __DESKTOP_BOOL){
-      $("#5_1 .inner")[0].innerHTML = "<div style='height:100%'><iframe src=\"https://player.vimeo.com/video/252741421?autoplay=1\" width=\"100%\" height=\"100%\" frameborder=\"0\"  ></iframe></div>"
-      useThis = "webkitallowfullscreen mozallowfullscreen allowfullscreen"
+      add_video()
   }
 
   $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
 
   window.setTimeout(function(){
+    //hide the outgoing boxes after animating out
     boundary_low = oldPage * row_per_page
     boundary_top = oldPage * row_per_page + row_per_page
     for (i = boundary_low; i < boundary_top;i++){

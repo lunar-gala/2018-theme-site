@@ -1105,6 +1105,20 @@ body {
     width: 100%;
     height: 100%; }
 
+.designers-link1:hover,
+.designers-link2:hover {
+  text-decoration: underline;
+  cursor: pointer; }
+
+.mobileNav .inner {
+  display: flex;
+  align-items: center; }
+  .mobileNav .inner div {
+    font-size: 14pt;
+    width: 100%; }
+    .mobileNav .inner div a {
+      font-size: 14pt !important; }
+
 .mainGrid, .titleGrid {
   transition: opacity 1s,transform 1s ease-in-out;
   transition-delay: 0s; }
@@ -1172,6 +1186,21 @@ body {
             border-top: 1px solid transparent;
             width: 14px;
             height: 15px; }
+      .mainGrid .inner .navBox .mobileRow div.active, .titleGrid .inner .navBox .mobileRow div.active {
+        background-color: #FF2124; }
+      .mainGrid .inner .navBox .mobileRow div#navInner_00, .mainGrid .inner .navBox .mobileRow div#navInner_01, .mainGrid .inner .navBox .mobileRow div#navInner_20, .mainGrid .inner .navBox .mobileRow div#navInner_21, .titleGrid .inner .navBox .mobileRow div#navInner_00, .titleGrid .inner .navBox .mobileRow div#navInner_01, .titleGrid .inner .navBox .mobileRow div#navInner_20, .titleGrid .inner .navBox .mobileRow div#navInner_21 {
+        border: 1px solid white; }
+      .mainGrid .inner .navBox .mobileRow div#navInner_01, .mainGrid .inner .navBox .mobileRow div#navInner_21, .titleGrid .inner .navBox .mobileRow div#navInner_01, .titleGrid .inner .navBox .mobileRow div#navInner_21 {
+        border-left: 1px solid transparent;
+        width: 15px; }
+      .mainGrid .inner .navBox .mobileRow div#navInner_10, .mainGrid .inner .navBox .mobileRow div#navInner_11, .titleGrid .inner .navBox .mobileRow div#navInner_10, .titleGrid .inner .navBox .mobileRow div#navInner_11 {
+        border: 1px solid white;
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+        height: 14px; }
+      .mainGrid .inner .navBox .mobileRow div#navInner_11, .titleGrid .inner .navBox .mobileRow div#navInner_11 {
+        border-left: 1px solid transparent;
+        width: 15px; }
     .mainGrid .inner .center-text.title, .titleGrid .inner .center-text.title {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;

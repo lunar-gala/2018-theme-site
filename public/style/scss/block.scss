@@ -269,7 +269,26 @@ body{
     height: 100%;
   }
 }
-
+.designers-link1,
+.designers-link2 {
+  &:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+.mobileNav{
+  .inner{
+    display:flex;
+    align-items: center;
+    div{
+      font-size:14pt;
+      width:100%;
+      a{
+        font-size:14pt!important;
+      }
+    }
+  }
+}
 .mainGrid, .titleGrid{
 	transition:opacity 1s,transform 1s ease-in-out;
   transition-delay:0s;
@@ -295,6 +314,7 @@ body{
 		.navBox{
       width:100%;
       $box-size: 16px;
+      $b : 1px solid white;
       .row,
       .mobileRow{
         display: flex;
@@ -306,7 +326,7 @@ body{
           width:$box-size;
           height:$box-size;
           box-sizing:border-box;
-          $b : 1px solid white;
+
           &.active{
             background-color:$color-red;
           }
@@ -334,6 +354,35 @@ body{
             border-top:1px solid transparent;
             width:14px;
             height:15px;
+          }
+        }
+      }
+      .mobileRow{
+        div{
+          &.active{
+            background-color:$color-red;
+          }
+          &#navInner_00,
+          &#navInner_01,
+          &#navInner_20,
+          &#navInner_21{
+            border:$b
+          }
+          &#navInner_01,
+          &#navInner_21{
+            border-left:1px solid transparent;
+            width:15px;
+          }
+          &#navInner_10,
+          &#navInner_11{
+            border:$b;
+            border-top:1px solid transparent;
+            border-bottom:1px solid transparent;
+            height:14px;
+          }
+          &#navInner_11{
+            border-left:1px solid transparent;
+            width:15px;
           }
         }
       }

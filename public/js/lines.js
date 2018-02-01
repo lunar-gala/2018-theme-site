@@ -86,8 +86,8 @@ function init_lines_mobile() {
 
     populateLinesBlocks();
 
-    $("body").off("tap")
-    $("body").on("tap", clickLinesPicture)
+    $(".mainGrid .block").off("tap")
+    $(".mainGrid .block").on("tap", clickLinesPicture)
 }
 
 function init_lines() {
@@ -155,7 +155,12 @@ function init_lines() {
     animateBlock("#15_6",2,0,true); // right
     animateBlock("#18_7", 1,0) // arrows
     $(".mainGrid #18_7").append(`<img class="arrow" src = "../../images/Arrows/pointingup.png"/>`)
-
+    // $('#18_7,#13_7,#8_7,#3_7').off('click').bind('click',function(){
+    //   movePage(currentPage,grid_rows/row_per_page,'down',function(newPage){
+    //     currentPage = newPage;
+    //     e.preventDefault();
+    //   });
+    // })
 
 
     populateLinesBlocks()

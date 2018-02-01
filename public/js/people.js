@@ -9,6 +9,21 @@ function init_people() {
 	    	removeDisplayPerson();
 		}
 	});
+	$('.designers-link1').off('click');
+	$('.designers-link2').off('click');
+  $('.designers-link2').bind('click',function(){
+    movePage(currentPage,grid_rows/row_per_page,'down',function(newPage){
+      currentPage = newPage;
+      e.preventDefault();
+    });
+  })
+	$('.designers-link1').bind('click',function(){
+		movePage(currentPage,grid_rows/row_per_page,'up',function(newPage){
+			currentPage = newPage;
+			e.preventDefault();
+		});
+	})
+
 };
 
 function populatePeopleHeader () {
@@ -241,14 +256,12 @@ function removeDisplayPerson() {
 }
 
 
-
 //    MOBILE    ///////////////////    MOBILE    /////////////////    MOBILE    ///
 //////    MOBILE    ////////////////////////////    MOBILE    /////////////////////
 ////////////////////////////    MOBILE    /////////////////    MOBILE    //////////
 /////    MOBILE    /////////////////////////    MOBILE    /////////////////////////
 ///////////    MOBILE    /////////    MOBILE    ///////////    MOBILE    //////////
 ////    MOBILE    ////////////////////    MOBILE    ///////////////////////////////
-
 
 
 var sectionsMobile = ["Board", "Board (cont.)", "Board (cont.)", "Designers", "Designers (cont.)", "Models", "Models (cont.)", "Models (cont.)", "Models (cont.)", "Dancers", "Dancers (cont.)", "Not Pictured"];

@@ -44,20 +44,23 @@
   margin: auto; }
   .person-info .rotated-text {
     transform: translateX(-61%) translateY(-212%) rotate(-90deg);
-    color: #FF2224;
-    font-size: 25px;
     position: absolute;
     top: 279px;
     width: 350px; }
-    .person-info .rotated-text p {
+  .person-info .rotated-text-mobile {
+    margin-top: 10px; }
+  .person-info .rotated-text, .person-info .rotated-text-mobile {
+    color: #FF2224;
+    font-size: 25px; }
+    .person-info .rotated-text p, .person-info .rotated-text-mobile p {
       letter-spacing: 1px; }
-    .person-info .rotated-text .name {
+    .person-info .rotated-text .name, .person-info .rotated-text-mobile .name {
       font-family: "Druk Wide",sans-serif;
       margin: 0; }
-    .person-info .rotated-text .major {
+    .person-info .rotated-text .major, .person-info .rotated-text-mobile .major {
       margin-top: 5px;
       font-size: 14px; }
-    .person-info .rotated-text .title {
+    .person-info .rotated-text .title, .person-info .rotated-text-mobile .title {
       margin-top: 5px;
       font-size: 14px; }
 

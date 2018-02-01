@@ -51,11 +51,18 @@
 
 	.rotated-text {
 		transform: translateX(-61%) translateY(-212%) rotate(-90deg);
-	    color: #FF2224;
-	    font-size: 25px;
 	    position: absolute;
 	    top: 279px;
 	    width: 350px;
+	}
+
+	.rotated-text-mobile {
+		margin-top: 10px;
+	}
+
+	.rotated-text, .rotated-text-mobile {
+		color: #FF2224;
+	    font-size: 25px;
 
 	    p {
 	    	letter-spacing: 1px;

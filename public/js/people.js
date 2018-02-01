@@ -178,6 +178,7 @@ function getIndex(i, j) {
 
 function displayPerson (index) {
 	var dataObject;
+	var descClass = "";
 	if (!__MOBILE_BOOL) {
 		if (index < board1.length) {
 			dataObject = board1[index];
@@ -191,6 +192,7 @@ function displayPerson (index) {
 			index -= 150;
 			dataObject = dancers[index];
 		}
+		descClass = "rotated-text";
 	} else {
 		if (index < board1.length) {
 			dataObject = board1[index];
@@ -204,6 +206,7 @@ function displayPerson (index) {
 			index -= 135;
 			dataObject = dancers[index];
 		}
+		descClass = "rotated-text-mobile"
 	}
 	var firstName = dataObject.firstname;
 	var lastName = dataObject.lastname;
@@ -211,11 +214,12 @@ function displayPerson (index) {
 	var major = dataObject.major;
 	var year = dataObject.year;
 	var position = dataObject.position;
+
 	var displayPersonDiv =
 		`<div class='person-info-background'></div>
 		 <div class='person-info'>
 			<div class="headshot" style="background-image:url('` + src + `')"></div>
-			<div class="rotated-text">
+			<div class="` + descClass + `">
 				<p class="name">` + firstName + " " + lastName + `</p>
 				<p class="major">` + major + " " + year + `</p>
 				<p class="title">` + position + `</p>

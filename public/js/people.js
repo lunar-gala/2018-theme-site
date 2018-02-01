@@ -15,9 +15,9 @@ function populatePeopleHeader () {
 	animateBlock("#title_0_0",0,1);
     animateBlock("#title_1_1",0,1);
     animateBlock("#title_0_6",0,1);
-    $("#title_0_0 .inner").text("About").addClass("topLink");
+    $("#title_0_0 .inner").text("About").addClass("topLink router-link").attr('url','/about');
     $("#title_0_0 .inner").append("<img class='arrow-left' src='./../images/Arrows/pointingleft.png'/>")
-    $("#title_0_6 .inner").text("Lines").addClass("topLink");
+    $("#title_0_6 .inner").text("Lines").addClass("topLink router-link").attr('url','/lines');
     $("#title_0_6 .inner").append("<img class='arrow-right' src='./../images/Arrows/pointingright.png'/>")
     $("#title_1_1 .inner").text("Members").addClass("title");
 }
@@ -104,7 +104,7 @@ function populatePeopleContent () {
 		        });
 
 				index = getIndex(i, j);
-				if (index < board1.length || 
+				if (index < board1.length ||
 					(index >= 60 && index < 60 + designers.length) ||
 					(index >= 90 && index < 90 + models.length) ||
 					(index >= 150 && index < 150 + dancers.length) ) {
@@ -291,7 +291,7 @@ function populatePeopleContent_mobile () {
 		        });
 
 				index = getIndex_mobile(i, j);
-				if (index < board1.length || 
+				if (index < board1.length ||
 					(index >= 45 && index < 45 + designers.length) ||
 					(index >= 75 && index < 75 + models.length) ||
 					(index >= 135 && index < 135 + dancers.length) ) {

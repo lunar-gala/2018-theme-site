@@ -11,7 +11,9 @@ else{
 
 function checkSize(mobile,desktop){
   width = window.innerWidth;
-  if(width <= __MOBILE_WIDTH && !__MOBILE_BOOL){
+  height = window.innerHeight;
+  if(width <= __MOBILE_WIDTH && !__MOBILE_BOOL
+    || height / width > 1.2){
     __MOBILE_BOOL = true;
     __DESKTOP_BOOL = false;
     row_per_page = 6;
@@ -23,8 +25,6 @@ function checkSize(mobile,desktop){
     row_per_page = 5;
     desktop();
   }
-
-  console.log(width)
 }
 
 window.addEventListener('resize',function(){

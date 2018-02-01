@@ -1,6 +1,6 @@
 @import "prereqs";
 @import "fonts";
-$color-red : #FF2224;
+$color-red : #FF2124;
 $mobile-size:768px;
 
 body{
@@ -15,7 +15,6 @@ body{
   position:absolute;
   top:0;
   left:0;
-
 }
 
 #video {
@@ -47,6 +46,58 @@ body{
 
   }
 }
+.logoContainer{
+  height:100%;
+  #col1,
+  #col2{
+    float:left;
+    height:100%;
+    width:50%;
+    position:relative;
+  }
+  #col1{
+    img{
+      height:calc(100% - 48px);
+      width:auto;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      position:absolute;
+      margin:auto;
+    }
+  }
+  #col2{
+    img{
+      height:20%;
+      width:auto;
+      display:block;
+      right:0;
+      left:0;
+      position:absolute;
+      margin:auto;
+      margin-top:12px;
+      max-width:95%;
+      &#img2{
+        top:33%;
+        height:30%;
+        margin-top:0;
+      }
+      &#img3{
+        margin-top:3px;
+        height:25%;
+        top:66%;
+      }
+    }
+  }
+  .clear{
+    clear:both;
+  }
+}
+
+
+
+
 
 
 .router-link {
@@ -179,6 +230,12 @@ body{
       //change this later accordingly
       &:hover {
         cursor:pointer;
+        div:not(.row){
+            background-color:$color-red;
+          &.active{
+            background-color:black;
+          }
+        }
       }
       $box-size: 16px;
       padding-top:calc(calc(12.5vh - 16px) - 6px);
@@ -189,8 +246,10 @@ body{
         justify-content: center;
         flex-flow:row nowrap;
         div{
+          transition:background-color .5s;
           width:$box-size;
           height:$box-size;
+          box-sizing:border-box;
           $b : 1px solid white;
           &.active{
             background-color:$color-red;
@@ -202,14 +261,19 @@ body{
           &#navInner_01{
             border-top:$b;
             border-bottom:$b;
+            border-left:1px solid transparent;
+            border-right:1px solid transparent;
           }
           &#navInner_10,
           &#navInner_12{
             border:$b;
-            border-top:none;
+            border-top:1px solid transparent;
           }
           &#navInner_11{
             border-bottom:$b;
+            border-left:1px solid transparent;
+            border-right:1px solid transparent;
+            border-top:1px solid transparent;
           }
         }
       }
@@ -217,7 +281,7 @@ body{
 		&.title{
 			font-family:"Druk Wide",sans-serif;
 			font-weight:400;
-			font-size: 3vw;
+			font-size:22pt;
 			color:$color-red;
 			line-height:calc(100vh / 8);
 		}
@@ -249,7 +313,6 @@ body{
 }
 
 .navGrid{
-  z-index: 0;
 	.block{
 		padding:0px;
     .inner{

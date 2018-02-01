@@ -525,4 +525,12 @@ $(window).resize(function(){
       cur.update(($(cur.containerName).width()/titleGrid[0].length),($(cur.containerName).height()/titleGrid.length), 0);
     })
   })
+
+  if(isFullNavOpen()){
+    navGrid.map(function(inner){
+      inner.map(function(cur){
+        cur.update(($(cur.containerName).width()/navGrid[0].length),($(cur.containerName).height()/navGrid.length), 0);
+      })
+    })
+  }
 });

@@ -26,13 +26,13 @@ function init_about(){
   $(".mainGrid #0_1 .inner")[0].innerHTML = "<div id='videoAboutContainer'><video id='videoAbout' width=\"320\" height=\"240\" autoplay=\"autoplay\" loop><source src=\"video/blue_heart.mp4\" type=\"video/mp4\" ></video></div>";
 
   animateBlock("#5_1",2,2);
-  // animateBlock("#6_5",3,3);
   $("#5_1 .inner")[0].innerHTML = "";
 }
+
 function add_video(){
     $("#5_1 .inner")[0].innerHTML = "<div style='height:100%'><iframe src=\"https://player.vimeo.com/video/252741421?autoplay=1\" width=\"100%\" height=\"100%\" frameborder=\"0\"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>"
 }
 
 function init_about_mobile(){
-
+  
 }

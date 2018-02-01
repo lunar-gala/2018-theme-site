@@ -13,7 +13,7 @@ function checkSize(mobile,desktop){
   width = window.innerWidth;
   height = window.innerHeight;
   if(width <= __MOBILE_WIDTH && !__MOBILE_BOOL
-    || height / width > 1.2){
+    || (height / width > 1.2 && !__MOBILE_BOOL)){
     __MOBILE_BOOL = true;
     __DESKTOP_BOOL = false;
     row_per_page = 6;

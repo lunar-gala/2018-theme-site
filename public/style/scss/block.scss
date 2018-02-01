@@ -280,17 +280,21 @@ body{
             border-bottom:$b;
             border-left:1px solid transparent;
             border-right:1px solid transparent;
+            width:14px;
           }
           &#navInner_10,
           &#navInner_12{
             border:$b;
             border-top:1px solid transparent;
+            height:15px;
           }
           &#navInner_11{
             border-bottom:$b;
             border-left:1px solid transparent;
             border-right:1px solid transparent;
             border-top:1px solid transparent;
+            width:14px;
+            height:15px;
           }
         }
       }

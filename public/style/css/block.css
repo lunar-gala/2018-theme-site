@@ -1103,15 +1103,19 @@ body {
             border-top: 1px solid white;
             border-bottom: 1px solid white;
             border-left: 1px solid transparent;
-            border-right: 1px solid transparent; }
+            border-right: 1px solid transparent;
+            width: 14px; }
           .mainGrid .inner .navBox .row div#navInner_10, .mainGrid .inner .navBox .row div#navInner_12, .titleGrid .inner .navBox .row div#navInner_10, .titleGrid .inner .navBox .row div#navInner_12 {
             border: 1px solid white;
-            border-top: 1px solid transparent; }
+            border-top: 1px solid transparent;
+            height: 15px; }
           .mainGrid .inner .navBox .row div#navInner_11, .titleGrid .inner .navBox .row div#navInner_11 {
             border-bottom: 1px solid white;
             border-left: 1px solid transparent;
             border-right: 1px solid transparent;
-            border-top: 1px solid transparent; }
+            border-top: 1px solid transparent;
+            width: 14px;
+            height: 15px; }
     .mainGrid .inner.title, .titleGrid .inner.title {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;

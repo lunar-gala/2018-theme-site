@@ -90,7 +90,6 @@ function load_page(url){
     });
   });
 
-
   $('.mainGrid').css("display","block");
   $('.mainGrid .inner').css('opacity','0');
   $('.titleGrid').css("display","block");

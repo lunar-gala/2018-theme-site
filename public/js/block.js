@@ -407,6 +407,9 @@ function movePage(curPage,pageCount,direction,cb){
 
   if ((curPage == 0 && direction == 'up') ||
       (curPage == pageCount - 1 && direction == 'down')){
+    window.setTimeout(function(){
+      __pageAnimating = false;
+    },700);
     cb(curPage);
     return;
   }

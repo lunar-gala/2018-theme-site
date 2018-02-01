@@ -6,7 +6,6 @@ function init_about(){
 
   $("#title_0_6 .inner").addClass("topLink router-link").attr('url','/members');
   $("#title_0_6 .inner")[0].innerHTML = "<div class='center-text-container'><div class='center-text'>Members<img style='right:1vw' class=\"arrow-right\" src=\"./../images/Arrows/pointingright.png\"></div></div>"
-  keep = ""
   $("#title_1_1 .inner")[0].innerHTML = "<div class='center-text-container'><div class='center-text title'>About</div></div>"
 
   text1 = "<div>The Lunar Gala: an intergalactic celebration of the yearly contributions of the Interplanetary Federation for Peace and Protection. The year is 2268, and, on this 250th anniversary of the planet Earth’s quarantine, we present “<span class='italic'>Ferox</span>”, a public demonstration of the hostility of the Earth’s previously dominant species, the homosapien. We invite Federation sponsors and visitors to observe, for the first time, the savagery we have successfully contained. Infused with Federation principles, the previously dangerous human race is now docile - an allegory for the potential of the IFPP to mollify threatening agents intergalactically. Come celebrate with us! And, in the process, bear witness to a species, that, prior to this event, has been contained for centuries.</div>"
@@ -33,7 +32,7 @@ function init_about(){
   $(".mainGrid #5_5 .inner").addClass("text");
   $(".mainGrid #5_5 .inner")[0].innerHTML = text2;
 
-  animateBlock('#8_1',1,1);
+  animateBlock('#8_1',1,2);
   content = "<div class='logoContainer'><div id='col1'><img src='images/cmoa.png'></div><div id='col2'><img id='img2' src='images/Style412.png'><img id='img1' src='images/ai.png'><img id='img3' src='images/alexs_eastend.png'></div><div class='.clear'></div></div>"
   $(".mainGrid #8_1 .inner")[0].innerHTML = content;
 
@@ -45,7 +44,8 @@ function init_about(){
 
   animateBlock("#3_3",1,1);
   $("#3_3 .inner")[0].innerHTML = "<p class=\"designers-link2 aboutLink link-page-1\">Experience Ferox</p><img class=\"arrow arrow-down\" src=\"images/Arrows/pointingdown.png\">"
-  $('.link-page-1').click(function(){
+  $('.link-page-1').off('click');
+  $('.link-page-1').bind('click',function(){
     movePage(currentPage,grid_rows/row_per_page,'down',function(newPage){
       currentPage = newPage;
       e.preventDefault();
@@ -61,4 +61,12 @@ function init_about_mobile(){
     animateBlock('#title_1_0',0,1);
     $("#title_1_0 .inner").text("About").addClass("title");
 
+    //move down botton
+    $('.link-page-1').off('tap');
+    $('.link-page-1').bind('tap',function(){
+      movePage(currentPage,grid_rows/row_per_page,'down',function(newPage){
+        currentPage = newPage;
+        e.preventDefault();
+      });
+    })
 }

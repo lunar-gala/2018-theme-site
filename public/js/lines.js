@@ -17,7 +17,7 @@ function Line(title, designers, description) {
     var self = this;
 
     this.title = title;
-    this.designers = designers; 
+    this.designers = designers;
     this.description = description;
 
     this.imageId = function () {
@@ -37,7 +37,7 @@ function init_lines_mobile() {
     // requires 42 rows
     console.log(grid_rows, grid_cols)
     LEFTBLOCK = ".mainGrid #1_0 .inner"
-    TOPBLOCK = ".mainGrid #1_1 .inner" 
+    TOPBLOCK = ".mainGrid #1_1 .inner"
     BOTTOMBLOCK = ".mainGrid #3_1 .inner"
 
     selectorblocks = [LEFTBLOCK, TOPBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
@@ -49,7 +49,7 @@ function init_lines_mobile() {
     LINESETSIZE = 3;
 
     animateBlock("#title_1_0", 0, 1)
-    $("#title_1_0 .inner").text("Lines").addClass("title")
+    $("#title_1_0 .inner").append("<div class='center-text-container'><div class='center-text title'>Lines</div></div>")
 
     // lineSet 0
     animateBlock("#1_0", 2,0, true); // LEFT BLOCK
@@ -109,19 +109,19 @@ function init_lines() {
 
     // nav links
     $("#title_0_0 .inner")
-        .html("<span>Members</span>")
+        // .html("<span>Members</span>")
         .addClass("topLink router-link")
         .attr("url", "/members")
-        .append("<img class='arrow-left' src='./../images/Arrows/pointingleft.png'/>");
+        .append("<div class='center-text-container'><div class='center-text'>Members<img class='arrow-left' src='./../images/Arrows/pointingleft.png'/></div></div>");
 
     $("#title_0_6 .inner")
-        .text("About")
+        // .text("About")
         .addClass("topLink router-link")
         .attr("url", "/about")
-        .append("<img class='arrow-right' src='./../images/Arrows/pointingright.png'/>");
+        .append("<div class='center-text-container'><div class='center-text'>About<img class=\"arrow-right\" src=\"./../images/Arrows/pointingright.png\"></div></div>");
 
     // page title
-    $("#title_1_1 .inner").text("Lines").addClass("title");
+    $("#title_1_1 .inner").append("<div class='center-text-container'><div class='center-text title'>Lines</div></div>")
 
     // initial animates
     animateBlock("#0_2",0,2,true) // top
@@ -129,15 +129,16 @@ function init_lines() {
     animateBlock("#2_3",0,2,true); // middle
     animateBlock("#0_6",2,0,true); // right
     animateBlock("#4_0",0,2,true); // bottom
-    animateBlock("#3_7", 1,0) // arrows 
+    animateBlock("#3_7", 1,0) // arrows
     $(".mainGrid #3_7").append(`<img class="arrow" src = "../../images/Arrows/pointingdown.png"/>`)
+
 
     animateBlock("#5_2",0,2,true) // top
     animateBlock("#5_0",2,0,true); // left
     animateBlock("#7_3",0,2,true); // middle
     animateBlock("#5_6",2,0,true); // right
     animateBlock("#9_0",0,2,true); // bottom
-    animateBlock("#8_7", 1,0) // arrows 
+    animateBlock("#8_7", 1,0) // arrows
     $(".mainGrid #8_7").append(`<img class="arrow" src = "../../images/Arrows/pointingboth.png"/>`)
 
     animateBlock("#10_2",0,2,true) // top
@@ -145,17 +146,17 @@ function init_lines() {
     animateBlock("#12_3",0,2,true); // middle
     animateBlock("#10_6",2,0,true); // right
     animateBlock("#14_0",0,2,true); // bottom
-    animateBlock("#13_7", 1,0) // arrows 
+    animateBlock("#13_7", 1,0) // arrows
     $(".mainGrid #13_7").append(`<img class="arrow" src = "../../images/Arrows/pointingboth.png"/>`)
 
     animateBlock("#15_2",0,2,true) // top
     animateBlock("#15_0",2,0,true); // left
     animateBlock("#17_3",0,2,true); // middle
     animateBlock("#15_6",2,0,true); // right
-    animateBlock("#18_7", 1,0) // arrows 
+    animateBlock("#18_7", 1,0) // arrows
     $(".mainGrid #18_7").append(`<img class="arrow" src = "../../images/Arrows/pointingup.png"/>`)
 
-    
+
 
     populateLinesBlocks()
 
@@ -183,10 +184,10 @@ function setLineBlock(selector, line) {
 
 function clickLinesPicture(e) {
     var elem = e.target;
-    var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) || 
+    var blockid = ($(elem).hasClass("linesBlock") && $(elem).parent().attr("id")) ||
                     ($(elem).attr("belongs-to")) ||
                     ($(elem).parent().hasClass("filler-block") && $(elem).parent().attr("belongs-to")) ||
-                    ($(elem).parent().hasClass('linesBlock') && $(elem).parent().parent().attr("id")) || // content 
+                    ($(elem).parent().hasClass('linesBlock') && $(elem).parent().parent().attr("id")) || // content
                     ($(elem).parent().parent().hasClass('linesBlock') && $(elem).parent().parent().parent().attr("id")) ||
                     ($(elem).hasClass("filler-inner") && $(elem).parent().parent().attr("id"))
 
@@ -197,7 +198,7 @@ function clickLinesPicture(e) {
 
         $("#" + blockid + ".block").toggleClass('highlighted');
         $(HIGHLIGHTEDBLOCK).find(".inner").toggleClass("lineBlockPicMuted lineBlockPic");
-        
+
         var blockDims = content[0].getBoundingClientRect()
         var isBottom = $(HIGHLIGHTEDBLOCK).find(".inner").hasClass("bottom")
 
@@ -225,7 +226,7 @@ function clickLinesPicture(e) {
         }
     }
 
-    // go back to dim background    
+    // go back to dim background
     $(HIGHLIGHTEDBLOCK).find(".lineBlockPic").toggleClass("lineBlockPicMuted lineBlockPic");
     HIGHLIGHTEDBLOCK = null;
 }

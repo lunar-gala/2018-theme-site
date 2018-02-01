@@ -971,7 +971,7 @@ body {
     position: relative; }
     .logoContainer #col1 img,
     .logoContainer #col2 img {
-      opacity: .8; }
+      opacity: .6; }
   .logoContainer #col1 img {
     height: calc(100% - 48px);
     width: auto;
@@ -1115,14 +1115,14 @@ body {
     .mainGrid .inner.nav-box-container, .titleGrid .inner.nav-box-container {
       display: flex;
       align-items: center; }
+      .mainGrid .inner.nav-box-container:hover, .mainGrid .inner.nav-box-container.active, .titleGrid .inner.nav-box-container:hover, .titleGrid .inner.nav-box-container.active {
+        cursor: pointer; }
+        .mainGrid .inner.nav-box-container:hover div > div > div, .mainGrid .inner.nav-box-container.active div > div > div, .titleGrid .inner.nav-box-container:hover div > div > div, .titleGrid .inner.nav-box-container.active div > div > div {
+          background-color: #FF2124; }
+          .mainGrid .inner.nav-box-container:hover div > div > div.active, .mainGrid .inner.nav-box-container.active div > div > div.active, .titleGrid .inner.nav-box-container:hover div > div > div.active, .titleGrid .inner.nav-box-container.active div > div > div.active {
+            background-color: black; }
     .mainGrid .inner .navBox, .titleGrid .inner .navBox {
       width: 100%; }
-      .mainGrid .inner .navBox:hover, .mainGrid .inner .navBox.active, .titleGrid .inner .navBox:hover, .titleGrid .inner .navBox.active {
-        cursor: pointer; }
-        .mainGrid .inner .navBox:hover div > div, .mainGrid .inner .navBox.active div > div, .titleGrid .inner .navBox:hover div > div, .titleGrid .inner .navBox.active div > div {
-          background-color: #FF2124; }
-          .mainGrid .inner .navBox:hover div > div.active, .mainGrid .inner .navBox.active div > div.active, .titleGrid .inner .navBox:hover div > div.active, .titleGrid .inner .navBox.active div > div.active {
-            background-color: black; }
       .mainGrid .inner .navBox .row,
       .mainGrid .inner .navBox .mobileRow, .titleGrid .inner .navBox .row,
       .titleGrid .inner .navBox .mobileRow {

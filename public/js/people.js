@@ -355,11 +355,9 @@ function populatePeopleContent_mobile () {
 		        }
 
 		        $("#" + grid[i][j].id + " .inner").click(function (i, j) {
-		        	return function () {
 		        		var index = getIndex_mobile(i, j);
 		        		displayPerson(index);
-		        	};
-		        }(i, j));
+		        });
 			}
 		}
 	}

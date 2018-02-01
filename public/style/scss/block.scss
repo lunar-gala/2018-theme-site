@@ -81,7 +81,7 @@ body{
   #col1,
   #col2{
     img{
-      opacity:.8;
+      opacity:.6;
     }
     float:left;
     height:100%;
@@ -281,19 +281,19 @@ body{
     &.nav-box-container{
       display:flex;
       align-items:center;
-    }
-		.navBox{
-      width:100%;
       &:hover,
       &.active{
         cursor:pointer;
-        div > div{
+        div > div > div{
             background-color:$color-red;
           &.active{
             background-color:black;
           }
         }
       }
+    }
+		.navBox{
+      width:100%;
       $box-size: 16px;
       .row,
       .mobileRow{

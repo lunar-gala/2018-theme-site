@@ -19,7 +19,7 @@ var __mobile_grid_rows = 20;
 __pageCounts = {
   '/about':[15,18],
   '/lines':[20,24],
-  '/federation':[35,42]
+  '/members':[35,42]
 }
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {

@@ -5,10 +5,10 @@ function init_people() {
 	populatePeopleHeader();
 	populatePeopleContent();
 	$(document).keyup(function(e) {
-	    if (e.keyCode == 27) { 
+	    if (e.keyCode == 27) {
 	    	removeDisplayPerson();
 		}
-	}); 
+	});
 };
 
 function populatePeopleHeader () {
@@ -17,7 +17,7 @@ function populatePeopleHeader () {
     animateBlock("#title_0_6",0,1);
     $("#title_0_0 .inner").text("About").addClass("topLink");
     $("#title_0_6 .inner").text("Lines").addClass("topLink");
-    $("#title_1_1 .inner").text("Federation").addClass("title");
+    $("#title_1_1 .inner").text("Members").addClass("title");
 }
 
 function populatePeopleContent () {
@@ -73,7 +73,7 @@ function populatePeopleContent () {
 						.append(`<p class='designers-link1'>` + sections[prevSectionID] + `</p>
 								 <p class='designers-link2'>` + sections[nextSectionID] + `</p>`);
 				}
-			} else if (!((i%5 == 2 && j == 0) 
+			} else if (!((i%5 == 2 && j == 0)
 					    || (i%5 == 1 && j == 7)
 					    || (i%5 == 2 && j == 7)
 					    || (i%5 == 2 && j == 6)
@@ -136,7 +136,7 @@ function populatePeopleContent () {
 	}
 }
 
-function getIndex(i, j) { 
+function getIndex(i, j) {
 	var offset = 0;
 	var index = (i * __grid_cols + j) - offset;
 	var arryIndex = index;
@@ -161,7 +161,7 @@ function getIndex(i, j) {
 		}
 		index -= 40;
 	}
-	
+
 	// console.log("get index: " + arryIndex);
 	return arryIndex;
 }
@@ -186,7 +186,7 @@ function displayPerson (index) {
 	var major = dataObject.major;
 	var year = dataObject.year;
 	var position = dataObject.position;
-	var displayPersonDiv = 
+	var displayPersonDiv =
 		`<div class='person-info-background'></div>
 		 <div class='person-info'>
 			<div class="headshot" style="background-image:url('` + src + `')"></div>
@@ -195,7 +195,7 @@ function displayPerson (index) {
 				<p class="major">` + major + " " + year + `</p>
 				<p class="title">` + position + `</p>
 			</div>
-			
+
 		 </div>`;
 	var displayPersonDOM = $.parseHTML(displayPersonDiv);
 	$(displayPersonDOM).hide().appendTo("body").fadeIn(200);

@@ -211,27 +211,6 @@ function load_page_mobile(url){
     },500);
 }
 
-function setPageRowCount (url,isMobile){
-  if(url == "/about" && !isMobile){
-    grid_rows = 15;
-  }
-  else if(url == "/about" && isMobile){
-    grid_rows = 18;
-  }
-  if(url == "/lines" && !isMobile){
-    grid_rows = 20;
-  }
-  else if(url == "/lines" && isMobile){
-    grid_rows = 24;
-  }
-  if(url == "/federation" && !isMobile){
-    grid_rows = 35;
-  }
-  else if(url == "/federation" && isMobile){
-    grid_rows = 42;
-  }
-}
-
 function call_function(url,isMobile = false){
   if(url == "/about" && !isMobile){
     init_about();
@@ -247,11 +226,11 @@ function call_function(url,isMobile = false){
     init_lines_mobile();
   }
 
-  if(url == "/federation" && !isMobile){
+  if(url == "/members" && !isMobile){
     // console.log("AAAAAAAA");
     init_people();
   }
-  else if(url == "/federation" && isMobile){
+  else if(url == "/members" && isMobile){
     // init_about_mobile();
   }
 

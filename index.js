@@ -14,7 +14,7 @@ app.get('/about', function (req, res) {
 app.get('/lines', function (req, res) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 })
-app.get('/federation', function (req, res) {
+app.get('/members', function (req, res) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 })
 app.get('/testAnimation',function(req,res){

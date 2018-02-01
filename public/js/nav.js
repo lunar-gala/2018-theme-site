@@ -53,8 +53,24 @@ function summonFullNav(){
       },1000);
     });
 
+    $(".navGrid #nav_1_0 .inner").text("Members");
+
+
+    $(".navGrid #nav_1_0 .inner").click(function (e) {
+      if (!isFullNavOpen()) {
+        return;
+      }
+
+      navGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
+      $(".navGrid").toggleClass("fullNav");
+
+      window.setTimeout(function(){
+        navOut("/members");
+      },1000);
+    });
+
     currentPath = window.location.pathname;
-    options = {"/about":[0,0], "/lines":[0,1], "/federation":[1,0] , "/sponsors":[1,1]}
+    options = {"/about":[0,0], "/lines":[0,1], "/members":[1,0] , "/sponsors":[1,1]}
     currentIndices = options[currentPath];
 
     $(".navGrid #nav_"+currentIndices.join("_")+" .inner").addClass("active");
@@ -90,7 +106,7 @@ function summonFullNav(){
     });
 
     // Humans link
-    $(".navGrid #nav_1_0 .inner").text("Humans");
+    // $(".navGrid #nav_1_0 .inner").text("Humans");
     $(".navGrid #nav_1_0 .border-top").remove();
 
     // Sponsors & Tickets link
@@ -114,7 +130,7 @@ function summonMiniNav(){
   animateBlock("#title_1_6",1,1);
   //creating the nav box
   currentPath = window.location.pathname;
-  options = {"/about":[0,0], "/lines":[0,1], "/federation":[1,0] , "/sponsors":[1,1]}
+  options = {"/about":[0,0], "/lines":[0,1], "/members":[1,0] , "/sponsors":[1,1]}
   currentIndices = options[currentPath];
   navBox = `<div class="navBox">`;
   for(var i = 0;  i < 2; i++){

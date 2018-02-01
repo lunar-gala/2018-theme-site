@@ -90,5 +90,8 @@
   right: 0;
   background-color: rgba(255, 0, 0, 0.3);
   opacity: 0; }
+  .overlay:hover {
+    transition: all .3s;
+    cursor: pointer; }
 
 /*# sourceMappingURL=people.css.map */

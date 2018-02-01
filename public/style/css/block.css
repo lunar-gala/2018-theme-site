@@ -1033,7 +1033,7 @@ body {
           width: 16px;
           height: 16px; }
           .mainGrid .inner .navBox .row div.active, .titleGrid .inner .navBox .row div.active {
-            background-color: #FF2214; }
+            background-color: #FF2124; }
           .mainGrid .inner .navBox .row div#navInner_00, .mainGrid .inner .navBox .row div#navInner_02, .titleGrid .inner .navBox .row div#navInner_00, .titleGrid .inner .navBox .row div#navInner_02 {
             border: 1px solid white; }
           .mainGrid .inner .navBox .row div#navInner_01, .titleGrid .inner .navBox .row div#navInner_01 {
@@ -1048,7 +1048,7 @@ body {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
       font-size: 22pt;
-      color: #FF2214;
+      color: #FF2124;
       line-height: calc(100vh / 8); }
     .mainGrid .inner.text, .titleGrid .inner.text {
       text-align: left;
@@ -1088,7 +1088,7 @@ body {
     text-decoration: none; }
     .navGrid .block .inner.active,
     .navGrid .block .inner a.active {
-      background-color: #FF2214; }
+      background-color: #FF2124; }
     .navGrid .block .inner:hover,
     .navGrid .block .inner a:hover {
       text-decoration: underline; }

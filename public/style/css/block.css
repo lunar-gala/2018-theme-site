@@ -929,6 +929,44 @@ body {
     height: 100% !important;
     width: auto !important; }
 
+.logoContainer {
+  height: 100%; }
+  .logoContainer #col1,
+  .logoContainer #col2 {
+    float: left;
+    height: 100%;
+    width: 50%;
+    position: relative; }
+  .logoContainer #col1 img {
+    height: calc(100% - 48px);
+    width: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    margin: auto; }
+  .logoContainer #col2 img {
+    height: 20%;
+    width: auto;
+    display: block;
+    right: 0;
+    left: 0;
+    position: absolute;
+    margin: auto;
+    margin-top: 12px;
+    max-width: 95%; }
+    .logoContainer #col2 img#img2 {
+      top: 33%;
+      height: 30%;
+      margin-top: 0; }
+    .logoContainer #col2 img#img3 {
+      margin-top: 3px;
+      height: 25%;
+      top: 66%; }
+  .logoContainer .clear {
+    clear: both; }
+
 .router-link {
   cursor: pointer; }
 

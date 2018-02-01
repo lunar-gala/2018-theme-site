@@ -224,7 +224,7 @@ function load_page_mobile(url){
         history.pushState(null, null, url);
       }
 
-      // call_function(url,true);
+      call_function(url,true);
 
       deleteMiniNav();
       summonMiniNav();

@@ -1,4 +1,4 @@
-var sections = ["Board", "Board (cont.)", "Designers", "Designers (cont.)", "Models", "Models (cont.)", "Dancers"]
+var sections = ["Board", "Board (cont.)", "Designers", "Models", "Models (cont.)", "Dancers"]
 
 function init_people() {
 	// console.log(grid);
@@ -16,7 +16,9 @@ function populatePeopleHeader () {
     animateBlock("#title_1_1",0,1);
     animateBlock("#title_0_6",0,1);
     $("#title_0_0 .inner").text("About").addClass("topLink");
+    $("#title_0_0 .inner").append("<img class='arrow-left' src='./../images/Arrows/pointingleft.png'/>")
     $("#title_0_6 .inner").text("Lines").addClass("topLink");
+    $("#title_0_6 .inner").append("<img class='arrow-right' src='./../images/Arrows/pointingright.png'/>")
     $("#title_1_1 .inner").text("Federation").addClass("title");
 }
 
@@ -25,38 +27,24 @@ function populatePeopleContent () {
 		for (var j = 0; j < __grid_cols; j++) {
 			if (i%5 == 1 && j == 0) {
 				animateBlock("#" + grid[i][j].id, 1, 0);
-				if ((Math.floor(i/5))%2 == 0) {
-					$("#" + grid[i][j].id + " .inner").css({
-			          	"background-image" : "url('../../images/red on blue 2.gif')",
-			          	"background-size" : "cover",
-					  	"background-repeat" : "no-repeat",
-					  	"background-position" : "center center"
-			        });
-				} else {
-					$("#" + grid[i][j].id + " .inner").css({
-			          	"background-image" : "url('../../images/blue on red 2.gif')",
-			          	"background-size" : "cover",
-					  	"background-repeat" : "no-repeat",
-					  	"background-position" : "center center"
-		        	});
-				}
+				$("#" + grid[i][j].id + " .inner").css({
+		          	"background-image" : "url('../../images/red on blue.gif')",
+		          	"background-size" : "cover",
+				  	"background-repeat" : "no-repeat",
+				  	"background-position" : "center center"
+		        });
 			} else if (i%5 == 1 && j == 6) {
 				animateBlock("#" + grid[i][j].id, 1, 1);
-				if ((Math.floor(i/5))%2 == 0) {
-					$("#" + grid[i][j].id + " .inner").css({
-			          	"background-image" : "url('../../images/blue on red 2.gif')",
-			          	"background-size" : "cover",
-					  	"background-repeat" : "no-repeat",
-					  	"background-position" : "center center"
-			        });
-				} else {
-					$("#" + grid[i][j].id + " .inner").css({
-			          	"background-image" : "url('../../images/red on blue 2.gif')",
-			          	"background-size" : "cover",
-					  	"background-repeat" : "no-repeat",
-					  	"background-position" : "center center"
-			        });
-				}
+				var sectionID = Math.floor(i/5);
+				var prevSectionID = sectionID - 1;
+				var nextSectionID = sectionID + 1;
+				$("#" + grid[i][j].id + " .inner").css({
+		          	"background-image" : "url('../../images/red on blue.gif')",
+		          	"background-size" : "cover",
+				  	"background-repeat" : "no-repeat",
+				  	"background-position" : "center center"
+		        });
+		        $("#" + grid[i][j].id + " .inner").text(sections[sectionID]).addClass("section-name");
 			} else if (i%5 == 3 && j == 3) {
 				animateBlock("#" + grid[i][j].id, 1, 1);
 				var sectionID = Math.floor(i/5);
@@ -64,13 +52,16 @@ function populatePeopleContent () {
 				var nextSectionID = sectionID + 1;
 				if (prevSectionID < 0) {
 					$("#" + grid[i][j].id + " .inner")
-						.append(`<p class='designers-link2'>` + sections[nextSectionID] + `</p>`);
+						.append(`<p class='designers-link2'>` + sections[nextSectionID] + `</p>
+								 <img class="arrow arrow-down" src = "../../images/Arrows/pointingdown.png"/>`);
 				} else if (nextSectionID == sections.length) {
 					$("#" + grid[i][j].id + " .inner")
-						.append(`<p class='designers-link1'>` + sections[prevSectionID] + `</p>`);
+						.append(`<p class='designers-link1'>` + sections[prevSectionID] + `</p>
+								 <img class="arrow arrow-up" src = "../../images/Arrows/pointingup.png"/>`);
 				} else {
 					$("#" + grid[i][j].id + " .inner")
 						.append(`<p class='designers-link1'>` + sections[prevSectionID] + `</p>
+								 <img class="arrow" src = "../../images/Arrows/pointingboth.png"/>
 								 <p class='designers-link2'>` + sections[nextSectionID] + `</p>`);
 				}
 			} else if (!((i%5 == 2 && j == 0) 
@@ -93,17 +84,18 @@ function populatePeopleContent () {
 					dataObject = designers[index];
 					firstName = dataObject.firstname;
 					lastName = dataObject.lastname;
-				} else if (index >= 120 && index < 120 + models.length) {
-					index = index - 120;
+				} else if (index >= 90 && index < 90 + models.length) {
+					index = index - 90;
 					dataObject = models[index];
 					firstName = dataObject.firstname;
 					lastName = dataObject.lastname;
-				} else if (index >= 180 && index < 180 + dancers.length) {
-					index = index - 180;
+				} else if (index >= 150 && index < 150 + dancers.length) {
+					index = index - 150;
 					dataObject = dancers[index];
 					firstName = dataObject.firstname;
 					lastName = dataObject.lastname;
 				}
+
 				$("#" + grid[i][j].id + " .inner").css({
 		          	"background-image" : "url('../../images/Final Eye Photos/" + firstName + lastName + "Eye.png')",
 		          	"background-size" : "cover",
@@ -111,16 +103,21 @@ function populatePeopleContent () {
 				  	"background-position" : "center center"
 		        });
 
-		        $("#" + grid[i][j].id + " .inner").append("<div class='overlay'></div>");
-
-		        if (!((i == 8 && j >= 2) || i == 9)){
-		        	$("#" + grid[i][j].id + " .overlay").hover(function () {
+				index = getIndex(i, j);
+				if (index < board1.length || 
+					(index >= 60 && index < 60 + designers.length) ||
+					(index >= 90 && index < 90 + models.length) ||
+					(index >= 150 && index < 150 + dancers.length) ) {
+		        	$("#" + grid[i][j].id + " .inner").hover(function () {
+		        		console.log(90 + models.length);
 				        $(this).css({
-				        	"opacity" : "1",
+				        	'background-color': '#ff2124',
+  							'background-blend-mode': 'multiply'
 						});
 			        }, function () {
 						$(this).css({
-				        	"opacity" : "0",
+				        	'background-color': 'transparent',
+  							'background-blend-mode': 'none'
 						});
 			        });
 		        }
@@ -141,7 +138,7 @@ function getIndex(i, j) {
 	var index = (i * __grid_cols + j) - offset;
 	var arryIndex = index;
 
-	// console.log("i: " + Math.floor(index/40));
+	// console.log("models " + (90 + models.length));
 	var numIter = Math.floor(index/40) + 1;
 	for (var i = 0; i < numIter; i+=1) {
 		if (index > 8) {
@@ -162,7 +159,7 @@ function getIndex(i, j) {
 		index -= 40;
 	}
 	
-	// console.log("get index: " + arryIndex);
+	console.log("get index: " + arryIndex);
 	return arryIndex;
 }
 
@@ -173,11 +170,11 @@ function displayPerson (index) {
 	} else if (index >= 60 && index < 60 + designers.length) {
 		index -= 60;
 		dataObject = designers[index];
-	} else if (index >= 120 && index < 120 + models.length) {
-		index -= 120;
+	} else if (index >= 90 && index < 90 + models.length) {
+		index -= 90;
 		dataObject = models[index];
-	} else if (index >= 180 && index < 180 + dancers.length) {
-		index -= 180;
+	} else if (index >= 150 && index < 150 + dancers.length) {
+		index -= 150;
 		dataObject = dancers[index];
 	}
 	var firstName = dataObject.firstname;

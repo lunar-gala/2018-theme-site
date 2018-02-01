@@ -5,9 +5,9 @@
   font-family: "Druk Wide",sans-serif;
   font-weight: 400;
   color: #FF2224;
-  font-size: 16pt;
+  font-size: 1.5vw;
   position: absolute;
-  top: 12%;
+  top: 10%;
   left: 0;
   right: 0;
   margin: auto; }
@@ -16,38 +16,25 @@
   font-family: "Druk Wide",sans-serif;
   font-weight: 400;
   color: #FF2224;
-  font-size: 16pt;
+  font-size: 1.5vw;
   position: absolute;
-  bottom: 12%;
+  bottom: 10%;
   left: 0;
   right: 0;
   margin: auto; }
-
-.board-title {
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  margin-right: -100%;
-  transform: rotate(-90deg);
-  font-family: "Druk Wide",sans-serif;
-  font-weight: 400;
-  font-size: 20pt;
-  color: white;
-  height: 100%;
-  line-height: 100%; }
 
 .person-info-background {
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 99999;
+  z-index: 999999999999;
   background-color: rgba(0, 0, 0, 0.8);
   top: 0; }
 
 .person-info {
   color: white;
   position: absolute;
-  z-index: 99999999;
+  z-index: 999999999999999;
   width: 350px;
   height: 350px;
   top: 0;
@@ -90,5 +77,45 @@
   right: 0;
   background-color: rgba(255, 0, 0, 0.3);
   opacity: 0; }
+
+.section-name {
+  font-family: "Druk Wide",sans-serif;
+  font-weight: 400;
+  font-size: 2vw;
+  color: white;
+  line-height: calc(200vh / 8); }
+
+.arrow {
+  position: absolute;
+  height: 12.5vh;
+  top: 0;
+  bottom: 0vh;
+  left: 0;
+  right: 0;
+  margin: auto; }
+
+.arrow-down {
+  height: 12.5vh;
+  bottom: 5vh; }
+
+.arrow-up {
+  height: 12.5vh;
+  top: 5vh; }
+
+.arrow-left {
+  position: absolute;
+  width: 5vw;
+  top: 0;
+  bottom: 0vh;
+  left: 2vw;
+  margin: auto; }
+
+.arrow-right {
+  position: absolute;
+  width: 5vw;
+  top: 0;
+  bottom: 0vh;
+  right: 2vw;
+  margin: auto; }
 
 /*# sourceMappingURL=people.css.map */

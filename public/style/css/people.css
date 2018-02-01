@@ -26,14 +26,14 @@
 .person-info-background {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   z-index: 999999999999;
   background-color: rgba(0, 0, 0, 0.8);
   top: 0; }
 
 .person-info {
   color: white;
-  position: absolute;
+  position: fixed;
   z-index: 999999999999999;
   width: 350px;
   height: 350px;
@@ -102,5 +102,20 @@
   font-weight: 400;
   font-size: 4vh;
   color: white; }
+
+.not-pictured-text {
+  text-align: left;
+  font-size: 1.2vw;
+  line-height: 3vh;
+  position: absolute;
+  top: 17%;
+  left: 3%; }
+
+.not-pictured-text-mobile {
+  text-align: left;
+  font-size: 2.6vw;
+  line-height: 20px;
+  left: 3%;
+  margin-top: 8%; }
 
 /*# sourceMappingURL=people.css.map */

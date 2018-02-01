@@ -64,6 +64,17 @@ function populatePeopleContent () {
 								 <img class="arrow" src = "../../images/Arrows/pointingboth.png"/>
 								 <p class='designers-link2'>` + sections[nextSectionID] + `</p>`);
 				}
+			} else if (i == 30 && j == 2) {
+				animateBlock("#" + grid[i][j].id, 2, 3);
+				var notPicturedString = "";
+				for (var x = 0; x < notPictured.length; x++) {
+					var curElem = notPictured[x];
+					notPicturedString += curElem.firstname 
+										 + " " + curElem.lastname
+										 + " - " + curElem.position
+										 + ", " + curElem.major + " " + curElem.year + "</br>";
+				}
+				$("#" + grid[i][j].id + " .inner").append(`<p class="not-pictured-text">` + notPicturedString + `</p>`);
 			} else if (!((i%5 == 2 && j == 0)
 					    || (i%5 == 1 && j == 7)
 					    || (i%5 == 2 && j == 7)
@@ -255,6 +266,30 @@ function populatePeopleContent_mobile () {
 				  	"position" : "relative"
 		        });
 		        $("#" + grid[i][j].id + " .inner").append(`<div class="section-title-mobile"><p>`+sectionsMobile[sectionID]+`</p></div>`);
+			} else if (i == 66 && (j == 0 || j == 2)) {
+				animateBlock("#" + grid[i][j].id, 4, 0);
+				var start;
+				var end;
+				if (j == 0) {
+					start = 0;
+					end = 4;
+				} else {
+					start = 4;
+					end = notPictured.length;
+				}
+				
+				for (var x = start; x < end; x++) {
+					var curElem = notPictured[x];
+					var notPicturedString = curElem.firstname 
+											+ " " + curElem.lastname
+											+ "</br>" + curElem.position
+											+ ", " + curElem.major + " " + curElem.year + "</br>";
+					$("#" + grid[i][j].id + " .inner").css({
+						'padding' : '11%',
+    					'padding-top' : '29%'
+					})
+					$("#" + grid[i][j].id + " .inner").append(`<p class="not-pictured-text-mobile">` + notPicturedString + `</p>`);
+				}
 			} else if (!((i%6 == 1 && j == 1) ||
 						(i%6 == 2 && j == 1) ||
 						(i%6 == 3 && j == 1))) {

@@ -15,7 +15,7 @@ app.get('/lines', function (req, res) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 })
 app.get('/federation', function (req, res) {
-  res.sendFile(path.join(__dirname, '/public/federation.html'));
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 })
 app.get('/testAnimation',function(req,res){
   res.sendFile(path.join(__dirname, '/public/animationTest.html'));

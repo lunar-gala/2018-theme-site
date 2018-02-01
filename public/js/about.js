@@ -10,12 +10,23 @@ function init_about(){
   text1 = "The Lunar Gala: an intergalactic celebration of the yearly contributions of the Interplanetary Federation for Peace and Protection. The year is 2268, and, on this 250th anniversary of the planet Earth’s quarantine, we present “<span class='italic'>Ferox</span>”, a public demonstration of the hostility of the Earth’s previously dominant species, the homosapien. We invite Federation sponsors and visitors to observe, for the first time, the savagery we have successfully contained. Infused with Federation principles, the previously dangerous human race is now docile - an allegory for the potential of the IFPP to mollify threatening agents intergalactically. Come celebrate with us! And, in the process, bear witness to a species, that, prior to this event, has been contained for centuries."
 
   text2 = "“<span class='italic'>Ferox</span>” is primal. “<span class='italic'>Ferox</span>” is chaotic. “<span class='italic'>Ferox</span>” is a return to instinct. “<span class='italic'>Ferox</span>” is everything that we, as Federation members, are not. Embodied by the human species, “<span class='italic'>Ferox</span>” represents a blind and reckless freedom that must be contained for the sake of maintaining the civility we all value and from which we all benefit. Ultimately… “<span class='italic'>Ferox</span>” must be quelled.<br><span class='aboutLine'></span>Lunar Gala is curated by Federation members at Carnegie Mellon University. A student-run organization with an interdisciplinary approach, the Lunar Gala team - comprised of student designers, models, dancers, videographers, motion designers, and technicians - strives to showcase the creative visions of our community members. Together, we present an IFPP-endorsed evening of imagination, innovation, and fashion."
+  if(window.innerHeight > 600 && __DESKTOP_BOOL){
+    animateBlock("#0_5",3,2);
+  }
+  else{
+    animateBlock("#0_5",4,2);
+  }
 
-  animateBlock("#0_5",4,2);
   $(".mainGrid #0_5 .inner")[0].innerHTML = text1;
   $(".mainGrid #0_5 .inner").addClass("text");
 
-  animateBlock("#5_5",4,2);
+  if(window.innerHeight > 600 && __DESKTOP_BOOL){
+    animateBlock("#5_5",3,2);
+  }
+  else{
+    $("#5_5 .inner").css('font-size','9pt');
+    animateBlock("#5_5",4,2);
+  }
   $(".mainGrid #5_5 .inner").addClass("text");
   $(".mainGrid #5_5 .inner")[0].innerHTML = text2;
 

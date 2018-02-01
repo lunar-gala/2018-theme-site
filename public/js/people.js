@@ -205,3 +205,20 @@ function removeDisplayPerson() {
 	$(".person-info").fadeOut(200, function() { $(".person-info").remove(); });
 	$(".person-info-background").fadeOut(200, function() { $(this).remove(); });
 }
+
+function init_people_mobile() {
+	animateBlock("#title_1_0",0,1);
+	$("#title_1_0 .inner").text("Members").addClass("title-mobile");
+
+	populatePeopleContent_mobile();
+}
+
+function populatePeopleContent_mobile () {
+	for (var i = 0; i < grid_rows; i++) {
+		for (var j = 0; j < grid_cols; j++) {
+			if (i%5 == 1 && j == 1) {
+				animateBlock("#" + grid[i][j].id, 2, 0);
+			} 
+		}
+	}
+}

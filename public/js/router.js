@@ -224,10 +224,10 @@ function load_page_mobile(url){
         history.pushState(null, null, url);
       }
 
-      // call_function(url,true);
+      call_function(url,true);
 
-      deleteMiniNav();
-      summonMiniNav();
+      // deleteMiniNav();
+      // summonMiniNav();
 
       // $(".mainGrid").toggleClass("fullNav");
       window.setTimeout(function(){
@@ -254,11 +254,10 @@ function call_function(url,isMobile = false){
   }
 
   if(url == "/members" && !isMobile){
-    // console.log("AAAAAAAA");
     init_people();
   }
   else if(url == "/members" && isMobile){
-    // init_about_mobile();
+    init_people_mobile();
   }
 
 }

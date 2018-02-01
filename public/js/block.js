@@ -225,8 +225,6 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
     var j = parseInt(id[id.length - 1]);
 
     var gridToUse;
-    var rowCount;
-    var colCount;
     if (id.length < 3 || (!id.includes('title') && !id.includes('nav'))) {
       gridToUse = grid;
     } else {

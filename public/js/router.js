@@ -49,6 +49,24 @@ function createRouting(){
   });
 }
 
+function attach_router_link(){
+  $(".router-link").click(function(){
+    grid.map((row)=>{row.map((block)=>{block.animateOut()})})
+    titleGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
+    window.setTimeout(function(){
+      // $('.mainGrid').addClass('fullNav');
+      // $('.titleGrid').addClass('fullNav');
+    },200);
+    url = $(this).attr("url");
+    window.setTimeout(function(){
+      // $('.mainGrid').removeClass('fullNav');
+      // $('.titleGrid').removeClass('fullNav');
+      load_page(url);
+    },1000)
+
+  })
+}
+
 function load_intro_page(){
   videoToLoad = "<video id='video' width=\"320\" height=\"240\" autoplay=\"autoplay\"><source src=\"video/introVideo.mp4\" type=\"video/mp4\"></video>";
   $('body').append(videoToLoad);
@@ -145,11 +163,7 @@ function load_page(url){
       $('.mainGrid').css("opacity","1");
       $('.titleGrid').css("opacity","1");
       $('.mainGrid .animated-filler-block').removeClass('hidden');
-      $(".router-link").click(function(){
-        console.log(this, $(this).attr("url"))
-        url = $(this).attr("url");
-        load_page(url);
-      })
+      attach_router_link();
     },700);
   },500);
 }
@@ -236,10 +250,7 @@ function load_page_mobile(url){
         $('.mainGrid').css("opacity","1");
         $('.titleGrid').css("opacity","1");
         $('.mainGrid .animated-filler-block').removeClass('hidden');
-        $(".router-link").click(function(){
-          url = $(this).attr("url");
-          load_page_mobile(url);
-        })
+        attach_router_link();
       },700);
     },500);
 }

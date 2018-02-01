@@ -155,7 +155,7 @@ body{
       overflow: hidden;
       position: relative;
       span{
-        z-index:1000000000;
+        z-index:99999;
         position:absolute;
         display:inline-block;
         background-color:white;

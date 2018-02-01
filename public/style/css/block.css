@@ -1009,7 +1009,7 @@ body {
       overflow: hidden;
       position: relative; }
       .block .borders .borders-inner span {
-        z-index: 1000000000;
+        z-index: 99999;
         position: absolute;
         display: inline-block;
         background-color: white;

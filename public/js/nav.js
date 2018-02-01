@@ -141,7 +141,7 @@ function summonMiniNav(){
     navBox += `</div>`
   }
   navBox  += `</div>`
-  $("#title_1_6 .inner").html(navBox);
+  $("#title_1_6 .inner").html(navBox).addClass('nav-box-container');;
   $("#navInner_"+currentIndices.join("")).toggleClass("active");
   $("#title_1_6 .inner").click(function(){
     summonFullNav();
@@ -162,7 +162,7 @@ function summonMiniNavMobile(){
     navBox += `</div>`
   }
   navBox  += `</div>`
-  $("#title_0_2 .inner").html(navBox);
+  $("#title_0_2 .inner").html(navBox).addClass('nav-box-container');
   $("#navInner_"+currentIndices.join("")).toggleClass("active");
   $("#title_2_2 .inner").click(function(){
     summonFullNavMobile();

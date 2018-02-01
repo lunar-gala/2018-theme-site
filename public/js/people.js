@@ -15,11 +15,12 @@ function populatePeopleHeader () {
 	animateBlock("#title_0_0",0,1);
     animateBlock("#title_1_1",0,1);
     animateBlock("#title_0_6",0,1);
-    $("#title_0_0 .inner").text("About").addClass("topLink router-link").attr('url','/about');
-    $("#title_0_0 .inner").append("<img class='arrow-left' src='./../images/Arrows/pointingleft.png'/>")
-    $("#title_0_6 .inner").text("Lines").addClass("topLink router-link").attr('url','/lines');
-    $("#title_0_6 .inner").append("<img class='arrow-right' src='./../images/Arrows/pointingright.png'/>")
-    $("#title_1_1 .inner").text("Members").addClass("title");
+    $("#title_0_0 .inner").addClass("topLink router-link").attr('url','/about');
+    $("#title_0_0 .inner").append("<div class='center-text-container'><div class='center-text'>About<img class='arrow-left' src='./../images/Arrows/pointingleft.png'/></div></div>")
+    $("#title_0_6 .inner").addClass("topLink router-link").attr('url','/lines');
+    $("#title_0_6 .inner").append("<div class='center-text-container'><div class='center-text'>Lines<img class=\"arrow-right\" src=\"./../images/Arrows/pointingright.png\"></div></div>")
+    $("#title_1_1 .inner").append("<div class='center-text-container'><div class='center-text title'>Members</div></div>");
+
 }
 
 function populatePeopleContent () {
@@ -69,7 +70,7 @@ function populatePeopleContent () {
 				var notPicturedString = "";
 				for (var x = 0; x < notPictured.length; x++) {
 					var curElem = notPictured[x];
-					notPicturedString += curElem.firstname 
+					notPicturedString += curElem.firstname
 										 + " " + curElem.lastname
 										 + " - " + curElem.position
 										 + ", " + curElem.major + " " + curElem.year + "</br>";
@@ -284,10 +285,10 @@ function populatePeopleContent_mobile () {
 					start = 4;
 					end = notPictured.length;
 				}
-				
+
 				for (var x = start; x < end; x++) {
 					var curElem = notPictured[x];
-					var notPicturedString = curElem.firstname 
+					var notPicturedString = curElem.firstname
 											+ " " + curElem.lastname
 											+ "</br>" + curElem.position
 											+ ", " + curElem.major + " " + curElem.year + "</br>";

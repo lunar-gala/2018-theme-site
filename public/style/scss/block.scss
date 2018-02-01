@@ -8,7 +8,16 @@ body{
   overflow-y: hidden;
   overflow-x: hidden;
 }
-
+.center-text-container{
+  display:flex;
+  align-items: center;
+  height:100%;
+  width:100%;
+  .center-text{
+    text-align:center;
+    width:100%;
+  }
+}
 .navGrid{
   height: 100vh;
   width:100vw;
@@ -41,7 +50,7 @@ body{
     font-size:20pt;
     opacity:.8;
     line-height: 30px;
-    z-index:999999;
+    z-index:100000000;
     transition:opacity .3s;
     &:hover{
       cursor:pointer;
@@ -269,9 +278,12 @@ body{
 		color:white;
 		text-align:center;
     margin: 0;
+    &.nav-box-container{
+      display:flex;
+      align-items:center;
+    }
 		.navBox{
-      padding-top:calc(calc(12.5vh - 16px) - 6px);
-      padding-bottom:calc(calc(12.5vh - 16px) - 6px);
+      width:100%;
       &:hover,
       &.active{
         cursor:pointer;
@@ -281,10 +293,6 @@ body{
             background-color:black;
           }
         }
-      }
-      &.mobileBox{
-        padding-top:calc(calc(6.25vh - 16px) - 1px);
-        padding-bottom:calc(calc(6.25vh - 16px) - 1px);
       }
       $box-size: 16px;
       .row,
@@ -330,14 +338,15 @@ body{
         }
       }
 		}
-		&.title{
+		.center-text.title{
 			font-family:"Druk Wide",sans-serif;
 			font-weight:400;
 			font-size:22pt;
 			color:$color-red;
-			line-height:calc(100vh / 8);
 		}
     &.text{
+      display:flex;
+      align-items:center;
       text-align:left;
       padding:6vh 4vw;
       font-family:"Theinhardt",sans-serif;
@@ -431,7 +440,7 @@ body{
 
 .arrow-left {
   position: absolute;
-  width: 5vw;
+  width: 4.5vw;
   top: 0;
   bottom: 0vh;
   left: 2vw;
@@ -440,7 +449,7 @@ body{
 
 .arrow-right {
   position: absolute;
-  width: 5vw;
+  width: 4.5vw;
   top: 0;
   bottom: 0vh;
   right: 2vw;

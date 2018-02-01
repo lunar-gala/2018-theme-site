@@ -456,7 +456,25 @@ $(window).ready(function(){
   var totalDist = 0;
   var threshold = 400;
   var isScrollingUp = false;
-
+  document.onkeydown = function(e) {
+    if(__pageAnimating){
+      return;
+    }
+    switch (e.keyCode) {
+        case 38:
+          movePage(currentPage,grid_rows/row_per_page,'up',function(newPage){
+            currentPage = newPage;
+            e.preventDefault();
+          });
+          break;
+        case 40:
+          movePage(currentPage,grid_rows/row_per_page,'down',function(newPage){
+            currentPage = newPage;
+            e.preventDefault();
+          });
+          break;
+    }
+  };
   $("body").bind('mousewheel', function(e) {
     if(__pageAnimating){
       return;

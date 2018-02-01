@@ -890,6 +890,11 @@ hr {
   src: url("../fonts/TheinhardtRegular.otf") format("opentype");
   font-weight: 300;
   font-style: normal; }
+@font-face {
+  font-family: 'Theinhardt';
+  src: url("../fonts/TheinhardtRegIt.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic; }
 body {
   background-color: black;
   overflow-y: hidden;
@@ -1059,6 +1064,9 @@ body {
           bottom: 0; }
         .block .borders .borders-inner span.border-left {
           left: 0; }
+
+.italic {
+  font-style: italic; }
 
 .animated-filler-block {
   position: absolute; }

@@ -24,13 +24,14 @@
     /* Internet Explorer/Edge */
     user-select: none;
     text-align: left; }
-    .linesBlock .content .title, .linesBlock .content .designers {
-      white-space: nowrap; }
     .linesBlock .content .title {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
       font-size: 18px;
       line-height: 1.5; }
+      @media (max-width: 768px) {
+        .linesBlock .content .title {
+          white-space: normal; } }
     .linesBlock .content p {
       overflow: hidden;
       visibility: hidden;
@@ -138,6 +139,7 @@
   height: 100%;
   z-index: -99999999;
   background-size: cover;
+  background-position: center center;
   opacity: 0.8; }
 
 .lineBlockPic {
@@ -152,6 +154,7 @@
   height: 100%;
   z-index: -99999999;
   background-size: cover;
+  background-position: center center;
   opacity: 1; }
 
 #amzu:after {

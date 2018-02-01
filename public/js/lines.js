@@ -43,6 +43,10 @@ function init_lines_mobile() {
 
     selectorblocks = [LEFTBLOCK, TOPBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
     selectornames = ['left', 'top', 'bottom']
+
+    // selectorblocks = [TOPBLOCK, LEFTBLOCK, BOTTOMBLOCK]; // THIS IS CORRECT ORDER
+    // selectornames = ['top', 'left', 'bottom']
+
     LINESETSIZE = 3;
 
     animateBlock("#title_1_0", 0, 1)

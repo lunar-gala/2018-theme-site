@@ -914,6 +914,9 @@ video {
   width: auto !important;
   margin: auto; }
 
+.router-link {
+  cursor: pointer; }
+
 .block {
   position: absolute;
   padding: 0.25%;
@@ -1135,6 +1138,7 @@ video {
 .linesBlock {
   cursor: pointer; }
   .linesBlock .content {
+    transition: left 0.5s ease 0s, top 0.5s ease 0s;
     cursor: default;
     position: absolute;
     -webkit-touch-callout: none;
@@ -1149,19 +1153,21 @@ video {
     /* Internet Explorer/Edge */
     user-select: none;
     text-align: left; }
-    .linesBlock .content .title, .linesBlock .content .designers {
-      white-space: nowrap; }
     .linesBlock .content .title {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
-      font-size: 18pt;
+      font-size: 18px;
       line-height: 1.5; }
+      @media (max-width: 768px) {
+        .linesBlock .content .title {
+          white-space: normal; } }
     .linesBlock .content p {
       overflow: hidden;
       visibility: hidden;
       opacity: 0;
       transition: visibility 0.2s, opacity .2s linear;
-      font-family: "Theinhardt"; }
+      font-family: "Theinhardt";
+      margin-top: 15px; }
       .linesBlock .content p.designers {
         font-size: 12pt;
         line-height: 1.5; }
@@ -1174,11 +1180,18 @@ video {
     left: 100%;
     top: 44%;
     width: 350%; }
+    @media (max-width: 768px) {
+      .linesBlock.left .content {
+        left: 0%;
+        width: 260%; } }
   .linesBlock.top .content {
     left: 100%;
     top: 32%;
-    transform: translateX(-10%);
     width: 100%; }
+    @media (max-width: 768px) {
+      .linesBlock.top .content {
+        left: 0%;
+        width: 0%; } }
   .linesBlock.middle .content {
     left: 0%;
     top: 32%;
@@ -1187,7 +1200,7 @@ video {
   .linesBlock.right .content {
     left: 100%;
     top: 44%;
-    width: 100%; }
+    width: 300%; }
     .linesBlock.right .content p {
       height: 0px;
       width: 0px; }
@@ -1198,20 +1211,38 @@ video {
     .linesBlock.bottom .content p {
       height: 0px;
       width: 0px; }
+    @media (max-width: 768px) {
+      .linesBlock.bottom .content {
+        left: 0%;
+        width: 0%; }
+        .linesBlock.bottom .content p {
+          width: 0%; } }
+  .highlighted .linesBlock p {
+    visibility: visible;
+    opacity: 1; }
   .highlighted .linesBlock.bottom .content {
-    top: -100%; }
+    top: -150%; }
     .highlighted .linesBlock.bottom .content p {
       height: 100%;
       width: 100%; }
+  .highlighted .linesBlock.bottom#nightmare .content {
+    top: -160%; }
   .highlighted .linesBlock.right .content {
     left: -100%;
     width: 300%; }
     .highlighted .linesBlock.right .content p {
       width: 100%;
       height: 100%; }
-  .highlighted .linesBlock p {
-    visibility: visible;
-    opacity: 1; }
+  @media (max-width: 768px) {
+    .highlighted .linesBlock.left .content {
+      top: 12%; }
+    .highlighted .linesBlock.bottom .content {
+      top: -180%;
+      left: -50%;
+      width: 100%; }
+    .highlighted .linesBlock.top .content {
+      left: -60%;
+      width: 100%; } }
 
 .block.highlighted .filler-inner {
   border: none; }
@@ -1241,6 +1272,7 @@ video {
   height: 100%;
   z-index: -99999999;
   background-size: cover;
+  background-position: center center;
   opacity: 0.8; }
 
 .lineBlockPic {
@@ -1255,6 +1287,7 @@ video {
   height: 100%;
   z-index: -99999999;
   background-size: cover;
+  background-position: center center;
   opacity: 1; }
 
 #amzu:after {

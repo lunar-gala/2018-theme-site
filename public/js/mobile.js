@@ -23,6 +23,8 @@ function checkSize(mobile,desktop){
     row_per_page = 5;
     desktop();
   }
+
+  console.log(width)
 }
 
 window.addEventListener('resize',function(){

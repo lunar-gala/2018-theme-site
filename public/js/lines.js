@@ -211,6 +211,7 @@ function populateLinesBlocks() {
             if (title_grid_rows > 2) {
                 setTimeout(function(){centerContent(actualselector,line)},330);
             } else {
+                console.log("centering")
                 setTimeout(function(){centerContentMobile(actualselector, line)}, 330);
             }
             
@@ -225,9 +226,12 @@ function centerContent(selector, line) {
 }
 
 function centerContentMobile(selector, line) {
-    var elemwidth = $(selector)[0].getBoundingClientRect().width/2;
-    var titlewidth = $(selector).find(".title")[0].getBoundingClientRect().width/2;
-    var diff = elemwidth - titlewidth
+    var elemwidth = $(selector)[0].getBoundingClientRect().width;
+    var titlewidth = $(selector).find(".title")[0].getBoundingClientRect().width;
+
+    var diff = Math.floor(elemwidth/2) - Math.floor(titlewidth/2)
+    diff = (diff < 0) ? Math.floor(elemwidth/4) : diff
+
     var translatestring = "translateX(+"+diff+"px)"
     $(selector + " .content").css({transform: translatestring })
 }

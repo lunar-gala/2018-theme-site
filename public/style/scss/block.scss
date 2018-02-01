@@ -256,7 +256,17 @@ body{
 .italic{
   font-style: italic;
 }
-
+.mobileAboutText1{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  padding: 4vh 5vw;
+  font-size: 10pt;
+  line-height: 1.3;
+}
 .animated-filler-block {
   .highlighted & {
     z-index: -999999999;

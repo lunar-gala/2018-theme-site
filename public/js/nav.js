@@ -170,6 +170,7 @@ function summonMiniNavMobile(){
   $("#title_0_2 .inner").html(navBox).addClass('nav-box-container');
   $("#navInner_"+currentIndices.join("")).toggleClass("active");
   $("#title_0_2").off('tap').on('tap',function(e){
+    removeDisplayPerson();
     summonFullNavMobile();
   });
 }

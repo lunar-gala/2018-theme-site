@@ -1033,7 +1033,7 @@ body {
           width: 16px;
           height: 16px; }
           .mainGrid .inner .navBox .row div.active, .titleGrid .inner .navBox .row div.active {
-            background-color: #FF2224; }
+            background-color: #FF2214; }
           .mainGrid .inner .navBox .row div#navInner_00, .mainGrid .inner .navBox .row div#navInner_02, .titleGrid .inner .navBox .row div#navInner_00, .titleGrid .inner .navBox .row div#navInner_02 {
             border: 1px solid white; }
           .mainGrid .inner .navBox .row div#navInner_01, .titleGrid .inner .navBox .row div#navInner_01 {
@@ -1047,8 +1047,8 @@ body {
     .mainGrid .inner.title, .titleGrid .inner.title {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
-      font-size: 3vw;
-      color: #FF2224;
+      font-size: 22pt;
+      color: #FF2214;
       line-height: calc(100vh / 8); }
     .mainGrid .inner.text, .titleGrid .inner.text {
       text-align: left;
@@ -1071,39 +1071,37 @@ body {
     .mainGrid.fullNav .block, .titleGrid.fullNav .block {
       z-index: -1; }
 
-.navGrid {
-  z-index: 0; }
-  .navGrid .block {
-    padding: 0px; }
-    .navGrid .block .inner {
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      transition-delay: .3s; }
-    .navGrid .block .inner,
-    .navGrid .block .inner a {
-      font-family: "Druk Wide",sans-serif;
-      font-weight: 400;
-      line-height: 50vh;
-      color: white;
-      font-size: 26pt;
-      text-align: center;
-      text-decoration: none; }
-      .navGrid .block .inner.active,
-      .navGrid .block .inner a.active {
-        background-color: #FF2224; }
-      .navGrid .block .inner:hover,
-      .navGrid .block .inner a:hover {
-        text-decoration: underline; }
-    .navGrid .block:hover {
-      cursor: pointer; }
-  .navGrid.fullNav {
-    z-index: 100000000; }
-    .navGrid.fullNav .block {
-      z-index: 2; }
-    .navGrid.fullNav .inner {
-      opacity: 1;
-      transition: opacity 0.5s ease-in-out;
-      transition-delay: .3s; }
+.navGrid .block {
+  padding: 0px; }
+  .navGrid .block .inner {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    transition-delay: .3s; }
+  .navGrid .block .inner,
+  .navGrid .block .inner a {
+    font-family: "Druk Wide",sans-serif;
+    font-weight: 400;
+    line-height: 50vh;
+    color: white;
+    font-size: 26pt;
+    text-align: center;
+    text-decoration: none; }
+    .navGrid .block .inner.active,
+    .navGrid .block .inner a.active {
+      background-color: #FF2214; }
+    .navGrid .block .inner:hover,
+    .navGrid .block .inner a:hover {
+      text-decoration: underline; }
+  .navGrid .block:hover {
+    cursor: pointer; }
+.navGrid.fullNav {
+  z-index: 100000000; }
+  .navGrid.fullNav .block {
+    z-index: 2; }
+  .navGrid.fullNav .inner {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    transition-delay: .3s; }
 
 .aboutImg1 {
   background-image: url("../../images/About-Asset-1.png");

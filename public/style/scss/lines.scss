@@ -18,6 +18,7 @@
     cursor: pointer;
 
     .content {
+        transition: all 0.8s ease 0s; // PLAY WITH THIS
         cursor: default;
         position: absolute;
         -webkit-touch-callout: none; /* iOS Safari */
@@ -35,7 +36,8 @@
         .title {
             font-family:"Druk Wide",sans-serif;
             font-weight:400;
-            font-size:18pt;
+            //font-size:5vw;
+            font-size: 18px;
             line-height: 1.5;
         }
 
@@ -105,7 +107,7 @@
         .content {
             left: 100%;
             top: 44%;
-            width: 100%;
+            width: 300%;
             p {
                 height: 0px;
                 width: 0px;
@@ -134,44 +136,46 @@
     }
 
     .highlighted & {
-        &.bottom .content{
-            p {
-                height: 100%;
-                width: 100%;
-            }
-            @media (min-width: 769px) {
-              top:-130%;
-            }
-            @media (max-width: 768px) {
-              top:-180%;
-              left: -60%;
-            }
-            
+      p {
+          visibility: visible;
+          opacity: 1;
+      }
+
+      &.bottom {
+        .content{
+          p {
+              height: 100%;
+              width: 100%;
+          }
+          top: -150%;
         }
 
-        &.right .content{
-            p {
-                width: 100%;
-                height: 100%;
-            }
-            left:-100%;
-            width: 300%;
+        &#nightmare .content {
+          top: -160%;
         }
-        p {
-            visibility: visible;
-            opacity: 1;
-        }
+      }
 
+      &.right .content{
+          p {
+              width: 100%;
+              height: 100%;
+          }
+          left:-100%;
+          width: 300%;
+      }
+
+      @media (max-width: 768px) {
         &.left .content {
-            @media (max-width: 768px) {
-              top: 12%;
-            }
+            top: 12%;
         }
+        &.bottom .content {
+          top:-180%;
+          left: -50%;
+        }  
         &.top .content {
-            @media (max-width: 768px) {
-              left: -60%;
-            }
+            left: -60%;
         }
+      }
     }
 }
 

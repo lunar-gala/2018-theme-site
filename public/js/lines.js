@@ -35,6 +35,7 @@ for (var i = 0; i < linedata.length; i++) {
 
 function init_lines_mobile() {
     // requires 42 rows
+    console.log("mobile")
     console.log(grid_rows, grid_cols)
     LEFTBLOCK = ".mainGrid #1_0 .inner"
     TOPBLOCK = ".mainGrid #1_1 .inner" 
@@ -225,7 +226,6 @@ function centerContent(selector, line) {
 
 function centerContentMobile(selector, line) {
     var elemwidth = $(selector)[0].getBoundingClientRect().width/2;
-    var translatestring = "translateX(+"+elemwidth+"px)"
     var titlewidth = $(selector).find(".title")[0].getBoundingClientRect().width/2;
     var diff = elemwidth - titlewidth
     var translatestring = "translateX(+"+diff+"px)"

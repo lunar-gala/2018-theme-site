@@ -86,8 +86,8 @@ function init_lines_mobile() {
 
     populateLinesBlocks();
 
-    $("body").off("touchstart")
-    $("body").on("touchstart", clickLinesPicture)
+    $("body").off("tap")
+    $("body").on("tap", clickLinesPicture)
 }
 
 function init_lines() {

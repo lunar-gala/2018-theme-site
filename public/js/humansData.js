@@ -359,47 +359,7 @@ var board1 =
     "major": "Design, HCI",
     "year": 2019,
     "pictured": "yes"
-  },
-  {
-    "firstname": "Alexis",
-    "lastname": "Willis",
-    "position": "Modeling Coordinator, Model",
-    "major": "Neuroscience, Psychology",
-    "year": 2017,
-    "pictured": "no"
-  },
-  {
-    "firstname": "Pierce",
-    "lastname": "Sinclair",
-    "position": "Photographer",
-    "major": "Civil & Environmental Engineering",
-    "year": "2018",
-    "pictured": "no"
-  },
-  {
-    "firstname": "Andrew",
-    "lastname": "Lee",
-    "position": "Photography Advisor",
-    "major": "Chemical Engineering",
-    "year": 2018,
-    "pictured": "no"
-  },
-  {
-    "firstname": "Wilson",
-    "lastname": "Chan",
-    "position": "Photographer",
-    "major": "Rehabilitation Science",
-    "year": 2017,
-    "pictured": "no"
-  },
-  {
-    "firstname": "Hannah",
-    "lastname": "Manikowski",
-    "position": "Production Writer",
-    "major": "Dramaturgy",
-    "year": 2020,
-    "pictured": "no"
-  },
+  }
 ]
 
 var designers = 
@@ -635,39 +595,7 @@ var designers =
     "major": "Mathematics",
     "year": 2020,
     "pictured": "yes"
-  },
-  {
-    "firstname": "Amber",
-    "lastname": "Lee",
-    "position": "Designer",
-    "major": "Design",
-    "year": 2020,
-    "pictured": "no"
-  },
-  {
-    "firstname": "Guanyun",
-    "lastname": "Wang",
-    "position": "Designer",
-    "major": "HCI",
-    "year": "PhD",
-    "pictured": "no"
-  },
-  {
-    "firstname": "Kazumi",
-    "lastname": "Kanagawa",
-    "position": "Designer",
-    "major": "Design",
-    "year": 2019,
-    "pictured": "no"
-  },
-  {
-    "firstname": "Kabir",
-    "lastname": "Mantha",
-    "position": "Designer",
-    "major": "?",
-    "year": "?",
-    "pictured": "no"
-  },
+  }
 ]
 
 var models = 
@@ -1055,15 +983,7 @@ var models =
     "major": "Economics",
     "year": 2021,
     "pictured": "yes"
-  },
-  {
-    "firstname": "Alexis",
-    "lastname": "Willis",
-    "position": "Modeling Coordinator, Model",
-    "major": "Neuroscience, Psychology",
-    "year": 2017,
-    "pictured": "no"
-  },
+  }
 ]
 
 var dancers = 
@@ -1243,6 +1163,82 @@ var dancers =
     "major": "Electrical and Computer Engineering",
     "year": 2021,
     "pictured": "yes"
+  }
+]
+
+var notPictured = 
+[
+  {
+    "firstname": "Alexis",
+    "lastname": "Willis",
+    "position": "Modeling Coordinator, Model",
+    "major": "Neuroscience, Psychology",
+    "year": 2017,
+    "pictured": "no"
+  },
+  {
+    "firstname": "Pierce",
+    "lastname": "Sinclair",
+    "position": "Photographer",
+    "major": "Civil & Environmental Engineering",
+    "year": "2018",
+    "pictured": "no"
+  },
+  {
+    "firstname": "Andrew",
+    "lastname": "Lee",
+    "position": "Photography Advisor",
+    "major": "Chemical Engineering",
+    "year": 2018,
+    "pictured": "no"
+  },
+  {
+    "firstname": "Wilson",
+    "lastname": "Chan",
+    "position": "Photographer",
+    "major": "Rehabilitation Science",
+    "year": 2017,
+    "pictured": "no"
+  },
+  {
+    "firstname": "Hannah",
+    "lastname": "Manikowski",
+    "position": "Production Writer",
+    "major": "Dramaturgy",
+    "year": 2020,
+    "pictured": "no"
+  },
+  {
+    "firstname": "Amber",
+    "lastname": "Lee",
+    "position": "Designer",
+    "major": "Design",
+    "year": 2020,
+    "pictured": "no"
+  },
+  {
+    "firstname": "Guanyun",
+    "lastname": "Wang",
+    "position": "Designer",
+    "major": "HCI",
+    "year": "PhD",
+    "pictured": "no"
+  },
+  {
+    "firstname": "Kazumi",
+    "lastname": "Kanagawa",
+    "position": "Designer",
+    "major": "Design",
+    "year": 2019,
+    "pictured": "no"
+  },
+  {
+    "firstname": "Kabir",
+    "lastname": "Mantha",
+    "position": "Designer",
+    "major": "?",
+    "year": "?",
+    "pictured": "no"
   },
   {
     "firstname": "Albert",
@@ -1251,5 +1247,5 @@ var dancers =
     "major": "Music Composition",
     "year": 2018,
     "pictured": "no"
-  },
+  }
 ]

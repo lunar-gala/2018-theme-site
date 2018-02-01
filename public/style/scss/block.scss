@@ -1,6 +1,7 @@
 @import "prereqs";
 @import "fonts";
 $color-red : #FF2224;
+$mobile-size:768px;
 
 body{
   background-color:black;
@@ -17,7 +18,7 @@ body{
 
 }
 
-video {
+#video {
   position:absolute;
   top:0;
   right:0;
@@ -29,7 +30,28 @@ video {
   width: auto!important;
   margin:auto;
 }
+#videoAboutContainer{
+  position: relative;
+  height:100%;
+  width:100%;
+      overflow:hidden;
+  #videoAbout{
+    position:absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    margin:auto;
+    height:100%!important;
+    width: auto!important;
 
+  }
+}
+
+
+.router-link {
+  cursor: pointer;
+}
 .block{
   position:absolute;
   padding:0.25%;
@@ -148,6 +170,7 @@ video {
 .mainGrid, .titleGrid{
 	transition:opacity 1s,transform 1s ease-in-out;
   transition-delay:0s;
+
 	.inner{
 		color:white;
 		text-align:center;
@@ -200,11 +223,11 @@ video {
 		}
     &.text{
       text-align:left;
-      padding:7vh 4vw 7vh 4vw;
+      padding:5vh 4vw;
       font-family:"Theinhardt",sans-serif;
       font-weight:300;
-      font-size:12pt;
-      line-height:14pt;
+      font-size:10pt;
+      line-height:1.5;
       color:white;
     }
 		&.topLink{
@@ -310,5 +333,3 @@ video {
 }
 
 @import "lines";
-
-

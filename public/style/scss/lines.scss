@@ -1,3 +1,5 @@
+$mobile-size:768px;
+
 .filler-block, .animated-filler-block {
     cursor: pointer;
     .inner {
@@ -10,7 +12,6 @@
         span {
             opacity: 0;
         }
-
     }
 }
 
@@ -18,6 +19,8 @@
     cursor: pointer;
 
     .content {
+        transition: left 0.5s ease 0s, top 0.5s ease 0s; // PLAY WITH THIS
+        //transition: transform 0.8s ease 0s;
         cursor: default;
         position: absolute;
         -webkit-touch-callout: none; /* iOS Safari */
@@ -29,14 +32,18 @@
         text-align: left; // initial block styling centers text
 
         .title, .designers {
-            white-space: nowrap; // TODO: MIGHT NEED TO CHANGE THIS
+            //white-space: nowrap; // TODO: MIGHT NEED TO CHANGE THIS
         }
 
         .title {
             font-family:"Druk Wide",sans-serif;
             font-weight:400;
-            font-size:18pt;
+            //font-size:5vw;
+            font-size: 18px;
             line-height: 1.5;
+            @media (max-width: $mobile-size) {
+                white-space: normal;  
+            }
         }
 
         p {
@@ -45,6 +52,7 @@
           opacity: 0;
           transition: visibility 0.2s, opacity .2s linear;
           font-family: "Theinhardt";
+          margin-top: 15px;
 
           &.designers {
             font-size: 12pt;
@@ -66,8 +74,12 @@
         .content {
             left: 100%; // Should be 100% - (width of header text/2) px
             top: 44%;
-            //transform: translateX(-10%); // TODO: GET ALL ALIASES
             width: 350%;
+
+            @media (max-width: $mobile-size) {
+              left: 0%;
+              width: 260%;
+            }
         }
     }
 
@@ -75,8 +87,12 @@
         .content {
             left: 100%;
             top: 32%;
-            transform: translateX(-10%); // need to translate based on title size...
             width: 100%;
+
+            @media (max-width: $mobile-size) {
+              left: 0%;
+              width: 0%;
+            }
         }
     }
 
@@ -93,8 +109,7 @@
         .content {
             left: 100%;
             top: 44%;
-            width: 100%;
-
+            width: 300%;
             p {
                 height: 0px;
                 width: 0px;
@@ -112,30 +127,60 @@
                 height: 0px;
                 width: 0px;
             }
+            @media (max-width: $mobile-size) {
+              left: 0%;
+              width: 0%;
+
+              p {
+                width: 0%;
+              }
+            }
         }
     }
 
     .highlighted & {
-        &.bottom .content{
-            p {
-                height: 100%;
-                width: 100%;
-            }
-            top:-100%;
+      p {
+          visibility: visible;
+          opacity: 1;
+      }
+
+      &.bottom {
+        .content{
+          p {
+              height: 100%;
+              width: 100%;
+          }
+          top: -150%;
         }
 
-        &.right .content{
-            p {
-                width: 100%;
-                height: 100%;
-            }
-            left:-100%;
-            width: 300%;
+        &#nightmare .content {
+          top: -160%;
         }
-        p {
-            visibility: visible;
-            opacity: 1;
+      }
+
+      &.right .content{
+          p {
+              width: 100%;
+              height: 100%;
+          }
+          left:-100%;
+          width: 300%;
+      }
+
+      @media (max-width: $mobile-size) {
+        &.left .content {
+            top: 12%;
         }
+        &.bottom .content {
+          top:-180%;
+          left: -50%;
+          width: 100%;
+        }  
+        &.top .content {
+            left: -60%;
+            width: 100%;
+        }
+      }
     }
 }
 
@@ -184,6 +229,7 @@
     height: 100%;
     z-index:-99999999;
     background-size: cover;
+    background-position: center center;
     opacity: 0.8;
 }
 
@@ -200,6 +246,7 @@
     height: 100%;
     z-index:-99999999;
     background-size: cover;
+    background-position: center center;
     opacity: 1; // CHANGE THIS
 }
 

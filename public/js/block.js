@@ -13,13 +13,14 @@ var __grid_rows = 35;
 var __mobile_title_grid_cols = 3;
 var __mobile_title_grid_rows = 2;
 var __mobile_grid_cols = 3;
+
 //this number should be able to change according to the page
 var __mobile_grid_rows = 20;
 
 __pageCounts = {
   '/about':[15,18],
-  '/lines':[20,24],
-  '/members':[35,42]
+  '/lines':[20,42],
+  '/members':[35,72]
 }
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
@@ -177,7 +178,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
       this.collapsed = true;
       blockElem.toggleClass("collapsed");
     } else {
-
+        this.offset = offset;
         this.collapsed = false;
         var y;
         var x;
@@ -197,12 +198,14 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
 
         this.y = y;
         this.x = x;
-        this.offset = offset;
+
         this.width = width;
         this.height = height;
 
         if (this.showgridlines) {
+          console.log("show grid lines")
           blockElem.find(" .animated-filler-block").remove()
+          // TODO (bug): remove hidden class
           blockElem.append($("<div class='animated-filler-block hidden'><div class='filler-inner'></div></div>").css({
             top: 0,
             left: 0,
@@ -225,7 +228,7 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
     var j = parseInt(id[id.length - 1]);
 
     var gridToUse;
-    if (id.length < 3 || (!id.includes('title') && !id.includes('nav'))) {
+    if (id.length < 3) {
       gridToUse = grid;
     } else {
       if (id[0] == "title") {
@@ -236,12 +239,6 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
     var curBlock = gridToUse[i][j];
     var regular_w = ($(curBlock.containerName).width()/gridToUse[0].length);
     var regular_h = ($(curBlock.containerName).height()/gridToUse.length);
-
-    if (id.length < 3 || (!id.includes('title') && !id.includes('nav'))) {
-      var regular_w = (window.innerWidth/(row_per_page + 3));
-      var regular_h = (window.innerHeight/(row_per_page + 3));
-      console.log(regular_w,regular_h);
-    }
 
     if (curBlock.bounds.bottom != 0 || curBlock.bounds.right != 0) {
       resetBlock(block);
@@ -273,8 +270,7 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
       }
     }
     curBlock.showgridlines = showgridlines;
-    // console.log(b,regular_w,regular_h);
-    curBlock.update(regular_w, regular_h, curBlock.offset,true);
+    curBlock.update(regular_w, regular_h, curBlock.offset);
 
 }
 
@@ -431,13 +427,17 @@ function movePage(curPage,pageCount,direction,cb){
     $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','block');
   }
   //hide the outgoing boxes after animating out
+  if(window.location.pathname == "/about" && newPage == 1 && $("#5_1 .inner")[0].innerHTML == ""){
+      $("#5_1 .inner")[0].innerHTML = "<div style='height:100%'><iframe src=\"https://player.vimeo.com/video/252741421?autoplay=1\" width=\"100%\" height=\"100%\" frameborder=\"0\"  ></iframe></div>"
+      useThis = "webkitallowfullscreen mozallowfullscreen allowfullscreen"
+  }
+
   $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
 
   window.setTimeout(function(){
     boundary_low = oldPage * row_per_page
     boundary_top = oldPage * row_per_page + row_per_page
     for (i = boundary_low; i < boundary_top;i++){
-      // console.log(i);
       $('.mainGrid [id^=\''+parseInt(i)+'_\']').css('display','none');
     }
     __pageAnimating = false;
@@ -473,6 +473,7 @@ $(window).ready(function(){
           break;
     }
   };
+
   $("body").bind('mousewheel', function(e) {
     if(__pageAnimating){
       return;

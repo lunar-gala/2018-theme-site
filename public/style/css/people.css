@@ -83,4 +83,24 @@
   color: #ff2124 !important;
   line-height: calc(100vh / 8); }
 
+.section-title-mobile {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto; }
+
+.section-title-mobile p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  font-family: "Druk Wide",sans-serif;
+  font-weight: 400;
+  font-size: 4vh;
+  color: white; }
+
 /*# sourceMappingURL=people.css.map */

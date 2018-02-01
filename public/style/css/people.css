@@ -69,53 +69,11 @@
   background-size: 350px;
   background-color: black; }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(255, 0, 0, 0.3);
-  opacity: 0; }
-
 .section-name {
   font-family: "Druk Wide",sans-serif;
   font-weight: 400;
   font-size: 2vw;
   color: white;
   line-height: calc(200vh / 8); }
-
-.arrow {
-  position: absolute;
-  height: 12.5vh;
-  top: 0;
-  bottom: 0vh;
-  left: 0;
-  right: 0;
-  margin: auto; }
-
-.arrow-down {
-  height: 12.5vh;
-  bottom: 5vh; }
-
-.arrow-up {
-  height: 12.5vh;
-  top: 5vh; }
-
-.arrow-left {
-  position: absolute;
-  width: 5vw;
-  top: 0;
-  bottom: 0vh;
-  left: 2vw;
-  margin: auto; }
-
-.arrow-right {
-  position: absolute;
-  width: 5vw;
-  top: 0;
-  bottom: 0vh;
-  right: 2vw;
-  margin: auto; }
 
 /*# sourceMappingURL=people.css.map */

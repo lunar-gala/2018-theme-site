@@ -902,6 +902,18 @@ body {
   top: 0;
   left: 0; }
 
+video {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99999999;
+  object-fit: fill;
+  height: 100% !important;
+  width: auto !important;
+  margin: auto; }
+
 .block {
   position: absolute;
   padding: 0.25%;
@@ -1048,16 +1060,21 @@ body {
     .navGrid .block .inner {
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
-      transition-delay: .3s;
+      transition-delay: .3s; }
+    .navGrid .block .inner,
+    .navGrid .block .inner a {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
       line-height: 50vh;
       color: white;
       font-size: 26pt;
-      text-align: center; }
-      .navGrid .block .inner.active {
+      text-align: center;
+      text-decoration: none; }
+      .navGrid .block .inner.active,
+      .navGrid .block .inner a.active {
         background-color: #FF2224; }
-      .navGrid .block .inner:hover {
+      .navGrid .block .inner:hover,
+      .navGrid .block .inner a:hover {
         text-decoration: underline; }
     .navGrid .block:hover {
       cursor: pointer; }
@@ -1073,6 +1090,39 @@ body {
 .aboutImg1 {
   background-image: url("../../images/About-Asset-1.png");
   background-size: cover; }
+
+.arrow {
+  position: absolute;
+  height: 12.5vh;
+  top: 0;
+  bottom: 0vh;
+  left: 0;
+  right: 0;
+  margin: auto; }
+
+.arrow-down {
+  height: 12.5vh;
+  bottom: 5vh; }
+
+.arrow-up {
+  height: 12.5vh;
+  top: 5vh; }
+
+.arrow-left {
+  position: absolute;
+  width: 5vw;
+  top: 0;
+  bottom: 0vh;
+  left: 2vw;
+  margin: auto; }
+
+.arrow-right {
+  position: absolute;
+  width: 5vw;
+  top: 0;
+  bottom: 0vh;
+  right: 2vw;
+  margin: auto; }
 
 .filler-block, .animated-filler-block {
   cursor: pointer; }

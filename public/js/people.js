@@ -1,14 +1,14 @@
-var sections = ["Board", "Board (cont.)", "Designers", "Models", "Models (cont.)", "Dancers"]
+var sections = ["Board", "Board (cont.)", "Designers", "Models", "Models (cont.)", "Dancers", "Not Pictured"]
 
 function init_people() {
 	// console.log(grid);
 	populatePeopleHeader();
 	populatePeopleContent();
 	$(document).keyup(function(e) {
-	    if (e.keyCode == 27) { 
+	    if (e.keyCode == 27) {
 	    	removeDisplayPerson();
 		}
-	}); 
+	});
 };
 
 function populatePeopleHeader () {
@@ -19,7 +19,7 @@ function populatePeopleHeader () {
     $("#title_0_0 .inner").append("<img class='arrow-left' src='./../images/Arrows/pointingleft.png'/>")
     $("#title_0_6 .inner").text("Lines").addClass("topLink");
     $("#title_0_6 .inner").append("<img class='arrow-right' src='./../images/Arrows/pointingright.png'/>")
-    $("#title_1_1 .inner").text("Federation").addClass("title");
+    $("#title_1_1 .inner").text("Members").addClass("title");
 }
 
 function populatePeopleContent () {
@@ -64,7 +64,7 @@ function populatePeopleContent () {
 								 <img class="arrow" src = "../../images/Arrows/pointingboth.png"/>
 								 <p class='designers-link2'>` + sections[nextSectionID] + `</p>`);
 				}
-			} else if (!((i%5 == 2 && j == 0) 
+			} else if (!((i%5 == 2 && j == 0)
 					    || (i%5 == 1 && j == 7)
 					    || (i%5 == 2 && j == 7)
 					    || (i%5 == 2 && j == 6)
@@ -112,7 +112,9 @@ function populatePeopleContent () {
 		        		console.log(90 + models.length);
 				        $(this).css({
 				        	'background-color': '#ff2124',
-  							'background-blend-mode': 'multiply'
+  							'background-blend-mode': 'multiply',
+							'transition': 'all .3s',
+							'cursor': 'pointer'
 						});
 			        }, function () {
 						$(this).css({
@@ -133,7 +135,7 @@ function populatePeopleContent () {
 	}
 }
 
-function getIndex(i, j) { 
+function getIndex(i, j) {
 	var offset = 0;
 	var index = (i * __grid_cols + j) - offset;
 	var arryIndex = index;
@@ -158,8 +160,8 @@ function getIndex(i, j) {
 		}
 		index -= 40;
 	}
-	
-	console.log("get index: " + arryIndex);
+
+	// console.log("get index: " + arryIndex);
 	return arryIndex;
 }
 
@@ -183,7 +185,7 @@ function displayPerson (index) {
 	var major = dataObject.major;
 	var year = dataObject.year;
 	var position = dataObject.position;
-	var displayPersonDiv = 
+	var displayPersonDiv =
 		`<div class='person-info-background'></div>
 		 <div class='person-info'>
 			<div class="headshot" style="background-image:url('` + src + `')"></div>
@@ -192,7 +194,7 @@ function displayPerson (index) {
 				<p class="major">` + major + " " + year + `</p>
 				<p class="title">` + position + `</p>
 			</div>
-			
+
 		 </div>`;
 	var displayPersonDOM = $.parseHTML(displayPersonDiv);
 	$(displayPersonDOM).hide().appendTo("body").fadeIn(200);

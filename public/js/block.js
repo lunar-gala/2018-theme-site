@@ -16,6 +16,11 @@ var __mobile_grid_cols = 3;
 //this number should be able to change according to the page
 var __mobile_grid_rows = 20;
 
+__pageCounts = {
+  '/about':[15,18],
+  '/lines':[20,24],
+  '/members':[35,42]
+}
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
   var block_width = $(containerName).width() / cols;
@@ -143,7 +148,7 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
     $(target).append(this.DOM);
   }
 
-  this.update = function(w, h, offset = 0){
+  this.update = function(w, h, offset = 0,animBlock = false){
     //checking if collapsed
     var blockElem = $("#"+this.id)
 
@@ -210,17 +215,19 @@ function Block(row, col, x, y, width, height, preString, containerName, offset =
 }
 
 function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
-    var regular_w = (window.innerWidth/__grid_cols);
-    var regular_h = (window.innerHeight/__grid_rows);
 
-    // console.log($(block).attr("id"));
+    // var regular_w = (window.innerWidth/grid_cols);
+    // var regular_h = (window.innerHeight/grid_rows);
+
     var id = $(block).attr("id").split("_");
 
     var i = parseInt(id[id.length - 2]);
     var j = parseInt(id[id.length - 1]);
 
     var gridToUse;
-    if (id.length < 3) {
+    var rowCount;
+    var colCount;
+    if (id.length < 3 || (!id.includes('title') && !id.includes('nav'))) {
       gridToUse = grid;
     } else {
       if (id[0] == "title") {
@@ -231,6 +238,12 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
     var curBlock = gridToUse[i][j];
     var regular_w = ($(curBlock.containerName).width()/gridToUse[0].length);
     var regular_h = ($(curBlock.containerName).height()/gridToUse.length);
+
+    if (id.length < 3 || (!id.includes('title') && !id.includes('nav'))) {
+      var regular_w = (window.innerWidth/(row_per_page + 3));
+      var regular_h = (window.innerHeight/(row_per_page + 3));
+      console.log(regular_w,regular_h);
+    }
 
     if (curBlock.bounds.bottom != 0 || curBlock.bounds.right != 0) {
       resetBlock(block);
@@ -262,7 +275,8 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
       }
     }
     curBlock.showgridlines = showgridlines;
-    curBlock.update(regular_w, regular_h, curBlock.offset);
+    // console.log(b,regular_w,regular_h);
+    curBlock.update(regular_w, regular_h, curBlock.offset,true);
 
 }
 
@@ -332,7 +346,7 @@ function destroyAllBlocks(grid){
     for (var row = 0; row < grid_rows; row++) {
       for (var col = 0; col < grid_cols; col++) {
         var b = grid[row][col];
-        console.log(grid_cols);
+        // console.log(grid_cols);
         $("#"+b.id).remove();
         // Call this once implemented
         // b.animateOut()
@@ -393,6 +407,9 @@ function movePage(curPage,pageCount,direction,cb){
 
   if ((curPage == 0 && direction == 'up') ||
       (curPage == pageCount - 1 && direction == 'down')){
+    window.setTimeout(function(){
+      __pageAnimating = false;
+    },700);
     cb(curPage);
     return;
   }
@@ -423,7 +440,7 @@ function movePage(curPage,pageCount,direction,cb){
     boundary_top = oldPage * row_per_page + row_per_page
     for (i = boundary_low; i < boundary_top;i++){
       // console.log(i);
-      $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','none');
+      $('.mainGrid [id^=\''+parseInt(i)+'_\']').css('display','none');
     }
     __pageAnimating = false;
   },1000)
@@ -439,7 +456,25 @@ $(window).ready(function(){
   var totalDist = 0;
   var threshold = 400;
   var isScrollingUp = false;
-
+  document.onkeydown = function(e) {
+    if(__pageAnimating){
+      return;
+    }
+    switch (e.keyCode) {
+        case 38:
+          movePage(currentPage,grid_rows/row_per_page,'up',function(newPage){
+            currentPage = newPage;
+            e.preventDefault();
+          });
+          break;
+        case 40:
+          movePage(currentPage,grid_rows/row_per_page,'down',function(newPage){
+            currentPage = newPage;
+            e.preventDefault();
+          });
+          break;
+    }
+  };
   $("body").bind('mousewheel', function(e) {
     if(__pageAnimating){
       return;

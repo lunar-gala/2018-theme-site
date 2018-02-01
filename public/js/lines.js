@@ -35,7 +35,6 @@ for (var i = 0; i < linedata.length; i++) {
 
 function init_lines_mobile() {
     // requires 42 rows
-    console.log("mobile")
     console.log(grid_rows, grid_cols)
     LEFTBLOCK = ".mainGrid #1_0 .inner"
     TOPBLOCK = ".mainGrid #1_1 .inner" 
@@ -84,7 +83,6 @@ function init_lines_mobile() {
 
     // lineSet 6
     animateBlock("#37_0", 2,0, true); // LEFT BLOCK
-
 
     populateLinesBlocks();
 

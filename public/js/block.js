@@ -228,9 +228,8 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
     var j = parseInt(id[id.length - 1]);
 
     var gridToUse;
-    var rowCount;
-    var colCount;
-    if (id.length < 3 || (!id.includes('title') && !id.includes('nav'))) {
+
+    if (id.length < 3) {
       gridToUse = grid;
     } else {
       if (id[0] == "title") {
@@ -241,12 +240,6 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
     var curBlock = gridToUse[i][j];
     var regular_w = ($(curBlock.containerName).width()/gridToUse[0].length);
     var regular_h = ($(curBlock.containerName).height()/gridToUse.length);
-
-    if (id.length < 3 || (!id.includes('title') && !id.includes('nav'))) {
-      var regular_w = (window.innerWidth/(row_per_page + 3));
-      var regular_h = (window.innerHeight/(row_per_page + 3));
-      console.log(regular_w,regular_h);
-    }
 
     if (curBlock.bounds.bottom != 0 || curBlock.bounds.right != 0) {
       resetBlock(block);
@@ -262,7 +255,7 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
           continue
         }
         var b = gridToUse[row][col];
-        b.showgridlines = showgridlines;
+        b.showgridlines = false;
         $("#"+b.id).attr("belongs-to", $(block).attr("id"))
 
         if (col == j) {
@@ -277,7 +270,7 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
         }
       }
     }
-    curBlock.showgridlines = showgridlines;
+    curBlock.showgridlines = false;
     curBlock.update(regular_w, regular_h, curBlock.offset);
 
 }

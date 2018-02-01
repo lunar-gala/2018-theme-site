@@ -161,7 +161,7 @@ function load_page_mobile(url){
   grid_cols = __mobile_grid_cols;
 
   grid_rows = __pageCounts[url][1];
-  grid_rows = 20;
+  //grid_rows = 20;
 
   titleGrid = [];
   grid = [];
@@ -226,8 +226,8 @@ function load_page_mobile(url){
 
       call_function(url,true);
 
-      deleteMiniNav();
-      summonMiniNav();
+      // deleteMiniNav();
+      // summonMiniNav();
 
       // $(".mainGrid").toggleClass("fullNav");
       window.setTimeout(function(){

@@ -24,6 +24,8 @@
     /* Internet Explorer/Edge */
     user-select: none;
     text-align: left; }
+    .linesBlock .content .title, .linesBlock .content .designers {
+      white-space: nowrap; }
     .linesBlock .content .title {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
@@ -62,7 +64,7 @@
     @media (max-width: 768px) {
       .linesBlock.top .content {
         left: 0%;
-        width: 100%; } }
+        width: 0%; } }
   .linesBlock.middle .content {
     left: 0%;
     top: 32%;
@@ -85,7 +87,9 @@
     @media (max-width: 768px) {
       .linesBlock.bottom .content {
         left: 0%;
-        width: 100%; } }
+        width: 0%; }
+        .linesBlock.bottom .content p {
+          width: 0%; } }
   .highlighted .linesBlock p {
     visibility: visible;
     opacity: 1; }
@@ -107,9 +111,11 @@
       top: 12%; }
     .highlighted .linesBlock.bottom .content {
       top: -180%;
-      left: -50%; }
+      left: -50%;
+      width: 100%; }
     .highlighted .linesBlock.top .content {
-      left: -60%; } }
+      left: -60%;
+      width: 100%; } }
 
 .block.highlighted .filler-inner {
   border: none; }

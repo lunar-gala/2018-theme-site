@@ -260,11 +260,10 @@ function call_function(url,isMobile = false){
   }
 
   if(url == "/members" && !isMobile){
-    // console.log("AAAAAAAA");
     init_people();
   }
   else if(url == "/members" && isMobile){
-    // init_about_mobile();
+    init_people_mobile();
   }
 
 }

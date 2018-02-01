@@ -20,7 +20,7 @@ var __mobile_grid_rows = 20;
 __pageCounts = {
   '/about':[10,12],
   '/lines':[20,42],
-  '/members':[35,42]
+  '/members':[35,72]
 }
 
 function initGrid (rows, cols, grid, preString, containerName, offset = 0) {
@@ -228,7 +228,6 @@ function animateBlock(block, rowsDown, colsRight, showgridlines = false) {
     var j = parseInt(id[id.length - 1]);
 
     var gridToUse;
-
     if (id.length < 3) {
       gridToUse = grid;
     } else {

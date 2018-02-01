@@ -1,4 +1,4 @@
-var sections = ["Board", "Board (cont.)", "Designers", "Models", "Models (cont.)", "Dancers", "Not Pictured"]
+var sections = ["Board", "Board (cont.)", "Designers", "Models", "Models (cont.)", "Dancers", "Not Pictured"];
 
 function init_people() {
 	// console.log(grid);
@@ -167,17 +167,32 @@ function getIndex(i, j) {
 
 function displayPerson (index) {
 	var dataObject;
-	if (index < board1.length) {
-		dataObject = board1[index];
-	} else if (index >= 60 && index < 60 + designers.length) {
-		index -= 60;
-		dataObject = designers[index];
-	} else if (index >= 90 && index < 90 + models.length) {
-		index -= 90;
-		dataObject = models[index];
-	} else if (index >= 150 && index < 150 + dancers.length) {
-		index -= 150;
-		dataObject = dancers[index];
+	if (!__MOBILE_BOOL) {
+		if (index < board1.length) {
+			dataObject = board1[index];
+		} else if (index >= 60 && index < 60 + designers.length) {
+			index -= 60;
+			dataObject = designers[index];
+		} else if (index >= 90 && index < 90 + models.length) {
+			index -= 90;
+			dataObject = models[index];
+		} else if (index >= 150 && index < 150 + dancers.length) {
+			index -= 150;
+			dataObject = dancers[index];
+		}
+	} else {
+		if (index < board1.length) {
+			dataObject = board1[index];
+		} else if (index >= 45 && index < 45 + designers.length) {
+			index -= 45;
+			dataObject = designers[index];
+		} else if (index >= 75 && index < 75 + models.length) {
+			index -= 75;
+			dataObject = models[index];
+		} else if (index >= 135 && index < 135 + dancers.length) {
+			index -= 135;
+			dataObject = dancers[index];
+		}
 	}
 	var firstName = dataObject.firstname;
 	var lastName = dataObject.lastname;
@@ -204,4 +219,128 @@ function displayPerson (index) {
 function removeDisplayPerson() {
 	$(".person-info").fadeOut(200, function() { $(".person-info").remove(); });
 	$(".person-info-background").fadeOut(200, function() { $(this).remove(); });
+}
+
+
+
+//    MOBILE    ///////////////////    MOBILE    /////////////////    MOBILE    ///
+//////    MOBILE    ////////////////////////////    MOBILE    /////////////////////
+////////////////////////////    MOBILE    /////////////////    MOBILE    //////////
+/////    MOBILE    /////////////////////////    MOBILE    /////////////////////////
+///////////    MOBILE    /////////    MOBILE    ///////////    MOBILE    //////////
+////    MOBILE    ////////////////////    MOBILE    ///////////////////////////////
+
+
+
+var sectionsMobile = ["Board", "Board (cont.)", "Board (cont.)", "Designers", "Designers (cont.)", "Models", "Models (cont.)", "Models (cont.)", "Models (cont.)", "Dancers", "Dancers (cont.)", "Not Pictured"];
+
+function init_people_mobile() {
+	animateBlock("#title_1_0",0,1);
+	$("#title_1_0 .inner").text("Members").addClass("title-mobile");
+
+	populatePeopleContent_mobile();
+}
+
+function populatePeopleContent_mobile () {
+	for (var i = 0; i < grid_rows; i++) {
+		for (var j = 0; j < grid_cols; j++) {
+			if (i%6 == 1 && j == 1) {
+				var sectionID = Math.floor(i/6);
+				animateBlock("#" + grid[i][j].id, 2, 0);
+				$("#" + grid[i][j].id + " .inner").css({
+		          	"background-image" : "url('../../images/red on blue.gif')",
+		          	"background-size" : "cover",
+				  	"background-repeat" : "no-repeat",
+				  	"background-position" : "center center",
+				  	"position" : "relative"
+		        });
+		        $("#" + grid[i][j].id + " .inner").append(`<div class="section-title-mobile"><p>`+sectionsMobile[sectionID]+`</p></div>`);
+			} else if (!((i%6 == 1 && j == 1) ||
+						(i%6 == 2 && j == 1) ||
+						(i%6 == 3 && j == 1))) {
+				var index = getIndex_mobile(i, j);
+				var dataObject;
+				var firstName = "";
+				var lastName = "";
+				if (index < board1.length) {
+					dataObject = board1[index];
+					firstName = dataObject.firstname;
+					lastName = dataObject.lastname;
+				} else if (index >= 45 && index < 45 + designers.length) {
+					index = index - 45;
+					dataObject = designers[index];
+					firstName = dataObject.firstname;
+					lastName = dataObject.lastname;
+				} else if (index >= 75 && index < 75 + models.length) {
+					index = index - 75;
+					dataObject = models[index];
+					firstName = dataObject.firstname;
+					lastName = dataObject.lastname;
+				} else if (index >= 135 && index < 135 + dancers.length) {
+					index = index - 135;
+					dataObject = dancers[index];
+					firstName = dataObject.firstname;
+					lastName = dataObject.lastname;
+				}
+
+				$("#" + grid[i][j].id + " .inner").css({
+		          	"background-image" : "url('../../images/Final Eye Photos/" + firstName + lastName + "Eye.png')",
+		          	"background-size" : "cover",
+				  	"background-repeat" : "no-repeat",
+				  	"background-position" : "center center"
+		        });
+
+				index = getIndex_mobile(i, j);
+				if (index < board1.length || 
+					(index >= 45 && index < 45 + designers.length) ||
+					(index >= 75 && index < 75 + models.length) ||
+					(index >= 135 && index < 135 + dancers.length) ) {
+		        	$("#" + grid[i][j].id + " .inner").hover(function () {
+		        		console.log(90 + models.length);
+				        $(this).css({
+				        	'background-color': '#ff2124',
+  							'background-blend-mode': 'multiply',
+							'transition': 'all .3s',
+							'cursor': 'pointer'
+						});
+			        }, function () {
+						$(this).css({
+				        	'background-color': 'transparent',
+  							'background-blend-mode': 'none'
+						});
+			        });
+		        }
+
+		        $("#" + grid[i][j].id + " .inner").click(function (i, j) {
+		        	return function () {
+		        		var index = getIndex_mobile(i, j);
+		        		displayPerson(index);
+		        	};
+		        }(i, j));
+			}
+		}
+	}
+}
+
+function getIndex_mobile(i, j) {
+	var offset = 0;
+	var index = (i * grid_cols + j) - offset;
+	var arryIndex = index;
+
+	var numIter = Math.floor(index/18) + 1;
+	for (var i = 0; i < numIter; i+=1) {
+		if (index > 4) {
+			arryIndex -= 1;
+			if (index > 7) {
+				arryIndex -= 1;
+				if (index > 10) {
+		    		arryIndex -= 1;
+		    	}
+			}
+		}
+		index -= 18;
+	}
+
+	console.log("get index: " + arryIndex);
+	return arryIndex;
 }

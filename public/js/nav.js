@@ -131,7 +131,6 @@ function summonFullNav(){
   },1000);
 }
 
-//This is the mini nav
 function summonMiniNav(){
   animateBlock("#title_1_6",1,1);
   //creating the nav box

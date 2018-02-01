@@ -23,7 +23,6 @@ function init_people() {
 			e.preventDefault();
 		});
 	})
-
 };
 
 function populatePeopleHeader () {
@@ -269,7 +268,15 @@ var sectionsMobile = ["Board", "Board (cont.)", "Board (cont.)", "Designers", "D
 function init_people_mobile() {
 	animateBlock("#title_1_0",0,1);
 	$("#title_1_0 .inner").text("Members").addClass("title-mobile");
-
+	//this code doesn't work
+	$("").tap(function(e) {
+	    if (e.keyCode == 27) {
+	    	removeDisplayPerson();
+		}
+	});
+	// $('.person-info-background').off('tap').on('tap',function(){
+	// 	removeDisplayPerson();
+	// })
 	populatePeopleContent_mobile();
 }
 
@@ -367,10 +374,12 @@ function populatePeopleContent_mobile () {
 			        });
 		        }
 
-		        $("#" + grid[i][j].id + " .inner").click(function (i, j) {
+		        $("#" + grid[i][j].id + " .inner").on('tap',function (i, j) {
+							return function () {
 		        		var index = getIndex_mobile(i, j);
 		        		displayPerson(index);
-		        });
+		        };
+						}(i, j));
 			}
 		}
 	}

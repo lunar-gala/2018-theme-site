@@ -24,19 +24,14 @@ function createRouting(){
 
   currentPath = window.location.pathname;
   if(currentPath == "/"){
-    load_intro_page();
+      load_intro_page();
   }
   else{
     load_page(currentPath);
   }
   $(".router-link").click(function(){
     url = $(this).attr("url");
-    if(currentPath == "/"){
-      load_intro_page();
-    }
-    else{
-      load_page(currentPath);
-    }
+    load_page(currentPath);
   })
   $(window).bind("popstate", function() {
     currentPath = window.location.pathname;
@@ -89,7 +84,6 @@ function attach_router_link(){
 
 function load_intro_page(){
   if(__MOBILE_BOOL){
-    console.log('doing this!!!')
     load_page_mobile('/about');
     return;
   }

@@ -68,6 +68,11 @@ function attach_router_link(){
 }
 
 function load_intro_page(){
+  if(__MOBILE_BOOL){
+    console.log('doing this!!!')
+    load_page_mobile('/about');
+    return;
+  }
   videoToLoad = "<video id='video' width=\"320\" height=\"240\" autoplay=\"autoplay\"><source src=\"video/introVideo.mp4\" type=\"video/mp4\"></video>";
   $('body').append(videoToLoad);
   video = document.getElementById("video")

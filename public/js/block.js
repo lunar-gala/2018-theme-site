@@ -433,6 +433,10 @@ function movePage(curPage,pageCount,direction,cb){
     $('.mainGrid [id*=\''+parseInt(i)+'_\']').css('display','block');
   }
   //hide the outgoing boxes after animating out
+  if(window.location.pathname == "/about" && newPage == 1 && $("#5_1 .inner")[0].innerHTML == ""){
+      $("#5_1 .inner")[0].innerHTML = "<div style='height:100%'><iframe src=\"https://player.vimeo.com/video/252741421?autoplay=1\" width=\"100%\" height=\"100%\" frameborder=\"0\"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>"
+  }
+
   $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
 
   window.setTimeout(function(){

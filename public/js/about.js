@@ -16,9 +16,11 @@ function init_about(){
   $(".mainGrid #0_1 .inner").addClass("aboutImg1");
 
   animateBlock("#5_1",2,2);
-  $("#5_1 .inner")[0].innerHTML = "<div style='height:100%'><iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/qmjOd9Dlr34\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe></div>"
-
   // animateBlock("#6_5",3,3);
+  $("#5_1 .inner")[0].innerHTML = "";
+}
+function add_video(){
+    $("#5_1 .inner")[0].innerHTML = "<div style='height:100%'><iframe src=\"https://player.vimeo.com/video/252741421?autoplay=1\" width=\"100%\" height=\"100%\" frameborder=\"0\"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>"
 }
 
 function init_about_mobile(){

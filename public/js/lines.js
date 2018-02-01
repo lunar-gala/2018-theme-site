@@ -129,23 +129,33 @@ function init_lines() {
     animateBlock("#2_3",0,2,true); // middle
     animateBlock("#0_6",2,0,true); // right
     animateBlock("#4_0",0,2,true); // bottom
+    animateBlock("#3_7", 1,0) // arrows 
+    $(".mainGrid #3_7").append(`<img class="arrow" src = "../../images/Arrows/pointingdown.png"/>`)
 
     animateBlock("#5_2",0,2,true) // top
     animateBlock("#5_0",2,0,true); // left
     animateBlock("#7_3",0,2,true); // middle
     animateBlock("#5_6",2,0,true); // right
     animateBlock("#9_0",0,2,true); // bottom
+    animateBlock("#8_7", 1,0) // arrows 
+    $(".mainGrid #8_7").append(`<img class="arrow" src = "../../images/Arrows/pointingboth.png"/>`)
 
     animateBlock("#10_2",0,2,true) // top
     animateBlock("#10_0",2,0,true); // left
     animateBlock("#12_3",0,2,true); // middle
     animateBlock("#10_6",2,0,true); // right
     animateBlock("#14_0",0,2,true); // bottom
+    animateBlock("#13_7", 1,0) // arrows 
+    $(".mainGrid #13_7").append(`<img class="arrow" src = "../../images/Arrows/pointingboth.png"/>`)
 
     animateBlock("#15_2",0,2,true) // top
     animateBlock("#15_0",2,0,true); // left
     animateBlock("#17_3",0,2,true); // middle
     animateBlock("#15_6",2,0,true); // right
+    animateBlock("#18_7", 1,0) // arrows 
+    $(".mainGrid #18_7").append(`<img class="arrow" src = "../../images/Arrows/pointingup.png"/>`)
+
+    
 
     populateLinesBlocks()
 
@@ -202,15 +212,17 @@ function clickLinesPicture(e) {
     $(".block").removeClass("muted")
     $(".highlighted").removeClass("highlighted");
 
-    var content = $(HIGHLIGHTEDBLOCK).find(".inner .content")
-    var block = $(HIGHLIGHTEDBLOCK).find(".inner")
-    var isBottom = $(HIGHLIGHTEDBLOCK).find(".inner").hasClass("bottom")
+    if (HIGHLIGHTEDBLOCK) {
+        var content = $(HIGHLIGHTEDBLOCK).find(".inner .content")
+        var block = $(HIGHLIGHTEDBLOCK).find(".inner")
+        var isBottom = $(HIGHLIGHTEDBLOCK).find(".inner").hasClass("bottom")
 
-    if (content.offset().top < block.offset().top && isBottom) {
-        var blockTop = block.offset().top
-        var blockHeight = block.height()
-        var titleHeight = content.find(".title").height()
-        content.offset({top: blockTop + blockHeight/2 - titleHeight/2})
+        if (content.offset().top < block.offset().top && isBottom) {
+            var blockTop = block.offset().top
+            var blockHeight = block.height()
+            var titleHeight = content.find(".title").height()
+            content.offset({top: blockTop + blockHeight/2 - titleHeight/2})
+        }
     }
 
     // go back to dim background    

@@ -67,7 +67,7 @@ var linedata = [
     {
         title: "Morfologia",
         designers: "SooJin Sohn, Tatyana Mustakos",
-        description: "Morfologia is about shape; it is about the evolution of form within the complex web of biological, social, and technological dependencies that ensnare every article of clothing. Through a combination of visceral texture, mechanical augmentation, and interactive textiles, Morfologia looks at the way our bodies are altered, augmented, and obfuscated, as well as what they do to fight back."
+        description: "Morfologia is about shape; it is about the evolution of form within the complex web of biological, social, and technological dependencies that ensnare every article of clothing. Through a combination of visceral texture, mechanical augmentation, and interactive textiles, Morfologia looks at the way human bodies are altered, augmented, and obfuscated, as well as what they do to fight back."
     },
     {
         title: "Nightmare",
@@ -87,7 +87,7 @@ var linedata = [
     {
         title: "Tambora",
         designers: "Briana Green",
-        description: "Tambora is inspired by the upbringings of this designer’s childhood. Her great grandmother was a huge influence on her desire to pursue a fashion career. Her grandmother spent her days crocheting, and sewing garments of her own. And she always dressed with poise and grace. Since her early teen years the designer wore her voluminous Afro despite others opinions. Through this, she wants show the world that there is not a single depiction of what a beautiful woman is, there are many. It’s a style, confidence, and a voice for those who aren’t afraid to step out of their shell."
+        description: "Style, confidence, and a voice for those unafraid to step out of their shells, Tambora proves that there is not a single, but multiple depictions of what a beautiful woman is. The collection is inspired by the designer’s greatest influence, her great grandmother, who spent her days crocheting and sewing garments of her own and always dressed with poise and grace."
     },
     {
         title: "Travaille",

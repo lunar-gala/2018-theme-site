@@ -425,7 +425,7 @@ var designers =
     "lastname": "Green",
     "position": "Designer (External)",
     "major": "Fro Factory",
-    "year": "",
+    "year": "2016",
     "pictured": "yes"
   },
   {
@@ -480,8 +480,8 @@ var designers =
     "firstname": "Krista",
     "lastname": "Wilhelm",
     "position": "Designer (External)",
-    "major": "?",
-    "year": "",
+    "major": "Art Institute Fashion Design",
+    "year": "2017",
     "pictured": "yes"
   },
   {
@@ -1024,8 +1024,8 @@ var dancers =
     "firstname": "Chris",
     "lastname": "Shon",
     "position": "Dancer",
-    "major": "?",
-    "year": "?",
+    "major": "Psychology",
+    "year": "2019",
     "pictured": "yes"
   },
   {
@@ -1112,8 +1112,8 @@ var dancers =
     "firstname": "Roosha",
     "lastname": "Mandal",
     "position": "Dancer",
-    "major": "?",
-    "year": "?",
+    "major": "Biological Sciences",
+    "year": 2019,
     "pictured": "yes"
   },
   {

@@ -53,16 +53,21 @@
     border: none; }
   .linesBlock.left .content {
     left: 100%;
-    top: 44%;
-    width: 350%; }
+    top: 44%; }
+    .linesBlock.left .content p {
+      height: 0px;
+      width: 0px; }
     @media (max-width: 768px) {
       .linesBlock.left .content {
         left: 0%;
-        width: 260%; } }
+        width: 240%; } }
   .linesBlock.top .content {
     left: 100%;
     top: 32%;
     width: 100%; }
+    .linesBlock.top .content p {
+      height: 0px;
+      width: 0px; }
     @media (max-width: 768px) {
       .linesBlock.top .content {
         left: 0%;
@@ -72,6 +77,9 @@
     top: 32%;
     transform: translateX(-25%);
     width: 100%; }
+    .linesBlock.middle .content p {
+      height: 0px;
+      width: 0px; }
   .linesBlock.right .content {
     left: 100%;
     top: 44%;
@@ -95,6 +103,17 @@
   .highlighted .linesBlock p {
     visibility: visible;
     opacity: 1; }
+  .highlighted .linesBlock.left .content {
+    width: 350%; }
+  .highlighted .linesBlock.left p {
+    width: 100%;
+    height: 100%; }
+  .highlighted .linesBlock.middle .content p {
+    height: 100%;
+    width: 100%; }
+  .highlighted .linesBlock.top .content p {
+    height: 100%;
+    width: 100%; }
   .highlighted .linesBlock.bottom .content {
     top: -160%; }
     .highlighted .linesBlock.bottom .content p {
@@ -110,7 +129,8 @@
       height: 100%; }
   @media (max-width: 768px) {
     .highlighted .linesBlock.left .content {
-      top: 12%; }
+      top: 12%;
+      width: 250%; }
     .highlighted .linesBlock.bottom .content {
       top: -180%;
       left: -50%;
@@ -137,6 +157,11 @@
 
 .lineBlockPicMuted {
   position: relative; }
+  .lineBlockPicMuted:hover {
+    opacity: .85;
+    background-color: white; }
+  .lineBlockPicMuted * {
+    pointer-events: none; }
 
 .lineBlockPicMuted::after {
   content: " ";
@@ -149,6 +174,11 @@
   background-size: cover;
   background-position: center center;
   opacity: 0.8; }
+  .lineBlockPicMuted::after * {
+    pointer-events: none; }
+
+.animated-filler-block * {
+  pointer-events: none; }
 
 .lineBlockPic {
   position: relative; }

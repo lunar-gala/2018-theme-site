@@ -85,6 +85,7 @@ function init_about_mobile(){
     add_video_mobile();
     animateBlock('#1_0',2,2);
       $(".mainGrid #1_0 .inner")[0].innerHTML = "<div id='videoAboutContainer'><img class='aboutGif' src='video/blue_heart.gif'><div class='mobileText1Parent'><div class='mobileAboutText1'>The Lunar Gala: an intergalactic celebration of the yearly contributions of the Interplanetary Federation for Peace and Protection. The year is 2268, and, on this 250th anniversary of the planet Earth’s quarantine, we present <span class='italic'>Ferox</span>, a public demonstration of the hostility of the Earth’s previously dominant species, the homosapien. We invite Federation sponsors and visitors to observe, for the first time, the savagery we have successfully contained. Infused with Federation principles, the previously dangerous human race is now docile - an allegory for the potential of the IFPP to mollify threatening agents intergalactically. Come celebrate with us! And, in the process, bear witness to a species, that, prior to this event, has been contained for centuries.</div></div></div>";
+
       $(".mobileAboutText1").css('font-size','8pt');
       if(window.innerWidth < 350){
         $(".mobileAboutText1").css('font-size','7pt');
@@ -92,7 +93,7 @@ function init_about_mobile(){
       if(window.innerWidth < 325){
         $(".mobileAboutText1").css('font-size','6.5pt');
       }
-      if(window.innerHeight < 475){
+      if(window.innerHeight < 540){
         $(".mobileAboutText1").css('font-size','5.5pt');
       }
     //place the first paragraph here
@@ -109,7 +110,7 @@ function init_about_mobile(){
     if(window.innerWidth < 325){
       $(".mainGrid #9_0 .inner").css('font-size','6.5pt');
     }
-    if(window.innerHeight < 475){
+    if(window.innerHeight < 540){
       $(".mainGrid #9_0 .inner").css('font-size','5.5pt');
     }
     $(".mainGrid #9_0 .inner").addClass("text");

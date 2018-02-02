@@ -456,15 +456,14 @@ function movePage(curPage,pageCount,direction,cb){
 }
 
 var currentPage = 0;
-
+var totalDist = 0;
+var threshold = 400;
+var isScrollingUp = false;
 $(window).ready(function(){
   var wheeling;
   var wheeldelta = { x: 0, y: 0 };
-  var totalDist = 0;
-  var threshold = 400;
-  var isScrollingUp = false;
   document.onkeydown = function(e) {
-    if(__pageAnimating){
+    if(__pageAnimating || __mobile_nav_active || __desktop_nav_active){
       return;
     }
     switch (e.keyCode) {
@@ -482,47 +481,7 @@ $(window).ready(function(){
           break;
     }
   };
-
-  $("body").bind('mousewheel', function(e) {
-    if(__pageAnimating){
-      return;
-    }
-    if(e.originalEvent.wheelDelta > 0) {
-      if (!isScrollingUp) {
-        totalDist = 0;
-        isScrollingUp = true;
-      }
-    } else if (isScrollingUp) {
-      totalDist = 0;
-      isScrollingUp = false;
-    }
-    else{
-      isScrollingUp = false;
-    }
-
-    if (Math.abs(e.originalEvent.wheelDelta) > 12) {
-
-      if (isScrollingUp) {
-        if(totalDist > threshold){
-          totalDist = 0;
-          movePage(currentPage,grid_rows/row_per_page,'up',function(newPage){
-            currentPage = newPage;
-            e.preventDefault();
-          });
-        }
-        totalDist += e.originalEvent.wheelDelta;
-      } else {
-        if(totalDist < -threshold){
-          totalDist = 0;
-          movePage(currentPage,grid_rows/row_per_page,'down',function(newPage){
-            currentPage = newPage;
-            e.preventDefault();
-          });
-        }
-        totalDist += e.originalEvent.wheelDelta;
-      }
-    }
-  });
+  $("body").bind('mousewheel', scrollMovement);
 });
 
 $(window).resize(function(){
@@ -548,3 +507,46 @@ $(window).resize(function(){
     })
   }
 });
+
+
+function scrollMovement(e){
+  if(__pageAnimating || __mobile_nav_active || __desktop_nav_active){
+    return;
+  }
+  else{
+    if(e.originalEvent.wheelDelta > 0) {
+      if (!isScrollingUp) {
+        totalDist = 0;
+        isScrollingUp = true;
+      }
+    } else if (isScrollingUp) {
+      totalDist = 0;
+      isScrollingUp = false;
+    }
+    else{
+      isScrollingUp = false;
+    }
+
+    if (Math.abs(e.originalEvent.wheelDelta) > 12) {
+      if (isScrollingUp) {
+        if(totalDist > threshold){
+          totalDist = 0;
+          movePage(currentPage,grid_rows/row_per_page,'up',function(newPage){
+            currentPage = newPage;
+            e.preventDefault();
+          });
+        }
+        totalDist += e.originalEvent.wheelDelta;
+      } else {
+        if(totalDist < -threshold){
+          totalDist = 0;
+          movePage(currentPage,grid_rows/row_per_page,'down',function(newPage){
+            currentPage = newPage;
+            e.preventDefault();
+          });
+        }
+        totalDist += e.originalEvent.wheelDelta;
+      }
+    }
+  }
+}

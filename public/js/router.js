@@ -153,6 +153,13 @@ function load_page(url){
   $('.mainGrid *').remove();
   $('.titleGrid *').remove();
 
+  $("body").off('mousewheel');
+
+  $(window).ready(function(){
+    $("body").bind('mousewheel', scrollMovement);
+  })
+
+
   //Creating the .mainGrid from scratch each time
 
   titleGrid = initGrid(title_grid_rows, title_grid_cols, titleGrid, "title", ".titleGrid", 0);
@@ -233,6 +240,12 @@ function load_page_mobile(url){
 
   titleGrid = [];
   grid = [];
+
+  $("body").off('mousewheel');
+
+  $(window).ready(function(){
+    $("body").bind('mousewheel', scrollMovement);
+  })
 
   $('.mainGrid *').remove();
   $('.titleGrid *').remove();

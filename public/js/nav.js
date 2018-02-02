@@ -1,9 +1,17 @@
+__mobile_nav_active = false;
+__desktop_nav_active = false;
+
 function navOut(url){
   $('.navGrid *').remove();
+  $('body').bind('mousewheel',scrollMovement);
+  __desktop_nav_active = false;
   load_page(url);
 }
 
 function navOutMobile(url){
+  $(".mainGrid").css("display","block");
+  __mobile_nav_active = false;
+  $("body").bind('mousewheel', scrollMovement);
   $('.navGrid *').remove();
   $('.navGrid').removeClass('mobileNav')
   load_page_mobile(url);
@@ -18,7 +26,8 @@ function summonFullNav(){
 
   navGrid = [];
   navGrid = initGrid(2,3,navGrid,"nav",'.navGrid',0);
-
+  __desktop_nav_active = false;
+  $('body').off('mousewheel');
   if(currentPage > 0){
     // $('.mainGrid').css('z-index','-9999999999');
     window.setTimeout(function(){
@@ -179,9 +188,8 @@ function summonFullNavMobile(){
   //getting the grid structure for the fullscreen nav
   grid.map((row)=>{row.map((block)=>{block.animateOut()})})
   titleGrid.map((row)=>{row.map((block)=>{block.animateOut()})})
-
   $(".navGrid").empty().addClass('mobileNav');
-
+  $("body").off('mousewheel');
   navGrid = [];
   navGrid = initGrid(3,2,navGrid,"nav",'.navGrid',0);
 
@@ -192,6 +200,7 @@ function summonFullNavMobile(){
       currentPage = 0;
       window.setTimeout(function(){
         __pageAnimating = false;
+        __mobile_nav_active = true;
         // $('.mainGrid').css('display','block');
       },700)
     },900)
@@ -201,6 +210,7 @@ function summonFullNavMobile(){
   $(".mainGrid").toggleClass("fullNav");
   $(".titleGrid").toggleClass("fullNav");
   window.setTimeout(function(){
+    $(".mainGrid").css("height","0");
     navGrid.map(function(inner){
       inner.map(function(cur){
         cur.create(".navGrid");

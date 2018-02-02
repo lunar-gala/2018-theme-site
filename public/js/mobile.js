@@ -3,9 +3,13 @@ __DESKTOP_BOOL = false;
 __MOBILE_WIDTH = 768;
 
 if(window.innerWidth < __MOBILE_WIDTH){
+  __MOBILE_BOOL = true;
+  __DESKTOP_BOOL = false;
   row_per_page = 6;
 }
 else{
+  __MOBILE_BOOL = false;
+  __DESKTOP_BOOL = true;
   row_per_page = 5;
 }
 

@@ -429,16 +429,17 @@ function movePage(curPage,pageCount,direction,cb){
   }
 
   $('.mainGrid').css('transform','translateY('+parseFloat(targetDist)+'px)');
-
-  window.setTimeout(function(){
-    //hide the outgoing boxes after animating out
-    boundary_low = oldPage * row_per_page
-    boundary_top = oldPage * row_per_page + row_per_page
-    for (i = boundary_low; i < boundary_top;i++){
-      $('.mainGrid [id^=\''+parseInt(i)+'_\']').css('display','none');
-    }
-    __pageAnimating = false;
-  },1000)
+  if(__DESKTOP_BOOL){
+    window.setTimeout(function(){
+      //hide the outgoing boxes after animating out
+      boundary_low = oldPage * row_per_page
+      boundary_top = oldPage * row_per_page + row_per_page
+      for (i = boundary_low; i < boundary_top;i++){
+        $('.mainGrid [id^=\''+parseInt(i)+'_\']').css('display','none');
+      }
+      __pageAnimating = false;
+    },1000)
+  }
 
   cb(newPage);
 }

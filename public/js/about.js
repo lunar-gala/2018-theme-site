@@ -88,6 +88,9 @@ function init_about_mobile(){
       if(window.innerWidth < 325){
         $(".mobileAboutText1").css('font-size','6.5pt');
       }
+      if(window.innerHeight < 475){
+        $(".mobileAboutText1").css('font-size','5.5pt');
+      }
     //place the first paragraph here
 
     //move down botton
@@ -99,8 +102,11 @@ function init_about_mobile(){
     if(window.innerWidth < 350){
       $(".mainGrid #9_0 .inner").css('font-size','7pt');
     }
-    else if(window.innerWidth < 325){
+    if(window.innerWidth < 325){
       $(".mainGrid #9_0 .inner").css('font-size','6.5pt');
+    }
+    if(window.innerHeight < 475){
+      $(".mainGrid #9_0 .inner").css('font-size','5.5pt');
     }
     $(".mainGrid #9_0 .inner").addClass("text");
     $(".mainGrid #9_0 .inner")[0].innerHTML = text2;

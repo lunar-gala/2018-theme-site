@@ -440,6 +440,17 @@ function movePage(curPage,pageCount,direction,cb){
       __pageAnimating = false;
     },1000)
   }
+  else{
+    window.setTimeout(function(){
+      //hide the outgoing boxes after animating out
+      // boundary_low = oldPage * row_per_page
+      // boundary_top = oldPage * row_per_page + row_per_page
+      // for (i = boundary_low; i < boundary_top;i++){
+      //   $('.mainGrid [id^=\''+parseInt(i)+'_\']').css('display','none');
+      // }
+      __pageAnimating = false;
+    },1000)
+  }
 
   cb(newPage);
 }

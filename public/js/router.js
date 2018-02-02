@@ -28,6 +28,7 @@ function createMobileRouting(){
 }
 
 function createRouting(){
+
   $(window).unbind('popstate');
   $('.router-link').off('click');
 
@@ -38,10 +39,13 @@ function createRouting(){
   else{
     load_page(currentPath);
   }
-  $(".router-link").click(function(){
-    url = $(this).attr("url");
-    load_page(currentPath);
-  })
+  // $(".router-link").click(function(){
+  //
+  //   url = $(this).attr("url");
+  //   console.log(currentPage);
+
+  // })
+
   $(window).bind("popstate", function() {
     currentPath = window.location.pathname;
     if(currentPath == "/"){
@@ -80,7 +84,19 @@ function attach_router_link(){
     window.setTimeout(function(){
       $('.mainGrid').addClass('fullNav');
       $('.titleGrid').addClass('fullNav');
-    },200);
+      window.setTimeout(function(){
+        if(currentPage > 0){
+          // $('.mainGrid').css('z-index','-9999999999');
+          $('.mainGrid').css('display','none');
+          $('.mainGrid').css('transform','translateY(0px)');
+          currentPage = 0;
+          window.setTimeout(function(){
+            __pageAnimating = false;
+            $('.mainGrid').css('display','block');
+          },700)
+        }
+      },500);
+    },300);
     url = $(this).attr("url");
     window.setTimeout(function(){
       $('.mainGrid').removeClass('fullNav');

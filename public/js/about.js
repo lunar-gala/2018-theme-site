@@ -43,6 +43,10 @@ function init_about(){
   animateBlock("#5_1",2,2);
   $("#5_1 .inner")[0].innerHTML = "";
 
+
+  $("#title_0_0 .inner").addClass("topLink router-link").attr('url','/lines');
+  $("#title_0_0 .inner").append("<div class='center-text-container'><div class='center-text'>Lines<img class='arrow-left' src='./../images/Arrows/pointingleft.png'/></div></div>")
+
   animateBlock("#3_3",1,1);
   $("#3_3 .inner")[0].innerHTML = "<p class=\"designers-link2 aboutLink link-page-1\">Experience Ferox</p><img class=\"arrow arrow-down\" src=\"images/Arrows/pointingdown.png\">"
   $('.link-page-1').off('click');

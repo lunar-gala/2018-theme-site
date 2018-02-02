@@ -211,10 +211,13 @@ function displayPerson (index) {
 		descClass = "rotated-text";
 		personClass = "person-info";
 	} else {
+		// console.log("A",index);
 		if (index < board1.length) {
 			dataObject = board1[index];
 		} else if (index >= 45 && index < 45 + designers.length) {
 			index -= 45;
+			// console.log("B",index);
+			// console.log("Design");
 			dataObject = designers[index];
 		} else if (index >= 75 && index < 75 + models.length) {
 			index -= 75;
@@ -376,7 +379,7 @@ function populatePeopleContent_mobile () {
 
 		        $("#" + grid[i][j].id + " .inner").click(function (i, j) {
 		        	return function () {
-		        		var index = getIndex(i, j);
+		        		var index = getIndex_mobile(i, j);
 		        		displayPerson(index);
 		        	};
 		        }(i, j));
@@ -403,5 +406,6 @@ function getIndex_mobile(i, j) {
 		}
 		index -= 18;
 	}
+	// console.log(arryIndex);
 	return arryIndex;
 }

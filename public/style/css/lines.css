@@ -157,9 +157,10 @@
 
 .lineBlockPicMuted {
   position: relative; }
-  .lineBlockPicMuted:hover {
-    opacity: .85;
-    background-color: white; }
+  @media (min-width: 769px) {
+    .lineBlockPicMuted:hover {
+      opacity: .85;
+      background-color: white; } }
   .lineBlockPicMuted * {
     pointer-events: none; }
 

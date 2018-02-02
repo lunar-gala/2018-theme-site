@@ -85,6 +85,9 @@ function init_lines_mobile() {
     animateBlock("#37_0", 2,0, true); // LEFT BLOCK
 
     populateLinesBlocks();
+    $("body").on("touchmove", function(e) {
+        $(".mainGrid .animated-filler-block").removeClass("hidden")
+    })
 
     $(".mainGrid .block").off("tap")
     $(".mainGrid .block").on("tap", clickLinesPicture)
@@ -170,7 +173,6 @@ function init_lines() {
     },function (e) {
         $(this).siblings(".animated-filler-block").removeClass("hidden")
     })
-
     $("body").off("click").click(clickLinesPicture);
 }
 

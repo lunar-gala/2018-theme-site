@@ -1,4 +1,5 @@
 $mobile-size:768px;
+$non-mobile-size:769px;
 
 .arrow-left {
   width: 4.3vw;
@@ -251,9 +252,11 @@ $mobile-size:768px;
 .lineBlockPicMuted {
     position: relative;
 
-    &:hover {
-      opacity: .85;
-      background-color: white;
+    @media (min-width: $non-mobile-size) {
+      &:hover {
+        opacity: .85;
+        background-color: white;
+      }
     }
 
     * {

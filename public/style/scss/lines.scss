@@ -79,7 +79,7 @@ $mobile-size:768px;
             }
             @media (max-width: $mobile-size) {
               left: 0%;
-              width: 260%;
+              width: 240%;
             }
         }
     }
@@ -201,6 +201,7 @@ $mobile-size:768px;
       @media (max-width: $mobile-size) {
         &.left .content {
             top: 12%;
+            width: 250%;
         }
         &.bottom .content {
           top:-180%;
@@ -250,9 +251,9 @@ $mobile-size:768px;
 .lineBlockPicMuted {
     position: relative;
 
-    &:hover {
-      opacity: 0.75;
-      background: white;
+    &:after:hover {
+      opacity: .85;
+      background-color: white;
     }
 
     * {
@@ -260,11 +261,6 @@ $mobile-size:768px;
     }
 }
 
-.whiteBackground {
-    opacity: 0.75;
-    background: white;
-    z-index:99999999999999999999999999;
-}
 .lineBlockPicMuted::after {
     content: " ";
     position: absolute;
@@ -277,7 +273,7 @@ $mobile-size:768px;
     background-position: center center;
     opacity: 0.8;
 
-    * {
+    * { 
       pointer-events: none;
     }
 }

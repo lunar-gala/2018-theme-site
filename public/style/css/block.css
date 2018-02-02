@@ -1366,7 +1366,7 @@ body {
     @media (max-width: 768px) {
       .linesBlock.left .content {
         left: 0%;
-        width: 260%; } }
+        width: 240%; } }
   .linesBlock.top .content {
     left: 100%;
     top: 32%;
@@ -1435,7 +1435,8 @@ body {
       height: 100%; }
   @media (max-width: 768px) {
     .highlighted .linesBlock.left .content {
-      top: 12%; }
+      top: 12%;
+      width: 250%; }
     .highlighted .linesBlock.bottom .content {
       top: -180%;
       left: -50%;
@@ -1462,16 +1463,11 @@ body {
 
 .lineBlockPicMuted {
   position: relative; }
-  .lineBlockPicMuted:hover {
-    opacity: 0.75;
-    background: white; }
+  .lineBlockPicMuted:after:hover {
+    opacity: .85;
+    background-color: white; }
   .lineBlockPicMuted * {
     pointer-events: none; }
-
-.whiteBackground {
-  opacity: 0.75;
-  background: white;
-  z-index: 99999999999999999999999999; }
 
 .lineBlockPicMuted::after {
   content: " ";

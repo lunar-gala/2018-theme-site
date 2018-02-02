@@ -157,7 +157,7 @@
 
 .lineBlockPicMuted {
   position: relative; }
-  .lineBlockPicMuted:after:hover {
+  .lineBlockPicMuted:hover {
     opacity: .85;
     background-color: white; }
   .lineBlockPicMuted * {

@@ -165,6 +165,12 @@ function init_lines() {
 
     populateLinesBlocks()
 
+    $(".linesBlock").off("hover").hover(function (e) {
+        $(this).siblings(".animated-filler-block").addClass("hidden")
+    },function (e) {
+        $(this).siblings(".animated-filler-block").removeClass("hidden")
+    })
+
     $("body").off("click").click(clickLinesPicture);
 }
 

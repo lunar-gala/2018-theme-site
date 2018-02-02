@@ -33,7 +33,9 @@ function init_about(){
   $(".mainGrid #5_5 .inner")[0].innerHTML = text2;
 
   animateBlock('#8_1',1,2);
-  content = "<div class='logoContainer'><div id='col1'><img src='images/cmoa.png'></div><div id='col2'><img id='img2' src='images/Style412.png'><img id='img1' src='images/ai.png'><img id='img3' src='images/alexs_eastend.png'></div><div class='.clear'></div></div>"
+
+
+  content = "<div class='logoContainer'><div id='col1'><img id='img1' src='images/ai.png'><img id='img2' src='images/alexs_eastend.png'></div><div id='col2'><img id='img3' src='images/Style412.png'><img id='img4' src='images/wvu.png'></div><div id='col3'><img src='images/cmoa.png'></div><div class='.clear'></div></div>"
   $(".mainGrid #8_1 .inner")[0].innerHTML = content;
   $(".mainGrid #8_1 .inner").addClass('logoInner');
 

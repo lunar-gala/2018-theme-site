@@ -211,6 +211,7 @@ function summonFullNavMobile(){
   $(".titleGrid").toggleClass("fullNav");
   window.setTimeout(function(){
     $(".mainGrid").css("height","0");
+    $(window).scrollTop(0);
     navGrid.map(function(inner){
       inner.map(function(cur){
         cur.create(".navGrid");

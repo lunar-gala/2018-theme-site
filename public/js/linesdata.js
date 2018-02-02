@@ -27,7 +27,7 @@ var linedata = [
     {
         title: "Escape",
         designers: "Yirui Zhu, Zhuona Ma",
-        description: "Inspired by the life story of the famous French Post-Impressionist artist Paul Gauguin, Escape explores the tension between social constraints and personal pursuits. Macrame, representing tension, demonstrates a process in which the person breaks certain boundaries to achieve what is truly desired. Its functionality evolves from restraining the motion of people to extending out from human body as a sign of passion and determination."
+        description: "Inspired by the life story of the famous French Post-Impressionist artist Paul Gauguin, Escape explores the tension between social constraints and personal pursuits. Macrame, representing tension, demonstrates a process in which the person breaks certain boundaries to achieve what is truly desired. Its functionality evolves from restraining the motion of people to extending out from the human body as a sign of passion and determination."
     },
     {
         title: "Homeostasis",

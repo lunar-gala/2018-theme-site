@@ -42,7 +42,7 @@ var linedata = [
     {
         title: "Inertia",
         designers: "Sherry Wu and Annie Huang",
-        description: "Inertia is a collection based on an imaginary future society in which people refuse to change.The pieces are uniforms for the inhabitants of this alternative future, which implies a sense of “fashion communism” and their core value for efficiency. In each piece, a flowy material is contained by a stiff fabric (patent leather or denim), to show the oppression from the society. In addition, to embody the value of efficiency, the tailoring process of every piece is zero-waste."
+        description: "Inertia is a collection based on an imaginary future society in which people refuse to change. The pieces are uniforms for the inhabitants of this alternative future, which implies a sense of “fashion communism” and their core value for efficiency. In each piece, a flowy material is contained by a stiff fabric (patent leather or denim), to show the oppression from the society. In addition, to embody the value of efficiency, the tailoring process of every piece is zero-waste."
     },
     {
         title: "Intrepid",
@@ -56,7 +56,7 @@ var linedata = [
     },
     {
         title: "Messiah",
-        designers: "Lanre Ad",
+        designers: "Lanre Adetola",
         description: "Messiah is a visualization of the quest for liberation and cultural connection across the African diaspora. From the words of Kwame Nkrumah to the bandoliers of the Black Panther Party to the Jagged Lines of the Africobra Art Movement to the militaristic uprising of Thomas Sankara’s Burkina Faso, I aim to forge links through a new found visual language that unites people of African heritage both here and abroad. This is the work of Pan Africanism. Thus, this is a Pan-African collection. All black, beads/shells from both the Yoruba and Harlem girl’s hair, patterned faux leathers, military vest with jewels and floral lace linings all coalesce on the bodies of free, sensual black men. Black freedom, transgression, and unity reimagined."
     },
     {

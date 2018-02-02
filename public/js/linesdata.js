@@ -72,7 +72,7 @@ var linedata = [
     {
         title: "Nightmare",
         designers: "Krista Wilhelm",
-        description: "Nightmare is an evening gown collection. This line was inspired by pure bold virtuous angels being pulled into the dark side of their own minds. The designer used primarily sheer and silk sateen fabrics showcasing the sexual yet still elegant sensation for this collection. Also, incorporating feathered material inspired by angel’s beloved wings, hand beadwork and hand-crafted floral cutouts. Nightmare was created for women who love to walk in a room and have all eyes fixated on them."
+        description: "Inspired by bold, virtuous angels being pulled into the dark side of their minds, Nightmare uses sheer and silk sateen fabrics showcasing sexual, yet elegant sensations in the form of evening gowns. Also incorporated are feathered materials inspired by angel’s wings, hand beadwork and hand-crafted floral cutouts. Nightmare was created for women who love to walk in a room and have all eyes fixated on them."
     },
     {
         title: "Stack",

@@ -26,7 +26,7 @@ var linedata = [
     },
     {
         title: "Escape",
-        designers: "Yirui Zhu & Zhuona Ma",
+        designers: "Yirui Zhu, Zhuona Ma",
         description: "Inspired by the lifestory of the famous French Post-Impressionist artist Paul Gauguin, our line intends to explore the tension between social constraints and personal pursuits. We want to demonstrate a process in which the person breaks certain boundaries to achieve what is truly desired. Our main material includes macrame which represents tension. Its functionality evolves from restraining the motion of people to extending out from human body as a sign of passion and determination."
     },
     {
@@ -41,7 +41,7 @@ var linedata = [
     },
     {
         title: "Inertia",
-        designers: "Sherry Wu and Annie Huang",
+        designers: "Sherry Wu, Annie Huang",
         description: "Inertia is a collection based on an imaginary future society in which people refuse to change. The pieces are uniforms for the inhabitants of this alternative future, which implies a sense of “fashion communism” and their core value for efficiency. In each piece, a flowy material is contained by a stiff fabric (patent leather or denim), to show the oppression from the society. In addition, to embody the value of efficiency, the tailoring process of every piece is zero-waste."
     },
     {
@@ -81,7 +81,7 @@ var linedata = [
     },
     {
         title: "SURFACE",
-        designers: "Michael Powell and Selena Zhen",
+        designers: "Michael Powell, Selena Zhen",
         description: "SURFACE explores the issue of the distortion and trivialization of the human body into objects of desire. The veneer of mesh, overlayed with cut contours, is a constructed external appearance that illustrates areas of the socially ideal body, exposing those who wear it to appreciation and admiration, but also leaving them vulnerable to objectification. As the line progresses, the body becomes more clearly exposed than upon first impression. It is meant to represent an exaggerated set of physical attributes that emphasize the scrutiny of our bodies – conscious and subconscious, external and internal."
     },
     {

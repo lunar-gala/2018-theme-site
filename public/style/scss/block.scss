@@ -83,43 +83,50 @@ body{
 
   }
 }
+.logoInner{
+  padding:5%;
+}
 .logoContainer{
   height:100%;
   #col1,
-  #col2{
+  #col2,
+  #col3{
     img{
       opacity:.6;
     }
     float:left;
     height:100%;
-    width:50%;
+    width:33.3%;
     position:relative;
   }
   #col1{
-    img{
-      height:100%;
+    #img1{
+      height:28%;
       width:auto;
+      margin-top:7%;
+    }
+    #img2{
+      height:46%;
+      margin-top:10%;
     }
   }
   #col2{
     img{
-      height:26%;
-      width:auto;
       display:block;
-      right:0;
-      left:0;
-      position:absolute;
       margin:auto;
-      max-width:90%;
-      &#img2{
-        top:33%;
-        height:33%;
-        margin-top:0;
-      }
-      &#img3{
-        height:25%;
-        top:73%;
-      }
+    }
+    #img3{
+      width:40%;
+      position:relative;
+      top:-5px;
+    }
+    #img4{
+      width:40%;
+    }
+  }
+  #col3{
+    img{
+      height:100%;
     }
   }
   .clear{
@@ -252,9 +259,7 @@ body{
     }
   }
 }
-.logoInner{
-  padding:6%;
-}
+
 .italic{
   font-style: italic;
 }

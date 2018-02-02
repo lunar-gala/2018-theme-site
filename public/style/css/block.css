@@ -968,36 +968,40 @@ body {
     height: 100% !important;
     width: auto !important; }
 
+.logoInner {
+  padding: 5%; }
+
 .logoContainer {
   height: 100%; }
   .logoContainer #col1,
-  .logoContainer #col2 {
+  .logoContainer #col2,
+  .logoContainer #col3 {
     float: left;
     height: 100%;
-    width: 50%;
+    width: 33.3%;
     position: relative; }
     .logoContainer #col1 img,
-    .logoContainer #col2 img {
+    .logoContainer #col2 img,
+    .logoContainer #col3 img {
       opacity: .6; }
-  .logoContainer #col1 img {
-    height: 100%;
-    width: auto; }
-  .logoContainer #col2 img {
-    height: 26%;
+  .logoContainer #col1 #img1 {
+    height: 28%;
     width: auto;
+    margin-top: 7%; }
+  .logoContainer #col1 #img2 {
+    height: 46%;
+    margin-top: 10%; }
+  .logoContainer #col2 img {
     display: block;
-    right: 0;
-    left: 0;
-    position: absolute;
-    margin: auto;
-    max-width: 90%; }
-    .logoContainer #col2 img#img2 {
-      top: 33%;
-      height: 33%;
-      margin-top: 0; }
-    .logoContainer #col2 img#img3 {
-      height: 25%;
-      top: 73%; }
+    margin: auto; }
+  .logoContainer #col2 #img3 {
+    width: 40%;
+    position: relative;
+    top: -5px; }
+  .logoContainer #col2 #img4 {
+    width: 40%; }
+  .logoContainer #col3 img {
+    height: 100%; }
   .logoContainer .clear {
     clear: both; }
 
@@ -1091,9 +1095,6 @@ body {
           bottom: 0; }
         .block .borders .borders-inner span.border-left {
           left: 0; }
-
-.logoInner {
-  padding: 6%; }
 
 .italic {
   font-style: italic; }

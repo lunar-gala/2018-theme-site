@@ -90,18 +90,97 @@ function populatePeopleContent () {
 										 + ", " + curElem.major + " " + curElem.year + "</br>";
 				}
 				$("#" + grid[i][j].id + " .inner").append(`<p class="not-pictured-text">` + notPicturedString + `</p>`);
+			} else if (i == 7 && j == 3) {
+				var dataObject = board1[board1.length - 2];
+				var firstName = dataObject.firstname;
+				var lastName = dataObject.lastname;
+				$("#" + grid[i][j].id + " .inner").css({
+		          	"background-image" : "url('../../images/Final Eye Photos/" + firstName + lastName + "Eye.png')",
+		          	"background-size" : "cover",
+				  	"background-repeat" : "no-repeat",
+				  	"background-position" : "center center"
+		        });
+		        $("#" + grid[i][j].id + " .inner").click(function () {
+		        	displayPerson(board1.length - 2);
+		        });
+		        $("#" + grid[i][j].id + " .inner").hover(function () {
+				        $(this).css({
+				        	'background-color': '#ff2124',
+  							'background-blend-mode': 'multiply',
+							'transition': 'all .3s',
+							'cursor': 'pointer'
+						});
+		        }, function () {
+					$(this).css({
+			        	'background-color': 'transparent',
+						'background-blend-mode': 'none'
+					});
+			    });
+			} else if (i == 7 && j == 4) {
+				var dataObject = board1[board1.length - 1];
+				var firstName = dataObject.firstname;
+				var lastName = dataObject.lastname;
+				$("#" + grid[i][j].id + " .inner").css({
+		          	"background-image" : "url('../../images/Final Eye Photos/" + firstName + lastName + "Eye.png')",
+		          	"background-size" : "cover",
+				  	"background-repeat" : "no-repeat",
+				  	"background-position" : "center center"
+		        });
+		        $("#" + grid[i][j].id + " .inner").click(function () {
+		        	displayPerson(board1.length - 1);
+		        });
+		        $("#" + grid[i][j].id + " .inner").hover(function () {
+			        $(this).css({
+			        	'background-color': '#ff2124',
+							'background-blend-mode': 'multiply',
+						'transition': 'all .3s',
+						'cursor': 'pointer'
+					});
+		        }, function () {
+					$(this).css({
+			        	'background-color': 'transparent',
+						'background-blend-mode': 'none'
+					});
+			   	});
+			} else if (i == 28 && j == 6) {
+				var dataObject = dancers[dancers.length - 4];
+				var firstName = dataObject.firstname;
+				var lastName = dataObject.lastname;
+				$("#" + grid[i][j].id + " .inner").css({
+		          	"background-image" : "url('../../images/Final Eye Photos/" + firstName + lastName + "Eye.png')",
+		          	"background-size" : "cover",
+				  	"background-repeat" : "no-repeat",
+				  	"background-position" : "center center"
+		        });
+		        $("#" + grid[i][j].id + " .inner").click(function () {
+		        	displayPerson(150 + dancers.length - 4);
+		        });
+		        $("#" + grid[i][j].id + " .inner").hover(function () {
+			        $(this).css({
+			        	'background-color': '#ff2124',
+							'background-blend-mode': 'multiply',
+						'transition': 'all .3s',
+						'cursor': 'pointer'
+					});
+			    }, function () {
+					$(this).css({
+			        	'background-color': 'transparent',
+						'background-blend-mode': 'none'
+					});
+			   	}); 
 			} else if (!((i%5 == 2 && j == 0)
 					    || (i%5 == 1 && j == 7)
 					    || (i%5 == 2 && j == 7)
 					    || (i%5 == 2 && j == 6)
 					    || (i%5 == 3 && j == 4)
 					    || (i%5 == 4 && j == 4)
-					    || (i%5 == 4 && j == 3))) {
+					    || (i%5 == 4 && j == 3)
+					    || (i == 28 && j == 0))) {
 				var index = getIndex(i, j);
 				var dataObject;
 				var firstName = "";
 				var lastName = "";
-				if (index < board1.length) {
+				if (index < board1.length - 2) {
 					dataObject = board1[index];
 					firstName = dataObject.firstname;
 					lastName = dataObject.lastname;
@@ -130,10 +209,10 @@ function populatePeopleContent () {
 		        });
 
 				index = getIndex(i, j);
-				if (index < board1.length ||
+				if (index < board1.length - 2 ||
 					(index >= 60 && index < 60 + designers.length) ||
 					(index >= 90 && index < 90 + models.length) ||
-					(index >= 150 && index < 150 + dancers.length) ) {
+					(index >= 150 && index < 150 + dancers.length)) {
 		        	$("#" + grid[i][j].id + " .inner").hover(function () {
 		        		// console.log(90 + models.length);
 				        $(this).css({

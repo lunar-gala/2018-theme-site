@@ -900,6 +900,13 @@ body {
   overflow-y: hidden;
   overflow-x: hidden; }
 
+.aboutGif {
+  width: 100%;
+  height: auto;
+  left: 0;
+  position: absolute;
+  top: 0; }
+
 .center-text-container {
   display: flex;
   align-items: center;

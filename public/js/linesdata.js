@@ -6,7 +6,7 @@ var linedata = [
     },
     {
         title: "amzu",
-        designers: "Amber Lee, Kazumi Kanagawa",
+        designers: "Amber Lee, Kazumi Kanagawa, Ty Van de Zande",
         description: "Fashion often emphasizes aesthetic over utility. Inspired by Errolson Hugh’s “smart” and flexible ACRONYM 2014 S/S collection, this line explores the gap between clothing and technology through garments that utilize transformative elements to adapt to its wearers’ needs and environments. The line features print lights, a printed circuitry for integrating light into fabrics, developed by design student Ty Van de Zande."
     },
     {

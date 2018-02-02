@@ -10,11 +10,20 @@ function createMobileRouting(){
   $(window).unbind('popstate');
   $('.router-link').off('click');
   currentPath = window.location.pathname;
-  load_page_mobile(currentPath);
-
+  if(currentPath == "/"){
+      load_page_mobile('/about');
+  }
+  else{
+    load_page_mobile(currentPath);
+  }
   $(window).bind("popstate", function() {
     currentPath = window.location.pathname;
-    load_page_mobile(currentPath);
+    if(currentPath == "/"){
+        load_page_mobile('/about');
+    }
+    else{
+      load_page_mobile(currentPath);
+    }
   });
 }
 

@@ -973,32 +973,24 @@ body {
     .logoContainer #col2 img {
       opacity: .6; }
   .logoContainer #col1 img {
-    height: calc(100% - 48px);
+    height: 100%;
+    width: auto; }
+  .logoContainer #col2 img {
+    height: 26%;
     width: auto;
-    top: 0;
-    left: 0;
+    display: block;
     right: 0;
-    bottom: 0;
+    left: 0;
     position: absolute;
-    margin: auto; }
-  .logoContainer #col2 {
-    padding: 15px; }
-    .logoContainer #col2 img {
-      height: 20%;
-      width: auto;
-      display: block;
-      right: 0;
-      left: 0;
-      position: absolute;
-      margin: auto;
-      max-width: 90%; }
-      .logoContainer #col2 img#img2 {
-        top: 33%;
-        height: 30%;
-        margin-top: 0; }
-      .logoContainer #col2 img#img3 {
-        height: 25%;
-        top: 66%; }
+    margin: auto;
+    max-width: 90%; }
+    .logoContainer #col2 img#img2 {
+      top: 33%;
+      height: 33%;
+      margin-top: 0; }
+    .logoContainer #col2 img#img3 {
+      height: 25%;
+      top: 73%; }
   .logoContainer .clear {
     clear: both; }
 
@@ -1093,18 +1085,21 @@ body {
         .block .borders .borders-inner span.border-left {
           left: 0; }
 
+.logoInner {
+  padding: 6%; }
+
 .italic {
   font-style: italic; }
 
-.mobileAboutText1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.mobileText1Parent {
+  display: flex;
+  align-items: center;
   height: 100%;
+  padding: 0 10vw; }
+
+.mobileAboutText1 {
+  position: relative;
   text-align: left;
-  padding: 4vh 5vw;
-  font-size: 10pt;
   line-height: 1.3; }
 
 .animated-filler-block {
@@ -1215,7 +1210,7 @@ body {
     .mainGrid .inner .center-text.title, .titleGrid .inner .center-text.title {
       font-family: "Druk Wide",sans-serif;
       font-weight: 400;
-      font-size: 20pt;
+      font-size: 22pt;
       color: #FF2124; }
     .mainGrid .inner.text, .titleGrid .inner.text {
       display: flex;
@@ -1364,8 +1359,10 @@ body {
     border: none; }
   .linesBlock.left .content {
     left: 100%;
-    top: 44%;
-    width: 350%; }
+    top: 44%; }
+    .linesBlock.left .content p {
+      height: 0px;
+      width: 0px; }
     @media (max-width: 768px) {
       .linesBlock.left .content {
         left: 0%;
@@ -1374,6 +1371,9 @@ body {
     left: 100%;
     top: 32%;
     width: 100%; }
+    .linesBlock.top .content p {
+      height: 0px;
+      width: 0px; }
     @media (max-width: 768px) {
       .linesBlock.top .content {
         left: 0%;
@@ -1383,6 +1383,9 @@ body {
     top: 32%;
     transform: translateX(-25%);
     width: 100%; }
+    .linesBlock.middle .content p {
+      height: 0px;
+      width: 0px; }
   .linesBlock.right .content {
     left: 100%;
     top: 44%;
@@ -1406,6 +1409,17 @@ body {
   .highlighted .linesBlock p {
     visibility: visible;
     opacity: 1; }
+  .highlighted .linesBlock.left .content {
+    width: 350%; }
+  .highlighted .linesBlock.left p {
+    width: 100%;
+    height: 100%; }
+  .highlighted .linesBlock.middle .content p {
+    height: 100%;
+    width: 100%; }
+  .highlighted .linesBlock.top .content p {
+    height: 100%;
+    width: 100%; }
   .highlighted .linesBlock.bottom .content {
     top: -160%; }
     .highlighted .linesBlock.bottom .content p {
@@ -1448,6 +1462,16 @@ body {
 
 .lineBlockPicMuted {
   position: relative; }
+  .lineBlockPicMuted:hover {
+    opacity: 0.75;
+    background: white; }
+  .lineBlockPicMuted * {
+    pointer-events: none; }
+
+.whiteBackground {
+  opacity: 0.75;
+  background: white;
+  z-index: 99999999999999999999999999; }
 
 .lineBlockPicMuted::after {
   content: " ";
@@ -1460,6 +1484,11 @@ body {
   background-size: cover;
   background-position: center center;
   opacity: 0.8; }
+  .lineBlockPicMuted::after * {
+    pointer-events: none; }
+
+.animated-filler-block * {
+  pointer-events: none; }
 
 .lineBlockPic {
   position: relative; }

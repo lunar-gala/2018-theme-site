@@ -178,7 +178,7 @@ function summonMiniNavMobile(){
   navBox  += `</div>`
   $("#title_0_2 .inner").html(navBox).addClass('nav-box-container');
   $("#navInner_"+currentIndices.join("")).toggleClass("active");
-  $("#title_0_2").off('tap').on('tap',function(e){
+  $("#title_0_2").off('tap click').on('tap click',function(e){
     removeDisplayPerson();
     summonFullNavMobile();
   });
@@ -222,7 +222,7 @@ function summonFullNavMobile(){
     //Manually insert the data into the grid
     $(".navGrid #nav_0_0 .inner").append("<div>About</div>");
 
-    $(".navGrid #nav_0_0 .inner").on('tap',function (e) {
+    $(".navGrid #nav_0_0 .inner").on('tap click',function (e) {
       if (!isFullNavOpen()) {
         return;
       }
@@ -236,7 +236,7 @@ function summonFullNavMobile(){
 
     $(".navGrid #nav_1_0 .inner").append("<div>Members</div>");
 
-    $(".navGrid #nav_1_0 .inner").on('tap',function (e) {
+    $(".navGrid #nav_1_0 .inner").on('click tap',function (e) {
       if (!isFullNavOpen()) {
         return;
       }
@@ -257,7 +257,7 @@ function summonFullNavMobile(){
 
     $(".navGrid #nav_1_1 .inner").append("<div>Lines</div>");
 
-    $(".navGrid #nav_1_1 .inner").on('tap',function (e) {
+    $(".navGrid #nav_1_1 .inner").on('click tap',function (e) {
       if (!isFullNavOpen()) {
         return;
       }
@@ -272,7 +272,7 @@ function summonFullNavMobile(){
 
     // Close nav
     $(".navGrid #nav_0_1 .inner").append("<div>X</div>");
-    $(".navGrid #nav_0_1 .inner").on('tap',function(){
+    $(".navGrid #nav_0_1 .inner").on('click tap',function(){
       if (!isFullNavOpen()) {
         return;
       }

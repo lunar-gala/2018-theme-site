@@ -1,2 +1,266 @@
-.arrow-left{width:4.3vw;left:1vw}.filler-block,.animated-filler-block{cursor:pointer}.filler-block .inner,.animated-filler-block .inner{border:1px solid white}.linesBlock ~ .borders .borders-inner span{opacity:0}.linesBlock{cursor:pointer}.linesBlock .content{transition:left 0.5s ease 0s, top 0.5s ease 0s;cursor:default;position:absolute;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;text-align:left}.linesBlock .content .title{font-family:"Druk Wide",sans-serif;font-weight:400;font-size:18px;line-height:1.5}@media (max-width: 768px){.linesBlock .content .title{white-space:normal}}.linesBlock .content p{overflow:hidden;visibility:hidden;opacity:0;transition:visibility 0.2s, opacity .2s linear;font-family:"Theinhardt";margin-top:15px}.linesBlock .content p.designers{font-size:12pt;line-height:1.5}.linesBlock .content p.description{font-size:10pt;line-height:1.5}.linesBlock.left,.linesBlock.top,.linesBlock.middle,.linesBlock.right,.linesBlock.bottom{border:none}.linesBlock.left .content{left:100%;top:44%}.linesBlock.left .content p{height:0px;width:0px}@media (max-width: 768px){.linesBlock.left .content{left:0%;width:240%}}.linesBlock.top .content{left:100%;top:32%;width:100%}.linesBlock.top .content p{height:0px;width:0px}@media (max-width: 768px){.linesBlock.top .content{left:0%;width:0%}}.linesBlock.middle .content{left:0%;top:32%;transform:translateX(-25%);width:100%}.linesBlock.middle .content p{height:0px;width:0px}.linesBlock.right .content{left:100%;top:44%;width:300%}.linesBlock.right .content p{height:0px;width:0px}.linesBlock.bottom .content{top:32%;left:100%;width:100%}.linesBlock.bottom .content p{height:0px;width:0px}@media (max-width: 768px){.linesBlock.bottom .content{left:0%;width:0%}.linesBlock.bottom .content p{width:0%}}.highlighted .linesBlock p{visibility:visible;opacity:1}.highlighted .linesBlock.left .content{width:350%}.highlighted .linesBlock.left p{width:100%;height:100%}.highlighted .linesBlock.middle .content p{height:100%;width:100%}.highlighted .linesBlock.top .content p{height:100%;width:100%}.highlighted .linesBlock.bottom .content{top:-160%}.highlighted .linesBlock.bottom .content p{height:100%;width:100%}.highlighted .linesBlock.bottom#nightmare .content{top:-160%}.highlighted .linesBlock.right .content{left:-100%;width:300%}.highlighted .linesBlock.right .content p{width:100%;height:100%}@media (max-width: 768px){.highlighted .linesBlock.left .content{top:12%;width:250%}.highlighted .linesBlock.bottom .content{top:-180%;left:-50%;width:100%}.highlighted .linesBlock.top .content{left:-60%;width:100%}}.block.highlighted .filler-inner{border:none}.block .animated-filler-block div{opacity:0.2 !important}.block.filler-block.collapsed .inner,.block .animated-filler-block div{transition:opacity 1s;position:relative;z-index:10000}.block .top ~ .animated-filler-block{padding:0.6%}.block .middle ~ .animated-filler-block,.block .bottom ~ .animated-filler-block{padding:0.75%}.block .left ~ .animated-filler-block,.block .right ~ .animated-filler-block{padding:2.25%}.lineBlockPicMuted{position:relative}@media (min-width: 769px){.lineBlockPicMuted:hover{opacity:.85;background-color:white}}.lineBlockPicMuted *{pointer-events:none}.lineBlockPicMuted::after{content:" ";position:absolute;top:0px;left:0px;width:100%;height:100%;z-index:-99999999;background-size:cover;background-position:center center;opacity:0.8}.lineBlockPicMuted::after *{pointer-events:none}.animated-filler-block *{pointer-events:none}.lineBlockPic{position:relative}.lineBlockPic::after{content:" ";position:absolute;top:0px;left:0px;width:100%;height:100%;z-index:-99999999;background-size:cover;background-position:center center;opacity:1}#amzu:after{background-image:url("../../images/lines/amzu.png")}#img-2268:after{background-image:url("../../images/lines/2268.png")}#chinoiseries:after{background-image:url("../../images/lines/chinoiseries.png")}#chroma:after{background-image:url("../../images/lines/chroma.png")}#descent:after{background-image:url("../../images/lines/descent.png")}#homeostasis:after{background-image:url("../../images/lines/homeostasis.png")}#escape:after{background-image:url("../../images/lines/escape.png")}#hooked:after{background-image:url("../../images/lines/hooked.png")}#inertia:after{background-image:url("../../images/lines/inertia.png")}#intrepid:after{background-image:url("../../images/lines/intrepid.png")}#messiah:after{background-image:url("../../images/lines/messiah.png")}#maille:after{background-image:url("../../images/lines/maille.png")}#morfologia:after{background-image:url("../../images/lines/morfologia.png")}#mien:after{background-image:url("../../images/lines/mien.png")}#nightmare:after{background-image:url("../../images/lines/nightmare.png")}#surface:after{background-image:url("../../images/lines/surface.png")}#stack:after{background-image:url("../../images/lines/stack.png")}#travaille:after{background-image:url("../../images/lines/travaille.png")}#tambora:after{background-image:url("../../images/lines/tambora.png")}.animated-filler-block.hidden{opacity:0 !important}.filler-block .inner{transition:opacity 1s !important}.block.filler-block.collapsed.pointEight .inner{opacity:0.8 !important}
+.arrow-left {
+  width: 4.3vw;
+  left: 1vw; }
+
+.filler-block, .animated-filler-block {
+  cursor: pointer; }
+  .filler-block .inner, .animated-filler-block .inner {
+    border: 1px solid white; }
+
+.linesBlock ~ .borders .borders-inner span {
+  opacity: 0; }
+
+.linesBlock {
+  cursor: pointer; }
+  .linesBlock .content {
+    transition: left 0.5s ease 0s, top 0.5s ease 0s;
+    cursor: default;
+    position: absolute;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    text-align: left; }
+    .linesBlock .content .title {
+      font-family: "Druk Wide",sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.5; }
+      @media (max-width: 768px) {
+        .linesBlock .content .title {
+          white-space: normal; } }
+    .linesBlock .content p {
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.2s, opacity .2s linear;
+      font-family: "Theinhardt";
+      margin-top: 15px; }
+      .linesBlock .content p.designers {
+        font-size: 12pt;
+        line-height: 1.5; }
+      .linesBlock .content p.description {
+        font-size: 10pt;
+        line-height: 1.5;
+        white-space: pre-line; }
+  .linesBlock.left, .linesBlock.top, .linesBlock.middle, .linesBlock.right, .linesBlock.bottom {
+    border: none; }
+  .linesBlock.left .content {
+    left: 100%;
+    top: 44%; }
+    .linesBlock.left .content p {
+      height: 0px;
+      width: 0px; }
+    @media (max-width: 768px) {
+      .linesBlock.left .content {
+        left: 0%;
+        width: 240%; } }
+  .linesBlock.top .content {
+    left: 100%;
+    top: 32%;
+    width: 100%; }
+    .linesBlock.top .content p {
+      height: 0px;
+      width: 0px; }
+    @media (max-width: 768px) {
+      .linesBlock.top .content {
+        left: 0%;
+        width: 0%; } }
+  .linesBlock.middle .content {
+    left: 0%;
+    top: 32%;
+    transform: translateX(-25%);
+    width: 100%; }
+    .linesBlock.middle .content p {
+      height: 0px;
+      width: 0px; }
+  .linesBlock.right .content {
+    left: 100%;
+    top: 44%;
+    width: 300%; }
+    .linesBlock.right .content p {
+      height: 0px;
+      width: 0px; }
+  .linesBlock.bottom .content {
+    top: 32%;
+    left: 100%;
+    width: 100%; }
+    .linesBlock.bottom .content p {
+      height: 0px;
+      width: 0px; }
+    @media (max-width: 768px) {
+      .linesBlock.bottom .content {
+        left: 0%;
+        width: 0%; }
+        .linesBlock.bottom .content p {
+          width: 0%; } }
+  .highlighted .linesBlock p {
+    visibility: visible;
+    opacity: 1; }
+  .highlighted .linesBlock.left .content {
+    width: 350%; }
+  .highlighted .linesBlock.left p {
+    width: 100%;
+    height: 100%; }
+  .highlighted .linesBlock.middle .content p {
+    height: 100%;
+    width: 100%; }
+  .highlighted .linesBlock.top .content p {
+    height: 100%;
+    width: 100%; }
+  .highlighted .linesBlock.bottom .content {
+    top: -160%; }
+    .highlighted .linesBlock.bottom .content p {
+      height: 100%;
+      width: 100%; }
+  .highlighted .linesBlock.bottom#nightmare .content {
+    top: -160%; }
+  .highlighted .linesBlock.right .content {
+    left: -100%;
+    width: 300%; }
+    .highlighted .linesBlock.right .content p {
+      width: 100%;
+      height: 100%; }
+  @media (max-width: 768px) {
+    .highlighted .linesBlock.left .content {
+      top: 12%;
+      width: 250%; }
+    .highlighted .linesBlock.bottom .content {
+      top: -180%;
+      left: -50%;
+      width: 100%; }
+    .highlighted .linesBlock.top .content {
+      left: -60%;
+      width: 100%; } }
+
+.block.highlighted .filler-inner {
+  border: none; }
+.block .animated-filler-block div {
+  opacity: 0.2 !important; }
+.block.filler-block.collapsed .inner,
+.block .animated-filler-block div {
+  transition: opacity 1s;
+  position: relative;
+  z-index: 10000; }
+.block .top ~ .animated-filler-block {
+  padding: 0.6%; }
+.block .middle ~ .animated-filler-block, .block .bottom ~ .animated-filler-block {
+  padding: 0.75%; }
+.block .left ~ .animated-filler-block, .block .right ~ .animated-filler-block {
+  padding: 2.25%; }
+
+.lineBlockPicMuted {
+  position: relative; }
+  @media (min-width: 769px) {
+    .lineBlockPicMuted:hover {
+      opacity: .85;
+      background-color: white; } }
+  .lineBlockPicMuted * {
+    pointer-events: none; }
+
+.lineBlockPicMuted::after {
+  content: " ";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -99999999;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.8; }
+  .lineBlockPicMuted::after * {
+    pointer-events: none; }
+
+.animated-filler-block * {
+  pointer-events: none; }
+
+.lineBlockPic {
+  position: relative; }
+
+.lineBlockPic::after {
+  content: " ";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -99999999;
+  background-size: cover;
+  background-position: center center;
+  opacity: 1; }
+
+#amzu:after {
+  background-image: url("../../images/lines/amzu.png"); }
+
+#img-2268:after {
+  background-image: url("../../images/lines/2268.png"); }
+
+#chinoiseries:after {
+  background-image: url("../../images/lines/chinoiseries.png"); }
+
+#chroma:after {
+  background-image: url("../../images/lines/chroma.png"); }
+
+#descent:after {
+  background-image: url("../../images/lines/descent.png"); }
+
+#homeostasis:after {
+  background-image: url("../../images/lines/homeostasis.png"); }
+
+#escape:after {
+  background-image: url("../../images/lines/escape.png"); }
+
+#hooked:after {
+  background-image: url("../../images/lines/hooked.png"); }
+
+#inertia:after {
+  background-image: url("../../images/lines/inertia.png"); }
+
+#intrepid:after {
+  background-image: url("../../images/lines/intrepid.png"); }
+
+#messiah:after {
+  background-image: url("../../images/lines/messiah.png"); }
+
+#maille:after {
+  background-image: url("../../images/lines/maille.png"); }
+
+#morfologia:after {
+  background-image: url("../../images/lines/morfologia.png"); }
+
+#mien:after {
+  background-image: url("../../images/lines/mien.png"); }
+
+#nightmare:after {
+  background-image: url("../../images/lines/nightmare.png"); }
+
+#surface:after {
+  background-image: url("../../images/lines/surface.png"); }
+
+#stack:after {
+  background-image: url("../../images/lines/stack.png"); }
+
+#travaille:after {
+  background-image: url("../../images/lines/travaille.png"); }
+
+#tambora:after {
+  background-image: url("../../images/lines/tambora.png"); }
+
+.animated-filler-block.hidden {
+  opacity: 0 !important; }
+
+.filler-block .inner {
+  transition: opacity 1s !important; }
+
+.block.filler-block.collapsed.pointEight .inner {
+  opacity: 0.8 !important; }
+
 /*# sourceMappingURL=lines.css.map */

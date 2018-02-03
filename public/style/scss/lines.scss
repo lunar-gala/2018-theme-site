@@ -41,7 +41,7 @@ $non-mobile-size:769px;
             font-size: 18px;
             line-height: 1.5;
             @media (max-width: $mobile-size) {
-                white-space: normal;  
+                white-space: normal;
             }
         }
 
@@ -73,7 +73,7 @@ $non-mobile-size:769px;
         .content {
             left: 100%; // Should be 100% - (width of header text/2) px
             top: 44%;
-            
+
             p {
                 height: 0px;
                 width: 0px;
@@ -208,7 +208,7 @@ $non-mobile-size:769px;
           top:-180%;
           left: -50%;
           width: 100%;
-        }  
+        }
         &.top .content {
             left: -60%;
             width: 100%;
@@ -276,7 +276,7 @@ $non-mobile-size:769px;
     background-position: center center;
     opacity: 0.8;
 
-    * { 
+    * {
       pointer-events: none;
     }
 }

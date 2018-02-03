@@ -31,7 +31,7 @@ var linedata = [
     },
     {
         title: "Homeostasis",
-        designers: "Jack Forman, Alan Guo, Mohan Yeh, Guanyun Wang (Morphing Matter Lab - CMU HCII)",
+        designers: "Jack Forman, Alan Guo, Mohan Yeh (Morphing Matter Lab - CMU HCII)",
         description: "Homeostasis is the realization of the Morphing Matter Lab’s exploration of the intersection of academics and aesthetics. Novel research and development of the shape-memory and conductive properties of twisted-then-coiled silver-coated nylon muscles allows for the fruition of autonomously responsive textiles. From the equilibrium between microscopic technology and macroscopic design, Homeostasis pulls at the minimal and organic forms of the human body as inspiration for a line in which every piece is a living and breathing display of its own. To evoke and enlighten the audience, we defy the expectation that fashion must be a static display, and engage the capabilities of futuristic textiles to execute striking metamorphoses in the moment. Vent. Twist. Spin. Lift."
     },
     {

@@ -201,14 +201,6 @@ var board1 =
     "pictured": "yes"
   },
   {
-    "firstname": "Amy",
-    "lastname": "Chen",
-    "position": "Press Liason",
-    "major": "Business Administration",
-    "year": 2018,
-    "pictured": "yes"
-  },
-  {
     "firstname": "Yutong",
     "lastname": "Han",
     "position": "Press Liason",
@@ -1225,18 +1217,18 @@ var notPictured =
     "pictured": "no"
   },
   {
-    "firstname": "Guanyun",
-    "lastname": "Wang",
-    "position": "Designer",
-    "major": "HCI",
-    "year": "PhD",
-    "pictured": "no"
-  },
-  {
     "firstname": "Albert",
     "lastname": "Du",
     "position": "Dancer",
     "major": "Music Composition",
+    "year": 2018,
+    "pictured": "no"
+  },
+  {
+    "firstname": "Amy",
+    "lastname": "Chen",
+    "position": "Press Liason",
+    "major": "Business Administration",
     "year": 2018,
     "pictured": "no"
   }

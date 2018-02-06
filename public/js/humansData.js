@@ -415,7 +415,7 @@ var designers =
   {
     "firstname": "Briana",
     "lastname": "Green",
-    "position": "Designer (External)",
+    "position": "Designer",
     "major": "Fro Factory",
     "year": "2016",
     "pictured": "yes"
@@ -471,7 +471,7 @@ var designers =
   {
     "firstname": "Krista",
     "lastname": "Wilhelm",
-    "position": "Designer (External)",
+    "position": "Designer",
     "major": "Art Institute Fashion Design",
     "year": "2017",
     "pictured": "yes"

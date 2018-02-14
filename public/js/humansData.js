@@ -59,7 +59,7 @@ var board1 =
   {
     "firstname": "Noa",
     "lastname": "Wolff-Fineout",
-    "position": "Design Coordinator, Designer",
+    "position": "Head of Design, Designer",
     "major": "Neural Cognition",
     "year": 2017,
     "pictured": "yes"
@@ -519,7 +519,7 @@ var designers =
   {
     "firstname": "Noa",
     "lastname": "Wolff-Fineout",
-    "position": "Design Coordinator, Designer",
+    "position": "Head of Design, Designer",
     "major": "Neural Cognition",
     "year": 2018,
     "pictured": "yes"
